@@ -12,7 +12,7 @@ public class Main {
 
         Map<String, Object> jsonMap = new HashMap<>();
 
-        // add comment for commit test
+        // comment for test
         System.out.println("JSON: "+ getOfferts.jsonGetRequest(url));
     }
 
