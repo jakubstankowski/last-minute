@@ -2,84 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b29be786-d2bc-4acb-b37c-e7760aadd73a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_ws_rs_javax_ws_rs_api_2_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_external_aopalliance_repackaged_2_5_0_b05.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_external_javax_inject_2_5_0_b05.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_hk2_api_2_5_0_b05.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_hk2_locator_2_5_0_b05.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_hk2_utils_2_5_0_b05.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_osgi_resource_locator_1_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_bundles_repackaged_jersey_guava_2_23_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_containers_jersey_container_servlet_core_2_23_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_client_2_23_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_common_2_23_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_server_2_23_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_media_jersey_media_jaxb_2_23_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_20_0_GA.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/19 - LAST-MINUTE - SIERPIEŃ 2019 JAVA &amp; VUE.JS.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/classes/META-INF/19 - LAST-MINUTE - SIERPIEŃ 2019 JAVA &amp; VUE.JS.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/classes/last/minute/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/classes/last/minute/database/DatabaseClass.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/classes/last/minute/model/OffertURL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/classes/last/minute/model/Profile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/classes/last/minute/resource/LastMinuteResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/classes/last/minute/resource/ProfileResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/classes/last/minute/service/LastMinuteService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/classes/last/minute/service/ProfileService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/lib/aopalliance-repackaged-2.5.0-b05.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/lib/hk2-api-2.5.0-b05.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/lib/hk2-locator-2.5.0-b05.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/lib/hk2-utils-2.5.0-b05.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/lib/javassist-3.20.0-GA.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/lib/javax.annotation-api-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/lib/javax.inject-2.5.0-b05.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/lib/javax.ws.rs-api-2.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/lib/jersey-client-2.23.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/lib/jersey-common-2.23.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/lib/jersey-container-servlet-core-2.23.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/lib/jersey-guava-2.23.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/lib/jersey-media-jaxb-2.23.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/lib/jersey-server-2.23.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/lib/osgi-resource-locator-1.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/lib/validation-api-1.1.0.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/19___LAST_MINUTE___SIERPIE_2019_JAVA___VUE_JS_war_exploded/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/last/minute/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/last/minute/database/DatabaseClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/last/minute/model/OffertURL.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/last/minute/model/Profile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/last/minute/resource/LastMinuteResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/last/minute/resource/ProfileResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/last/minute/service/LastMinuteService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/last/minute/service/ProfileService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/19 - LAST-MINUTE - SIERPIEŃ 2019 JAVA &amp; VUE.JS.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/last/minute/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/last/minute/database/DatabaseClass.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/last/minute/model/OffertURL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/last/minute/model/Profile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/last/minute/resource/LastMinuteResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/last/minute/resource/ProfileResource.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/last/minute/service/LastMinuteService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/last/minute/service/ProfileService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -92,7 +45,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../INNE/JAVA/spring" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -125,7 +78,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572356472164</updated>
-      <workItem from="1572356475246" duration="301000" />
+      <workItem from="1572356475246" duration="2546000" />
+      <workItem from="1572442464639" duration="598000" />
+      <workItem from="1572540625471" duration="649000" />
+      <workItem from="1573488950375" duration="6805000" />
     </task>
     <servers />
   </component>
@@ -137,7 +93,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
