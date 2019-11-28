@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b29be786-d2bc-4acb-b37c-e7760aadd73a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/controller/OfferController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/model/Offer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/service/OfferService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,6 +38,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Ssdw9tr2PcSvFSnbEvjatoHHbP" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
@@ -81,7 +84,10 @@
       <workItem from="1572356475246" duration="2546000" />
       <workItem from="1572442464639" duration="598000" />
       <workItem from="1572540625471" duration="649000" />
-      <workItem from="1573488950375" duration="6805000" />
+      <workItem from="1573488950375" duration="7430000" />
+      <workItem from="1573654142205" duration="53000" />
+      <workItem from="1573754368897" duration="593000" />
+      <workItem from="1574963224797" duration="1697000" />
     </task>
     <servers />
   </component>
