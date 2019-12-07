@@ -1,6 +1,13 @@
 package com.standev.lastminute.model;
+import org.springframework.data.annotation.Id;
 
+import javax.persistence.*;
+
+@Entity
 public class User {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private String id;
     private String firstName;
     private String lastName;

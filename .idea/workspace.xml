@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b29be786-d2bc-4acb-b37c-e7760aadd73a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/controller/OfferController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/model/Offer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/service/OfferService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/standev/lastminute/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +46,8 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="derby&#10;mysql" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -49,6 +55,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.20804597" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -87,7 +96,10 @@
       <workItem from="1573488950375" duration="7430000" />
       <workItem from="1573654142205" duration="53000" />
       <workItem from="1573754368897" duration="593000" />
-      <workItem from="1574963224797" duration="1697000" />
+      <workItem from="1574963224797" duration="4415000" />
+      <workItem from="1575385976889" duration="2303000" />
+      <workItem from="1575572739489" duration="3474000" />
+      <workItem from="1575707192413" duration="4490000" />
     </task>
     <servers />
   </component>
