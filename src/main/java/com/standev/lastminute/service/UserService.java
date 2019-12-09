@@ -1,64 +1,39 @@
 package com.standev.lastminute.service;
 
-import com.standev.lastminute.model.User;
-import com.standev.lastminute.repository.UserRepository;
+import com.standev.lastminute.entities.User;
+import com.standev.lastminute.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Optional;
+
 
 @Service
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserDao userDao;
 
-
-   /* private List<User> users = new ArrayList<>(Arrays.asList(
-            new User("1", "Jakub", "Stankowski", "jakubstankowski@protonmail.com"),
-            new User("2", "Natalia", "Kujawiak", "nataliakujawiak@protonmail.com")
-    ));*/
-
-    public List<User> getAllUsers() {
-        List<User> users = new ArrayList<>();
-        userRepository.findAll()
-                .forEach(users::add);
-
-        return users;
+    public Iterable<User> getAllUsers() {
+        return userDao.findAll();
     }
 
-  /* public User getUser(String id) {
-        return users.stream()
-                .filter(u -> u.getId().equals(id))
-                .findFirst()
-                .get();
-    }*/
-
-
-    public void addUser(User user) {
-        userRepository.save(user);
+    public User getUser(Integer id){
+        return userDao.findById(id).orElse(null);
     }
 
-   /* public void updateUser(String id, User user) {
-        for (int i = 0; i < users.size(); i++) {
-            User u = users.get(i);
-            if (u.getId().equals(id)) {
-                users.set(i, user);
-                return;
-            }
-        }
+    public void deleteUser(Integer id) {
+        userDao.deleteById(id);
     }
 
-    public void deleteUser(String id) {
-        for (int i = 0; i < users.size(); i++) {
-            User u = users.get(i);
-            if (u.getId().equals(id)) {
-                users.remove(u);
-                return;
-            }
-        }
 
-    }*/
+    public User createUser(User user) {
+        return userDao.save(user);
+    }
+
+    public void updateUser(Integer id, User newUser) {
+        userDao.save(newUser);
+    }
+
+
 }

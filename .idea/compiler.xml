@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="lastminute" target="12" />
+      <module name="lastminute" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
