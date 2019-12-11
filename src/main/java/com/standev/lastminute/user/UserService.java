@@ -1,11 +1,7 @@
-package com.standev.lastminute.service;
+package com.standev.lastminute.user;
 
-import com.standev.lastminute.entities.User;
-import com.standev.lastminute.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 
 @Service

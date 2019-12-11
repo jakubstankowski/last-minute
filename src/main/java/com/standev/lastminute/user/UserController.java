@@ -1,7 +1,5 @@
-package com.standev.lastminute.controller;
+package com.standev.lastminute.user;
 
-import com.standev.lastminute.entities.User;
-import com.standev.lastminute.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

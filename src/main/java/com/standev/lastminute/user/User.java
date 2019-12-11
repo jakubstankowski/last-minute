@@ -1,4 +1,4 @@
-package com.standev.lastminute.entities;
+package com.standev.lastminute.user;
 
 
 import javax.persistence.*;
