@@ -1,23 +1,59 @@
 package com.standev.lastminute.holidayOffer;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.standev.lastminute.user.User;
+
+import javax.persistence.*;
 
 @Entity
 public class HolidayOffer {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     private String url;
     private Integer minPrice;
     private Integer maxPrice;
 
-    public String getUrl() {
-        return url;
+
+    @ManyToOne
+    @JoinColumn()
+    private User user;
+
+    public HolidayOffer() {
+    }
+
+
+    public HolidayOffer(Integer id, String url, Integer minPrice, Integer maxPrice) {
+        this.id = id;
+        this.url = url;
+        this.minPrice = minPrice;
+        this.maxPrice = maxPrice;
+        this.user = new User(id, "", "", "");
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getUrl() {
+        return this.url;
     }
 
     public Integer getMinPrice() {

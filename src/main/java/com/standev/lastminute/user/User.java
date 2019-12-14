@@ -13,7 +13,17 @@ public class User {
     private String lastName;
     private String email;
 
-   public String getEmail() {
+    public User() {
+    }
+
+    public User(Integer id, String firstName, String lastName, String email){
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
+    public String getEmail() {
         return email;
     }
     public void setEmail(String email) {

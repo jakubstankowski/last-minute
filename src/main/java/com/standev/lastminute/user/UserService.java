@@ -23,8 +23,8 @@ public class UserService {
     }
 
 
-    public User createUser(User user) {
-        return userDao.save(user);
+    public void createUser(User user) {
+        userDao.save(user);
     }
 
     public void updateUser(Integer id, User newUser) {
