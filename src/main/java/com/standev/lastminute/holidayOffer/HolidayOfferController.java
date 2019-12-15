@@ -30,20 +30,9 @@ public class HolidayOfferController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/{userId}/holiday-offers")
     public String createHolidayOffer(@RequestBody HolidayOffer holidayOffer, @PathVariable("userId") Integer userId) {
-       HolidayOffer newHolidayOffer = new HolidayOffer();
-
-        System.out.println("USERRRRRRRR   IDDDDDDDDDDDDDDD + " + userId);
-       User user = new User(userId, "", "", "");
-       newHolidayOffer.setUser(user);
-
-       holidayOfferService.createHolidayOffer(holidayOffer);
-
-       /* System.out.println("Holiday offer URL: "+holidayOffer.getUrl() +" ID : "+ holidayOffer.getId()+" MIN PRICE; "+holidayOffer.getMinPrice() +" MAX PRICEEEE " +holidayOffer.getMaxPrice());
-        System.out.println("new user id: "+ newHolidayOffer.getUser().getId());
-
-
-        System.out.println("all holiday offer with  id: "+holidayOfferService.getAllHolidayOffers(userId));
-*/
+        User user = new User(userId, "", "", "");
+        holidayOffer.setUser(user);
+        holidayOfferService.createHolidayOffer(holidayOffer);
 
         return "Success create new holiday offer!";
     }

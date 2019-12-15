@@ -17,7 +17,6 @@ public class HolidayOffer {
 
 
     @ManyToOne
-    @JoinColumn()
     private User user;
 
     public HolidayOffer() {

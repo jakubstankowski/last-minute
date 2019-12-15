@@ -12,6 +12,7 @@ public class HolidayOfferService {
     private HolidayOfferDao holidayOfferDao;
 
     public Iterable<HolidayOffer> getAllHolidayOffers(Integer userId) {
+        System.out.println("GET ALL HOLIDAY OFFERS!@##!@ userrr id:: "+userId);
         return holidayOfferDao.findByUserId(userId);
     }
 
