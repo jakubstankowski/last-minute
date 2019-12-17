@@ -1,7 +1,11 @@
 package com.standev.lastminute.user;
 
 
+import com.standev.lastminute.holidayOffer.HolidayOffer;
+
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -21,6 +25,19 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+
+
+    @OneToMany(cascade=CascadeType.ALL)
+    private List<HolidayOffer> holidayOffers;
+
+    public List<HolidayOffer> getHolidayOffer() {
+        return holidayOffers;
+    }
+
+    public void setHolidayOffer(List<HolidayOffer> holidayOffer) {
+        this.holidayOffers = holidayOffer;
     }
 
     public String getEmail() {

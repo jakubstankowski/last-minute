@@ -1,3 +1,5 @@
+/*
+
 package com.standev.lastminute.holidayOffer;
 
 import com.standev.lastminute.user.User;
@@ -40,3 +42,5 @@ public class HolidayOfferService {
 
 
 }
+
+*/

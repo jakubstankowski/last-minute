@@ -1,3 +1,5 @@
+
+/*
 package com.standev.lastminute.holidayOffer;
 
 
@@ -23,21 +25,25 @@ public class HolidayOfferController {
         return holidayOfferService.getHolidayOffer(id);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/{userId}/holiday-offers/{id}")
+}
+*/
+
+   /* @RequestMapping(method = RequestMethod.DELETE, value = "/{userId}/holiday-offers/{id}")
     public void deleteHolidayOffer(@PathVariable("id") Integer id) {
         holidayOfferService.deleteHolidayOffer(id);
-    }
+    }*/
 
-    @RequestMapping(method = RequestMethod.POST, value = "/{userId}/holiday-offers")
+  /*  @RequestMapping(method = RequestMethod.POST, value = "/{userId}/holiday-offers")
     public String createHolidayOffer(@RequestBody HolidayOffer holidayOffer, @PathVariable("userId") Integer userId) {
         User user = new User(userId, "", "", "");
         holidayOffer.setUser(user);
         holidayOfferService.createHolidayOffer(holidayOffer);
 
         return "Success create new holiday offer!";
-    }
+    }*/
 
- /*   @RequestMapping(method = RequestMethod.POST)
+
+/*   @RequestMapping(method = RequestMethod.POST)
     public String createUser(@RequestBody User user) {
         userService.createUser(user);
         return "Success create new user!";
@@ -58,7 +64,9 @@ public class HolidayOfferController {
     public String updateUser(@RequestBody User user, @PathVariable("id") Integer id) {
         userService.updateUser(id, user);
         return "Success update user!";
-    }*/
+    }*//*
+
 
 
 }
+*/
