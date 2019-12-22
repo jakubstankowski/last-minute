@@ -25,8 +25,6 @@ public class HolidayOfferController {
     @Autowired
     private UserDao userDao;
 
-    @Autowired
-    private UserService userService;
 
   /*  @RequestMapping(method = RequestMethod.GET, value = "/{userId}/holiday-offers")
     public Iterable<HolidayOffer> getAllHolidayOffers(@PathVariable("userId") Integer userId) {

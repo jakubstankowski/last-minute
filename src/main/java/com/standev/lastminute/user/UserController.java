@@ -26,7 +26,7 @@ public class UserController {
     public String createUser(@RequestBody User user) {
         userService.createUser(user);
 
-        return "Success create new use r 123123123123!";
+        return "Success create new user!";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/user/{id}")
