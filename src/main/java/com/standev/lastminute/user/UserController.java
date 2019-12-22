@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 
 @RestController
@@ -23,17 +24,9 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String createUser(@RequestBody User user) {
-
-        HolidayOffer holidayOffer = new HolidayOffer();
-        holidayOffer.setUrl("itaka.pl/last-minute");
-        holidayOffer.setMinPrice(900);
-        holidayOffer.setMaxPrice(1200);
-
-        ArrayList<HolidayOffer> newHolidayOffer = new ArrayList<>(Arrays.asList(holidayOffer));
-        user.setHolidayOffer(newHolidayOffer);
-
         userService.createUser(user);
-        return "Success create new user!";
+
+        return "Success create new use r 123123123123!";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/user/{id}")
@@ -50,7 +43,6 @@ public class UserController {
     @RequestMapping(method = RequestMethod.PUT, value = "/user/{id}")
     public String updateUser(@RequestBody User user, @PathVariable("id") Integer id) {
         userService.updateUser(id, user);
-
 
 
         return "Success update user!";

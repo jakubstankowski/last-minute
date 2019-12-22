@@ -1,11 +1,16 @@
 
-/*
+
 package com.standev.lastminute.holidayOffer;
 
 
 import com.standev.lastminute.user.User;
+import com.standev.lastminute.user.UserDao;
+import com.standev.lastminute.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 @RestController
 @RequestMapping(value = "/api/users")
@@ -14,19 +19,40 @@ public class HolidayOfferController {
 
     @Autowired
     private HolidayOfferService holidayOfferService;
+    @Autowired
+    private HolidayOfferDao holidayOfferDao;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{userId}/holiday-offers")
+    @Autowired
+    private UserDao userDao;
+
+    @Autowired
+    private UserService userService;
+
+  /*  @RequestMapping(method = RequestMethod.GET, value = "/{userId}/holiday-offers")
     public Iterable<HolidayOffer> getAllHolidayOffers(@PathVariable("userId") Integer userId) {
         return holidayOfferService.getAllHolidayOffers(userId);
-    }
+    }*/
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{userId}/holiday-offers/{id}")
+    @GetMapping("/{userId}/holiday-offers/{id}")
     public HolidayOffer getHolidayOffer(@PathVariable("id") Integer id) {
         return holidayOfferService.getHolidayOffer(id);
     }
 
+    @PostMapping("/{userId}/holiday-offers")
+    public String createHolidayOffer(@RequestBody HolidayOffer holidayOffer, @PathVariable("userId") Integer userId) {
+        userDao.findById(userId).map(user ->{
+            holidayOffer.setUser(user);
+           return  holidayOfferDao.save(holidayOffer);
+       });
+
+        holidayOfferDao.save(holidayOffer);
+
+
+        return "Success create new holiday offer!";
+    }
+
 }
-*/
+
 
    /* @RequestMapping(method = RequestMethod.DELETE, value = "/{userId}/holiday-offers/{id}")
     public void deleteHolidayOffer(@PathVariable("id") Integer id) {
