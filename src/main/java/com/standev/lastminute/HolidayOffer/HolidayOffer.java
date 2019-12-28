@@ -1,6 +1,7 @@
 package com.standev.lastminute.HolidayOffer;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.standev.lastminute.User.User;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ public class HolidayOffer {
 
 
 
+    @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="user_id")
     private User user;

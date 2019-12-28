@@ -1,6 +1,7 @@
 package com.standev.lastminute.User;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.standev.lastminute.HolidayOffer.HolidayOffer;
 
 import javax.persistence.*;
@@ -26,7 +27,7 @@ public class User {
         this.email = email;
     }
 
-
+    @JsonManagedReference
     @OneToMany(
             mappedBy = "user",
             cascade = CascadeType.ALL)
