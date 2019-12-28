@@ -1,6 +1,6 @@
 
 
-package com.standev.lastminute.holidayOffer;
+package com.standev.lastminute.HolidayOffer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

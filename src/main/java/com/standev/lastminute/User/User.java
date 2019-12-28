@@ -1,11 +1,9 @@
-package com.standev.lastminute.user;
+package com.standev.lastminute.User;
 
 
-import com.standev.lastminute.holidayOffer.HolidayOffer;
+import com.standev.lastminute.HolidayOffer.HolidayOffer;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 @Entity

@@ -1,4 +1,4 @@
-package com.standev.lastminute.user;
+package com.standev.lastminute.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

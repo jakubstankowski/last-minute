@@ -1,7 +1,7 @@
-package com.standev.lastminute.holidayOffer;
+package com.standev.lastminute.HolidayOffer;
 
 
-import com.standev.lastminute.user.User;
+import com.standev.lastminute.User.User;
 
 import javax.persistence.*;
 

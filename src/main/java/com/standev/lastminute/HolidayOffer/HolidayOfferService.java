@@ -1,5 +1,5 @@
 
-package com.standev.lastminute.holidayOffer;
+package com.standev.lastminute.HolidayOffer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

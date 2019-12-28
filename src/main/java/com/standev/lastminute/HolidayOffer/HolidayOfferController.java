@@ -1,9 +1,9 @@
 
 
-package com.standev.lastminute.holidayOffer;
+package com.standev.lastminute.HolidayOffer;
 
 
-import com.standev.lastminute.user.UserDAO;
+import com.standev.lastminute.User.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
