@@ -6,6 +6,7 @@ import com.standev.lastminute.holidayOffer.HolidayOffer;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -30,18 +31,16 @@ public class User {
 
     @OneToMany(
             mappedBy = "user",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
+            cascade = CascadeType.ALL)
 
-    private List<HolidayOffer> holidayOffer = new ArrayList<>();
+    private Set<HolidayOffer> holidayOffer;
 
 
-    public List<HolidayOffer> getHolidayOffer() {
+    public Set<HolidayOffer> getHolidayOffer() {
         return holidayOffer;
     }
 
-    public void setHolidayOffer(List<HolidayOffer> holidayOffer) {
+    public void setHolidayOffer(Set<HolidayOffer> holidayOffer) {
         this.holidayOffer = holidayOffer;
     }
 

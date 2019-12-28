@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     @Autowired
-    private UserDao userDao;
+    private UserDAO userDao;
 
     public Iterable<User> getAllUsers() {
         return userDao.findAll();
