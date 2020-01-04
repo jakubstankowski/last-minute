@@ -15,26 +15,26 @@ public class UserService {
         return userDao.findAll();
     }
 
-    public User getUser(Integer id) throws NotFoundException {
+    public User getUser(Integer id) {
         return userDao.findById(id)
-                .orElseThrow(() -> new NotFoundException("User with id: " + id + " not found!"));
+                .orElseThrow(() -> new UserNotFoundException(id));
     }
 
-    public void deleteUser(Integer id) throws NotFoundException {
+    public void deleteUser(Integer id) {
         User user = userDao.findById(id)
-                .orElseThrow(() -> new NotFoundException("User with id: " + id + " not found!"));
+                .orElseThrow(() -> new UserNotFoundException(id));
 
         userDao.delete(user);
     }
 
 
-    public void createUser(User user) {
-        userDao.save(user);
+    public User createUser(User user) {
+        return userDao.save(user);
     }
 
-    public User updateUser(Integer id, User newUser) throws NotFoundException {
+    public User updateUser(Integer id, User newUser) {
         User user = userDao.findById(id)
-                .orElseThrow(() -> new NotFoundException("User with id: " + id + " not found!"));
+                .orElseThrow(() -> new UserNotFoundException(id));
 
         user.setFirstName(newUser.getFirstName());
         user.setLastName(newUser.getLastName());

@@ -3,6 +3,7 @@
 package com.standev.lastminute.HolidayOffer;
 
 
+import com.standev.lastminute.User.User;
 import com.standev.lastminute.User.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,15 +11,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/api/users")
 public class HolidayOfferController {
-
-
     @Autowired
     private HolidayOfferService holidayOfferService;
-    @Autowired
-    private HolidayOfferDAO holidayOfferDao;
 
-    @Autowired
-    private UserDAO userDao;
+    @GetMapping("/{userId}/holiday-offers")
+    public Iterable<HolidayOffer> getHolidayOffersByUser(@PathVariable(value = "userId") Integer userId) {
+        return holidayOfferService.getHolidayOffersByUserId(userId);
+
+    }
 
     @GetMapping("/{userId}/holiday-offers/{id}")
     public HolidayOffer getHolidayOffer(@PathVariable("id") Integer id) {
@@ -26,16 +26,8 @@ public class HolidayOfferController {
     }
 
     @PostMapping("/{userId}/holiday-offers")
-    public String createHolidayOffer(@RequestBody HolidayOffer holidayOffer, @PathVariable("userId") Integer userId) {
-        userDao.findById(userId).map(user ->{
-            holidayOffer.setUser(user);
-           return  holidayOfferDao.save(holidayOffer);
-       });
-
-        holidayOfferDao.save(holidayOffer);
-
-
-        return "Success create new holiday offer!";
+    public HolidayOffer createHolidayOffer(@RequestBody HolidayOffer holidayOffer, @PathVariable("userId") Integer userId) {
+       return holidayOfferService.createHolidayOffer(holidayOffer, userId);
     }
 
 }

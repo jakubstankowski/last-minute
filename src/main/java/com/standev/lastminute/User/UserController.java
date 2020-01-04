@@ -1,12 +1,8 @@
 package com.standev.lastminute.User;
-
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 @RestController
@@ -21,28 +17,24 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @GetMapping("/{id}")
+    public User getUser(@PathVariable("id") Integer id)  {
+        return userService.getUser(id);
+    }
+
     @PostMapping()
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        userService.createUser(user);
-        return ResponseEntity.ok(user);
+    public User createUser(@RequestBody User user) {
+        return userService.createUser(user);
     }
 
-    @GetMapping("/user/{id}")
-    public ResponseEntity<User> getUser(@PathVariable("id") Integer id) throws NotFoundException {
-        User user = userService.getUser(id);
-        return ResponseEntity.ok(user);
-    }
-
-    @DeleteMapping("/user/{id}")
-    public ResponseEntity<User> deleteUser(@PathVariable("id") Integer id) throws NotFoundException {
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable("id") Integer id)  {
         userService.deleteUser(id);
-        return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/user/{id}")
-    public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable("id") Integer id) throws NotFoundException{
-        User updateUser = userService.updateUser(id, user);
-        return ResponseEntity.ok(updateUser);
+    @PutMapping("/{id}")
+    public User updateUser(@RequestBody User newUser, @PathVariable("id") Integer id) {
+        return userService.updateUser(id, newUser);
     }
 
 
