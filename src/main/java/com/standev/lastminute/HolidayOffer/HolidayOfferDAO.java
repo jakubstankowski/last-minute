@@ -1,3 +1,4 @@
+/*
 
 
 package com.standev.lastminute.HolidayOffer;
@@ -11,3 +12,4 @@ public interface HolidayOfferDAO extends JpaRepository<HolidayOffer, Integer> {
 }
 
 
+*/

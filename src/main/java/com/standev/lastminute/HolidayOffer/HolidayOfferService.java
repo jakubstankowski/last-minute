@@ -1,3 +1,4 @@
+/*
 
 package com.standev.lastminute.HolidayOffer;
 
@@ -26,13 +27,15 @@ public class HolidayOfferService {
                 .findById(id).orElseThrow(() -> new HolidayOfferNotFoundException(id));
     }
 
-    public HolidayOffer createHolidayOffer(HolidayOffer holidayOffer, Integer userId) {
+  */
+/*  public HolidayOffer createHolidayOffer(HolidayOffer holidayOffer, Integer userId) {
         User user = userDAO.findById(userId)
                 .orElseThrow(() -> new UserNotFoundException(userId));
 
         holidayOffer.setUser(user);
         return holidayOfferDao.save(holidayOffer);
     }
+*//*
 
 
     public HolidayOffer updateHolidayOffer(Integer id, HolidayOffer newHolidayOffer) {
@@ -49,3 +52,4 @@ public class HolidayOfferService {
 }
 
 
+*/

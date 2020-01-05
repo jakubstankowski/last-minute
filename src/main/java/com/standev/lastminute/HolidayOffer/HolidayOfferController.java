@@ -1,3 +1,4 @@
+/*
 package com.standev.lastminute.HolidayOffer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,10 +20,12 @@ public class HolidayOfferController {
         return holidayOfferService.getHolidayOffer(id);
     }
 
-    @PostMapping("/{userId}/holiday-offers")
+   */
+/* @PostMapping("/{userId}/holiday-offers")
     public HolidayOffer createHolidayOffer(@RequestBody HolidayOffer holidayOffer, @PathVariable("userId") Integer userId) {
         return holidayOfferService.createHolidayOffer(holidayOffer, userId);
     }
+*//*
 
     @PutMapping("/{userId}/holiday-offers")
     public HolidayOffer updateHolidayOffer(@RequestBody HolidayOffer newHolidayOffer, @PathVariable("userId") Integer userId) {
@@ -31,3 +34,4 @@ public class HolidayOfferController {
 
 
 }
+*/

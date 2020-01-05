@@ -1,3 +1,4 @@
+/*
 package com.standev.lastminute.HolidayOffer;
 
 import org.springframework.http.HttpStatus;
@@ -15,4 +16,4 @@ class HolidayOfferNotFoundAdvice {
     String employeeNotFoundHandler(HolidayOfferNotFoundException ex) {
         return ex.getMessage();
     }
-}
+}*/

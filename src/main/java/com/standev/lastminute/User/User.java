@@ -2,7 +2,7 @@ package com.standev.lastminute.User;
 
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.standev.lastminute.HolidayOffer.HolidayOffer;
+import com.standev.lastminute.HolidayPreferences.UserHolidayPreferences;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -31,16 +31,13 @@ public class User {
     @OneToMany(
             mappedBy = "user",
             cascade = CascadeType.ALL)
+    private Set<UserHolidayPreferences> userHolidayPreferences;
 
-    private Set<HolidayOffer> holidayOffer;
-
-
-    public Set<HolidayOffer> getHolidayOffer() {
-        return holidayOffer;
+    public Set<UserHolidayPreferences> getUserHolidayPreferences() {
+        return userHolidayPreferences;
     }
-
-    public void setHolidayOffer(Set<HolidayOffer> holidayOffer) {
-        this.holidayOffer = holidayOffer;
+    public void setUserHolidayPreferences(Set<UserHolidayPreferences> userHolidayPreferences) {
+        this.userHolidayPreferences = userHolidayPreferences;
     }
 
 
