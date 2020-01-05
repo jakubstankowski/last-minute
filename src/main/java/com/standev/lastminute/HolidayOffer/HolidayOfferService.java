@@ -35,8 +35,15 @@ public class HolidayOfferService {
     }
 
 
-    
+    public HolidayOffer updateHolidayOffer(Integer id, HolidayOffer newHolidayOffer) {
+        HolidayOffer holidayOffer = holidayOfferDao
+                .findById(id).orElseThrow(() -> new HolidayOfferNotFoundException(id));
+        holidayOffer.setUrl(newHolidayOffer.getUrl());
+        holidayOffer.setMinPrice(newHolidayOffer.getMinPrice());
+        holidayOffer.setMaxPrice(newHolidayOffer.getMaxPrice());
 
+        return holidayOfferDao.save(holidayOffer);
+    }
 
 
 }
