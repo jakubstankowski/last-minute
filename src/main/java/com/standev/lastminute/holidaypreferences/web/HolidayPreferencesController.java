@@ -1,28 +1,30 @@
-package com.standev.lastminute.HolidayPreferences;
+package com.standev.lastminute.holidaypreferences.web;
 
 
 
+import com.standev.lastminute.holidaypreferences.service.HolidayPreferencesService;
+import com.standev.lastminute.holidaypreferences.jpa.HolidayPreferences;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api/users")
-public class UserHolidayPreferencesController {
+public class HolidayPreferencesController {
 
 
     @Autowired
-    private UserHolidayPreferencesService userHolidayPreferencesService;
+    private HolidayPreferencesService holidayPreferencesService;
 
 
     @PostMapping("/{userId}/holiday-preferences")
-    public UserHolidayPreferences createUserHolidayPreferences(@RequestBody UserHolidayPreferences userHolidayPreferences, @PathVariable("userId") Integer userId) {
-        return userHolidayPreferencesService.createUserHolidayPreferences(userHolidayPreferences, userId);
+    public HolidayPreferences createHolidayPreferences(@RequestBody HolidayPreferences holidayPreferences, @PathVariable("userId") Integer userId) {
+        return holidayPreferencesService.createUserHolidayPreferences(holidayPreferences, userId);
 
     }
 
     @GetMapping("/{userId}/holiday-preferences")
-    public Iterable<UserHolidayPreferences> getUserHolidayPreferencesByUser(@PathVariable(value = "userId") Integer userId) {
-        return userHolidayPreferencesService.getUserHolidayPreferencesByUserId(userId);
+    public Iterable<HolidayPreferences> getHolidayPreferencesByUser(@PathVariable(value = "userId") Integer userId) {
+        return holidayPreferencesService.getHolidayPreferencesByUserId(userId);
 
     }
 

@@ -1,4 +1,4 @@
-package com.standev.lastminute.User;
+package com.standev.lastminute.user;
 
 public class UserNotFoundException extends  RuntimeException {
     public UserNotFoundException(Integer id) {

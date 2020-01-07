@@ -2,8 +2,8 @@
 
 package com.standev.lastminute.HolidayOffer;
 
-import com.standev.lastminute.User.User;
-import com.standev.lastminute.User.UserDAO;
+import com.standev.lastminute.User.jpa.User;
+import com.standev.lastminute.User.dao.UserDAO;
 import com.standev.lastminute.User.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

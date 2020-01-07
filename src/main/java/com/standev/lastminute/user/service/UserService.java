@@ -1,6 +1,8 @@
-package com.standev.lastminute.User;
+package com.standev.lastminute.user.service;
 
-import javassist.NotFoundException;
+import com.standev.lastminute.user.UserNotFoundException;
+import com.standev.lastminute.user.dao.UserDAO;
+import com.standev.lastminute.user.jpa.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

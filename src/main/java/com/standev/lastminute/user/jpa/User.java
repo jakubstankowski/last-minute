@@ -1,8 +1,8 @@
-package com.standev.lastminute.User;
+package com.standev.lastminute.user.jpa;
 
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.standev.lastminute.HolidayPreferences.UserHolidayPreferences;
+import com.standev.lastminute.holidaypreferences.jpa.HolidayPreferences;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -31,13 +31,13 @@ public class User {
     @OneToMany(
             mappedBy = "user",
             cascade = CascadeType.ALL)
-    private Set<UserHolidayPreferences> userHolidayPreferences;
+    private Set<HolidayPreferences> holidayPreferences;
 
-    public Set<UserHolidayPreferences> getUserHolidayPreferences() {
-        return userHolidayPreferences;
+    public Set<HolidayPreferences> getHolidayPreferences() {
+        return holidayPreferences;
     }
-    public void setUserHolidayPreferences(Set<UserHolidayPreferences> userHolidayPreferences) {
-        this.userHolidayPreferences = userHolidayPreferences;
+    public void setHolidayPreferences(Set<HolidayPreferences> userHolidayPreferences) {
+        this.holidayPreferences = userHolidayPreferences;
     }
 
 

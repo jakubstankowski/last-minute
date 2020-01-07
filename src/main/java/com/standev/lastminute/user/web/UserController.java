@@ -1,7 +1,7 @@
-package com.standev.lastminute.User;
-import javassist.NotFoundException;
+package com.standev.lastminute.user.web;
+import com.standev.lastminute.user.service.UserService;
+import com.standev.lastminute.user.jpa.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 

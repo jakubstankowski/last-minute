@@ -1,27 +1,28 @@
-package com.standev.lastminute.HolidayPreferences;
+/*
+package com.standev.lastminute.HolidayOffer;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.standev.lastminute.User.User;
+import com.standev.lastminute.User.jpa.User;
 
 import javax.persistence.*;
 
 @Entity
-public class UserHolidayPreferences {
+public class HolidayOffer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
-
-
-    private String holidayWebPage;
+    private String url;
     private Integer minPrice;
     private Integer maxPrice;
 
+
+*/
+/*
     @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name="user_id")
     private User user;
 
 
@@ -31,38 +32,33 @@ public class UserHolidayPreferences {
 
     public void setUser(User user) {
         this.user = user;
-    }
+    }*//*
 
-    public String getHolidayWebPage() {
-        return holidayWebPage;
-    }
-
-    public void setHolidayWebPage(String holidayWebPage) {
-        this.holidayWebPage = holidayWebPage;
-    }
 
 
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
-
+    public void setUrl(String url) {
+        this.url = url;
+    }
+    public String getUrl() {
+        return this.url;
+    }
     public Integer getMinPrice() {
         return minPrice;
     }
-
     public void setMinPrice(Integer minPrice) {
         this.minPrice = minPrice;
     }
-
     public Integer getMaxPrice() {
         return maxPrice;
     }
-
     public void setMaxPrice(Integer maxPrice) {
         this.maxPrice = maxPrice;
     }
 }
+*/
