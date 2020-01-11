@@ -5,7 +5,10 @@ import com.standev.lastminute.holidaypreferences.jpa.HolidayPreferences;
 import com.standev.lastminute.user.jpa.User;
 import com.standev.lastminute.user.dao.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 
 @Service
@@ -27,5 +30,19 @@ public class HolidayPreferencesService {
 
     public Iterable<HolidayPreferences> getHolidayPreferencesByUserId(Integer userId) {
         return holidayPreferencesDAO.findByUserId(userId);
+    }
+
+    public Optional<HolidayPreferences> getHolidayPreference(Integer id, Integer userId) {
+        return holidayPreferencesDAO.findByIdAndUserId(id, userId);
+    }
+
+    public void  deleteHolidayPreference(Integer id, Integer userId) {
+
+        //TODO bugs with delete the whole user object!
+        holidayPreferencesDAO.findByIdAndUserId(id, userId)
+                .map(course -> {
+                    holidayPreferencesDAO.delete(course);
+                    return ResponseEntity.ok().build();
+                });
     }
 }

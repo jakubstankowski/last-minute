@@ -65,4 +65,6 @@ public class HolidayPreferences {
     public void setMaxPrice(Integer maxPrice) {
         this.maxPrice = maxPrice;
     }
+
+
 }
