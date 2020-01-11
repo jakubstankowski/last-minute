@@ -41,56 +41,8 @@ public class HolidayPreferencesController {
         holidayPreferencesService.deleteHolidayPreference(id, userId);
     }
 
-  /*  @DeleteMapping("/instructors/{instructorId}/courses/{courseId}")
-    public ResponseEntity << ? > deleteCourse(@PathVariable(value = "instructorId") Long instructorId,
-                                              @PathVariable(value = "courseId") Long courseId) throws ResourceNotFoundException {
-        return courseRepository.findByIdAndInstructorId(courseId, instructorId).map(course - > {
-                courseRepository.delete(course);
-        return ResponseEntity.ok().build();
-        }).orElseThrow(() - > new ResourceNotFoundException(
-                "Course not found with id " + courseId + " and instructorId " + instructorId));
-    }*/
-
-  /*  @DeleteMapping("/instructors/{instructorId}/courses/{courseId}")
-    public ResponseEntity << ? > deleteCourse(@PathVariable(value = "instructorId") Long instructorId,
-                                              @PathVariable(value = "courseId") Long courseId) throws ResourceNotFoundException {
-        return courseRepository.findByIdAndInstructorId(courseId, instructorId).map(course - > {
-                courseRepository.delete(course);
-        return ResponseEntity.ok().build();
-        }).orElseThrow(() - > new ResourceNotFoundException(
-                "Course not found with id " + courseId + " and instructorId " + instructorId));
-    }*/
-
-
-   /* @DeleteMapping("/api/users/{id}")
-    public void deleteUser(@PathVariable("id") Integer id)  {
-        userService.deleteUser(id);
+    @PutMapping("/{userId}/holiday-preferences/{id}")
+    public HolidayPreferences updateHolidayPreference(@PathVariable("id") Integer id, @RequestBody HolidayPreferences newHolidayPreference){
+       return  holidayPreferencesService.updateHolidayPreference(id, newHolidayPreference);
     }
-*/
-
-   /* @GetMapping()
-    public Iterable<User> getAllUsers() {
-        return userService.getAllUsers();
-    }*/
-
-   /* @GetMapping("/{id}")
-    public User getUser(@PathVariable("id") Integer id)  {
-        return userService.getUser(id);
-    }
-*/
-  /*  @PostMapping()
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
-    }*/
-
-    /*@DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable("id") Integer id)  {
-        userService.deleteUser(id);
-    }
-
-    @PutMapping("/{id}")
-    public User updateUser(@RequestBody User newUser, @PathVariable("id") Integer id) {
-        return userService.updateUser(id, newUser);
-    }
-    */
 }
