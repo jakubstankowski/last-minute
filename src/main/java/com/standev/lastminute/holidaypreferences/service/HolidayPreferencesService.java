@@ -2,7 +2,6 @@ package com.standev.lastminute.holidaypreferences.service;
 
 import com.standev.lastminute.holidaypreferences.dao.HolidayPreferencesDAO;
 import com.standev.lastminute.holidaypreferences.jpa.HolidayPreferences;
-import com.standev.lastminute.user.UserNotFoundException;
 import com.standev.lastminute.user.jpa.User;
 import com.standev.lastminute.user.dao.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
