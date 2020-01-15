@@ -1,15 +1,10 @@
-/*
-
-
-package com.standev.lastminute.HolidayOffer;
-import com.standev.lastminute.User.jpa.User;
+package com.standev.lastminute.holidayoffer.dao;
+import com.standev.lastminute.holidayoffer.jpa.HolidayOffer;
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.List;
-
 
 public interface HolidayOfferDAO extends JpaRepository<HolidayOffer, Integer> {
-    Iterable<HolidayOffer> findByUserId(Integer userId);
+
 }
 
 
-*/
+
