@@ -16,18 +16,14 @@ public class HolidayPreferences {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-
-
     private String holidayWebPage;
     private Integer minPrice;
     private Integer maxPrice;
 
 
-
-
     @JsonManagedReference
     @OneToMany(
-            mappedBy = "holiday_preferences",
+            mappedBy = "holidayPreferences",
             cascade = CascadeType.ALL)
     private Set<HolidayOffer> holidayOffer;
 

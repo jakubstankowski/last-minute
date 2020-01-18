@@ -1,5 +1,6 @@
 
 package com.standev.lastminute.holidayoffer.web;
+
 import com.standev.lastminute.holidayoffer.jpa.HolidayOffer;
 import com.standev.lastminute.holidayoffer.service.HolidayOfferService;
 import com.standev.lastminute.holidaypreferences.jpa.HolidayPreferences;
@@ -24,8 +25,10 @@ public class HolidayOfferController {
     @Autowired
     private HolidayOfferService holidayOfferService;
 
-    @PostMapping("/{userId}/holiday-preferences/{id}")
+    @PostMapping("/{userId}/holiday-preferences/{id}/holiday-offer")
     public HolidayOffer createHolidayPreferences(@RequestBody HolidayOffer holidayOffer, @PathVariable("userId") Integer userId, @PathVariable("id") Integer id) {
+        System.out.println("holiday prefe id: " + id);
+
         return holidayOfferService.createHolidayOffer(holidayOffer, id, userId);
 
     }

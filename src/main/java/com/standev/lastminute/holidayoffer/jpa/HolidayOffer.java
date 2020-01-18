@@ -18,10 +18,8 @@ public class HolidayOffer {
 
     @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "holiday_preferences_id")
+    @JoinColumn(name = "holidayPreferencesId")
     private HolidayPreferences holidayPreferences;
-
-
 
     public HolidayPreferences getHolidayPreferences() {
         return holidayPreferences;
@@ -30,8 +28,6 @@ public class HolidayOffer {
     public void setHolidayPreferences(HolidayPreferences holidayPreferences) {
         this.holidayPreferences = holidayPreferences;
     }
-
-
 
     public Integer getId() {
         return id;
