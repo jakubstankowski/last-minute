@@ -27,12 +27,14 @@ public class HolidayOfferController {
 
     @PostMapping("/{userId}/holiday-preferences/{id}/holiday-offer")
     public HolidayOffer createHolidayPreferences(@RequestBody HolidayOffer holidayOffer, @PathVariable("userId") Integer userId, @PathVariable("id") Integer id) {
-        System.out.println("holiday prefe id: " + id);
-        System.out.println("useeeeeeeeer id" + userId);
-
         return holidayOfferService.createHolidayOffer(holidayOffer, id, userId);
-
     }
+
+  /*  @GetMapping("/{userId}/holiday-preferences/{id}/holiday-offer")
+    public Iterable<HolidayOffer> getHolidayPreferencesByUser(@PathVariable(value = "userId") Integer userId) {
+        return holidayPreferencesService.getHolidayPreferencesByUserId(userId);
+
+    }*/
 
 
 }

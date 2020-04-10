@@ -19,14 +19,14 @@ public class HolidayOfferService {
     HolidayOfferDAO holidayOfferDAO;
     @Autowired
     HolidayPreferencesDAO holidayPreferencesDAO;
-    @Autowired
-    UserDAO userDAO;
 
     public HolidayOffer createHolidayOffer(HolidayOffer holidayOffer, Integer id, Integer userId) {
         HolidayPreferences holidayPreferences = holidayPreferencesDAO.findByIdAndUserId(id, userId).orElse(null);
         holidayOffer.setHolidayPreferences(holidayPreferences);
         return holidayOfferDAO.save(holidayOffer);
     }
+
+
 
 }
 

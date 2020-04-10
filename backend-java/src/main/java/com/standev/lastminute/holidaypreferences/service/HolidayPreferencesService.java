@@ -1,5 +1,7 @@
 package com.standev.lastminute.holidaypreferences.service;
 
+import com.standev.lastminute.holidayoffer.jpa.HolidayOffer;
+import com.standev.lastminute.holidayoffer.service.HolidayOfferService;
 import com.standev.lastminute.holidaypreferences.dao.HolidayPreferencesDAO;
 import com.standev.lastminute.holidaypreferences.jpa.HolidayPreferences;
 import com.standev.lastminute.user.jpa.User;
@@ -7,6 +9,7 @@ import com.standev.lastminute.user.dao.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Optional;
 
@@ -19,10 +22,12 @@ public class HolidayPreferencesService {
     @Autowired
     UserDAO userDAO;
 
+    @Autowired
+    HolidayOfferService holidayOfferService;
+
 
     public HolidayPreferences createUserHolidayPreferences(HolidayPreferences holidayPreferences, Integer userId) {
         User user = userDAO.findById(userId).orElse(null);
-
         holidayPreferences.setUser(user);
         return holidayPreferencesDAO.save(holidayPreferences);
 
@@ -57,6 +62,22 @@ public class HolidayPreferencesService {
         return holidayPreferencesDAO.save(holidayPreferences);
 
     }
+
+    /*public  void getHolidayOffers()
+    {
+        final String uri = "https://jsonplaceholder.typicode.com/todos/1";
+
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(uri, String.class);
+
+       *//* System.out.println(result);*//*
+        HolidayOffer  holidayOffer = new HolidayOffer();
+        holidayOffer.setUrl(result);
+
+        holidayOfferService.createHolidayOffer(holidayOffer, 2,1);
+
+
+    }*/
 }
 
 
