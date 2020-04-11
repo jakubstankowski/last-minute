@@ -10,28 +10,69 @@ class App extends React.Component {
             holidayOffers: [
                 {
                     id: 1,
-                    url: '123',
-                    price: 1231234,
-                    website: 'r.pl',
-                    date: '01.01.2001'
+                    url: 'https://www.itaka.pl/wycieczki/chorwacja/slonce-i-lawenda,XHRHVAR.html?ofr_id=79c8ab41607f3fddaddcf3d43cbf03140d91af85c7f4673164515f652026b94c&adults=2&childs=0&currency=PLN',
+                    price: 1099,
+                    website: 'itaka.pl',
+                    image:'https://i.content4travel.com/cms/img/u/desktop/seres/xhrhvar_0.jpg',
+                    date: '10.10.2020',
+                    country: 'Croatia'
                 },
                 {
                     id: 2,
-                    url: 'second url',
-                    price: 0,
-                    website: 'r.pl',
-                    date: '01.01.2001'
-                }
+                    url: 'https://www.itaka.pl/wycieczki/chorwacja/slonce-i-lawenda,XHRHVAR.html?ofr_id=79c8ab41607f3fddaddcf3d43cbf03140d91af85c7f4673164515f652026b94c&adults=2&childs=0&currency=PLN',
+                    price: 1099,
+                    website: 'itaka.pl',
+                    image:'https://i.content4travel.com/cms/img/u/desktop/seres/xhrhvar_0.jpg',
+                    date: '10.10.2020',
+                    country: 'Croatia'
+                },
+                {
+                    id: 3,
+                    url: 'https://www.itaka.pl/wycieczki/chorwacja/slonce-i-lawenda,XHRHVAR.html?ofr_id=79c8ab41607f3fddaddcf3d43cbf03140d91af85c7f4673164515f652026b94c&adults=2&childs=0&currency=PLN',
+                    price: 1099,
+                    website: 'itaka.pl',
+                    image:'https://i.content4travel.com/cms/img/u/desktop/seres/xhrhvar_0.jpg',
+                    date: '10.10.2020',
+                    country: 'Croatia'
+                },
+                {
+                    id: 4,
+                    url: 'https://www.itaka.pl/wycieczki/chorwacja/slonce-i-lawenda,XHRHVAR.html?ofr_id=79c8ab41607f3fddaddcf3d43cbf03140d91af85c7f4673164515f652026b94c&adults=2&childs=0&currency=PLN',
+                    price: 1099,
+                    website: 'itaka.pl',
+                    image:'https://i.content4travel.com/cms/img/u/desktop/seres/xhrhvar_0.jpg',
+                    date: '10.10.2020',
+                    country: 'Croatia'
+                },
+                {
+                    id: 5,
+                    url: 'https://www.itaka.pl/wycieczki/chorwacja/slonce-i-lawenda,XHRHVAR.html?ofr_id=79c8ab41607f3fddaddcf3d43cbf03140d91af85c7f4673164515f652026b94c&adults=2&childs=0&currency=PLN',
+                    price: 1099,
+                    website: 'itaka.pl',
+                    image:'https://i.content4travel.com/cms/img/u/desktop/seres/xhrhvar_0.jpg',
+                    date: '10.10.2020',
+                    country: 'Croatia'
+                },
+                {
+                    id: 6,
+                    url: 'https://www.itaka.pl/wycieczki/chorwacja/slonce-i-lawenda,XHRHVAR.html?ofr_id=79c8ab41607f3fddaddcf3d43cbf03140d91af85c7f4673164515f652026b94c&adults=2&childs=0&currency=PLN',
+                    price: 1099,
+                    website: 'itaka.pl',
+                    image:'https://i.content4travel.com/cms/img/u/desktop/seres/xhrhvar_0.jpg',
+                    date: '10.10.2020',
+                    country: 'Croatia'
+                },
             ]
         };
     }
-
     render() {
         return (
             <div className="App">
                 <Header/>
                 <React.Fragment>
-                    <HolidayOffers holidayOffers={this.state.holidayOffers}/>
+                    <div className="container">
+                        <HolidayOffers holidayOffers={this.state.holidayOffers}/>
+                    </div>
                 </React.Fragment>
             </div>
         );
