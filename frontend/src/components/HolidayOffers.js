@@ -1,5 +1,7 @@
 import * as React from "react";
 import HolidayOfferItem from "./HolidayOfferItem";
+import PropTypes from 'prop-types';
+
 
 class HolidayOffers extends React.Component {
     render() {
@@ -15,5 +17,10 @@ class HolidayOffers extends React.Component {
     }
 
 }
+
+HolidayOffers.propTypes = {
+    holidayOffers: PropTypes.array.isRequired,
+};
+
 
 export default HolidayOffers;
