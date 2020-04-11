@@ -1,14 +1,85 @@
 {
-  "posts": [
-    { "id": 1, "title": "Post 1" },
-    { "id": 2, "title": "Post 2" },
-    { "id": 3, "title": "Post 3" }
-  ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 },
-    { "id": 2, "body": "some comment", "postId": 1 }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  "holidayOffers": [
+    {
+      "id": 1,
+      "url": "https://www.itaka.pl",
+      "price": 1000,
+      "website": "https://itaka.pl",
+      "image": "https://i.content4travel.com/cms/img/u/desktop/seres/xhrhvar_0.jpg",
+      "date": "10.10.2020",
+      "country": "Croatia"
+    },
+    {
+      "id": 2,
+      "url": "https://www.itaka.pl",
+      "price": 1000,
+      "website": "https://itaka.pl",
+      "image": "https://i.content4travel.com/cms/img/u/desktop/seres/xhrhvar_0.jpg",
+      "date": "10.10.2020",
+      "country": "Croatia"
+    },
+    {
+      "id": 3,
+      "url": "https://www.itaka.pl",
+      "price": 1000,
+      "website": "https://itaka.pl",
+      "image": "https://i.content4travel.com/cms/img/u/desktop/seres/xhrhvar_0.jpg",
+      "date": "10.10.2020",
+      "country": "Croatia"
+    },
+    {
+      "id": 4,
+      "url": "https://www.itaka.pl",
+      "price": 1000,
+      "website": "https://itaka.pl",
+      "image": "https://i.content4travel.com/cms/img/u/desktop/seres/xhrhvar_0.jpg",
+      "date": "10.10.2020",
+      "country": "Croatia"
+    },
+    {
+      "id": 5,
+      "url": "https://www.itaka.pl",
+      "price": 1000,
+      "website": "https://itaka.pl",
+      "image": "https://i.content4travel.com/cms/img/u/desktop/seres/xhrhvar_0.jpg",
+      "date": "10.10.2020",
+      "country": "Croatia"
+    },
+    {
+      "id": 6,
+      "url": "https://www.itaka.pl",
+      "price": 1000,
+      "website": "https://itaka.pl",
+      "image": "https://i.content4travel.com/cms/img/u/desktop/seres/xhrhvar_0.jpg",
+      "date": "10.10.2020",
+      "country": "Croatia"
+    },
+    {
+      "id": 7,
+      "url": "https://www.itaka.pl",
+      "price": 1000,
+      "website": "https://itaka.pl",
+      "image": "https://i.content4travel.com/cms/img/u/desktop/seres/xhrhvar_0.jpg",
+      "date": "10.10.2020",
+      "country": "Croatia"
+    },
+    {
+      "id": 8,
+      "url": "https://www.itaka.pl",
+      "price": 1000,
+      "website": "https://itaka.pl",
+      "image": "https://i.content4travel.com/cms/img/u/desktop/seres/xhrhvar_0.jpg",
+      "date": "10.10.2020",
+      "country": "Croatia"
+    },
+    {
+      "id": 9,
+      "url": "https://www.itaka.pl",
+      "price": 1000,
+      "website": "https://itaka.pl",
+      "image": "https://i.content4travel.com/cms/img/u/desktop/seres/xhrhvar_0.jpg",
+      "date": "10.10.2020",
+      "country": "Croatia"
+    }
+  ]
 }
