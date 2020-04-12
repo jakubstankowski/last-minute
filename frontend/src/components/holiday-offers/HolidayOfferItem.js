@@ -2,7 +2,7 @@ import * as React from "react";
 import './HolidayOfferItem.css';
 import PropTypes from "prop-types";
 function HolidayOfferItem(props) {
-    const {url, date, image, price, country} = props.holidayOffer;
+    const {id, date, image, price, country} = props.holidayOffer;
 
     return (
         <div className="card">
@@ -22,7 +22,7 @@ function HolidayOfferItem(props) {
             </div>
             <div className="button text-center">
                 <button className="btn btn-primary btn-sm my-1">
-                    Details
+                    Details ID: {id}
                 </button>
             </div>
         </div>
