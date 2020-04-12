@@ -81,5 +81,28 @@
       "date": "10.10.2020",
       "country": "Croatia"
     }
+  ],
+  "holidayPreferences": [
+    {
+      "id": 1,
+      "minPrice": 1000,
+      "maxPrice": 1200,
+      "website": "itaka.pl",
+      "country": "Bulgaria"
+    },
+    {
+      "id": 2,
+      "minPrice": 1200,
+      "maxPrice": 1400,
+      "website": "r.pl",
+      "country": "Bulgaria"
+    },
+    {
+      "id": 3,
+      "minPrice": 1000,
+      "maxPrice": 1200,
+      "website": "wakacje.pl",
+      "country": "Bulgaria"
+    }
   ]
 }
