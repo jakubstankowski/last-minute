@@ -11,7 +11,6 @@ function App() {
             <Header/>
             <React.Fragment>
                 <div className="container">
-                    <CreateHolidayPreferences/>
                     <HolidayPreferences/>
                     <HolidayOffers/>
                 </div>

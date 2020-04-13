@@ -4,8 +4,8 @@ class CreateHolidayPreferences extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            minPrice: 900,
-            maxPrice: 1500,
+            minPrice: '',
+            maxPrice: '',
             website: '',
             country: ''
         };
@@ -21,8 +21,11 @@ class CreateHolidayPreferences extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log('state', this.state);
         event.preventDefault();
+        /*if (this.props.holidayPreferencesLength <= 4) {*/
+            this.props.addHolidayPreferences(this.state);
+        //}
+
     }
 
 
