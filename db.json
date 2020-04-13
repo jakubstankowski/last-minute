@@ -84,9 +84,23 @@
   ],
   "holidayPreferences": [
     {
-      "id": 1,
+      "id": "a6d2daf4-dbaf-4e63-b067-4214d680d74f",
       "minPrice": 1000,
       "maxPrice": 1200,
+      "website": "itaka.pl",
+      "country": "Bulgaria"
+    },
+    {
+      "id": "77e4a081-bf36-4f69-b59c-08a5b9f7c30b",
+      "minPrice": 1200,
+      "maxPrice": 1400,
+      "website": "r.pl",
+      "country": "Bulgaria"
+    },
+    {
+      "id": "752c0c4d-6d2e-4ce4-bbf2-30206b2af6c0",
+      "minPrice": 1600,
+      "maxPrice": 1800,
       "website": "itaka.pl",
       "country": "Bulgaria"
     }

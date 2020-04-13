@@ -6,6 +6,9 @@ function HolidayPreferenceItem(props) {
         <div className="card">
             <ul>
                 <li>
+                    ID: {id}
+                </li>
+                <li>
                     Minimum Price: {minPrice}
                 </li>
                 <li>

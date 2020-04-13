@@ -22,13 +22,16 @@ class CreateHolidayPreferences extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        /*if (this.props.holidayPreferencesLength <= 4) {*/
+        if (this.props.holidayPreferencesLength < 4) {
             this.props.addHolidayPreferences(this.state);
-        //}
-
+        }
+        this.setState({
+            minPrice: '',
+            maxPrice: '',
+            website: '',
+            country: ''
+        });
     }
-
-
     render() {
         return (
             <div>

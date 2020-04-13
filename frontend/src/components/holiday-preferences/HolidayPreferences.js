@@ -2,6 +2,7 @@ import * as React from "react";
 import axios from 'axios';
 import HolidayPreferenceItem from "./HolidayPreferenceItem";
 import CreateHolidayPreferences from "./CreateHolidayPreferences";
+import { v4 as uuidv4 } from 'uuid';
 
 class HolidayPreferences extends React.Component {
     constructor(props) {
@@ -24,42 +25,16 @@ class HolidayPreferences extends React.Component {
         })
     }
 
-    /*addHolidayPreferences preference =>  {
-        console.log(preference);
-        const newPreference = {
-            id: 5,
-            ...preference
-        };
-
-        console.log('prefe', this.state.holidayPreferences);
-       /!* this.setState({
-            holidayPreferences: [...this.state.holidayPreferences, newPreference]
-        });*!/
-
-
-        /!* axios
-             .post('https://my-json-server.typicode.com/jakubstankowski/last-minute/holidayPreferences', preference)
-             .then((res) => console.log(res))
-             .catch(error => console.error('error', error));*!/
-    }
-*/
-
     addHolidayPreferences = preference => {
-       /* console.log(preference);
-        const newPreference = {
-            id: 5,
-            ...preference
-        };*/
-
-        console.log('prefe', this.state.holidayPreferences);
         axios
             .post('https://my-json-server.typicode.com/jakubstankowski/last-minute/holidayPreferences', preference)
-            .then((res) => console.log(res.data))
+            .then(res => {
+                res.data.id = uuidv4();
+                this.setState({
+                    holidayPreferences: [...this.state.holidayPreferences, res.data]
+                });
+            })
             .catch(error => console.error('error', error));
-
-       /* this.setState({
-            holidayPreferences: [...this.state.holidayPreferences, newPreference]
-        });*/
     };
 
     render() {
