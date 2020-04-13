@@ -346,13 +346,14 @@ input {
 input[type='text'],
 input[type='email'],
 input[type='password'],
+input[type='number'],
 input[type='date'],
 select,
 textarea {
     display: block;
     width: 100%;
-    padding: 0.4rem;
-    font-size: 1.2rem;
+    padding: 0.2rem;
+    font-size: 1rem;
     border: 1px solid #ccc;
 }
 

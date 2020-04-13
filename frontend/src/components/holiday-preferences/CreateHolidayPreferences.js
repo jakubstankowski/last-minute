@@ -4,8 +4,10 @@ class CreateHolidayPreferences extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: ''
-
+            minPrice: 900,
+            maxPrice: 1500,
+            website: '',
+            country: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -13,11 +15,13 @@ class CreateHolidayPreferences extends React.Component {
     }
 
     handleChange(event) {
-        this.setState({value: event.target.value});
+        this.setState({
+            [event.target.name]: event.target.value
+        });
     }
 
     handleSubmit(event) {
-        alert('Podano następujące imię: ' + this.state.value);
+        console.log('state', this.state);
         event.preventDefault();
     }
 
@@ -32,35 +36,34 @@ class CreateHolidayPreferences extends React.Component {
                     <form onSubmit={this.handleSubmit}>
                         <div className="grid-5">
                             <input
+                                name="minPrice"
                                 type="number"
                                 placeholder="Min Price"
-                                value={this.state.value}
+                                value={this.state.minPrice}
                                 onChange={this.handleChange}/>
                             <input
+                                name="maxPrice"
                                 type="number"
                                 placeholder="Max Price"
-                                value={this.state.value}
+                                value={this.state.maxPrice}
                                 onChange={this.handleChange}/>
                             <input
-                                type="number"
-                                placeholder="Max Price"
-                                value={this.state.value}
+                                name="website"
+                                type="text"
+                                placeholder="Website"
+                                value={this.state.website}
                                 onChange={this.handleChange}/>
                             <input
-                                type="number"
-                                placeholder="Max Price"
-                                value={this.state.value}
+                                name="country"
+                                type="text"
+                                placeholder="Country"
+                                value={this.state.country}
                                 onChange={this.handleChange}/>
-                            <input type="submit" value="Wyślij"/>
-
+                            <input
+                                type="submit"
+                                value="Save"
+                                className="btn btn-primary"/>
                         </div>
-
-                        {/*<input type="submit" value="Wyślij"/>
-                        <label>
-                            Imię:
-                            <input type="text" value={this.state.value} onChange={this.handleChange}/>
-                        </label>
-                        <input type="submit" value="Wyślij"/>*/}
                     </form>
                 </div>
             </div>
