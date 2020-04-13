@@ -3,6 +3,7 @@ import './App.css';
 import Header from "./components/layout/Header";
 import HolidayOffers from "./components/holiday-offers/HolidayOffers";
 import HolidayPreferences from "./components/holiday-preferences/HolidayPreferences";
+import CreateHolidayPreferences from "./components/holiday-preferences/CreateHolidayPreferences";
 
 function App() {
     return (
@@ -10,6 +11,7 @@ function App() {
             <Header/>
             <React.Fragment>
                 <div className="container">
+                    <CreateHolidayPreferences/>
                     <HolidayPreferences/>
                     <HolidayOffers/>
                 </div>

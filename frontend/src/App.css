@@ -215,6 +215,12 @@ img {
     grid-gap: 1rem;
 }
 
+.grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1rem;
+}
+
 .btn {
     display: inline-block;
     background: var(--light-color);
@@ -394,10 +400,12 @@ table th {
 .navbar .welcome span {
     margin-right: 0.6rem;
 }
+
 @media (max-width: 600px) {
     .container {
         padding: 0 1rem;
     }
+
     .grid-2 {
         grid-template-columns: repeat(1, 1fr);
         grid-gap: 0.5rem;
@@ -411,6 +419,11 @@ table th {
     .grid-4 {
         grid-template-columns: repeat(1, 1fr);
         grid-gap: 0.5rem;
+    }
+
+    .grid-5{
+        grid-template-columns: repeat(1, 1fr);
+        grip-gap: 0.5rem;
     }
 
 }

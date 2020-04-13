@@ -37,7 +37,6 @@ class HolidayPreferences extends React.Component {
                     }
                 </div>
             </div>
-
         )
     }
 
