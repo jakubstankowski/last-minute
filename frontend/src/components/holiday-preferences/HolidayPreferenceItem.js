@@ -22,7 +22,8 @@ function HolidayPreferenceItem(props) {
                onClick={props.deleteHolidayPreference.bind(this, id)}>
                 delete
             </i>
-            <i className="material-icons text-primary mt-1">
+            <i className="material-icons text-primary mt-1"
+               onClick={props.editHolidayPreference.bind(this, props.holidayPreference)}>
                 settings
             </i>
         </div>
