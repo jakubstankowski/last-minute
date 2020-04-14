@@ -50,16 +50,24 @@ class HolidayPreferences extends React.Component {
 
     editHolidayPreference = preference => {
         console.log('id', preference);
+        this.setState({
+            editing: true
+        });
+        window.scroll(0, 0);
     };
 
     render() {
         return (
             <div>
-                <CreateHolidayPreferences
-                    addHolidayPreferences={this.addHolidayPreferences}
-                    holidayPreferencesLength={this.state.holidayPreferences.length}/>
-                <EditHolidayPreferences/>
-
+                {
+                    this.state.editing ? (
+                        <EditHolidayPreferences/>
+                    ) : (
+                        <CreateHolidayPreferences
+                            addHolidayPreferences={this.addHolidayPreferences}
+                            holidayPreferencesLength={this.state.holidayPreferences.length}/>
+                    )
+                }
                 <h3 className="text-center">
                     Holiday Preferences ({this.state.holidayPreferences.length}/4)
                 </h3>
