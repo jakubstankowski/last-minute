@@ -6,24 +6,17 @@ function HolidayOfferItem(props) {
 
     return (
         <div className="card">
-            <div className="image">
-                <img src={image}/>
-            </div>
-            <div className="country_and_price">
+            <img src={image}/>
+            <div>
                 <p className="text-light">
-                    {country}
+                  Country:  {country}
                 </p>
                 <p className="text-light">
-                    {date}
+                    Date: {date}
                 </p>
                 <p className="text-light">
-                    {price} $
+                    Price: {price} $
                 </p>
-            </div>
-            <div className="button text-center">
-                <button className="btn btn-primary btn-sm my-1">
-                    Details ID: {id}
-                </button>
             </div>
         </div>
     )

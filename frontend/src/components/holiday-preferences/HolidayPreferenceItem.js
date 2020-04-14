@@ -1,13 +1,10 @@
 import * as React from "react";
+
 function HolidayPreferenceItem(props) {
     const {id, minPrice, maxPrice, website, country} = props.holidayPreference;
-
     return (
         <div className="card">
             <ul>
-                <li>
-                    ID: {id}
-                </li>
                 <li>
                     Minimum Price: {minPrice}
                 </li>
@@ -21,11 +18,17 @@ function HolidayPreferenceItem(props) {
                     Country: {country}
                 </li>
             </ul>
+            <i className="material-icons text-primary mt-1"
+               onClick={props.deleteHolidayPreference.bind(this, id)}>
+                delete
+            </i>
+            <i className="material-icons text-primary mt-1">
+                settings
+            </i>
         </div>
     )
 
 }
-
 
 
 export default HolidayPreferenceItem;

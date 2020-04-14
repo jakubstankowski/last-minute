@@ -2,7 +2,7 @@ import * as React from "react";
 import axios from 'axios';
 import HolidayPreferenceItem from "./HolidayPreferenceItem";
 import CreateHolidayPreferences from "./CreateHolidayPreferences";
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 
 class HolidayPreferences extends React.Component {
     constructor(props) {
@@ -37,6 +37,15 @@ class HolidayPreferences extends React.Component {
             .catch(error => console.error('error', error));
     };
 
+    deleteHolidayPreference = id => {
+        axios.delete(`https://my-json-server.typicode.com/jakubstankowski/last-minute/holidayPreferences/${id}`)
+            .then(res =>
+                this.setState({
+                    holidayPreferences: [...this.state.holidayPreferences.filter(preference => preference.id !== id)]
+                })
+        );
+    };
+
     render() {
         return (
             <div>
@@ -50,6 +59,7 @@ class HolidayPreferences extends React.Component {
                     {
                         this.state.holidayPreferences.map((preference) =>
                             <HolidayPreferenceItem
+                                deleteHolidayPreference={this.deleteHolidayPreference}
                                 key={preference.id}
                                 holidayPreference={preference}/>
                         )
