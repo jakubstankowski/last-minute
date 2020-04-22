@@ -1,16 +1,19 @@
 import * as React from "react";
 import axios from 'axios';
 import HolidayPreferenceItem from "./HolidayPreferenceItem";
-import CreateHolidayPreferences from "./CreateHolidayPreferences";
 import {v4 as uuidv4} from 'uuid';
-import EditHolidayPreferences from "./EditHolidayPreferences";
+import CreateHolidayPreferencesCard from "./CreateHolidayPreferencesCard";
+import {Link} from "react-router-dom";
 
 class HolidayPreferences extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             holidayPreferences: [],
-            editing: false
+            edit: {
+                status: false,
+                holidayPreference: {}
+            }
         };
     }
 
@@ -40,16 +43,19 @@ class HolidayPreferences extends React.Component {
     };
 
     deleteHolidayPreference = id => {
-        axios.delete(`https://my-json-server.typicode.com/jakubstankowski/last-minute/holidayPreferences/${id}`)
-            .then(res =>
-                this.setState({
-                    holidayPreferences: [...this.state.holidayPreferences.filter(preference => preference.id !== id)]
-                })
-            );
+        let confirm = window.confirm("Do you want to delete this item");
+        if (confirm) {
+            axios.delete(`https://my-json-server.typicode.com/jakubstankowski/last-minute/holidayPreferences/${id}`)
+                .then(res =>
+                    this.setState({
+                        holidayPreferences: [...this.state.holidayPreferences.filter(preference => preference.id !== id)]
+                    })
+                );
+        }
+
     };
 
     editHolidayPreference = preference => {
-        console.log('id', preference);
         this.setState({
             editing: true
         });
@@ -59,19 +65,13 @@ class HolidayPreferences extends React.Component {
     render() {
         return (
             <div>
-                {
-                    this.state.editing ? (
-                        <EditHolidayPreferences/>
-                    ) : (
-                        <CreateHolidayPreferences
-                            addHolidayPreferences={this.addHolidayPreferences}
-                            holidayPreferencesLength={this.state.holidayPreferences.length}/>
-                    )
-                }
                 <h3 className="text-center">
                     Holiday Preferences ({this.state.holidayPreferences.length}/4)
                 </h3>
-                <div className="grid-4">
+                <div className="grid-5">
+                  {/*  <Link to="/create-preferences">*/}
+                        <CreateHolidayPreferencesCard/>
+                 {/*   </Link>*/}
                     {
                         this.state.holidayPreferences.map((preference) =>
                             <HolidayPreferenceItem

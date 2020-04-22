@@ -38,8 +38,7 @@ class CreateHolidayPreferences extends React.Component {
                 <h3 className="text-center">
                     Create Holiday Preferences
                 </h3>
-                <div>
-                    <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                         <div className="grid-5">
                             <input
                                 name="minPrice"
@@ -72,7 +71,6 @@ class CreateHolidayPreferences extends React.Component {
                         </div>
                     </form>
                 </div>
-            </div>
         )
     }
 }
