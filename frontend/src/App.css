@@ -349,6 +349,9 @@ input {
     color: #888;
 }
 
+.app-form{
+    max-width: 350px;
+}
 input[type='text'],
 input[type='email'],
 input[type='password'],

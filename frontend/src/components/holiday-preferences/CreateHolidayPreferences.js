@@ -1,4 +1,5 @@
 import * as React from "react";
+import {Link} from "react-router-dom";
 
 class CreateHolidayPreferences extends React.Component {
     constructor(props) {
@@ -32,45 +33,50 @@ class CreateHolidayPreferences extends React.Component {
             country: ''
         });
     }
+
     render() {
         return (
-            <div>
+            <div className="text-center">
                 <h3 className="text-center">
                     Create Holiday Preferences
                 </h3>
-                <form onSubmit={this.handleSubmit}>
-                        <div className="grid-5">
-                            <input
-                                name="minPrice"
-                                type="number"
-                                placeholder="Min Price"
-                                value={this.state.minPrice}
-                                onChange={this.handleChange}/>
-                            <input
-                                name="maxPrice"
-                                type="number"
-                                placeholder="Max Price"
-                                value={this.state.maxPrice}
-                                onChange={this.handleChange}/>
-                            <input
-                                name="website"
-                                type="text"
-                                placeholder="Website"
-                                value={this.state.website}
-                                onChange={this.handleChange}/>
-                            <input
-                                name="country"
-                                type="text"
-                                placeholder="Country"
-                                value={this.state.country}
-                                onChange={this.handleChange}/>
-                            <input
-                                type="submit"
-                                value="Save"
-                                className="btn btn-primary"/>
-                        </div>
-                    </form>
-                </div>
+                <form onSubmit={this.handleSubmit} className="app-form text-center">
+                    <input
+                        name="minPrice"
+                        type="number"
+                        placeholder="Min Price"
+                        value={this.state.minPrice}
+                        onChange={this.handleChange}/>
+                    <input
+                        name="maxPrice"
+                        type="number"
+                        placeholder="Max Price"
+                        value={this.state.maxPrice}
+                        onChange={this.handleChange}/>
+                    <input
+                        name="website"
+                        type="text"
+                        placeholder="Website"
+                        value={this.state.website}
+                        onChange={this.handleChange}/>
+                    <input
+                        name="country"
+                        type="text"
+                        placeholder="Country"
+                        value={this.state.country}
+                        onChange={this.handleChange}/>
+                    <Link to="/">
+                        <input
+                            type="submit"
+                            value="Back"
+                            className="btn btn-dark"/>
+                    </Link>
+                    <input
+                        type="submit"
+                        value="Save"
+                        className="btn btn-primary"/>
+                </form>
+            </div>
         )
     }
 }
