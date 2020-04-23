@@ -30,7 +30,7 @@ class HolidayOffers extends React.Component {
                 <h3 className="text-center">
                     Holiday Offers ({this.state.holidayOffers.length})
                 </h3>
-                <div className="grid-3">
+                <div className="grid">
                     {
                         this.state.holidayOffers.map((offer) =>
                             <HolidayOfferItem key={offer.id} holidayOffer={offer}/>

@@ -1,4 +1,5 @@
 import * as React from "react";
+import {Link} from "react-router-dom";
 
 function HolidayPreferenceItem(props) {
     const {id, minPrice, maxPrice, website, country} = props.holidayPreference;
@@ -22,10 +23,12 @@ function HolidayPreferenceItem(props) {
                onClick={props.deleteHolidayPreference.bind(this, id)}>
                 delete
             </i>
-            <i className="material-icons text-primary mt-1"
-               onClick={props.editHolidayPreference.bind(this, props.holidayPreference)}>
-                settings
-            </i>
+            <Link to={`/holiday-preference/edit/${id}`}>
+                <i className="material-icons text-primary mt-1"
+                   onClick={props.editHolidayPreference.bind(this, props.holidayPreference)}>
+                    settings
+                </i>
+            </Link>
         </div>
     )
 

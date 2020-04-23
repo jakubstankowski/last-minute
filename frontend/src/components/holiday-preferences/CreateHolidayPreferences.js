@@ -1,7 +1,9 @@
 import * as React from "react";
 import {Link} from "react-router-dom";
 
+
 class CreateHolidayPreferences extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -15,6 +17,7 @@ class CreateHolidayPreferences extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -24,14 +27,15 @@ class CreateHolidayPreferences extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         if (this.props.holidayPreferencesLength < 4) {
-            this.props.addHolidayPreferences(this.state);
-        }
-        this.setState({
-            minPrice: '',
-            maxPrice: '',
-            website: '',
-            country: ''
-        });
+             this.props.addHolidayPreferences(this.state);
+         }
+         this.setState({
+             minPrice: '',
+             maxPrice: '',
+             website: '',
+             country: ''
+         });
+        /*window.location = '/';*/
     }
 
     render() {
@@ -40,7 +44,7 @@ class CreateHolidayPreferences extends React.Component {
                 <h3 className="text-center">
                     Create Holiday Preferences
                 </h3>
-                <form onSubmit={this.handleSubmit} className="app-form text-center">
+                <form onSubmit={this.handleSubmit}>
                     <input
                         name="minPrice"
                         type="number"

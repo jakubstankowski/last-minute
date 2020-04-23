@@ -196,37 +196,24 @@ img {
     margin: 3rem 0;
 }
 
-.mt{
+.mt {
     margin-top: 0.5rem;
 }
-.mt-1{
+
+.mt-1 {
     margin-top: 1rem;
 }
+
+
 /* Grid */
-.grid-2 {
+.grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 1rem;
+
 }
 
-.grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
-}
-
-.grid-4 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 1rem;
-}
-
-.grid-5 {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 1rem;
-}
-
+/*Buttons*/
 .btn {
     display: inline-block;
     background: var(--light-color);
@@ -349,9 +336,11 @@ input {
     color: #888;
 }
 
-.app-form{
+form {
     max-width: 350px;
+    display: inline-block;
 }
+
 input[type='text'],
 input[type='email'],
 input[type='password'],
@@ -409,32 +398,5 @@ table th {
 
 .navbar .welcome span {
     margin-right: 0.6rem;
-}
-
-@media (max-width: 600px) {
-    .container {
-        padding: 0 1rem;
-    }
-
-    .grid-2 {
-        grid-template-columns: repeat(1, 1fr);
-        grid-gap: 0.5rem;
-    }
-
-    .grid-3 {
-        grid-template-columns: repeat(1, 1fr);
-        grid-gap: 0.5rem;
-    }
-
-    .grid-4 {
-        grid-template-columns: repeat(1, 1fr);
-        grid-gap: 0.5rem;
-    }
-
-    .grid-5{
-        grid-template-columns: repeat(1, 1fr);
-        grip-gap: 0.5rem;
-    }
-
 }
 

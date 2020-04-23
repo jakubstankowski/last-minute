@@ -3,7 +3,6 @@ import axios from 'axios';
 import HolidayPreferenceItem from "./HolidayPreferenceItem";
 import {v4 as uuidv4} from 'uuid';
 import CreateHolidayPreferencesCard from "./CreateHolidayPreferencesCard";
-import {Link} from "react-router-dom";
 
 class HolidayPreferences extends React.Component {
     constructor(props) {
@@ -68,10 +67,8 @@ class HolidayPreferences extends React.Component {
                 <h3 className="text-center">
                     Holiday Preferences ({this.state.holidayPreferences.length}/4)
                 </h3>
-                <div className="grid-5">
-                  {/*  <Link to="/create-preferences">*/}
-                        <CreateHolidayPreferencesCard/>
-                 {/*   </Link>*/}
+                <div className="grid">
+                    <CreateHolidayPreferencesCard/>
                     {
                         this.state.holidayPreferences.map((preference) =>
                             <HolidayPreferenceItem

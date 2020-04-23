@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 function CreateHolidayPreferencesCard() {
     return (
         <div className="card text-center">
-            <Link to="/create-preferences">
+            <Link to="/holiday-preference/create">
                 <p>
                     Add new preferences
                 </p>

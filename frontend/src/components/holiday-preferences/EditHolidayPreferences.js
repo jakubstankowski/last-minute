@@ -1,4 +1,5 @@
 import * as React from "react";
+import axios from 'axios';
 
 class EditHolidayPreferences extends React.Component {
     constructor(props) {
@@ -14,6 +15,23 @@ class EditHolidayPreferences extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        axios
+            .get(`https://my-json-server.typicode.com/jakubstankowski/last-minute/holidayPreferences/${this.props.match.params.id}`)
+            .then((response) => {
+                this.setState({
+                    minPrice: response.data.minPrice,
+                    maxPrice: response.data.maxPrice,
+                    website: response.data.website,
+                    country: response.data.country
+                })
+            })
+            .catch((e) => {
+                console.error('error', e);
+            })
+
+    }
+
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -27,44 +45,45 @@ class EditHolidayPreferences extends React.Component {
         }
 
     }
+
     render() {
         return (
             <div>
                 <h3 className="text-center">
-                    Create Holiday Preferences
+                    Edit Holiday Preferences
                 </h3>
                 <form onSubmit={this.handleSubmit}>
-                        <div className="grid-5">
-                            <input
-                                name="minPrice"
-                                type="number"
-                                placeholder="Min Price"
-                                value={this.state.minPrice}
-                                onChange={this.handleChange}/>
-                            <input
-                                name="maxPrice"
-                                type="number"
-                                placeholder="Max Price"
-                                value={this.state.maxPrice}
-                                onChange={this.handleChange}/>
-                            <input
-                                name="website"
-                                type="text"
-                                placeholder="Website"
-                                value={this.state.website}
-                                onChange={this.handleChange}/>
-                            <input
-                                name="country"
-                                type="text"
-                                placeholder="Country"
-                                value={this.state.country}
-                                onChange={this.handleChange}/>
-                            <input
-                                type="submit"
-                                value="Save"
-                                className="btn btn-primary"/>
-                        </div>
-                    </form>
+                    <div className="grid-5">
+                        <input
+                            name="minPrice"
+                            type="number"
+                            placeholder="Min Price"
+                            value={this.state.minPrice}
+                            onChange={this.handleChange}/>
+                        <input
+                            name="maxPrice"
+                            type="number"
+                            placeholder="Max Price"
+                            value={this.state.maxPrice}
+                            onChange={this.handleChange}/>
+                        <input
+                            name="website"
+                            type="text"
+                            placeholder="Website"
+                            value={this.state.website}
+                            onChange={this.handleChange}/>
+                        <input
+                            name="country"
+                            type="text"
+                            placeholder="Country"
+                            value={this.state.country}
+                            onChange={this.handleChange}/>
+                        <input
+                            type="submit"
+                            value="Save"
+                            className="btn btn-primary"/>
+                    </div>
+                </form>
             </div>
         )
     }
