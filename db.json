@@ -1,7 +1,7 @@
 {
   "holidayOffers": [
     {
-      "id": 1,
+      "id": "23225862-78d4-4b60-b579-cfe4481163a9",
       "url": "https://www.itaka.pl",
       "price": 1000,
       "website": "https://itaka.pl",
@@ -10,7 +10,7 @@
       "country": "Croatia"
     },
     {
-      "id": 2,
+      "id": "1237eb68-551a-4ffd-bcb9-0472f8760dbd",
       "url": "https://www.itaka.pl",
       "price": 1000,
       "website": "https://itaka.pl",
@@ -19,7 +19,7 @@
       "country": "Croatia"
     },
     {
-      "id": 3,
+      "id": "db419d8e-25b6-4b64-b82d-c843db98b11f",
       "url": "https://www.itaka.pl",
       "price": 1000,
       "website": "https://itaka.pl",
@@ -28,7 +28,7 @@
       "country": "Croatia"
     },
     {
-      "id": 4,
+      "id": "fe9c66f5-13bc-46f4-8009-67f69462d44c",
       "url": "https://www.itaka.pl",
       "price": 1000,
       "website": "https://itaka.pl",
@@ -37,7 +37,7 @@
       "country": "Croatia"
     },
     {
-      "id": 5,
+      "id": "d4ebc2c0-ec33-458b-a13a-f27887082145",
       "url": "https://www.itaka.pl",
       "price": 1000,
       "website": "https://itaka.pl",
@@ -46,7 +46,7 @@
       "country": "Croatia"
     },
     {
-      "id": 6,
+      "id": "b2da009a-2507-46d4-b2ef-3a167c2f13a1",
       "url": "https://www.itaka.pl",
       "price": 1000,
       "website": "https://itaka.pl",
@@ -55,7 +55,7 @@
       "country": "Croatia"
     },
     {
-      "id": 7,
+      "id": "0a873b25-3651-48b1-8311-3562aaaef02d",
       "url": "https://www.itaka.pl",
       "price": 1000,
       "website": "https://itaka.pl",
@@ -64,7 +64,7 @@
       "country": "Croatia"
     },
     {
-      "id": 8,
+      "id": "564c44fa-40f7-48d8-b4a2-d1d69413f5b4",
       "url": "https://www.itaka.pl",
       "price": 1000,
       "website": "https://itaka.pl",
@@ -73,7 +73,7 @@
       "country": "Croatia"
     },
     {
-      "id": 9,
+      "id": "5a6af405-0b5c-4b90-acb6-25489ee31f9c",
       "url": "https://www.itaka.pl",
       "price": 1000,
       "website": "https://itaka.pl",

@@ -6,6 +6,7 @@ import HolidayPreferences from "./components/holiday-preferences/HolidayPreferen
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import CreateHolidayPreferences from "./components/holiday-preferences/CreateHolidayPreferences";
 import EditHolidayPreferences from "./components/holiday-preferences/EditHolidayPreferences";
+import HolidayOffer from "./components/holiday-offers/HolidayOffer";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                         <Route path="/" exact component={HolidayOffers}/>
                         <Route path="/holiday-preference/create" exact component={CreateHolidayPreferences}/>
                         <Route path="/holiday-preference/edit/:id" exact component={EditHolidayPreferences}/>
+                        <Route path="/holiday-offer/:id" exact component={HolidayOffer}/>
                     </div>
             </div>
         </Router>

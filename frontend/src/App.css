@@ -24,12 +24,12 @@ body {
 }
 
 a {
-    color: var(--primary-color);
+    color: var(--dark-color);
     text-decoration: none;
 }
 
 a:hover {
-    color: #666;
+    color: var(--primary-color);
 }
 
 ul {

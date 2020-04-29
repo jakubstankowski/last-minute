@@ -1,24 +1,28 @@
 import * as React from "react";
 import './HolidayOfferItem.css';
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
+
 function HolidayOfferItem(props) {
     const {id, date, image, price, country} = props.holidayOffer;
 
     return (
-        <div className="card">
-            <img src={image}/>
-            <div>
-                <p className="text-light">
-                  Country:  {country}
-                </p>
-                <p className="text-light">
-                    Date: {date}
-                </p>
-                <p className="text-light">
-                    Price: {price} $
-                </p>
+        <Link to={`/holiday-offer/${id}`}>
+            <div className="card">
+                <img src={image}/>
+                <div>
+                    <p className="text-light">
+                        Country: {country}
+                    </p>
+                    <p className="text-light">
+                        Date: {date}
+                    </p>
+                    <p className="text-light">
+                        Price: {price} $
+                    </p>
+                </div>
             </div>
-        </div>
+        </Link>
     )
 
 }
@@ -26,7 +30,6 @@ function HolidayOfferItem(props) {
 HolidayOfferItem.propTypes = {
     holidayOffer: PropTypes.object.isRequired,
 };
-
 
 
 export default HolidayOfferItem;

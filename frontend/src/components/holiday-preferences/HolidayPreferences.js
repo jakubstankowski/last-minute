@@ -17,6 +17,7 @@ class HolidayPreferences extends React.Component {
     }
 
     componentDidMount() {
+        console.log('id', uuidv4());
         axios
             .get('https://my-json-server.typicode.com/jakubstankowski/last-minute/holidayPreferences')
             .then((res) => this.setHolidayPreferences(res.data))
