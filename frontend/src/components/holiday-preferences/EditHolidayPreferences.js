@@ -1,5 +1,6 @@
 import * as React from "react";
 import axios from 'axios';
+import {Link} from "react-router-dom";
 
 class EditHolidayPreferences extends React.Component {
     constructor(props) {
@@ -40,16 +41,21 @@ class EditHolidayPreferences extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        if (this.props.holidayPreferencesLength < 4) {
-            this.props.addHolidayPreferences(this.state);
-        }
-
+        axios
+            .put(`https://my-json-server.typicode.com/jakubstankowski/last-minute/holidayPreferences/${this.props.match.params.id}`, this.state)
+            .then((response) => {
+                console.log('response', response);
+               /* window.location = '/';*/
+            })
+            .catch((e) => {
+                console.error('error', e);
+            })
     }
 
     render() {
         return (
-            <div>
-                <h3 className="text-center">
+            <div className="text-center">
+                <h3>
                     Edit Holiday Preferences
                 </h3>
                 <form onSubmit={this.handleSubmit}>
@@ -78,6 +84,12 @@ class EditHolidayPreferences extends React.Component {
                             placeholder="Country"
                             value={this.state.country}
                             onChange={this.handleChange}/>
+                        <Link to="/">
+                            <input
+                                type="submit"
+                                value="Back"
+                                className="btn btn-dark"/>
+                        </Link>
                         <input
                             type="submit"
                             value="Save"

@@ -13,14 +13,12 @@ function App() {
         <Router>
             <div className="App">
                 <Header/>
-
                     <div className="container">
                         <Route path="/" exact component={HolidayPreferences}/>
                         <Route path="/" exact component={HolidayOffers}/>
                         <Route path="/holiday-preference/create" exact component={CreateHolidayPreferences}/>
                         <Route path="/holiday-preference/edit/:id" exact component={EditHolidayPreferences}/>
                     </div>
-
             </div>
         </Router>
     );

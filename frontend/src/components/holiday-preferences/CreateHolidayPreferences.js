@@ -41,7 +41,7 @@ class CreateHolidayPreferences extends React.Component {
     render() {
         return (
             <div className="text-center">
-                <h3 className="text-center">
+                <h3>
                     Create Holiday Preferences
                 </h3>
                 <form onSubmit={this.handleSubmit}>
