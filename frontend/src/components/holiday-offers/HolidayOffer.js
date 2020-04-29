@@ -1,5 +1,6 @@
 import * as React from "react";
 import axios from 'axios';
+import {Link} from "react-router-dom";
 
 class HolidayOffer extends React.Component {
     constructor(props) {
@@ -13,13 +14,11 @@ class HolidayOffer extends React.Component {
         axios
             .get(`https://my-json-server.typicode.com/jakubstankowski/last-minute/holidayOffers/${this.props.match.params.id}`)
             .then((response) => {
-                console.log('response:', response);
                 this.setState({
                     holidayOffer: {
                         ...response.data
                     }
                 });
-                console.log('holiday offer', this.state.holidayOffer)
             })
             .catch((e) => {
                 console.error('error', e);
@@ -28,11 +27,34 @@ class HolidayOffer extends React.Component {
 
     render() {
         return (
-            <div className="grid card">
-             <h3 className="text-center">
-                 {this.state.holidayOffer.country}
-                 <img className="mt-1" src={this.state.holidayOffer.image}/>
-             </h3>
+            <div className="card grid">
+                <div>
+                    <img alt="image" className="mt-1" src={this.state.holidayOffer.image}/>
+                </div>
+                <div className="text-center">
+                    <h3>
+                        {this.state.holidayOffer.country}
+                    </h3>
+                    <p>
+                        Price: {this.state.holidayOffer.price} $
+                    </p>
+                    <p>
+                        Date: {this.state.holidayOffer.date}
+                    </p>
+                    <p>
+                        Website: {this.state.holidayOffer.website}
+                    </p>
+                    <Link to="/">
+                        <a className="btn btn-dark mt-1">
+                            Back
+                        </a>
+                    </Link>
+                    <a target="_blank"
+                       href={this.state.holidayOffer.url}
+                       className="btn btn-primary mt-1">
+                        Go to offer
+                    </a>
+                </div>
             </div>
         )
 
