@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - SIERPIEŃ 2019 JAVA & VUE.JS\\LastMinute\\LastMinute\\LastMinute.csproj": {}
+    "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - LIPIEC 2020 JAVA & VUE.JS\\LastMinute\\LastMinute\\LastMinute.csproj": {}
   },
   "projects": {
-    "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - SIERPIEŃ 2019 JAVA & VUE.JS\\LastMinute\\LastMinute\\LastMinute.csproj": {
+    "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - LIPIEC 2020 JAVA & VUE.JS\\LastMinute\\LastMinute\\LastMinute.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - SIERPIEŃ 2019 JAVA & VUE.JS\\LastMinute\\LastMinute\\LastMinute.csproj",
+        "projectUniqueName": "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - LIPIEC 2020 JAVA & VUE.JS\\LastMinute\\LastMinute\\LastMinute.csproj",
         "projectName": "LastMinute",
-        "projectPath": "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - SIERPIEŃ 2019 JAVA & VUE.JS\\LastMinute\\LastMinute\\LastMinute.csproj",
+        "projectPath": "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - LIPIEC 2020 JAVA & VUE.JS\\LastMinute\\LastMinute\\LastMinute.csproj",
         "packagesPath": "C:\\Users\\jakub\\.nuget\\packages\\",
-        "outputPath": "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - SIERPIEŃ 2019 JAVA & VUE.JS\\LastMinute\\LastMinute\\obj\\",
+        "outputPath": "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - LIPIEC 2020 JAVA & VUE.JS\\LastMinute\\LastMinute\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jakub\\AppData\\Roaming\\NuGet\\NuGet.Config",
