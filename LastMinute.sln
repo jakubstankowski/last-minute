@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LastMinute", "LastMinute\LastMinute.csproj", "{2FE854DA-7F0B-4C17-9526-C77E9C4AC2CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LastMinute.WebAPI", "LastMinute\LastMinute.WebAPI.csproj", "{2FE854DA-7F0B-4C17-9526-C77E9C4AC2CF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commander", "..\..\INNE\C#\Core\S03E02---.NET-Core-3.1-MVC-REST-API\Commander.csproj", "{326411B6-2F8C-4285-938D-D6E1CCB3CFBB}"
 EndProject

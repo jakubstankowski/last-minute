@@ -6,7 +6,7 @@ using LastMinute.Models;
 
 namespace LastMinute.Data
 {
-    public class MockHolidayPreferencesContext : IHolidayPreferencesRepo
+    public class MockHolidayPreferencesRepo : IHolidayPreferencesRepo
     {
         public void CreateHolidayPreference(HolidayPreferences preference)
         {

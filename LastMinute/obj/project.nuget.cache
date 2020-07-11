@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0zP0tGwhE+IsQapOpoO508xZZ97a3ZZlkfzl+fI/pRFCBP6l92lLGzQOqXnyk2oVTc8jBw1dzCvEXqDh0s8VQw==",
+  "dgSpecHash": "uIwSSTTLyMMh8HnEuCUfHe9mgunrP/7b+min4Jt6Fr0DXxHs/PzgQUJiH3QQdBhojZ0XmbQocJxpJVBYJtx5Fw==",
   "success": true,
-  "projectFilePath": "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - LIPIEC 2020 JAVA & VUE.JS\\LastMinute\\LastMinute\\LastMinute.csproj",
+  "projectFilePath": "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - LIPIEC 2020 JAVA & VUE.JS\\LastMinute\\LastMinute\\LastMinute.WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jakub\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\jakub\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

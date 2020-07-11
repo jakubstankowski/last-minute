@@ -6076,9 +6076,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - LIPIEC 2020 JAVA & VUE.JS\\LastMinute\\LastMinute\\LastMinute.csproj",
-      "projectName": "LastMinute",
-      "projectPath": "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - LIPIEC 2020 JAVA & VUE.JS\\LastMinute\\LastMinute\\LastMinute.csproj",
+      "projectUniqueName": "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - LIPIEC 2020 JAVA & VUE.JS\\LastMinute\\LastMinute\\LastMinute.WebAPI.csproj",
+      "projectName": "LastMinute.WebAPI",
+      "projectPath": "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - LIPIEC 2020 JAVA & VUE.JS\\LastMinute\\LastMinute\\LastMinute.WebAPI.csproj",
       "packagesPath": "C:\\Users\\jakub\\.nuget\\packages\\",
       "outputPath": "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - LIPIEC 2020 JAVA & VUE.JS\\LastMinute\\LastMinute\\obj\\",
       "projectStyle": "PackageReference",
