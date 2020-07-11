@@ -6,7 +6,7 @@ using LastMinute.Models;
 
 namespace LastMinute.Data
 {
-    interface IHolidayPreferencesRepo
+    public interface IHolidayPreferencesRepo
     {
         IEnumerable<HolidayPreferences> GetAllHolidayPreferences();
         HolidayPreferences GetHolidayPreferenceById(int id);

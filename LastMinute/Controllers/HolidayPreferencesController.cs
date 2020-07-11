@@ -14,15 +14,21 @@ namespace LastMinute.Controllers
     public class HolidayPreferencesController : ControllerBase
     {
 
-        private readonly MockHolidayPreferencesContext _repository = new MockHolidayPreferencesContext();
+        private readonly IHolidayPreferencesRepo _repository;
+
+        public HolidayPreferencesController(IHolidayPreferencesRepo repository)
+        {                                   
+            _repository = repository;
+        }
+
+      
 
         // GET: api/preferences
         [HttpGet]
         public IEnumerable<HolidayPreferences> GetAllPreferences()
         {
-            return  _repository.GetAllHolidayPreferences().ToList();
-
-       }
+            return _repository.GetAllHolidayPreferences().ToList();
+        }
 
         // GET: api/HolidayPreferences/5
         [HttpGet("{id}", Name = "Get")]
