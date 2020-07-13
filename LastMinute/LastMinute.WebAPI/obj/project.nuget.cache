@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nie3usia7NfQOGdKKQ3GVDuX6cqX4vN14F4ekklUgp8L9FoaA+FCzkADQwsqxj5yaih/ECht+1MTgQ0Nbn+AZg==",
+  "dgSpecHash": "AANDzjBNBw39CEhIlqzUF0iPqwNcfKdw0x5cFKwgVXJb+zLqSqRtpK2H7lbTZU0J2qGl+V1kmV+BGBHT8nE1Ig==",
   "success": true,
   "projectFilePath": "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\\LastMinute\\LastMinute\\LastMinute.WebAPI\\LastMinute.WebAPI.csproj",
   "expectedPackageFiles": [
@@ -22,6 +22,7 @@
     "C:\\Users\\jakub\\.nuget\\packages\\microsoft.entityframeworkcore.design\\5.0.0-preview.6.20312.4\\microsoft.entityframeworkcore.design.5.0.0-preview.6.20312.4.nupkg.sha512",
     "C:\\Users\\jakub\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.0-preview.6.20312.4\\microsoft.entityframeworkcore.relational.5.0.0-preview.6.20312.4.nupkg.sha512",
     "C:\\Users\\jakub\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\5.0.0-preview.6.20312.4\\microsoft.entityframeworkcore.sqlserver.5.0.0-preview.6.20312.4.nupkg.sha512",
+    "C:\\Users\\jakub\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\5.0.0-preview.6.20312.4\\microsoft.entityframeworkcore.tools.5.0.0-preview.6.20312.4.nupkg.sha512",
     "C:\\Users\\jakub\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0-preview.3.20215.2\\microsoft.extensions.caching.abstractions.5.0.0-preview.3.20215.2.nupkg.sha512",
     "C:\\Users\\jakub\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0-preview.3.20215.2\\microsoft.extensions.caching.memory.5.0.0-preview.3.20215.2.nupkg.sha512",
     "C:\\Users\\jakub\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0-preview.3.20215.2\\microsoft.extensions.configuration.5.0.0-preview.3.20215.2.nupkg.sha512",
