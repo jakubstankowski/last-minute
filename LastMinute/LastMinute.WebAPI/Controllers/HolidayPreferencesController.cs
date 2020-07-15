@@ -27,15 +27,21 @@ namespace LastMinute.Controllers
         [HttpGet]
         public IEnumerable<HolidayPreferences> GetAllPreferences()
         {
-            Console.WriteLine("_repository.GetAllHolidayPreferences().ToList()" , _repository.GetAllHolidayPreferences().ToList());
             return _repository.GetAllHolidayPreferences().ToList();
         }
 
         // GET: api/HolidayPreferences/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public ActionResult<HolidayPreferences> Get(int id)
         {
-            return "value";
+            var holidayPreference = _repository.GetHolidayPreferenceById(id);
+
+            if (holidayPreference == null)
+            {
+                return NotFound();
+            }
+
+            return holidayPreference;
         }
 
         // POST: api/HolidayPreferences
@@ -43,11 +49,9 @@ namespace LastMinute.Controllers
         public ActionResult Post(HolidayPreferences holidayPreferences)
         {
 
-            Console.WriteLine(holidayPreferences);
             _repository.CreateHolidayPreference(holidayPreferences);
             _repository.SaveChanges();
-
-
+            
             return Ok(holidayPreferences);
 
         }
@@ -60,8 +64,19 @@ namespace LastMinute.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult<HolidayPreferences> Delete(int id)
         {
+            var holidayPreference = _repository.GetHolidayPreferenceById(id);
+
+            if (holidayPreference == null)
+            {
+                return NotFound();
+            }
+
+            _repository.DeleteHolidayPreference(holidayPreference);
+            _repository.SaveChanges();
+
+            return holidayPreference;
         }
     }
 }

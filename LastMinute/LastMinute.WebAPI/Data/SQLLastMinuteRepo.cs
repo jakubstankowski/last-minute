@@ -30,7 +30,7 @@ namespace LastMinute.WebAPI.Data
 
         public void DeleteHolidayPreference(HolidayPreferences preference)
         {
-            throw new NotImplementedException();
+            _context.HolidayPreferences.Remove(preference);
         }
 
         public IEnumerable<HolidayPreferences> GetAllHolidayPreferences()
