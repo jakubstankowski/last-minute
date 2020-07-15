@@ -27,6 +27,7 @@ namespace LastMinute.Controllers
         [HttpGet]
         public IEnumerable<HolidayPreferences> GetAllPreferences()
         {
+            Console.WriteLine("_repository.GetAllHolidayPreferences().ToList()" , _repository.GetAllHolidayPreferences().ToList());
             return _repository.GetAllHolidayPreferences().ToList();
         }
 
@@ -39,8 +40,16 @@ namespace LastMinute.Controllers
 
         // POST: api/HolidayPreferences
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult Post(HolidayPreferences holidayPreferences)
         {
+
+            Console.WriteLine(holidayPreferences);
+            _repository.CreateHolidayPreference(holidayPreferences);
+            _repository.SaveChanges();
+
+
+            return Ok(holidayPreferences);
+
         }
 
         // PUT: api/HolidayPreferences/5

@@ -2,15 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LastMinute.Data;
 using LastMinute.Models;
 
-namespace LastMinute.Data
+namespace LastMinute.WebAPI.Data
 {
-    public class MockHolidayPreferencesRepo : IHolidayPreferencesRepo
+    public class SQLLastMinuteRepo : IHolidayPreferencesRepo
     {
+        private readonly HolidayPreferencesContext _context;
+
+        public SQLLastMinuteRepo(HolidayPreferencesContext context)
+        {
+            _context = context;
+        }
+
+      
+
         public void CreateHolidayPreference(HolidayPreferences preference)
         {
-            throw new NotImplementedException();
+            if (preference == null)
+            {
+                throw new ArgumentNullException(nameof(preference));
+            }
+
+            _context.HolidayPreferences.Add(preference);
         }
 
         public void DeleteHolidayPreference(HolidayPreferences preference)
@@ -20,23 +35,17 @@ namespace LastMinute.Data
 
         public IEnumerable<HolidayPreferences> GetAllHolidayPreferences()
         {
-            var holidayPreferences = new List<HolidayPreferences>
-            {
-                new HolidayPreferences{Id=0, Country= "Poland", Title="First holiday", MinPrice = 1000, MaxPrice = 2000, Website = "r.pl"},
-                new HolidayPreferences{Id=1, Country= "Bulgaria", Title="First holiday", MinPrice = 1000, MaxPrice = 2000, Website = "itaka.pl"}
-            };
-
-            return holidayPreferences;
+            return _context.HolidayPreferences.ToList();
         }
 
         public HolidayPreferences GetHolidayPreferenceById(int id)
         {
-            throw new NotImplementedException();
+            return _context.HolidayPreferences.FirstOrDefault(v => v.Id == id);
         }
 
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return (_context.SaveChanges() >= 0);
         }
 
         public void UpdateHolidayPreference(HolidayPreferences preference)

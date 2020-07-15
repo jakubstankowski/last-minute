@@ -8,6 +8,7 @@ namespace LastMinute.Data
 {
     public interface IHolidayPreferencesRepo
     {
+        bool SaveChanges();
         IEnumerable<HolidayPreferences> GetAllHolidayPreferences();
         HolidayPreferences GetHolidayPreferenceById(int id);
         void CreateHolidayPreference(HolidayPreferences preference);
