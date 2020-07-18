@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using LastMinute.Data;
 using LastMinute.Models;
+using LastMinute.WebAPI.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,24 +17,28 @@ namespace LastMinute.Controllers
     {
 
         private readonly IHolidayPreferencesRepo _repository;
+        private readonly IMapper _mapper;
 
-        public HolidayPreferencesController(IHolidayPreferencesRepo repository)
+        public HolidayPreferencesController(IHolidayPreferencesRepo repository, IMapper mapper)
         {                                   
             _repository = repository;
+            _mapper = mapper;
         }
 
       
 
         // GET: api/preferences
         [HttpGet]
-        public IEnumerable<HolidayPreferences> GetAllPreferences()
+        public ActionResult <IEnumerable<HolidayPreferencesReadDto>> GetAllPreferences()
         {
-            return _repository.GetAllHolidayPreferences().ToList();
+            var holidayPreferences =  _repository.GetAllHolidayPreferences();
+
+            return Ok(_mapper.Map<IEnumerable<HolidayPreferencesReadDto>>(holidayPreferences));
         }
 
         // GET: api/preferences/5
         [HttpGet("{id}", Name = "Get")]
-        public ActionResult<HolidayPreferences> Get(int id)
+        public ActionResult<HolidayPreferencesReadDto> GetPreferenceById(int id)
         {
             var holidayPreference = _repository.GetHolidayPreferenceById(id);
 
@@ -41,7 +47,9 @@ namespace LastMinute.Controllers
                 return NotFound();
             }
 
-            return holidayPreference;
+      
+            return Ok(_mapper.Map<HolidayPreferencesReadDto>(holidayPreference));
+
         }
 
         // POST: api/preferences
