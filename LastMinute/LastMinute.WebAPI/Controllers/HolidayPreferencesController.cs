@@ -20,18 +20,18 @@ namespace LastMinute.Controllers
         private readonly IMapper _mapper;
 
         public HolidayPreferencesController(IHolidayPreferencesRepo repository, IMapper mapper)
-        {                                   
+        {
             _repository = repository;
             _mapper = mapper;
         }
 
-      
+
 
         // GET: api/preferences
         [HttpGet]
-        public ActionResult <IEnumerable<HolidayPreferencesReadDto>> GetAllPreferences()
+        public ActionResult<IEnumerable<HolidayPreferencesReadDto>> GetAllPreferences()
         {
-            var holidayPreferences =  _repository.GetAllHolidayPreferences();
+            var holidayPreferences = _repository.GetAllHolidayPreferences();
 
             return Ok(_mapper.Map<IEnumerable<HolidayPreferencesReadDto>>(holidayPreferences));
         }
@@ -47,7 +47,7 @@ namespace LastMinute.Controllers
                 return NotFound();
             }
 
-      
+
             return Ok(_mapper.Map<HolidayPreferencesReadDto>(holidayPreference));
 
         }
@@ -61,34 +61,30 @@ namespace LastMinute.Controllers
             _repository.CreateHolidayPreference(preferenceModel);
             _repository.SaveChanges();
 
-            var preferenceReadDto = _mapper.Map<HolidayPreferencesReadDto>(preferenceModel);
-
-            /* return holidayPreferences;
-             return CreatedAtRoute(nameof(GetCommandById), new { Id = commandReadDto.Id }, commandReadDto);
- */
-            return Ok(preferenceReadDto);
+            return Ok(_mapper.Map<HolidayPreferencesReadDto>(preferenceModel));
         }
 
 
 
         // PUT: api/preferences/5
         [HttpPut("{id}")]
-        public ActionResult<HolidayPreferences> Put(int id, HolidayPreferences holidayPreferences)
+        public ActionResult<HolidayPreferencesReadDto> Put(int id, HolidayPreferencesUpdateDto holidayPreferencesUpdateDto)
         {
-            var holidayPreference = _repository.GetHolidayPreferenceById(id);
+            var holidayPreferenceFromRepo = _repository.GetHolidayPreferenceById(id);
 
-            if (holidayPreference == null)
+            if (holidayPreferenceFromRepo == null)
             {
                 return NotFound();
             }
 
 
-            Console.WriteLine(holidayPreferences);
+            _mapper.Map(holidayPreferencesUpdateDto, holidayPreferenceFromRepo);
 
-            _repository.UpdateHolidayPreference(holidayPreferences);
-            _repository.SaveChanges();
+            _repository.UpdateHolidayPreference(holidayPreferenceFromRepo);
+             _repository.SaveChanges();
 
-            return holidayPreferences;
+            return Ok(_mapper.Map<HolidayPreferencesReadDto>(holidayPreferenceFromRepo));
+
         }
 
         // DELETE: api/preferences/5

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace LastMinute.WebAPI.Dtos
 {
-    public class HolidayPreferencesCreateDto
+    public class HolidayPreferencesUpdateDto
     {
-
 
         [Required]
         public string Title { get; set; }

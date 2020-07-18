@@ -15,6 +15,8 @@ namespace LastMinute.WebAPI.Profiles
         {
             CreateMap<HolidayPreferences, HolidayPreferencesReadDto>();
             CreateMap<HolidayPreferencesCreateDto, HolidayPreferences>();
+            CreateMap<HolidayPreferencesUpdateDto, HolidayPreferences>();
+
         }
     }
 }
