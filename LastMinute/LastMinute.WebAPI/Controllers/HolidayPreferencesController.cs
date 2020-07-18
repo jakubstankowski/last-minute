@@ -68,22 +68,22 @@ namespace LastMinute.Controllers
 
         // PUT: api/preferences/5
         [HttpPut("{id}")]
-        public ActionResult<HolidayPreferencesReadDto> Put(int id, HolidayPreferencesUpdateDto holidayPreferencesUpdateDto)
+        public ActionResult<HolidayPreferencesReadDto> UpdatePreference(int id, HolidayPreferencesUpdateDto holidayPreferencesUpdateDto)
         {
-            var holidayPreferenceFromRepo = _repository.GetHolidayPreferenceById(id);
+            var holidayPreference = _repository.GetHolidayPreferenceById(id);
 
-            if (holidayPreferenceFromRepo == null)
+            if (holidayPreference == null)
             {
                 return NotFound();
             }
 
 
-            _mapper.Map(holidayPreferencesUpdateDto, holidayPreferenceFromRepo);
+            _mapper.Map(holidayPreferencesUpdateDto, holidayPreference);
 
-            _repository.UpdateHolidayPreference(holidayPreferenceFromRepo);
+            _repository.UpdateHolidayPreference(holidayPreference);
              _repository.SaveChanges();
 
-            return Ok(_mapper.Map<HolidayPreferencesReadDto>(holidayPreferenceFromRepo));
+            return Ok(_mapper.Map<HolidayPreferencesReadDto>(holidayPreference));
 
         }
 
