@@ -46,13 +46,13 @@ namespace LastMinute.Controllers
 
         // POST: api/preferences
         [HttpPost]
-        public ActionResult Post(HolidayPreferences holidayPreferences)
+        public ActionResult<HolidayPreferences> Post(HolidayPreferences holidayPreferences)
         {
 
             _repository.CreateHolidayPreference(holidayPreferences);
             _repository.SaveChanges();
-            
-            return Ok(holidayPreferences);
+
+            return holidayPreferences;
 
         }
 
@@ -68,9 +68,12 @@ namespace LastMinute.Controllers
             }
 
 
-            _repository.UpdateHolidayPreference(holidayPreference);
+            Console.WriteLine(holidayPreferences);
 
-            return holidayPreference;
+            _repository.UpdateHolidayPreference(holidayPreferences);
+            _repository.SaveChanges();
+
+            return holidayPreferences;
         }
 
         // DELETE: api/preferences/5

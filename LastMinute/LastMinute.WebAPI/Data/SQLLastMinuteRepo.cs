@@ -50,7 +50,8 @@ namespace LastMinute.WebAPI.Data
 
         public void UpdateHolidayPreference(HolidayPreferences preference)
         {
-            throw new NotImplementedException();
+           
+            _context.Update(preference);
         }
     }
 }

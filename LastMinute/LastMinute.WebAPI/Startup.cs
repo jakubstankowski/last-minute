@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using LastMinute.Data;
 using LastMinute.WebAPI.Data;
 using Microsoft.AspNetCore.Builder;
@@ -35,6 +36,9 @@ namespace LastMinute
 
 
             services.AddControllers();
+            
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddScoped<IHolidayPreferencesRepo, SQLLastMinuteRepo>();
         }
 
