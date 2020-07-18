@@ -54,15 +54,22 @@ namespace LastMinute.Controllers
 
         // POST: api/preferences
         [HttpPost]
-        public ActionResult<HolidayPreferences> Post(HolidayPreferences holidayPreferences)
+        public ActionResult<HolidayPreferencesReadDto> CreatePreference(HolidayPreferencesCreateDto holidayPreferencesDto)
         {
 
-            _repository.CreateHolidayPreference(holidayPreferences);
+            var preferenceModel = _mapper.Map<HolidayPreferences>(holidayPreferencesDto);
+            _repository.CreateHolidayPreference(preferenceModel);
             _repository.SaveChanges();
 
-            return holidayPreferences;
+            var preferenceReadDto = _mapper.Map<HolidayPreferencesReadDto>(preferenceModel);
 
+            /* return holidayPreferences;
+             return CreatedAtRoute(nameof(GetCommandById), new { Id = commandReadDto.Id }, commandReadDto);
+ */
+            return Ok(preferenceReadDto);
         }
+
+
 
         // PUT: api/preferences/5
         [HttpPut("{id}")]
