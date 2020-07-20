@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
+using LastMinute.WebAPI.App.Auth.Models;
 using LastMinute.WebAPI.App.Authentication.Configuration;
 using LastMinute.WebAPI.App.User.Models;
 using Microsoft.AspNetCore.Http;
@@ -9,6 +13,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 
 namespace LastMinute.WebAPI.App.Authentication.Controllers
 {
@@ -51,7 +56,58 @@ namespace LastMinute.WebAPI.App.Authentication.Controllers
             return Ok(new { Message = "User Reigstration Successful" });
         }
 
+        [HttpPost]
+        [Route("Login")]
+        public async Task<IActionResult> Login([FromBody]LoginCredentials credentials)
+        {
+            IdentityUser identityUser;
+
+            if (!ModelState.IsValid
+                || credentials == null
+                || (identityUser = await ValidateUser(credentials)) == null)
+            {
+                return new BadRequestObjectResult(new { Message = "Login failed" });
+            }
+
+            var token = GenerateToken(identityUser);
+            return Ok(new { Token = token, Message = "Success" });
+        }
+
+        private async Task<IdentityUser> ValidateUser(LoginCredentials credentials)
+        {
+            var identityUser = await userManager.FindByEmailAsync(credentials.Email);
+            if (identityUser != null)
+            {
+                var result = userManager.PasswordHasher.VerifyHashedPassword(identityUser, identityUser.PasswordHash, credentials.Password);
+                return result == PasswordVerificationResult.Failed ? null : identityUser;
+            }
+
+            return null;
+        }
 
 
+        private object GenerateToken(IdentityUser identityUser)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(jwtBearerTokenSettings.SecretKey);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, identityUser.UserName.ToString()),
+                    new Claim(ClaimTypes.Email, identityUser.Email)
+                }),
+
+                Expires = DateTime.UtcNow.AddSeconds(jwtBearerTokenSettings.ExpiryTimeInSeconds),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                Audience = jwtBearerTokenSettings.Audience,
+                Issuer = jwtBearerTokenSettings.Issuer
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }
     }
+
 }
