@@ -241,3 +241,11 @@ P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\L
 P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\LastMinute.WebAPI\obj\Debug\netcoreapp3.1\LastMinute.WebAPI.genruntimeconfig.cache
 P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\LastMinute.WebAPI\bin\Debug\netcoreapp3.1\AutoMapper.dll
 P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\LastMinute.WebAPI\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\LastMinute.WebAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\LastMinute.WebAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\LastMinute.WebAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\LastMinute.WebAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\LastMinute.WebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\LastMinute.WebAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\LastMinute.WebAPI\obj\Debug\netcoreapp3.1\LastMinute.WebAPI.csproj.CoreCompileInputs.cache
+P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\LastMinute.WebAPI\obj\Debug\netcoreapp3.1\LastMinute.WebAPI.MvcApplicationPartsAssemblyInfo.cache
