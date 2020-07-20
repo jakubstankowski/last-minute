@@ -7,6 +7,7 @@ using LastMinute.WebAPI.App.User.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
 
 namespace LastMinute.WebAPI.App.Authentication.Controllers
@@ -34,9 +35,9 @@ namespace LastMinute.WebAPI.App.Authentication.Controllers
                 return new BadRequestObjectResult(new { Message = "User Registration Failed" });
             }
 
-            var identityUser = new IdentityUser() { Email = userDetails.Email };
+            var identityUser = new IdentityUser() { UserName = userDetails.Email, Email = userDetails.Email };
             var result = await userManager.CreateAsync(identityUser, userDetails.Password);
-           /* if (!result.Succeeded)
+            if (!result.Succeeded)
             {
                 var dictionary = new ModelStateDictionary();
                 foreach (IdentityError error in result.Errors)
@@ -46,7 +47,7 @@ namespace LastMinute.WebAPI.App.Authentication.Controllers
 
                 return new BadRequestObjectResult(new { Message = "User Registration Failed", Errors = dictionary });
             }
-*/
+
             return Ok(new { Message = "User Reigstration Successful" });
         }
 
