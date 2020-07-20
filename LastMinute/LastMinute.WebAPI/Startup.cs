@@ -39,7 +39,7 @@ namespace LastMinute
             
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddScoped<IHolidayPreferencesRepo, SQLLastMinuteRepo>();
+            services.AddScoped<IHolidayPreferencesRepo, SQLHolidayPreferencesRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

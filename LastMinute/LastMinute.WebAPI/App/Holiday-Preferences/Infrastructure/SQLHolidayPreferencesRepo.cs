@@ -7,11 +7,11 @@ using LastMinute.Models;
 
 namespace LastMinute.WebAPI.Data
 {
-    public class SQLLastMinuteRepo : IHolidayPreferencesRepo
+    public class SQLHolidayPreferencesRepo : IHolidayPreferencesRepo
     {
         private readonly HolidayPreferencesContext _context;
 
-        public SQLLastMinuteRepo(HolidayPreferencesContext context)
+        public SQLHolidayPreferencesRepo(HolidayPreferencesContext context)
         {
             _context = context;
         }
