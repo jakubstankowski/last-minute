@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LastMinute.WebAPI", "LastMi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "..\..\INNE\C#\Core\aspnet-core-3-jwt-authentication-api\WebApi.csproj", "{C142A734-724A-4B61-86CD-B2B6EB9A3E59}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtAuthSampleAPI", "..\..\INNE\C#\Core\AspNetCore-Identity\JwtAuthSample\JwtAuthSampleAPI\JwtAuthSampleAPI.csproj", "{46247EC4-A7BA-4320-A4F8-D799B9182312}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C142A734-724A-4B61-86CD-B2B6EB9A3E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C142A734-724A-4B61-86CD-B2B6EB9A3E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C142A734-724A-4B61-86CD-B2B6EB9A3E59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46247EC4-A7BA-4320-A4F8-D799B9182312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46247EC4-A7BA-4320-A4F8-D799B9182312}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46247EC4-A7BA-4320-A4F8-D799B9182312}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46247EC4-A7BA-4320-A4F8-D799B9182312}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

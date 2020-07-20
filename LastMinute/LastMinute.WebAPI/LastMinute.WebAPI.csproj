@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0-preview.6.20312.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0-preview.6.20312.4">
       <PrivateAssets>all</PrivateAssets>
@@ -20,7 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="App\User\" />
+    <Folder Include="App\User\Controllers\" />
+    <Folder Include="App\User\Dtos\" />
+    <Folder Include="App\User\Services\" />
   </ItemGroup>
 
 

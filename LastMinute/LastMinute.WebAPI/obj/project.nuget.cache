@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "RguaKPWAUngdbIBVByR8fN9Ggs54fDQjtFS/L+9e5h7djXWiTMfRhIAhKKld7k6C0N+y7o5XOmN9MAs5p3EO6g==",
+  "dgSpecHash": "h0tOox4a4ClS2++1NEl4l6ko07kgbTgkIpVeydoMsIdTeQuW5rGThwvc2JOVE/e42dibds3gdbp5ryeXdm18GQ==",
   "success": true,
   "projectFilePath": "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\\LastMinute\\LastMinute\\LastMinute.WebAPI\\LastMinute.WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jakub\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\jakub\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.1\\automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",
+    "C:\\Users\\jakub\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.6\\microsoft.aspnetcore.authentication.jwtbearer.3.1.6.nupkg.sha512",
     "C:\\Users\\jakub\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\jakub\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\jakub\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.0\\microsoft.aspnetcore.razor.language.3.1.0.nupkg.sha512",
