@@ -40,7 +40,7 @@ namespace LastMinute.WebAPI.App.Authentication.Controllers
                 return new BadRequestObjectResult(new { Message = "User Registration Failed" });
             }
 
-            var identityUser = new IdentityUser() { UserName = userDetails.Email, Email = userDetails.Email };
+            var identityUser = new IdentityUser() { UserName = userDetails.UserName, Email = userDetails.Email };
             var result = await userManager.CreateAsync(identityUser, userDetails.Password);
             if (!result.Succeeded)
             {

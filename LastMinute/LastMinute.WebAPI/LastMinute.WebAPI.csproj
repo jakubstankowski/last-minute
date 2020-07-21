@@ -24,6 +24,7 @@
   <ItemGroup>
     <Folder Include="App\User\Controllers\" />
     <Folder Include="App\User\Dtos\" />
+    <Folder Include="App\User\Infrastructure\" />
     <Folder Include="App\User\Services\" />
   </ItemGroup>
 
