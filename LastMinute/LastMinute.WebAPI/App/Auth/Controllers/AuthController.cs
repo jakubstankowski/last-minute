@@ -25,6 +25,8 @@ namespace LastMinute.WebAPI.App.Authentication.Controllers
         private readonly JwtBearerTokenSettings jwtBearerTokenSettings;
         private readonly UserManager<ApplicationUser> userManager;
 
+
+
         public AuthController(IOptions<JwtBearerTokenSettings> jwtTokenOptions, UserManager<ApplicationUser> userManager)
         {
             this.jwtBearerTokenSettings = jwtTokenOptions.Value;

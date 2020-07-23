@@ -31,8 +31,10 @@ namespace LastMinute.Models
         [Required]
         public int MaxPrice { get; set; }
 
+        [Required]
         public string UserId { get; set; }
 
-       public ApplicationUser User { get; set; }
+        [Required]
+        public ApplicationUser User { get; set; }
     }
 }

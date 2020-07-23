@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using LastMinute.WebAPI.App.User.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace LastMinute.WebAPI.Dtos
@@ -28,5 +29,8 @@ namespace LastMinute.WebAPI.Dtos
 
         [Required]
         public string UserId { get; set; }
+
+        
+        public ApplicationUser User { get; set; }
     }
 }

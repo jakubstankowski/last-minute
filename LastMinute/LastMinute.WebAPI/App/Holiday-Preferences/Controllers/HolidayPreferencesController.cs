@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 using AutoMapper;
 using LastMinute.Data;
 using LastMinute.Models;
+using LastMinute.WebAPI.App.Auth.Infrastructure;
+using LastMinute.WebAPI.App.User.Models;
 using LastMinute.WebAPI.Dtos;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LastMinute.Controllers
@@ -19,11 +22,15 @@ namespace LastMinute.Controllers
 
         private readonly IHolidayPreferencesRepo _repository;
         private readonly IMapper _mapper;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly AuthContext _authContext;
 
-        public HolidayPreferencesController(IHolidayPreferencesRepo repository, IMapper mapper)
+        public HolidayPreferencesController(IHolidayPreferencesRepo repository, IMapper mapper, UserManager<ApplicationUser> userManager, AuthContext authContext)
         {
             _repository = repository;
             _mapper = mapper;
+            _userManager = userManager;
+            _authContext = authContext;
         }
 
 
@@ -57,10 +64,12 @@ namespace LastMinute.Controllers
         [HttpPost]
         public ActionResult<HolidayPreferencesReadDto> CreatePreference(HolidayPreferencesCreateDto holidayPreferencesDto)
         {
-           
-        var preferenceModel = _mapper.Map<HolidayPreferences>(holidayPreferencesDto);
 
-           
+            var preferenceModel = _mapper.Map<HolidayPreferences>(holidayPreferencesDto);
+
+            var user = _authContext.Users.FirstOrDefault(u => u.Id == preferenceModel.UserId);
+            preferenceModel.User = user;
+
             _repository.CreateHolidayPreference(preferenceModel);
             _repository.SaveChanges();
 
@@ -84,7 +93,7 @@ namespace LastMinute.Controllers
             _mapper.Map(holidayPreferencesUpdateDto, holidayPreference);
 
             _repository.UpdateHolidayPreference(holidayPreference);
-             _repository.SaveChanges();
+            _repository.SaveChanges();
 
             return Ok(_mapper.Map<HolidayPreferencesReadDto>(holidayPreference));
 
