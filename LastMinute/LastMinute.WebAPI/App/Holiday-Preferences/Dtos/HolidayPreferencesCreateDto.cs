@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace LastMinute.WebAPI.Dtos
 {
@@ -24,5 +25,8 @@ namespace LastMinute.WebAPI.Dtos
 
         [Required]
         public int MaxPrice { get; set; }
+
+        [Required]
+        public string UserId { get; set; }
     }
 }

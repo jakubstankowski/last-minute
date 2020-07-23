@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using LastMinute.Data;
@@ -56,8 +57,10 @@ namespace LastMinute.Controllers
         [HttpPost]
         public ActionResult<HolidayPreferencesReadDto> CreatePreference(HolidayPreferencesCreateDto holidayPreferencesDto)
         {
+           
+        var preferenceModel = _mapper.Map<HolidayPreferences>(holidayPreferencesDto);
 
-            var preferenceModel = _mapper.Map<HolidayPreferences>(holidayPreferencesDto);
+           
             _repository.CreateHolidayPreference(preferenceModel);
             _repository.SaveChanges();
 

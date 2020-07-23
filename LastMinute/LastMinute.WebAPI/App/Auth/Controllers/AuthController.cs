@@ -42,6 +42,9 @@ namespace LastMinute.WebAPI.App.Authentication.Controllers
 
             var identityUser = new IdentityUser() { UserName = userDetails.UserName, Email = userDetails.Email };
             var result = await userManager.CreateAsync(identityUser, userDetails.Password);
+
+           
+
             if (!result.Succeeded)
             {
                 var dictionary = new ModelStateDictionary();
