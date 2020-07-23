@@ -23,9 +23,9 @@ namespace LastMinute.WebAPI.App.Authentication.Controllers
     {
 
         private readonly JwtBearerTokenSettings jwtBearerTokenSettings;
-        private readonly UserManager<IdentityUser> userManager;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public AuthController(IOptions<JwtBearerTokenSettings> jwtTokenOptions, UserManager<IdentityUser> userManager)
+        public AuthController(IOptions<JwtBearerTokenSettings> jwtTokenOptions, UserManager<ApplicationUser> userManager)
         {
             this.jwtBearerTokenSettings = jwtTokenOptions.Value;
             this.userManager = userManager;
@@ -33,14 +33,18 @@ namespace LastMinute.WebAPI.App.Authentication.Controllers
 
         [HttpPost]
         [Route("Register")]
-        public async Task<IActionResult> Register([FromBody]UserDetails userDetails)
+        public async Task<IActionResult> Register([FromBody]ApplicationUser userDetails)
         {
+            Console.WriteLine("user name:", userDetails.UserName);
+            Console.WriteLine(userDetails);
+
+            Console.WriteLine(userDetails.Password);
             if (!ModelState.IsValid || userDetails == null)
             {
                 return new BadRequestObjectResult(new { Message = "User Registration Failed" });
             }
 
-            var identityUser = new IdentityUser() { UserName = userDetails.UserName, Email = userDetails.Email };
+            var identityUser = new ApplicationUser() { UserName = userDetails.UserName, Email = userDetails.Email };
             var result = await userManager.CreateAsync(identityUser, userDetails.Password);
 
            

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using LastMinute.WebAPI.App.User.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace LastMinute.Models
@@ -32,6 +33,6 @@ namespace LastMinute.Models
 
         public string UserId { get; set; }
 
-       public IdentityUser User { get; set; }
+       public ApplicationUser User { get; set; }
     }
 }

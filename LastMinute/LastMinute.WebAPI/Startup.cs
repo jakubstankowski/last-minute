@@ -20,6 +20,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using LastMinute.WebAPI.App.Auth.Infrastructure;
+using LastMinute.WebAPI.App.User.Models;
 
 namespace LastMinute
 {
@@ -42,7 +43,7 @@ namespace LastMinute
             services.AddDbContext<AuthContext>(opt => opt.UseSqlServer
              (Configuration.GetConnectionString("LastMinuteConnection")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<AuthContext>();
 
 
