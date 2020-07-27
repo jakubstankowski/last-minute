@@ -7,13 +7,12 @@ using Microsoft.AspNetCore.Identity;
 
 namespace LastMinute.WebAPI.App.User.Models
 {
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser
     {
-
-        public string Password { get; set; }
-       /* public string UserName { get; set; }
-
-        public string Email { get; set; }*/
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
 
         public ICollection<HolidayPreferences> HolidayPreferences { get; set; }
 

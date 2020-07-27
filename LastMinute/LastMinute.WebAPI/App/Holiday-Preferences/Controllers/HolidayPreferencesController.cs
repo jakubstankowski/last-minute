@@ -62,13 +62,18 @@ namespace LastMinute.Controllers
 
         // POST: api/preferences
         [HttpPost]
-        public ActionResult<HolidayPreferencesReadDto> CreatePreference(HolidayPreferencesCreateDto holidayPreferencesDto)
+        public  ActionResult<HolidayPreferencesReadDto> CreatePreference(HolidayPreferencesCreateDto holidayPreferencesDto)
         {
+           
+        var preferenceModel = _mapper.Map<HolidayPreferences>(holidayPreferencesDto);
 
-            var preferenceModel = _mapper.Map<HolidayPreferences>(holidayPreferencesDto);
+            Console.WriteLine(preferenceModel.User);
+            var user =  _userManager.FindByIdAsync(preferenceModel.UserId);
 
-            var user = _authContext.Users.FirstOrDefault(u => u.Id == preferenceModel.UserId);
-            preferenceModel.User = user;
+            Console.WriteLine(user.Id);
+           /* var user = _authContext.Users.FirstOrDefault(u => u.Id == preferenceModel.UserId);
+            Console.WriteLine(user.Id);*/
+
 
             _repository.CreateHolidayPreference(preferenceModel);
             _repository.SaveChanges();
@@ -93,7 +98,7 @@ namespace LastMinute.Controllers
             _mapper.Map(holidayPreferencesUpdateDto, holidayPreference);
 
             _repository.UpdateHolidayPreference(holidayPreference);
-            _repository.SaveChanges();
+             _repository.SaveChanges();
 
             return Ok(_mapper.Map<HolidayPreferencesReadDto>(holidayPreference));
 

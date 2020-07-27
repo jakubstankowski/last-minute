@@ -15,5 +15,7 @@ namespace LastMinute.Data
         }
 
         public DbSet<HolidayPreferences> HolidayPreferences { get; set; }
+
+
     }
 }

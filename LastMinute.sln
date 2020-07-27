@@ -3,13 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LastMinute.WebAPI", "LastMinute\LastMinute.WebAPI\LastMinute.WebAPI.csproj", "{2E8DB00C-DEF8-43F2-89F5-2DE22AEB1D56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LastMinute.WebAPI", "LastMinute\LastMinute.WebAPI\LastMinute.WebAPI.csproj", "{C9C9A6E2-C0AD-49E4-9DFD-CDBF012A8487}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtAuthSampleAPI", "..\..\INNE\C#\Core\AspNetCore-Identity\JwtAuthSample\JwtAuthSampleAPI\JwtAuthSampleAPI.csproj", "{46247EC4-A7BA-4320-A4F8-D799B9182312}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "..\..\INNE\C#\Core\QuickApp\DAL\DAL.csproj", "{8B6430BF-1F10-44D3-942D-EF8745A104B0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuickApp", "..\..\INNE\C#\Core\QuickApp\QuickApp\QuickApp.csproj", "{8CD5EB55-8685-4C48-9BC1-639FCF536B63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "LastMinute\API\API.csproj", "{353F65EB-360A-4FF5-8868-FB7C61BDBD05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,22 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2E8DB00C-DEF8-43F2-89F5-2DE22AEB1D56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2E8DB00C-DEF8-43F2-89F5-2DE22AEB1D56}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2E8DB00C-DEF8-43F2-89F5-2DE22AEB1D56}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2E8DB00C-DEF8-43F2-89F5-2DE22AEB1D56}.Release|Any CPU.Build.0 = Release|Any CPU
-		{46247EC4-A7BA-4320-A4F8-D799B9182312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46247EC4-A7BA-4320-A4F8-D799B9182312}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46247EC4-A7BA-4320-A4F8-D799B9182312}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46247EC4-A7BA-4320-A4F8-D799B9182312}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8B6430BF-1F10-44D3-942D-EF8745A104B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B6430BF-1F10-44D3-942D-EF8745A104B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B6430BF-1F10-44D3-942D-EF8745A104B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B6430BF-1F10-44D3-942D-EF8745A104B0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8CD5EB55-8685-4C48-9BC1-639FCF536B63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8CD5EB55-8685-4C48-9BC1-639FCF536B63}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8CD5EB55-8685-4C48-9BC1-639FCF536B63}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8CD5EB55-8685-4C48-9BC1-639FCF536B63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9C9A6E2-C0AD-49E4-9DFD-CDBF012A8487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9C9A6E2-C0AD-49E4-9DFD-CDBF012A8487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9C9A6E2-C0AD-49E4-9DFD-CDBF012A8487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9C9A6E2-C0AD-49E4-9DFD-CDBF012A8487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{353F65EB-360A-4FF5-8868-FB7C61BDBD05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{353F65EB-360A-4FF5-8868-FB7C61BDBD05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{353F65EB-360A-4FF5-8868-FB7C61BDBD05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{353F65EB-360A-4FF5-8868-FB7C61BDBD05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
