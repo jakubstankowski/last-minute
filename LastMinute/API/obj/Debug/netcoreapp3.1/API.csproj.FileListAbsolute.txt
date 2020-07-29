@@ -13,8 +13,6 @@ P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\L
 P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\API\bin\Debug\netcoreapp3.1\API.dll
 P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\API\bin\Debug\netcoreapp3.1\API.pdb
 P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\API\bin\Debug\netcoreapp3.1\Core.dll
-P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\API\bin\Debug\netcoreapp3.1\Infrastructure.dll
-P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\API\bin\Debug\netcoreapp3.1\Infrastructure.pdb
 P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\API\bin\Debug\netcoreapp3.1\Core.pdb
 P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\API\obj\Debug\netcoreapp3.1\API.RazorTargetAssemblyInfo.cache
 P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\API\obj\Debug\netcoreapp3.1\API.csproj.CopyComplete
