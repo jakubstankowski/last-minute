@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ftuS7lqmIqf3EdKpgD8qc+UyTFelxXEPNazSfVT6Rp8pcUe8orKblMsq0Zx+9YEyZBzibMSdY3rCVbonVtwYEg==",
+  "dgSpecHash": "rmAly1zNXAbEyEokBRyird68qUd9uHgH6+OIALXLuV6vKAi7oCC+zjTPFWjAE7Z2Nf7GpUadAK6MciMX1DN/xg==",
   "success": true,
   "projectFilePath": "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\\LastMinute\\LastMinute\\API\\API.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\jakub\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,0 +1,9 @@
+P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\Core\bin\Debug\netstandard2.0\Core.deps.json
+P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\Core\bin\Debug\netstandard2.0\Core.dll
+P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\Core\obj\Debug\netstandard2.0\Core.csprojAssemblyReference.cache
+P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\Core\obj\Debug\netstandard2.0\Core.AssemblyInfoInputs.cache
+P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\Core\obj\Debug\netstandard2.0\Core.AssemblyInfo.cs
+P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\Core\obj\Debug\netstandard2.0\Core.csproj.CoreCompileInputs.cache
+P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\Core\bin\Debug\netstandard2.0\Core.pdb
+P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\Core\obj\Debug\netstandard2.0\Core.dll
+P:\PROJEKTY\htdocs\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\LastMinute\LastMinute\Core\obj\Debug\netstandard2.0\Core.pdb
