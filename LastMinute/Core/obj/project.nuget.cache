@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "j9wFuZF1CVsX+JA78Xisf8daxNUymnC2TOlrkYV934PXGImz92uHRyNQ/nW7RkTn7sLVdWyMPl/hjA+U1xlGrw==",
+  "success": true,
+  "projectFilePath": "P:\\PROJEKTY\\htdocs\\17 - LAST-MINUTE - LIPIEC 2020 .NET CORE & REACT\\LastMinute\\LastMinute\\Core\\Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jakub\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\jakub\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
