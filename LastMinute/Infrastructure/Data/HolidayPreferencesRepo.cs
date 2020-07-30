@@ -7,6 +7,11 @@ namespace Infrastructure.Data
 {
     public class HolidayPreferencesRepo : IHolidayPreferencesRepo
     {
+
+        public HolidayPreferencesRepo()
+        {
+
+        }
         public Task<HolidayPreferences> GetHolidayPreferenceByIdAsync(int id)
         {
             throw new System.NotImplementedException();
