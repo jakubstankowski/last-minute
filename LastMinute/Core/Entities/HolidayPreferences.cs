@@ -2,7 +2,7 @@
 
 namespace Core.Entities
 {
-    class HolidayPreferences
+   public  class HolidayPreferences
     {
 
         [Key]
