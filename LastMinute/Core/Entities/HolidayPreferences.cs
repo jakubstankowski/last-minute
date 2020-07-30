@@ -2,12 +2,8 @@
 
 namespace Core.Entities
 {
-   public  class HolidayPreferences
+   public  class HolidayPreferences : BaseEntity
     {
-
-        [Key]
-        [Required]
-        public int Id { get; set; }
 
         [Required]
         public string Title { get; set; }

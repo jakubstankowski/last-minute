@@ -21,7 +21,6 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IHolidayPreferencesRepo, HolidayPreferencesRepo>();
-
             services.AddControllers();
         }
 
