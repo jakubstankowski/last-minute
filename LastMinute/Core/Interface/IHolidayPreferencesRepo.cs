@@ -11,6 +11,9 @@ namespace Core.Interface
 
         Task<HolidayPreferences> GetHolidayPreferenceByIdAsync(int id);
         Task<IReadOnlyList<HolidayPreferences>> GetHolidayPreferencesAsync();
-       
+
+        void CreateHolidayPreference(HolidayPreferences preference);
+
+        bool SaveChanges();
     }
 }

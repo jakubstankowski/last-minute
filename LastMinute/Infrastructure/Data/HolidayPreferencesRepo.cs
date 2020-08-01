@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interface;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
@@ -14,14 +15,26 @@ namespace Infrastructure.Data
             _context = context;
         }
 
-        public Task<HolidayPreferences> GetHolidayPreferenceByIdAsync(int id)
+        public async Task<HolidayPreferences> GetHolidayPreferenceByIdAsync(int id)
         {
-            throw new System.NotImplementedException();
+            return await _context.HolidayPreferences.FirstOrDefaultAsync();
         }
 
-        public Task<IReadOnlyList<HolidayPreferences>> GetHolidayPreferencesAsync()
+        public async Task<IReadOnlyList<HolidayPreferences>> GetHolidayPreferencesAsync()
         {
-            throw new System.NotImplementedException();
+            return await _context.HolidayPreferences.ToListAsync();
         }
+
+      
+        public void CreateHolidayPreference(HolidayPreferences preference)
+        {
+            _context.HolidayPreferences.Add(preference);
+        }
+
+        public bool SaveChanges()
+        {
+            return (_context.SaveChanges() >= 0);
+        }
+
     }
 }

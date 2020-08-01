@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Entities;
 using Core.Interface;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/preferences")]
     [ApiController]
     public class HolidayPreferencesController : ControllerBase
     {
@@ -22,22 +20,27 @@ namespace API.Controllers
 
         // GET: api/HolidayPreferences
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IReadOnlyList<HolidayPreferences>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return await _repo.GetHolidayPreferencesAsync();
         }
 
-        // GET: api/HolidayPreferences/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+
+
+        /*  // GET: api/HolidayPreferences/5
+          [HttpGet("{id}", Name = "Get")]
+          public async Task<HolidayPreferences>
+          {
+              return await _repo.Get
+          }*/
 
         // POST: api/HolidayPreferences
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult Post(HolidayPreferences holidayPreferences)
         {
+            _repo.CreateHolidayPreference(holidayPreferences);
+            _repo.SaveChanges();
+            return Ok();
         }
 
         // PUT: api/HolidayPreferences/5
