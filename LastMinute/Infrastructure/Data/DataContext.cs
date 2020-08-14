@@ -9,5 +9,6 @@ namespace Infrastructure.Data
        
         public DbSet<HolidayPreferences> HolidayPreferences { get; set; }
 
+        public DbSet<HolidayOffers> HolidayOffers { get; set; }
     }
 }

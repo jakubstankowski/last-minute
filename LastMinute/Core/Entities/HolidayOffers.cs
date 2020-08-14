@@ -5,11 +5,10 @@ using System.Text;
 
 namespace Core.Entities
 {
-    class HolidayOffers : BaseEntity
+    public class HolidayOffers : BaseEntity
     {
         [Required]
-
-        public string Title { get; set; }
+         public string Title { get; set; }
 
         [Required]
         public string Website { get; set; }
@@ -18,10 +17,12 @@ namespace Core.Entities
         public string Country { get; set; }
 
         [Required]
-        public int MinPrice { get; set; }
+        public int Price { get; set; }
 
         [Required]
-        public int MaxPrice { get; set; }
+        public string Url { get; set; }
+
+     
 
     }
 }
