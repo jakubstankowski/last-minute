@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interface;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
@@ -18,22 +18,22 @@ namespace Infrastructure.Data
 
         public void CreateHolidayOffers(HolidayOffers offers)
         {
-            throw new NotImplementedException();
+            _context.HolidayOffers.Add(offers);
         }
 
-        public Task<IReadOnlyList<HolidayOffers>> GetHolidayOffersAsync()
+        public async Task<IReadOnlyList<HolidayOffers>> GetHolidayOffersAsync()
         {
-            throw new NotImplementedException();
+            return await _context.HolidayOffers.ToListAsync();
         }
 
-        public Task<HolidayOffers> GetHolidayOffersByIdAsync(int id)
+        public async  Task<HolidayOffers> GetHolidayOffersByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.HolidayOffers.FirstOrDefaultAsync();
         }
 
         public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return (_context.SaveChanges() >= 0);
         }
     }
 }
