@@ -1,21 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using Core.Entities;
+using Core.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/offers")]
     [ApiController]
     public class HolidayOffersController : ControllerBase
     {
+        private readonly IHolidayOffersRepo _repo;
+
+        public HolidayOffersController(IHolidayOffersRepo repo)
+        {
+            _repo = repo;
+        }
+
+
         // GET: api/HolidayOffers
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IReadOnlyList<HolidayOffers>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return await _repo.GetHolidayOffersAsync();
         }
 
         // GET: api/HolidayOffers/5
@@ -27,8 +34,9 @@ namespace API.Controllers
 
         // POST: api/HolidayOffers
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post(HolidayOffers offers)
         {
+            _repo.CreateHolidayOffers(offers);
         }
 
         // PUT: api/HolidayOffers/5

@@ -22,7 +22,10 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IHolidayPreferencesRepo, HolidayPreferencesRepo>();
+            services.AddScoped<IHolidayOffersRepo, HolidayOffersRepo>();
+
             services.AddControllers();
+
             services.AddDbContext<DataContext>(opt => opt.UseSqlServer
                 (Configuration.GetConnectionString("LastMinuteConnection")));
 

@@ -19,6 +19,7 @@ namespace Infrastructure.Data
         public void CreateHolidayOffers(HolidayOffers offers)
         {
             _context.HolidayOffers.Add(offers);
+            _context.SaveChanges();
         }
 
         public async Task<IReadOnlyList<HolidayOffers>> GetHolidayOffersAsync()
