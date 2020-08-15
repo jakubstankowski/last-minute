@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
+    //test youtrack!
     public class HolidayOffersRepo : IHolidayOffersRepo
     {
         private readonly DataContext _context;
