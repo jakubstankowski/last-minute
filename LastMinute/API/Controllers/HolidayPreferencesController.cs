@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using API.DTO;
+using AutoMapper;
 using Core.Entities;
 using Core.Interface;
 using Microsoft.AspNetCore.Mvc;
@@ -11,18 +13,23 @@ namespace API.Controllers
     public class HolidayPreferencesController : ControllerBase
     {
         private IHolidayPreferencesRepo _repo;
+        private readonly IMapper _mapper;
 
-        public HolidayPreferencesController(IHolidayPreferencesRepo repo)
+        public HolidayPreferencesController(IHolidayPreferencesRepo repo, IMapper mapper)
         {
             _repo = repo;
+            _mapper = mapper;
         }
 
 
         // GET: api/HolidayPreferences
         [HttpGet]
-        public async Task<IReadOnlyList<HolidayPreferences>> Get()
+        public async Task<ActionResult<IReadOnlyList<HolidayPreferencesToReturnDTO>>> Get()
         {
-            return await _repo.GetHolidayPreferencesAsync();
+            var preferences = await _repo.GetHolidayPreferencesAsync();
+            
+            return Ok(_mapper
+                .Map<IReadOnlyList<HolidayPreferences>, IReadOnlyList<HolidayPreferencesToReturnDTO>>(preferences));
         }
 
 
