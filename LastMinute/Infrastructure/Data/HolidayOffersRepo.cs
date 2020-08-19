@@ -28,7 +28,7 @@ namespace Infrastructure.Data
 
         public async  Task<HolidayOffers> GetHolidayOffersByIdAsync(int id)
         {
-            return await _context.HolidayOffers.FirstOrDefaultAsync();
+            return await _context.HolidayOffers.FindAsync(id);
         }
 
         public bool SaveChanges()

@@ -25,7 +25,7 @@ namespace API.Controllers
 
         // GET: api/HolidayOffers
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<HolidayOffers>>> Get()
+        public async Task<ActionResult<IReadOnlyList<HolidayOffers>>> GetOffers()
         {
            var offers =  await _repo.GetHolidayOffersAsync();
 
@@ -34,8 +34,8 @@ namespace API.Controllers
         }
 
         // GET: api/HolidayOffers/5
-        [HttpGet("{id}", Name = "Get")]
-        public async Task<ActionResult<HolidayOffersToReturnDTO>> GetById(int id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<HolidayOffersToReturnDTO>> GetOffersById(int id)
         {
             var offers = await _repo.GetHolidayOffersByIdAsync(id);
             if (offers == null)

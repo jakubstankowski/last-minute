@@ -26,7 +26,7 @@ namespace API.Controllers
 
         // GET: api/HolidayPreferences
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<HolidayPreferencesToReturnDTO>>> Get()
+        public async Task<ActionResult<IReadOnlyList<HolidayPreferencesToReturnDTO>>> GetPreferences()
         {
             var preferences = await _repo.GetHolidayPreferencesAsync();
 
@@ -37,8 +37,8 @@ namespace API.Controllers
 
 
         // GET: api/preferences/5
-        [HttpGet("{id}", Name = "Get")]
-        public async Task<ActionResult<HolidayPreferencesToReturnDTO>> GetById(int id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<HolidayPreferencesToReturnDTO>> GetPreferencesById(int id)
         {
             var preferences = await _repo.GetHolidayPreferenceByIdAsync(id);
             if(preferences == null)

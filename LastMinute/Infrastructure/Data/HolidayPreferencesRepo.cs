@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interface;
@@ -17,7 +18,7 @@ namespace Infrastructure.Data
 
         public async Task<HolidayPreferences> GetHolidayPreferenceByIdAsync(int id)
         {
-            return await _context.HolidayPreferences.FirstOrDefaultAsync();
+            return await _context.HolidayPreferences.FindAsync(id);
         }
 
         public async Task<IReadOnlyList<HolidayPreferences>> GetHolidayPreferencesAsync()
