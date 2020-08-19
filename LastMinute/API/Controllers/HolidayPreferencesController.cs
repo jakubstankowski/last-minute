@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.DTO;
+using API.Errors;
 using AutoMapper;
 using Core.Entities;
 using Core.Interface;
@@ -27,19 +29,27 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<HolidayPreferencesToReturnDTO>>> Get()
         {
             var preferences = await _repo.GetHolidayPreferencesAsync();
-            
+
             return Ok(_mapper
                 .Map<IReadOnlyList<HolidayPreferences>, IReadOnlyList<HolidayPreferencesToReturnDTO>>(preferences));
         }
 
 
 
-        /*  // GET: api/HolidayPreferences/5
-          [HttpGet("{id}", Name = "Get")]
-          public async Task<HolidayPreferences>
-          {
-              return await _repo.Get
-          }*/
+        // GET: api/preferences/5
+        [HttpGet("{id}", Name = "Get")]
+        public async Task<ActionResult<HolidayPreferencesToReturnDTO>> GetById(int id)
+        {
+            var preferences = await _repo.GetHolidayPreferenceByIdAsync(id);
+            if(preferences == null)
+            {
+                return NotFound(new ApiResponse(404));
+            }
+
+            return _mapper.Map<HolidayPreferences, HolidayPreferencesToReturnDTO>(preferences);
+        }
+
+     
 
         // POST: api/HolidayPreferences
         [HttpPost]

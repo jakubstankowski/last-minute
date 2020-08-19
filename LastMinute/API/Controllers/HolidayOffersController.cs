@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.DTO;
+using API.Errors;
 using AutoMapper;
 using Core.Entities;
 using Core.Interface;
@@ -34,9 +35,15 @@ namespace API.Controllers
 
         // GET: api/HolidayOffers/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public async Task<ActionResult<HolidayOffersToReturnDTO>> GetById(int id)
         {
-            return "value";
+            var offers = await _repo.GetHolidayOffersByIdAsync(id);
+            if (offers == null)
+            {
+                return NotFound(new ApiResponse(404));
+            }
+
+            return _mapper.Map<HolidayOffers, HolidayOffersToReturnDTO>(offers);
         }
 
         // POST: api/HolidayOffers
