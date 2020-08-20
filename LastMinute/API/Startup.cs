@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using AutoMapper;
 using API.Middleware;
+using Infrastructure.Identity;
 
 namespace API
 {
@@ -32,6 +33,9 @@ namespace API
 
             services.AddDbContext<DataContext>(opt => opt.UseSqlServer
                 (Configuration.GetConnectionString("LastMinuteConnection")));
+
+            services.AddDbContext<AppIdentityDbContext>(opt => opt.UseSqlServer
+               (Configuration.GetConnectionString("LastMinuteConnection")));
 
         }
 
