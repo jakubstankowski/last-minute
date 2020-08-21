@@ -40,6 +40,24 @@ namespace API.Controllers
             };
         }
 
+        [HttpPost("login")]
+        public async Task<ActionResult<UserDTO>> Login(LoginDTO loginDto)
+        {
+            var user = await _userManager.FindByEmailAsync(loginDto.Email);
+
+            if (user == null) return Unauthorized(new ApiResponse(401));
+
+            var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
+
+            if (!result.Succeeded) return Unauthorized(new ApiResponse(401));
+
+            return new UserDTO
+            {
+                Email = user.Email,
+                Token = "token",
+            };
+        }
+
 
     }
 }
