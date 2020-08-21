@@ -2,7 +2,7 @@
 
 namespace Core.Entities
 {
-   public  class HolidayPreferences : BaseEntity
+    public class HolidayPreferences : BaseEntity
     {
         [Required]
         public string Title { get; set; }
@@ -19,6 +19,9 @@ namespace Core.Entities
         [Required]
         public int MaxPrice { get; set; }
 
+        public AppUser AppUser{get; set;}
 
+        [Required]
+        public string AppUserId { get; set; }
     }
 }
