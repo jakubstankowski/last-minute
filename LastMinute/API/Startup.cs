@@ -10,6 +10,10 @@ using Microsoft.Extensions.Hosting;
 using AutoMapper;
 using API.Middleware;
 using Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity;
+using Core.Entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace API
 {
@@ -36,6 +40,25 @@ namespace API
 
             services.AddDbContext<AppIdentityDbContext>(opt => opt.UseSqlServer
                (Configuration.GetConnectionString("LastMinuteConnection")));
+
+            services.AddIdentity<AppUser, IdentityRole>()
+                     .AddEntityFrameworkStores<AppIdentityDbContext>();
+
+
+
+            /* services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                 .AddJwtBearer(options =>
+                 {
+                     options.TokenValidationParameters = new TokenValidationParameters
+                     {
+                         ValidateIssuerSigningKey = true,
+                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Token:Key"])),
+                         ValidIssuer = config["Token:Issuer"],
+                         ValidateIssuer = true,
+                         ValidateAudience = false
+                     };
+                 });*/
+
 
         }
 
