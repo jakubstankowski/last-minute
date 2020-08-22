@@ -15,6 +15,8 @@ using Core.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Infrastructure.Services;
+using System;
 
 namespace API
 {
@@ -33,6 +35,7 @@ namespace API
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddScoped<IHolidayPreferencesRepo, HolidayPreferencesRepo>();
             services.AddScoped<IHolidayOffersRepo, HolidayOffersRepo>();
+            services.AddScoped<ITokenService, TokenService>();
 
             services.AddControllers();
 
@@ -57,6 +60,8 @@ namespace API
                         ValidateAudience = false
                     };
                 });
+
+            Console.WriteLine("TOKEN: ", Configuration["Token:Issuer"]);
 
         }
 

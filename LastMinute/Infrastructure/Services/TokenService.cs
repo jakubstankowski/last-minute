@@ -10,7 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Infrastructure.Services
 {
-    class TokenService : ITokenService
+   public class TokenService : ITokenService
     {
         private readonly IConfiguration _config;
         private readonly SymmetricSecurityKey _key;
@@ -18,6 +18,7 @@ namespace Infrastructure.Services
         public TokenService(IConfiguration config)
         {
             _config = config;
+            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Token:Key"]));
         }
         public string CreateToken(AppUser user)
         {
