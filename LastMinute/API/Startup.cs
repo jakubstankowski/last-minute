@@ -61,7 +61,6 @@ namespace API
                     };
                 });
 
-            Console.WriteLine("TOKEN: ", Configuration["Token:Issuer"]);
 
         }
 

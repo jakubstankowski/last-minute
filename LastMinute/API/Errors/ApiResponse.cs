@@ -1,4 +1,6 @@
-﻿namespace API.Errors
+﻿using System;
+
+namespace API.Errors
 {
     public class ApiResponse
     {
@@ -13,6 +15,7 @@
 
         private string GetDefaultMessageForStatusCode(int statusCode)
         {
+            Console.WriteLine(statusCode);
 
             return statusCode switch
             {
