@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Infrastructure.Services;
+using API.Configuration;
 
 namespace API
 {
@@ -49,6 +50,7 @@ namespace API
 
             // configure strongly typed settings objects
             var jwtSection = Configuration.GetSection("JwtBearerTokenSettings");
+            System.Console.WriteLine(jwtSection);
             services.Configure<JwtBearerTokenSettings>(jwtSection);
             var jwtBearerTokenSettings = jwtSection.Get<JwtBearerTokenSettings>();
             var key = Encoding.ASCII.GetBytes(jwtBearerTokenSettings.SecretKey);

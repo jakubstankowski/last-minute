@@ -1,10 +1,17 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
+using API.Configuration;
 using API.DTO;
 using API.Errors;
 using Core.Entities;
 using Core.Interface;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 
 namespace API.Controllers
 {
@@ -15,9 +22,13 @@ namespace API.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly ITokenService _tokenService;
         private readonly SignInManager<AppUser> _signInManager;
-     
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService)
+
+        private readonly JwtBearerTokenSettings jwtBearerTokenSettings;
+
+
+        public AccountController(IOptions<JwtBearerTokenSettings> jwtTokenOptions,UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService)
         {
+            this.jwtBearerTokenSettings = jwtTokenOptions.Value;
             _signInManager = signInManager;
             _userManager = userManager;
             _tokenService = tokenService;
@@ -54,11 +65,39 @@ namespace API.Controllers
 
             if (!result.Succeeded) return Unauthorized(new ApiResponse(401));
 
+            /* return new UserDTO
+             {
+                 Email = user.Email,
+                 Token = GenerateToken(user),
+             };*/
             return new UserDTO
             {
                 Email = user.Email,
-                Token = _tokenService.CreateToken(user),
+                Token = "dupa",
             };
+        }
+
+        public string GenerateToken(AppUser user)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(jwtBearerTokenSettings.SecretKey);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                  
+                    new Claim(ClaimTypes.Email, user.Email)
+                }),
+
+                Expires = DateTime.UtcNow.AddSeconds(jwtBearerTokenSettings.ExpiryTimeInSeconds),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                Audience = jwtBearerTokenSettings.Audience,
+                Issuer = jwtBearerTokenSettings.Issuer
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
 
 
