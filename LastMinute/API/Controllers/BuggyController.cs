@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
+    [Authorize]
+    [Route("api/buggy")]
     [ApiController]
     public class BuggyController : ControllerBase
     {
@@ -16,9 +17,8 @@ namespace API.Controllers
             _context = context;
         }
 
-
+       
         [HttpGet("testauth")]
-        [Authorize]
         public ActionResult<string> GetSecretText()
         {
             return "secret stuff";

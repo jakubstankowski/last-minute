@@ -26,7 +26,7 @@ namespace API.Controllers
         private readonly JwtBearerTokenSettings jwtBearerTokenSettings;
 
 
-        public AccountController(IOptions<JwtBearerTokenSettings> jwtTokenOptions,UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService)
+        public AccountController(IOptions<JwtBearerTokenSettings> jwtTokenOptions, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService)
         {
             this.jwtBearerTokenSettings = jwtTokenOptions.Value;
             _signInManager = signInManager;
@@ -73,7 +73,7 @@ namespace API.Controllers
             return new UserDTO
             {
                 Email = user.Email,
-                Token = "dupa",
+                Token = GenerateToken(user),
             };
         }
 
@@ -86,7 +86,7 @@ namespace API.Controllers
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                  
+
                     new Claim(ClaimTypes.Email, user.Email)
                 }),
 
