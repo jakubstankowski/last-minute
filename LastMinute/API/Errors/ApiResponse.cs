@@ -15,7 +15,6 @@ namespace API.Errors
 
         private string GetDefaultMessageForStatusCode(int statusCode)
         {
-            Console.WriteLine(statusCode);
 
             return statusCode switch
             {
