@@ -83,7 +83,7 @@ namespace API.Controllers
                     new Claim(ClaimTypes.Email, identityUser.Email)
                 }),
 
-                Expires = DateTime.UtcNow.AddSeconds(jwtBearerTokenSettings.ExpiryTimeInSeconds),
+                Expires = DateTime.Now.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
                 Audience = jwtBearerTokenSettings.Audience,
                 Issuer = jwtBearerTokenSettings.Issuer
