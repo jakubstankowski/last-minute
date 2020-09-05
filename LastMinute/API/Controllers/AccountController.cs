@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using API.Configuration;
 using API.DTO;
 using API.Errors;
+using API.Extenions;
 using Core.Entities;
 using Core.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -68,6 +70,19 @@ namespace API.Controllers
             {
                 Email = user.Email,
                 Token = GenerateToken(user),
+            };
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<ActionResult<UserDTO>> GetCurrentUser()
+        {
+            var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
+
+            return new UserDTO
+            {
+                Email = user.Email,
+                Token = GenerateToken(user)
             };
         }
 
