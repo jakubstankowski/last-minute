@@ -14,7 +14,6 @@ using Core.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Infrastructure.Services;
 using API.Configuration;
 
 namespace API
@@ -34,7 +33,7 @@ namespace API
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddScoped<IHolidayPreferencesRepo, HolidayPreferencesRepo>();
             services.AddScoped<IHolidayOffersRepo, HolidayOffersRepo>();
-            services.AddScoped<ITokenService, TokenService>();
+          
 
             services.AddControllers();
 
@@ -71,19 +70,6 @@ namespace API
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                 };
             });
-            /* services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                 .AddJwtBearer(options =>
-                 {
-                     options.RequireHttpsMetadata = false;
-                     options.TokenValidationParameters = new TokenValidationParameters
-                     {
-                         ValidateIssuerSigningKey = true,
-                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Token:Key"])),
-                         ValidateIssuer = false,
-                         ValidateAudience = false
-                     };
-                 });*/
-
 
         }
 

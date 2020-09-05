@@ -20,18 +20,16 @@ namespace API.Controllers
     public class AccountController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;
-        private readonly ITokenService _tokenService;
         private readonly SignInManager<AppUser> _signInManager;
-
         private readonly JwtBearerTokenSettings jwtBearerTokenSettings;
 
 
-        public AccountController(IOptions<JwtBearerTokenSettings> jwtTokenOptions, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService)
+        public AccountController(IOptions<JwtBearerTokenSettings> jwtTokenOptions, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             this.jwtBearerTokenSettings = jwtTokenOptions.Value;
             _signInManager = signInManager;
             _userManager = userManager;
-            _tokenService = tokenService;
+          
         }
 
         [HttpPost("register")]
@@ -49,7 +47,7 @@ namespace API.Controllers
 
             return new UserDTO
             {
-                Token = _tokenService.CreateToken(user),
+                Token = GenerateToken(user),
                 Email = user.Email
             };
         }
@@ -65,11 +63,7 @@ namespace API.Controllers
 
             if (!result.Succeeded) return Unauthorized(new ApiResponse(401));
 
-            /* return new UserDTO
-             {
-                 Email = user.Email,
-                 Token = GenerateToken(user),
-             };*/
+           
             return new UserDTO
             {
                 Email = user.Email,
@@ -77,7 +71,7 @@ namespace API.Controllers
             };
         }
 
-        public string GenerateToken(AppUser user)
+        public string GenerateToken(IdentityUser identityUser)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(jwtBearerTokenSettings.SecretKey);
@@ -86,8 +80,7 @@ namespace API.Controllers
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-
-                    new Claim(ClaimTypes.Email, user.Email)
+                    new Claim(ClaimTypes.Email, identityUser.Email)
                 }),
 
                 Expires = DateTime.UtcNow.AddSeconds(jwtBearerTokenSettings.ExpiryTimeInSeconds),
