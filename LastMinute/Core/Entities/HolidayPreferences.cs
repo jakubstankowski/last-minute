@@ -19,8 +19,8 @@ namespace Core.Entities
         [Required]
         public int MaxPrice { get; set; }
 
-        public AppUser AppUser{get; set;}
+        public AppUser AppUser { get; set; }
 
-      /*  public string AppUserId { get; set; }*/
+        public string AppUserId { get; set; }
     }
 }

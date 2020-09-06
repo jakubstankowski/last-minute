@@ -10,11 +10,14 @@ namespace Infrastructure.Identity
         {
         }
 
-        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AppUser>()
-                .HasOne(p => p.AppUserId)
-                .WithMany(b => b.HolidayPreferences);
-        }*/
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<HolidayPreferences>()
+                .HasOne(p => p.AppUser)
+                .WithMany(b => b.HolidayPreferences)
+                .HasForeignKey(p => p.AppUserId);
+        }
     }
 }

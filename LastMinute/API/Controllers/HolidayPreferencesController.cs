@@ -30,11 +30,11 @@ namespace API.Controllers
 
 
         // GET: api/HolidayPreferences
-      
+
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<HolidayPreferencesToReturnDTO>>> GetPreferences()
         {
-          var preferences = await _repo.GetHolidayPreferencesAsync();
+            var preferences = await _repo.GetHolidayPreferencesAsync();
 
             return Ok(_mapper
                 .Map<IReadOnlyList<HolidayPreferences>, IReadOnlyList<HolidayPreferencesToReturnDTO>>(preferences));
@@ -62,17 +62,28 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult> PostAsync(HolidayPreferences holidayPreferences)
         {
-            var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
+            var user = await _userManager.FindByIdAsync(holidayPreferences.AppUserId);
+
+            //var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
             if (user == null)
             {
                 return NotFound(new ApiResponse(404));
             }
 
+            // Object reference not set to an instance of an object.
+            foreach (HolidayPreferences preferences in user.HolidayPreferences)
+            {
+                Console.WriteLine("preferences:");
+                Console.WriteLine(preferences);
+            }
 
-            // TODO ERROR  Object reference not set to an instance of an object.
+            // Object reference not set to an instance of an object.
+
             user.HolidayPreferences.Add(holidayPreferences);
-             _repo.CreateHolidayPreference(holidayPreferences);
-             _repo.SaveChanges();
+
+
+            /* _repo.CreateHolidayPreference(holidayPreferences);
+             _repo.SaveChanges();*/
 
             return Ok();
         }
