@@ -65,11 +65,12 @@ namespace API.Controllers
 
             if (!result.Succeeded) return Unauthorized(new ApiResponse(401));
 
+
            
             return new UserDTO
             {
                 Email = user.Email,
-                Token = GenerateToken(user),
+                Token = GenerateToken(user)
             };
         }
 

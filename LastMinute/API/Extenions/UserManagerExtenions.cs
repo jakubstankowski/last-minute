@@ -12,13 +12,6 @@ namespace API.Extenions
     public static class UserManagerExtenions
     {
 
-        public static async Task<AppUser> FindByUserByClaimsPrincipleWithHolidayPreferencesAsync(this UserManager<AppUser> input, ClaimsPrincipal user)
-        {
-            var email = user?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
-
-            return await input.Users.Include(x => x.HolidayPreferences).SingleOrDefaultAsync(x => x.Email == email);
-        }
-
         public static async Task<AppUser> FindByEmailFromClaimsPrinciple(this UserManager<AppUser> input, ClaimsPrincipal user)
         {
             var email = user?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;

@@ -30,10 +30,11 @@ namespace API.Controllers
 
 
         // GET: api/HolidayPreferences
+      
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<HolidayPreferencesToReturnDTO>>> GetPreferences()
         {
-            var preferences = await _repo.GetHolidayPreferencesAsync();
+          var preferences = await _repo.GetHolidayPreferencesAsync();
 
             return Ok(_mapper
                 .Map<IReadOnlyList<HolidayPreferences>, IReadOnlyList<HolidayPreferencesToReturnDTO>>(preferences));
@@ -67,7 +68,7 @@ namespace API.Controllers
                 return NotFound(new ApiResponse(404));
             }
 
-            user.HolidayPreferences = holidayPreferences;
+            user.HolidayPreferences.Add(holidayPreferences);
             await _userManager.UpdateAsync(user);
             return Ok();
         }
