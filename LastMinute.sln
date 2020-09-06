@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "LastMinute\API\API.c
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "LastMinute\Infrastructure\Infrastructure.csproj", "{6D152F45-C105-4870-AE7E-E8B45CB6CB9A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtAuthSampleAPI", "..\..\INNE\C#\Core\AspNetCore-Identity\JwtAuthSample\JwtAuthSampleAPI\JwtAuthSampleAPI.csproj", "{EEED383F-DCB3-465C-A78A-157F309E6844}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatingApp.API", "..\..\INNE\C#\Core\DatingApp30\DatingApp.API\DatingApp.API.csproj", "{D6E4AE70-7631-4ADB-9EDC-2FB7F560F355}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{6D152F45-C105-4870-AE7E-E8B45CB6CB9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D152F45-C105-4870-AE7E-E8B45CB6CB9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D152F45-C105-4870-AE7E-E8B45CB6CB9A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EEED383F-DCB3-465C-A78A-157F309E6844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEED383F-DCB3-465C-A78A-157F309E6844}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EEED383F-DCB3-465C-A78A-157F309E6844}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EEED383F-DCB3-465C-A78A-157F309E6844}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6E4AE70-7631-4ADB-9EDC-2FB7F560F355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6E4AE70-7631-4ADB-9EDC-2FB7F560F355}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6E4AE70-7631-4ADB-9EDC-2FB7F560F355}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6E4AE70-7631-4ADB-9EDC-2FB7F560F355}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

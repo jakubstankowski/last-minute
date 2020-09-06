@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.DTO;
 using API.Errors;
+using API.Extenions;
 using AutoMapper;
 using Core.Entities;
 using Core.Interface;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -14,11 +17,13 @@ namespace API.Controllers
     [ApiController]
     public class HolidayPreferencesController : ControllerBase
     {
+        private readonly UserManager<AppUser> _userManager;
         private IHolidayPreferencesRepo _repo;
         private readonly IMapper _mapper;
 
-        public HolidayPreferencesController(IHolidayPreferencesRepo repo, IMapper mapper)
+        public HolidayPreferencesController(IHolidayPreferencesRepo repo, IMapper mapper, UserManager<AppUser> userManager)
         {
+            _userManager = userManager;
             _repo = repo;
             _mapper = mapper;
         }
@@ -41,7 +46,7 @@ namespace API.Controllers
         public async Task<ActionResult<HolidayPreferencesToReturnDTO>> GetPreferencesById(int id)
         {
             var preferences = await _repo.GetHolidayPreferenceByIdAsync(id);
-            if(preferences == null)
+            if (preferences == null)
             {
                 return NotFound(new ApiResponse(404));
             }
@@ -49,14 +54,21 @@ namespace API.Controllers
             return _mapper.Map<HolidayPreferences, HolidayPreferencesToReturnDTO>(preferences);
         }
 
-     
+
 
         // POST: api/HolidayPreferences
+        [Authorize]
         [HttpPost]
-        public ActionResult Post(HolidayPreferences holidayPreferences)
+        public async Task<ActionResult> PostAsync(HolidayPreferences holidayPreferences)
         {
-            _repo.CreateHolidayPreference(holidayPreferences);
-            _repo.SaveChanges();
+            var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
+            if (user == null)
+            {
+                return NotFound(new ApiResponse(404));
+            }
+
+            user.HolidayPreferences = holidayPreferences;
+            await _userManager.UpdateAsync(user);
             return Ok();
         }
 

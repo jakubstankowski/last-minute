@@ -21,7 +21,6 @@ namespace Core.Entities
 
         public AppUser AppUser{get; set;}
 
-        [Required]
         public string AppUserId { get; set; }
     }
 }
