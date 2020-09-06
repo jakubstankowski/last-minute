@@ -68,8 +68,12 @@ namespace API.Controllers
                 return NotFound(new ApiResponse(404));
             }
 
+
+            // TODO ERROR  Object reference not set to an instance of an object.
             user.HolidayPreferences.Add(holidayPreferences);
-            await _userManager.UpdateAsync(user);
+             _repo.CreateHolidayPreference(holidayPreferences);
+             _repo.SaveChanges();
+
             return Ok();
         }
 
