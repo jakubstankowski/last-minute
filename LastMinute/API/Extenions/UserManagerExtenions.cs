@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Core.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +19,19 @@ namespace API.Extenions
 
             return await input.Users.SingleOrDefaultAsync(x => x.Email == email);
         }
+        public static string FindByIdFromClaimsPrinciple(this HttpContext context)
+        {
+            if(context.User == null)
+            {
+                return "nima";
+            }
+
+            return context.User.Claims.Single(u => u.Type == "id").Value;
+
+        }
+
+
+      
 
 
     }

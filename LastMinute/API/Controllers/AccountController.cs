@@ -96,7 +96,8 @@ namespace API.Controllers
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Email, identityUser.Email)
+                    new Claim(ClaimTypes.Email, identityUser.Email),
+                     new Claim("id", identityUser.Id)
                 }),
 
                 Expires = DateTime.Now.AddDays(7),

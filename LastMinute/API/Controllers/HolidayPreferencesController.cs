@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using API.DTO;
 using API.Errors;
@@ -7,9 +8,12 @@ using API.Extenions;
 using AutoMapper;
 using Core.Entities;
 using Core.Interface;
+using Infrastructure.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
@@ -17,12 +21,14 @@ namespace API.Controllers
     [ApiController]
     public class HolidayPreferencesController : ControllerBase
     {
+        private readonly AppIdentityDbContext _userContext;
         private readonly UserManager<AppUser> _userManager;
         private IHolidayPreferencesRepo _repo;
         private readonly IMapper _mapper;
 
-        public HolidayPreferencesController(IHolidayPreferencesRepo repo, IMapper mapper, UserManager<AppUser> userManager)
+        public HolidayPreferencesController(IHolidayPreferencesRepo repo, IMapper mapper, UserManager<AppUser> userManager, AppIdentityDbContext userContext)
         {
+            _userContext = userContext;
             _userManager = userManager;
             _repo = repo;
             _mapper = mapper;
@@ -32,17 +38,24 @@ namespace API.Controllers
         // GET: api/HolidayPreferences
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<HolidayPreferencesToReturnDTO>>> GetPreferences()
+        public async Task<ActionResult<HolidayPreferences[]>> GetPreferences()
         {
-            var preferences = await _repo.GetHolidayPreferencesAsync();
+            try
+            {
+                var userId = HttpContext.FindByIdFromClaimsPrinciple();
+                return await _repo.GetHolidayPreferencesAsync(userId);
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database connection failed&quot");
 
-            return Ok(_mapper
-                .Map<IReadOnlyList<HolidayPreferences>, IReadOnlyList<HolidayPreferencesToReturnDTO>>(preferences));
+            }
+
         }
 
 
 
-        // GET: api/preferences/5
+      /*  // GET: api/preferences/5
         [HttpGet("{id}")]
         public async Task<ActionResult<HolidayPreferencesToReturnDTO>> GetPreferencesById(int id)
         {
@@ -53,7 +66,7 @@ namespace API.Controllers
             }
 
             return _mapper.Map<HolidayPreferences, HolidayPreferencesToReturnDTO>(preferences);
-        }
+        }*/
 
 
 
@@ -62,24 +75,28 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult> PostAsync(HolidayPreferences holidayPreferences)
         {
-            var user = await _userManager.FindByIdAsync(holidayPreferences.AppUserId);
+            /*var userId = await _userManager.FindByIdAsync(holidayPreferences.AppUserId);
+            Console.WriteLine(user.HolidayPreferences);
 
-            //var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
-            if (user == null)
+            foreach(HolidayPreferences preference2 in user.HolidayPreferences)
             {
-                return NotFound(new ApiResponse(404));
+                Console.WriteLine(preference2);
             }
+            Console.WriteLine(user.Id);*/
+          /*  var userContext = _userContext.Users.ToList();
 
-            // Object reference not set to an instance of an object.
-            foreach (HolidayPreferences preferences in user.HolidayPreferences)
+            var preferences = _userContext.Users.Include(h => h.HolidayPreferences).FirstOrDefault(us => us.Id == user.Id).HolidayPreferences;
+            //Console.WriteLine(preferences.Id);
+
+            foreach(HolidayPreferences preference in preferences)
             {
-                Console.WriteLine("preferences:");
-                Console.WriteLine(preferences);
-            }
-
+                Console.WriteLine(preference.Title);      
+            }*/
+           
+           
             // Object reference not set to an instance of an object.
 
-            user.HolidayPreferences.Add(holidayPreferences);
+           // user.HolidayPreferences.Add(holidayPreferences);
 
 
             /* _repo.CreateHolidayPreference(holidayPreferences);

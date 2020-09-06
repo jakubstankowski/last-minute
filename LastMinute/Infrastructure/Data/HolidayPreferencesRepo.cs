@@ -3,16 +3,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interface;
+using Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
     public class HolidayPreferencesRepo : IHolidayPreferencesRepo
     {
+        private readonly AppIdentityDbContext _userContext;
         private DataContext _context;
 
-        public HolidayPreferencesRepo(DataContext context)
+
+        public HolidayPreferencesRepo(DataContext context, AppIdentityDbContext userContext)
         {
+            _userContext = userContext;
             _context = context;
         }
 
@@ -21,9 +25,13 @@ namespace Infrastructure.Data
             return await _context.HolidayPreferences.FindAsync(id);
         }
 
-        public async Task<IReadOnlyList<HolidayPreferences>> GetHolidayPreferencesAsync()
+        public async Task<HolidayPreferences[]> GetHolidayPreferencesAsync(string userId)
         {
-            return await _context.HolidayPreferences.ToListAsync();
+          
+            IQueryable<HolidayPreferences> query = _context.HolidayPreferences.Where(h => h.AppUserId == userId);
+
+            return await query.ToArrayAsync();
+
         }
 
       
@@ -37,5 +45,6 @@ namespace Infrastructure.Data
             return (_context.SaveChanges() >= 0);
         }
 
+      
     }
 }

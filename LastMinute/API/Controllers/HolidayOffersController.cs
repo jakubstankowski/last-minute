@@ -6,6 +6,7 @@ using AutoMapper;
 using Core.Entities;
 using Core.Interface;
 using Microsoft.AspNetCore.Mvc;
+using WebScrapper;
 
 namespace API.Controllers
 {
@@ -27,6 +28,9 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<HolidayOffers>>> GetOffers()
         {
+            Class1 class1 = new Class1();
+            class1.GetHtmlElements();
+
            var offers =  await _repo.GetHolidayOffersAsync();
 
             return Ok(_mapper
