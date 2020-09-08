@@ -39,7 +39,7 @@ namespace API.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<HolidayPreferences>>> GetUserPreferences()
+        public async Task<IActionResult> GetUserPreferences()
         {
             var userId = HttpContext.FindByIdFromClaimsPrinciple();
 
@@ -50,8 +50,10 @@ namespace API.Controllers
 
             var preferences = await _repo.GetUserHolidayPreferencesAsync(userId);
 
-            return Ok(_mapper
-               .Map<IEnumerable<HolidayPreferences>, IEnumerable<HolidayPreferencesToReturnDTO>>(preferences));
+            return Ok(preferences);
+
+           /* return Ok(_mapper
+               .Map<IEnumerable<HolidayPreferencesToReturnDTO>>(preferences));*/
 
         }
 
