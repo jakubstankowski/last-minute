@@ -21,17 +21,13 @@ namespace API.Extenions
         }
         public static string FindByIdFromClaimsPrinciple(this HttpContext context)
         {
-            if(context.User == null)
-            {
-                return "nima";
-            }
 
             return context.User.Claims.Single(u => u.Type == "id").Value;
 
         }
 
 
-      
+
 
 
     }

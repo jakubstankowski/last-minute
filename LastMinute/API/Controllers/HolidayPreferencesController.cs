@@ -37,36 +37,38 @@ namespace API.Controllers
 
         // GET: api/HolidayPreferences
 
+        [Authorize]
         [HttpGet]
-        public async Task<ActionResult<HolidayPreferences[]>> GetPreferences()
+        public async Task<ActionResult<IEnumerable<HolidayPreferences>>> GetUserPreferences()
         {
-            try
-            {
-                var userId = HttpContext.FindByIdFromClaimsPrinciple();
-                return await _repo.GetHolidayPreferencesAsync(userId);
-            }
-            catch (Exception)
-            {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database connection failed&quot");
+            var userId = HttpContext.FindByIdFromClaimsPrinciple();
 
+            if (userId == null)
+            {
+                return NotFound(new ApiResponse(404));
             }
+
+            var preferences = await _repo.GetUserHolidayPreferencesAsync(userId);
+
+            return Ok(_mapper
+               .Map<IEnumerable<HolidayPreferences>, IEnumerable<HolidayPreferencesToReturnDTO>>(preferences));
 
         }
 
 
 
-      /*  // GET: api/preferences/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<HolidayPreferencesToReturnDTO>> GetPreferencesById(int id)
-        {
-            var preferences = await _repo.GetHolidayPreferenceByIdAsync(id);
-            if (preferences == null)
-            {
-                return NotFound(new ApiResponse(404));
-            }
+        /*  // GET: api/preferences/5
+          [HttpGet("{id}")]
+          public async Task<ActionResult<HolidayPreferencesToReturnDTO>> GetPreferencesById(int id)
+          {
+              var preferences = await _repo.GetHolidayPreferenceByIdAsync(id);
+              if (preferences == null)
+              {
+                  return NotFound(new ApiResponse(404));
+              }
 
-            return _mapper.Map<HolidayPreferences, HolidayPreferencesToReturnDTO>(preferences);
-        }*/
+              return _mapper.Map<HolidayPreferences, HolidayPreferencesToReturnDTO>(preferences);
+          }*/
 
 
 
@@ -83,20 +85,20 @@ namespace API.Controllers
                 Console.WriteLine(preference2);
             }
             Console.WriteLine(user.Id);*/
-          /*  var userContext = _userContext.Users.ToList();
+            /*  var userContext = _userContext.Users.ToList();
 
-            var preferences = _userContext.Users.Include(h => h.HolidayPreferences).FirstOrDefault(us => us.Id == user.Id).HolidayPreferences;
-            //Console.WriteLine(preferences.Id);
+              var preferences = _userContext.Users.Include(h => h.HolidayPreferences).FirstOrDefault(us => us.Id == user.Id).HolidayPreferences;
+              //Console.WriteLine(preferences.Id);
 
-            foreach(HolidayPreferences preference in preferences)
-            {
-                Console.WriteLine(preference.Title);      
-            }*/
-           
-           
+              foreach(HolidayPreferences preference in preferences)
+              {
+                  Console.WriteLine(preference.Title);      
+              }*/
+
+
             // Object reference not set to an instance of an object.
 
-           // user.HolidayPreferences.Add(holidayPreferences);
+            // user.HolidayPreferences.Add(holidayPreferences);
 
 
             /* _repo.CreateHolidayPreference(holidayPreferences);

@@ -25,12 +25,9 @@ namespace Infrastructure.Data
             return await _context.HolidayPreferences.FindAsync(id);
         }
 
-        public async Task<HolidayPreferences[]> GetHolidayPreferencesAsync(string userId)
+        public async Task<IEnumerable<HolidayPreferences>> GetUserHolidayPreferencesAsync(string userId)
         {
-          
-            IQueryable<HolidayPreferences> query = _context.HolidayPreferences.Where(h => h.AppUserId == userId);
-
-            return await query.ToArrayAsync();
+            return await _context.HolidayPreferences.Where(h => h.AppUserId == userId).ToListAsync();
 
         }
 
