@@ -31,7 +31,7 @@ namespace API.Controllers
             this.jwtBearerTokenSettings = jwtTokenOptions.Value;
             _signInManager = signInManager;
             _userManager = userManager;
-          
+
         }
 
         [HttpPost("register")]
@@ -66,7 +66,7 @@ namespace API.Controllers
             if (!result.Succeeded) return Unauthorized(new ApiResponse(401));
 
 
-           
+
             return new UserDTO
             {
                 Email = user.Email,
@@ -96,8 +96,8 @@ namespace API.Controllers
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
+                  new Claim(ClaimTypes.NameIdentifier, identityUser.Id.ToString()),
                     new Claim(ClaimTypes.Email, identityUser.Email),
-                     new Claim("id", identityUser.Id)
                 }),
 
                 Expires = DateTime.Now.AddDays(7),

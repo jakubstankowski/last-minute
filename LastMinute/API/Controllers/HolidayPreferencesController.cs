@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using API.DTO;
 using API.Errors;
@@ -41,19 +42,17 @@ namespace API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUserPreferences()
         {
-            var userId = HttpContext.FindByIdFromClaimsPrinciple();
+            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            if (userId == null)
+                if (userId == null)
             {
                 return NotFound(new ApiResponse(404));
             }
 
             var preferences = await _repo.GetUserHolidayPreferencesAsync(userId);
 
-            return Ok(preferences);
-
-           /* return Ok(_mapper
-               .Map<IEnumerable<HolidayPreferencesToReturnDTO>>(preferences));*/
+            return Ok(_mapper
+               .Map<IEnumerable<HolidayPreferences>, IEnumerable<HolidayPreferencesToReturnDTO>>(preferences));
 
         }
 
@@ -77,36 +76,11 @@ namespace API.Controllers
         // POST: api/HolidayPreferences
         [Authorize]
         [HttpPost]
-        public async Task<ActionResult> PostAsync(HolidayPreferences holidayPreferences)
+        public ActionResult PostAsync(HolidayPreferences holidayPreferences)
         {
-            /*var userId = await _userManager.FindByIdAsync(holidayPreferences.AppUserId);
-            Console.WriteLine(user.HolidayPreferences);
-
-            foreach(HolidayPreferences preference2 in user.HolidayPreferences)
-            {
-                Console.WriteLine(preference2);
-            }
-            Console.WriteLine(user.Id);*/
-            /*  var userContext = _userContext.Users.ToList();
-
-              var preferences = _userContext.Users.Include(h => h.HolidayPreferences).FirstOrDefault(us => us.Id == user.Id).HolidayPreferences;
-              //Console.WriteLine(preferences.Id);
-
-              foreach(HolidayPreferences preference in preferences)
-              {
-                  Console.WriteLine(preference.Title);      
-              }*/
-
-
-            // Object reference not set to an instance of an object.
-
-            // user.HolidayPreferences.Add(holidayPreferences);
-
-
-            /* _repo.CreateHolidayPreference(holidayPreferences);
-             _repo.SaveChanges();*/
-
-            return Ok();
+            _repo.CreateUserHolidayPreference(holidayPreferences);
+            _repo.SaveChanges();
+            return Ok(200);
         }
 
         // PUT: api/HolidayPreferences/5

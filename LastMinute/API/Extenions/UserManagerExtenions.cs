@@ -19,16 +19,6 @@ namespace API.Extenions
 
             return await input.Users.SingleOrDefaultAsync(x => x.Email == email);
         }
-        public static string FindByIdFromClaimsPrinciple(this HttpContext context)
-        {
-
-            return context.User.Claims.Single(u => u.Type == "id").Value;
-
-        }
-
-
-
-
-
+       
     }
 }

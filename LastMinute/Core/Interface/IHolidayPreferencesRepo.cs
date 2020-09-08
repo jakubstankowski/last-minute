@@ -12,7 +12,7 @@ namespace Core.Interface
         Task<HolidayPreferences> GetHolidayPreferenceByIdAsync(int id);
         Task<IEnumerable<HolidayPreferences>> GetUserHolidayPreferencesAsync(string id);
 
-        void CreateHolidayPreference(HolidayPreferences preference);
+        void CreateUserHolidayPreference(HolidayPreferences preference);
 
         bool SaveChanges();
     }

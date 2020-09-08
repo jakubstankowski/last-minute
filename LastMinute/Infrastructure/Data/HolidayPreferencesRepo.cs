@@ -32,9 +32,9 @@ namespace Infrastructure.Data
         }
 
       
-        public void CreateHolidayPreference(HolidayPreferences preference)
+        public  void CreateUserHolidayPreference(HolidayPreferences preference)
         {
-            _context.HolidayPreferences.Add(preference);
+             _context.HolidayPreferences.Add(preference);
         }
 
         public bool SaveChanges()
