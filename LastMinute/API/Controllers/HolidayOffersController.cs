@@ -16,13 +16,23 @@ namespace API.Controllers
     {
         private readonly IHolidayOffersRepo _repo;
         private readonly IMapper _mapper;
+        private readonly IItakaWebScrapper _itakaWebScrapper;
 
-        public HolidayOffersController(IHolidayOffersRepo repo, IMapper mapper)
+        public HolidayOffersController(IHolidayOffersRepo repo, IMapper mapper, IItakaWebScrapper itakaWebScrapper)
         {
             _repo = repo;
             _mapper = mapper;
+            _itakaWebScrapper = itakaWebScrapper;
         }
 
+
+        [HttpGet("collect")]
+        public ActionResult TestCollector()
+        {
+            string test = _itakaWebScrapper.GetHtmlElements();
+
+            return Ok(test);
+        }
 
         // GET: api/HolidayOffers
         [HttpGet]

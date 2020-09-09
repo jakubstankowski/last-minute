@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using API.Configuration;
+using WebScrapper;
 
 namespace API
 {
@@ -33,7 +34,7 @@ namespace API
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddScoped<IHolidayPreferencesRepo, HolidayPreferencesRepo>();
             services.AddScoped<IHolidayOffersRepo, HolidayOffersRepo>();
-          
+           services.AddScoped<IItakaWebScrapper, ItakaWebScrapper>();
 
             services.AddControllers();
 
