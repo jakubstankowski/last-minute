@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using Core.Entities;
 using Core.Interface;
@@ -27,7 +28,14 @@ namespace WebScrapper
             var allFindOffersPrice = driver.FindElements(By.CssSelector(".current-price_value"));
 
 
-             foreach (var title in allFindOffersTitle)
+            var zipOffers = allFindOffersTitle.Zip(allFindOffersPrice, (first, second) => first.Text + " " + second.Text);
+
+            foreach(var offer in zipOffers)
+            {
+                Console.WriteLine("offer: " + offer);
+            }
+
+        /*     foreach (var title in allFindOffersTitle)
             {
                 Console.WriteLine("title:");
                 Console.WriteLine(title.Text);
@@ -54,7 +62,7 @@ namespace WebScrapper
             {
                 Console.WriteLine("title in model:");
                 Console.WriteLine(offer.Title);
-            }
+            }*/
             return "taka webscrapper!";
 
         }
