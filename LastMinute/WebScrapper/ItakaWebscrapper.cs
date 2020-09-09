@@ -26,43 +26,29 @@ namespace WebScrapper
             driver.Navigate().GoToUrl("https://www.itaka.pl/last-minute/");
             var allFindOffersTitle = driver.FindElements(By.CssSelector(".header_title a"));
             var allFindOffersPrice = driver.FindElements(By.CssSelector(".current-price_value"));
+            var zipOffers = allFindOffersTitle.Zip(allFindOffersPrice, (n, w) => new { Title = n.Text, Price = w.Text });
 
 
-            var zipOffers = allFindOffersTitle.Zip(allFindOffersPrice, (first, second) => first.Text + " " + second.Text);
-
-            foreach(var offer in zipOffers)
+            foreach (var offer in zipOffers)
             {
-                Console.WriteLine("offer: " + offer);
-            }
-
-        /*     foreach (var title in allFindOffersTitle)
-            {
-                Console.WriteLine("title:");
-                Console.WriteLine(title.Text);
-
-                HolidayOffers offer = new HolidayOffers
+              
+                HolidayOffers holidayOffer = new HolidayOffers
                 {
-                    Title = title.Text,
-                    Price = 0,
+                    Title = offer.Title,
+                    Price = offer.Price,
                     Url = "com",
                     Website = "itaka.pl"
                 };
-                holidayOffers.Add(offer);
+                holidayOffers.Add(holidayOffer);
             }
 
 
-            foreach (var price in allFindOffersPrice)
+
+            foreach (HolidayOffers offer in holidayOffers)
             {
-                Console.WriteLine("price: ");
-                Console.WriteLine(price.Text);
+                Console.WriteLine("offer:");
+                Console.WriteLine(offer.Title + " " + offer.Price);
             }
-
-
-            foreach(HolidayOffers offer in holidayOffers)
-            {
-                Console.WriteLine("title in model:");
-                Console.WriteLine(offer.Title);
-            }*/
             return "taka webscrapper!";
 
         }
