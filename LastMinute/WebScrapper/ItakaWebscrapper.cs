@@ -12,12 +12,13 @@ namespace WebScrapper
 {
     public class ItakaWebScrapper : IItakaWebScrapper
     {
+        private readonly IHolidayOffersRepo _repo;
         IWebDriver driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
-        List<HolidayOffers> holidayOffers = new List<HolidayOffers>();
+       
 
-        public ItakaWebScrapper()
+        public ItakaWebScrapper(IHolidayOffersRepo repo)
         {
-
+            _repo = repo;
         }
 
 
@@ -37,18 +38,15 @@ namespace WebScrapper
                     Title = offer.Title,
                     Price = offer.Price,
                     Url = "com",
-                    Website = "itaka.pl"
+                    Website = "itaka.pl",
+                    Country = "null"
                 };
-                holidayOffers.Add(holidayOffer);
+                _repo.CreateHolidayOffers(holidayOffer);
             }
 
 
 
-            foreach (HolidayOffers offer in holidayOffers)
-            {
-                Console.WriteLine("offer:");
-                Console.WriteLine(offer.Title + " " + offer.Price);
-            }
+        
             return "taka webscrapper!";
 
         }
