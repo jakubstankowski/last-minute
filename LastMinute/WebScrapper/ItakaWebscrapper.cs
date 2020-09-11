@@ -14,7 +14,7 @@ namespace WebScrapper
     {
         private readonly IHolidayOffersRepo _repo;
         IWebDriver driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
-       
+        List<HolidayOffers> holidayOffers = new List<HolidayOffers>();
 
         public ItakaWebScrapper(IHolidayOffersRepo repo)
         {
@@ -29,23 +29,30 @@ namespace WebScrapper
             var allFindOffersPrice = driver.FindElements(By.CssSelector(".current-price_value"));
             var zipOffers = allFindOffersTitle.Zip(allFindOffersPrice, (n, w) => new { Title = n.Text, Price = w.Text });
 
-
-            foreach (var offer in zipOffers)
+            HolidayOffers holidayOffer = new HolidayOffers
             {
-              
-                HolidayOffers holidayOffer = new HolidayOffers
-                {
-                    Title = offer.Title,
-                    Price = offer.Price,
-                    Url = "com",
-                    Website = "itaka.pl",
-                    Country = "null"
-                };
-                _repo.CreateHolidayOffers(holidayOffer);
+                Url = "com",
+                Website = "itaka.pl",
+                Country = "Bialorus"
+            };
+
+
+            foreach (var offerTitle in allFindOffersTitle)
+            {
+                holidayOffer.Title = offerTitle.Text;
+                holidayOffers.Add(holidayOffer);
             }
 
+            foreach(var offerPrice in allFindOffersPrice)
+            {
+                holidayOffer.Price = offerPrice.Text;
+                holidayOffers.Add(holidayOffer);
+            }
 
-
+            foreach(var offer in holidayOffers)
+            {
+                Console.WriteLine(offer.Title + "  " + offer.Price);
+            }
         
             return "taka webscrapper!";
 
