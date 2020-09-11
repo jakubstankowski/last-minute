@@ -87,14 +87,13 @@ namespace API.Controllers
             }
 
             var user = await _userContext.Users.FirstOrDefaultAsync(u => u.Id == userId);
-           
 
             if(user.HolidayPreferences == null)
             {
                 user.HolidayPreferences = new List<HolidayPreferences>();
-                user.HolidayPreferences.Add(holidayPreferences);
-            }
-           
+             }
+
+            user.HolidayPreferences.Add(holidayPreferences);
 
             _userContext.SaveChanges();
             return Ok(200);

@@ -28,7 +28,6 @@ namespace Infrastructure.Data
         public async Task<IEnumerable<HolidayPreferences>> GetUserHolidayPreferencesAsync(string userId)
         {
             return await _context.HolidayPreferences.Where(h => h.AppUserId == userId).ToListAsync();
-
         }
 
       

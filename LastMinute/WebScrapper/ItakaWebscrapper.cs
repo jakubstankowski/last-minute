@@ -13,9 +13,9 @@ namespace WebScrapper
     public class ItakaWebScrapper : IItakaWebScrapper
     {
         private readonly IHolidayOffersRepo _repo;
-        IWebDriver driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
-        List<HolidayOffers> holidayOffers = new List<HolidayOffers>();
-
+        IWebDriver driver = new ChromeDriver();
+        
+      
         public ItakaWebScrapper(IHolidayOffersRepo repo)
         {
             _repo = repo;
@@ -24,12 +24,23 @@ namespace WebScrapper
 
         public string GetHtmlElements()
         {
+
+            driver.Navigate().GoToUrl("https://www.itaka.pl/last-minute/");
             driver.Navigate().GoToUrl("https://www.itaka.pl/last-minute/");
             var allFindOffersTitle = driver.FindElements(By.CssSelector(".header_title a"));
             var allFindOffersPrice = driver.FindElements(By.CssSelector(".current-price_value"));
-            var zipOffers = allFindOffersTitle.Zip(allFindOffersPrice, (n, w) => new { Title = n.Text, Price = w.Text });
+            
+           
 
-            HolidayOffers holidayOffer = new HolidayOffers
+
+            var zipOffers = allFindOffersTitle.Zip(allFindOffersPrice, (n, w) => new { Title = n, Price = w });
+
+
+            foreach(var offer in zipOffers)
+            {
+                Console.WriteLine(offer.Title.Text  + offer.Price.Text);
+            }
+           /* HolidayOffers holidayOffer = new HolidayOffers
             {
                 Url = "com",
                 Website = "itaka.pl",
@@ -53,7 +64,7 @@ namespace WebScrapper
             {
                 Console.WriteLine(offer.Title + "  " + offer.Price);
             }
-        
+        */
             return "taka webscrapper!";
 
         }
