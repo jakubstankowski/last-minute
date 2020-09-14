@@ -20,9 +20,10 @@ namespace Infrastructure.Data
             _userManager = userManager;
         }
 
-        public async Task<HolidayPreferences> GetHolidayPreferenceByIdAsync(int id)
+        public async Task<HolidayPreferences> GetUserHolidayPreferenceByIdAsync(int id, string userId)
         {
-            return await _context.HolidayPreferences.FindAsync(id);
+            return await _context.HolidayPreferences
+                .FirstOrDefaultAsync(u => u.AppUserId == userId && u.Id == id);
         }
 
         public async Task<IEnumerable<HolidayPreferences>> GetUserHolidayPreferencesListAsync(string userId)
@@ -32,11 +33,6 @@ namespace Infrastructure.Data
                 .ToListAsync();
         }
 
-     
-        public  void CreateUserHolidayPreference(HolidayPreferences preference)
-        {
-             _context.HolidayPreferences.Add(preference);
-        }
 
         public void DeleteHolidayPreference(HolidayPreferences preferences)
         {

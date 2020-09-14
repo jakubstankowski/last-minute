@@ -8,6 +8,8 @@ namespace API.DTO
 {
     public class HolidayPreferencesDTO
     {
+        public string Id { get; set; }
+
         [Required]
         public string Title { get; set; }
 

@@ -59,18 +59,18 @@ namespace API.Controllers
 
 
         // GET: api/preferences/5
-        [Authorize]
-        [HttpGet("{id}")]
-        public async Task<ActionResult<HolidayPreferencesToReturnDTO>> GetPreferencesById(int id)
-        {
-            var preferences = await _repo.GetHolidayPreferenceByIdAsync(id);
-            if (preferences == null)
-            {
-                return NotFound(new ApiResponse(404));
-            }
+        /*  [Authorize]
+          [HttpGet("{id}")]
+          public async Task<ActionResult<HolidayPreferencesToReturnDTO>> GetPreferencesById(int id)
+          {
+              var preferences = await _repo.GetHolidayPreferenceByIdAsync(id);
+              if (preferences == null)
+              {
+                  return NotFound(new ApiResponse(404));
+              }
 
-            return _mapper.Map<HolidayPreferences, HolidayPreferencesToReturnDTO>(preferences);
-        }
+              return _mapper.Map<HolidayPreferences, HolidayPreferencesToReturnDTO>(preferences);
+          }*/
 
 
 
@@ -94,9 +94,14 @@ namespace API.Controllers
         }
 
         // PUT: api/HolidayPreferences/5
+        [Authorize]
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(int id, HolidayPreferencesDTO holidayPreferences)
         {
+
+
+
+            return Ok(200);
         }
 
         // DELETE: api/HolidayPreferences/5
@@ -104,14 +109,17 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteHolidayPreferences(int id)
         {
-            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = HttpContext.User
+                .FindFirst(ClaimTypes.NameIdentifier)
+                .Value.ToString();
 
             if (userId == null)
             {
                 return NotFound(new ApiResponse(404));
             }
 
-            var preferences = await _repo.GetHolidayPreferenceByIdAsync(id);
+            var preferences = await _repo.GetUserHolidayPreferenceByIdAsync(id, userId);
+
             if (preferences == null)
             {
                 return NotFound(new ApiResponse(404));
