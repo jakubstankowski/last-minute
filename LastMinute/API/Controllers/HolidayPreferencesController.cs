@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using API.DTO;
 using API.Errors;
-using API.Extenions;
 using AutoMapper;
 using Core.Entities;
 using Core.Interface;
@@ -59,7 +56,7 @@ namespace API.Controllers
 
 
 
-        /*  // GET: api/preferences/5
+          // GET: api/preferences/5
           [HttpGet("{id}")]
           public async Task<ActionResult<HolidayPreferencesToReturnDTO>> GetPreferencesById(int id)
           {
@@ -70,7 +67,7 @@ namespace API.Controllers
               }
 
               return _mapper.Map<HolidayPreferences, HolidayPreferencesToReturnDTO>(preferences);
-          }*/
+          }
 
 
 
@@ -105,10 +102,28 @@ namespace API.Controllers
         {
         }
 
-        // DELETE: api/ApiWithActions/5
+        // DELETE: api/HolidayPreferences/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            if (userId == null)
+            {
+                return NotFound(new ApiResponse(404));
+            }
+            var user = await _userContext.Users.FirstOrDefaultAsync(u => u.Id == userId);
+
+
+            var preferences = await _repo.GetHolidayPreferenceByIdAsync(id);
+            if (preferences == null)
+            {
+                return NotFound(new ApiResponse(404));
+            }
+
+
+
+            return Ok(200);
         }
     }
 }
