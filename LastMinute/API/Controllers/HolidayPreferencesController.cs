@@ -117,13 +117,13 @@ namespace API.Controllers
                 return NotFound(new ApiResponse(404));
             }
 
-            var user = await _userManager.FindByIdAsync(userId);
-
-            if(!user.HolidayPreferences.Any(p => p.Id == id))
+            // TODO : add recognition to get only user holiday preferences
+/*
+            if(user.HolidayPreferences.Where(p => p.Id == id))
             {
                 return Unauthorized();
             }
-           
+           */
             
 
             var preferences = await _repo.GetHolidayPreferenceByIdAsync(id);
