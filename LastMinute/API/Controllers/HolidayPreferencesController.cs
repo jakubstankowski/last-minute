@@ -42,14 +42,14 @@ namespace API.Controllers
         public async Task<IActionResult> GetUserPreferences()
         {
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-           
+
 
             if (userId == null)
             {
                 return NotFound(new ApiResponse(404));
             }
 
-            var preferences = await _repo.GetUserHolidayPreferencesAsync(userId);
+            var preferences = await _repo.GetUserHolidayPreferencesListAsync(userId);
 
             return Ok(_mapper
                .Map<IEnumerable<HolidayPreferences>, IEnumerable<HolidayPreferencesToReturnDTO>>(preferences));
@@ -58,19 +58,19 @@ namespace API.Controllers
 
 
 
-          // GET: api/preferences/5
-          [Authorize]
-          [HttpGet("{id}")]
-          public async Task<ActionResult<HolidayPreferencesToReturnDTO>> GetPreferencesById(int id)
-          {
-              var preferences = await _repo.GetHolidayPreferenceByIdAsync(id);
-              if (preferences == null)
-              {
-                  return NotFound(new ApiResponse(404));
-              }
+        // GET: api/preferences/5
+        [Authorize]
+        [HttpGet("{id}")]
+        public async Task<ActionResult<HolidayPreferencesToReturnDTO>> GetPreferencesById(int id)
+        {
+            var preferences = await _repo.GetHolidayPreferenceByIdAsync(id);
+            if (preferences == null)
+            {
+                return NotFound(new ApiResponse(404));
+            }
 
-              return _mapper.Map<HolidayPreferences, HolidayPreferencesToReturnDTO>(preferences);
-          }
+            return _mapper.Map<HolidayPreferences, HolidayPreferencesToReturnDTO>(preferences);
+        }
 
 
 
@@ -86,13 +86,7 @@ namespace API.Controllers
                 return NotFound(new ApiResponse(404));
             }
 
-            var user = await _userManager.FindByIdAsync(userId);
-
-            if (user.HolidayPreferences == null)
-            {
-                user.HolidayPreferences = new List<HolidayPreferences>();
-             }
-
+            var user = await _repo.GetUserHolidayPreferences(userId);
             user.HolidayPreferences.Add(holidayPreferences);
 
             _userContext.SaveChanges();
@@ -117,14 +111,17 @@ namespace API.Controllers
                 return NotFound(new ApiResponse(404));
             }
 
+
+
+
             // TODO : add recognition to get only user holiday preferences
-/*
-            if(user.HolidayPreferences.Where(p => p.Id == id))
-            {
-                return Unauthorized();
-            }
-           */
-            
+            /*
+                        if(user.HolidayPreferences.Where(p => p.Id == id))
+                        {
+                            return Unauthorized();
+                        }
+                       */
+
 
             var preferences = await _repo.GetHolidayPreferenceByIdAsync(id);
             if (preferences == null)

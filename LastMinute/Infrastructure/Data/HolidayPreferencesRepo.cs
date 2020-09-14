@@ -4,20 +4,20 @@ using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interface;
 using Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
     public class HolidayPreferencesRepo : IHolidayPreferencesRepo
     {
-        private readonly AppIdentityDbContext _userContext;
         private DataContext _context;
+        private readonly UserManager<AppUser> _userManager;
 
-
-        public HolidayPreferencesRepo(DataContext context, AppIdentityDbContext userContext)
+        public HolidayPreferencesRepo(DataContext context, UserManager<AppUser> userManager)
         {
-            _userContext = userContext;
-            _context = context;
+           _context = context;
+            _userManager = userManager;
         }
 
         public async Task<HolidayPreferences> GetHolidayPreferenceByIdAsync(int id)
@@ -25,12 +25,14 @@ namespace Infrastructure.Data
             return await _context.HolidayPreferences.FindAsync(id);
         }
 
-        public async Task<IEnumerable<HolidayPreferences>> GetUserHolidayPreferencesAsync(string userId)
+        public async Task<IEnumerable<HolidayPreferences>> GetUserHolidayPreferencesListAsync(string userId)
         {
-            return await _context.HolidayPreferences.Where(h => h.AppUserId == userId).ToListAsync();
+            return await _context.HolidayPreferences
+                .Where(h => h.AppUserId == userId)
+                .ToListAsync();
         }
 
-      
+     
         public  void CreateUserHolidayPreference(HolidayPreferences preference)
         {
              _context.HolidayPreferences.Add(preference);
@@ -41,10 +43,21 @@ namespace Infrastructure.Data
             _context.HolidayPreferences.Remove(preferences);
         }
 
+        public async Task<AppUser> GetUserHolidayPreferences(string id)
+        {
+          return  await _userManager.Users
+                .Where(u => u.Id == id)
+                .Include(u => u.HolidayPreferences)
+                .FirstOrDefaultAsync();
+        }
+
+
         public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);
         }
+
+    
 
       
     }
