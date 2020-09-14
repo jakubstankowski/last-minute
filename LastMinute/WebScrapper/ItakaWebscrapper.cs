@@ -25,16 +25,17 @@ namespace WebScrapper
             driver.Navigate()
                 .GoToUrl("https://www.itaka.pl/last-minute/");
 
-            var allFindOffersTitle = driver.FindElements(By.CssSelector(".header_title a"));
-            var allFindOffersPrice = driver.FindElements(By.CssSelector(".current-price_value"));
+          
             var oneDivElements = driver.FindElements(By.CssSelector(".offer_object-info.col-xs-12.col-md-8.col-sm-8"));
 
-            Console.WriteLine(allFindOffersPrice);
+           
             
             foreach(var element in oneDivElements)
             {
+                var header = element.FindElement(By.CssSelector(".header_title a")).Text;
+                var opinions = element.FindElement(By.CssSelector(".hotel-opinions")).Text;
 
-                Console.WriteLine(element.Text);
+                Console.WriteLine(header + "   " + opinions);
 
             }
 
