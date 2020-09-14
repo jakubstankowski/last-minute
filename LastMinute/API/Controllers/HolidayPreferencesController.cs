@@ -102,7 +102,7 @@ namespace API.Controllers
         // DELETE: api/HolidayPreferences/5
         [Authorize]
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteHolidayPreferences(int id)
         {
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
@@ -110,18 +110,6 @@ namespace API.Controllers
             {
                 return NotFound(new ApiResponse(404));
             }
-
-
-
-
-            // TODO : add recognition to get only user holiday preferences
-            /*
-                        if(user.HolidayPreferences.Where(p => p.Id == id))
-                        {
-                            return Unauthorized();
-                        }
-                       */
-
 
             var preferences = await _repo.GetHolidayPreferenceByIdAsync(id);
             if (preferences == null)
