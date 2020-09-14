@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using API.DTO;
 using API.Errors;
+using API.Extenions;
 using AutoMapper;
 using Core.Entities;
 using Core.Interface;
@@ -83,9 +85,9 @@ namespace API.Controllers
                 return NotFound(new ApiResponse(404));
             }
 
-            var user = await _userContext.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            var user = await _userManager.FindByIdAsync(userId);
 
-            if(user.HolidayPreferences == null)
+            if (user.HolidayPreferences == null)
             {
                 user.HolidayPreferences = new List<HolidayPreferences>();
              }
@@ -112,8 +114,15 @@ namespace API.Controllers
             {
                 return NotFound(new ApiResponse(404));
             }
-            var user = await _userContext.Users.FirstOrDefaultAsync(u => u.Id == userId);
 
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if(!user.HolidayPreferences.Any(p => p.Id == id))
+            {
+                return Unauthorized();
+            }
+           
+            
 
             var preferences = await _repo.GetHolidayPreferenceByIdAsync(id);
             if (preferences == null)
