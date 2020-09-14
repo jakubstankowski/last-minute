@@ -59,18 +59,25 @@ namespace API.Controllers
 
 
         // GET: api/preferences/5
-        /*  [Authorize]
+          [Authorize]
           [HttpGet("{id}")]
           public async Task<ActionResult<HolidayPreferencesToReturnDTO>> GetPreferencesById(int id)
           {
-              var preferences = await _repo.GetHolidayPreferenceByIdAsync(id);
-              if (preferences == null)
-              {
-                  return NotFound(new ApiResponse(404));
-              }
+            var userId = HttpContext.User
+             .FindFirst(ClaimTypes.NameIdentifier)
+             .Value.ToString();
 
-              return _mapper.Map<HolidayPreferences, HolidayPreferencesToReturnDTO>(preferences);
-          }*/
+            var preferences = await _repo.GetUserHolidayPreferenceByIdAsync(id, userId);
+
+            if (preferences == null)
+            {
+                return NotFound(new ApiResponse(404));
+            }
+
+
+
+            return _mapper.Map<HolidayPreferences, HolidayPreferencesToReturnDTO>(preferences);
+          }
 
 
 

@@ -42,9 +42,8 @@ namespace Infrastructure.Data
         public async Task<AppUser> GetUserHolidayPreferences(string id)
         {
           return  await _userManager.Users
-                .Where(u => u.Id == id)
                 .Include(u => u.HolidayPreferences)
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(u => u.Id == id);
         }
 
 

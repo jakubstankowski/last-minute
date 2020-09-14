@@ -30,7 +30,7 @@ namespace WebScrapper
             var oneDivElements = driver.FindElements(By.CssSelector(".offer_object-info.col-xs-12.col-md-8.col-sm-8"));
 
             Console.WriteLine(allFindOffersPrice);
-
+            
             foreach(var element in oneDivElements)
             {
 
@@ -38,14 +38,7 @@ namespace WebScrapper
 
             }
 
-           
-/*
-            var zipOffers = allFindOffersTitle.Zip(allFindOffersPrice, (n, w) => new { Title = n, Price = w });
-
-          
-
-
-            foreach (var offer in zipOffers)
+          /*  foreach (var offer in zipOffers)
             {
                 HolidayOffers holidayOffer = new HolidayOffers
                 {
@@ -54,10 +47,31 @@ namespace WebScrapper
                     Country = "Bialorus",
                     Title = offer.Title.Text,
                     Price = offer.Price.Text
-            };
+                };
                 _repo.CreateHolidayOffers(holidayOffer);
             }
-        */
+*/
+
+
+            /*
+                        var zipOffers = allFindOffersTitle.Zip(allFindOffersPrice, (n, w) => new { Title = n, Price = w });
+
+
+
+
+                        foreach (var offer in zipOffers)
+                        {
+                            HolidayOffers holidayOffer = new HolidayOffers
+                            {
+                                Url = "com",
+                                Website = "itaka.pl",
+                                Country = "Bialorus",
+                                Title = offer.Title.Text,
+                                Price = offer.Price.Text
+                        };
+                            _repo.CreateHolidayOffers(holidayOffer);
+                        }
+                    */
             return "itaka webscrapper!";
 
         }

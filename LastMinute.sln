@@ -11,10 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "LastMinut
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebScrapper", "LastMinute\WebScrapper\WebScrapper.csproj", "{5E9DDA27-7C2E-43E2-B292-E76AEA317DD9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatingApp.API", "..\..\INNE\C#\Core\DatingApp30\DatingApp.API\DatingApp.API.csproj", "{AE02391C-7A68-4AD5-B78B-18B995C6AEEE}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApiDTO", "..\..\INNE\C#\Core\AspNetCore.Docs\aspnetcore\tutorials\first-web-api\samples\3.0\TodoApiDTO\TodoApiDTO.csproj", "{E8F96BF6-301B-41DB-A8B2-39699038036F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,14 +33,6 @@ Global
 		{5E9DDA27-7C2E-43E2-B292-E76AEA317DD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E9DDA27-7C2E-43E2-B292-E76AEA317DD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E9DDA27-7C2E-43E2-B292-E76AEA317DD9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AE02391C-7A68-4AD5-B78B-18B995C6AEEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AE02391C-7A68-4AD5-B78B-18B995C6AEEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AE02391C-7A68-4AD5-B78B-18B995C6AEEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AE02391C-7A68-4AD5-B78B-18B995C6AEEE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E8F96BF6-301B-41DB-A8B2-39699038036F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8F96BF6-301B-41DB-A8B2-39699038036F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E8F96BF6-301B-41DB-A8B2-39699038036F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E8F96BF6-301B-41DB-A8B2-39699038036F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
