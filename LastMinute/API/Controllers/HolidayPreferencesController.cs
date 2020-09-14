@@ -80,12 +80,7 @@ namespace API.Controllers
         public async Task<IActionResult> PostUserPreferencesAsync(HolidayPreferences holidayPreferences)
         {
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-            if (userId == null)
-            {
-                return NotFound(new ApiResponse(404));
-            }
-
+            
             var user = await _repo.GetUserHolidayPreferences(userId);
             user.HolidayPreferences.Add(holidayPreferences);
 
@@ -112,11 +107,6 @@ namespace API.Controllers
             var userId = HttpContext.User
                 .FindFirst(ClaimTypes.NameIdentifier)
                 .Value.ToString();
-
-            if (userId == null)
-            {
-                return NotFound(new ApiResponse(404));
-            }
 
             var preferences = await _repo.GetUserHolidayPreferenceByIdAsync(id, userId);
 
