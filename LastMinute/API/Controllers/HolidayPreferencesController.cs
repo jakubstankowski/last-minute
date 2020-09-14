@@ -59,6 +59,7 @@ namespace API.Controllers
 
 
           // GET: api/preferences/5
+          [Authorize]
           [HttpGet("{id}")]
           public async Task<ActionResult<HolidayPreferencesToReturnDTO>> GetPreferencesById(int id)
           {
@@ -105,6 +106,7 @@ namespace API.Controllers
         }
 
         // DELETE: api/HolidayPreferences/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
@@ -130,7 +132,8 @@ namespace API.Controllers
                 return NotFound(new ApiResponse(404));
             }
 
-
+            _repo.DeleteHolidayPreference(preferences);
+            _repo.SaveChanges();
 
             return Ok(200);
         }
