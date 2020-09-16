@@ -25,54 +25,31 @@ namespace WebScrapper
             driver.Navigate()
                 .GoToUrl("https://www.itaka.pl/last-minute/");
 
-          
-            var oneDivElements = driver.FindElements(By.CssSelector(".offer_object-info.col-xs-12.col-md-8.col-sm-8"));
 
-           
-            
-            foreach(var element in oneDivElements)
+            var oneDivElements = driver.FindElements(By.CssSelector(".offer_column.offer_column-second.col-sm-9.col-lg-8.clearfix"));
+
+
+
+            foreach (var element in oneDivElements)
             {
-                var header = element.FindElement(By.CssSelector(".header_title a")).Text;
-                var opinions = element.FindElement(By.CssSelector(".hotel-opinions")).Text;
+                var title = element.FindElement(By.CssSelector(".header_title a")).Text;
+                var price = element.FindElement(By.CssSelector(".offer_offer-info-details .current-price_value")).Text;
 
-                Console.WriteLine(header + "   " + opinions);
 
-            }
 
-          /*  foreach (var offer in zipOffers)
-            {
                 HolidayOffers holidayOffer = new HolidayOffers
                 {
                     Url = "com",
                     Website = "itaka.pl",
                     Country = "Bialorus",
-                    Title = offer.Title.Text,
-                    Price = offer.Price.Text
+                    Title = title,
+                    Price = price
                 };
+
                 _repo.CreateHolidayOffers(holidayOffer);
+
             }
-*/
 
-
-            /*
-                        var zipOffers = allFindOffersTitle.Zip(allFindOffersPrice, (n, w) => new { Title = n, Price = w });
-
-
-
-
-                        foreach (var offer in zipOffers)
-                        {
-                            HolidayOffers holidayOffer = new HolidayOffers
-                            {
-                                Url = "com",
-                                Website = "itaka.pl",
-                                Country = "Bialorus",
-                                Title = offer.Title.Text,
-                                Price = offer.Price.Text
-                        };
-                            _repo.CreateHolidayOffers(holidayOffer);
-                        }
-                    */
             return "itaka webscrapper!";
 
         }
