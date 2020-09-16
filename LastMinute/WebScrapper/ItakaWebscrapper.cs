@@ -34,16 +34,17 @@ namespace WebScrapper
             {
                 var title = element.FindElement(By.CssSelector(".header_title a")).Text;
                 var price = element.FindElement(By.CssSelector(".offer_offer-info-details .current-price_value")).Text;
-
+                var url = element.FindElement(By.CssSelector(".offer_link.pull-right")).GetAttribute("href");
+                var country = element.FindElements(By.CssSelector(".header_geo-labels a"))[0].Text;
 
 
                 HolidayOffers holidayOffer = new HolidayOffers
                 {
-                    Url = "com",
                     Website = "itaka.pl",
-                    Country = "Bialorus",
                     Title = title,
-                    Price = price
+                    Country = country,
+                    Price = price,
+                    Url = url,
                 };
 
                 _repo.CreateHolidayOffers(holidayOffer);
