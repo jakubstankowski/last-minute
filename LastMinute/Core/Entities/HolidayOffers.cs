@@ -22,7 +22,7 @@ namespace Core.Entities
         [Required]
         public string Url { get; set; }
 
-     
-
+        [Required]
+        public string ImageUrl { get; set; }
     }
 }
