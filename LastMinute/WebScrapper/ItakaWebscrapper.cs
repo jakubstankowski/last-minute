@@ -4,6 +4,7 @@ using Core.Entities;
 using Core.Interface;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
 namespace WebScrapper
 {
@@ -21,14 +22,17 @@ namespace WebScrapper
 
         public string GetHtmlElements()
         {
-
+            _repo.DeleteHolidayOffersByWebstie("itaka.pl");
             driver.Navigate()
                 .GoToUrl("https://www.itaka.pl/last-minute/");
 
+            driver.Manage().Window.Maximize();
+ /* IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+             js.ExecuteScript("window.scroll({bottom: 0, top: 500, behavior: 'smooth'})");
 
-            var oneDivElements = driver.FindElements(By.CssSelector(".offer_column.offer_column-second.col-sm-9.col-lg-8.clearfix"));
+ */
 
-
+             var oneDivElements = driver.FindElements(By.CssSelector(".offer.clearfix"));
 
             foreach (var element in oneDivElements)
             {
@@ -36,6 +40,7 @@ namespace WebScrapper
                 var price = element.FindElement(By.CssSelector(".offer_offer-info-details .current-price_value")).Text;
                 var url = element.FindElement(By.CssSelector(".offer_link.pull-right")).GetAttribute("href");
                 var country = element.FindElements(By.CssSelector(".header_geo-labels a"))[0].Text;
+                // var imageUrl = element.FindElement(By.CssSelector(".slider-frame .slider-list .slider-slide a img")).GetAttribute("src");
 
 
                 HolidayOffers holidayOffer = new HolidayOffers
@@ -45,8 +50,10 @@ namespace WebScrapper
                     Country = country,
                     Price = price,
                     Url = url,
+                    ImageUrl = "null"
                 };
 
+               
                 _repo.CreateHolidayOffers(holidayOffer);
 
             }

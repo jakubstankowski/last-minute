@@ -36,6 +36,7 @@ namespace Infrastructure.Data
 
         public void DeleteHolidayPreference(HolidayPreferences preferences)
         {
+           
             _context.HolidayPreferences.Remove(preferences);
         }
 

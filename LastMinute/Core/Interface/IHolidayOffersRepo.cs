@@ -8,8 +8,14 @@ namespace Core.Interface
     {
 
         Task<HolidayOffers> GetHolidayOffersByIdAsync(int id);
-        Task<IReadOnlyList<HolidayOffers>> GetHolidayOffersAsync();
+        Task<IEnumerable<HolidayOffers>> GetHolidayOffersAsync();
+
+        IEnumerable<HolidayOffers> GetHolidayOffersByWebsiteAsync(string website);
+
         void CreateHolidayOffers(HolidayOffers offers);
+
+        void DeleteHolidayOffersByWebstie(string website);
+
         bool SaveChanges();
     }
 }

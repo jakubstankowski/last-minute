@@ -26,23 +26,22 @@ namespace API.Controllers
         }
 
 
-        [HttpGet("collect")]
+        [HttpGet("webscrapper")]
         public ActionResult TestCollector()
         {
-            string test = _itakaWebScrapper.GetHtmlElements();
-
-            return Ok(test);
+             _itakaWebScrapper.GetHtmlElements();
+            return Ok(200);
         }
 
         // GET: api/HolidayOffers
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<HolidayOffers>>> GetOffers()
+        public async Task<ActionResult<IEnumerable<HolidayOffers>>> GetOffers()
         {
            
            var offers =  await _repo.GetHolidayOffersAsync();
 
             return Ok(_mapper
-                .Map<IReadOnlyList<HolidayOffers>, IReadOnlyList<HolidayOffersToReturnDTO>>(offers));
+                .Map<IEnumerable<HolidayOffers>, IEnumerable<HolidayOffersToReturnDTO>>(offers));
         }
 
         // GET: api/HolidayOffers/5
