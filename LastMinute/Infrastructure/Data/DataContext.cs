@@ -13,11 +13,10 @@ namespace Infrastructure.Data
 
 
 
-      /*  protected override void OnModelCreating(ModelBuilder modelBuilder)
+       /* protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            modelBuilder.Entity<HolidayPreferences>()
-                .HasOne(p => p.AppUser)
-                .WithMany(b => b.HolidayPreferences);
+
+            options.UseSqlServer(connection, b => b.MigrationsAssembly("Project.Api"))
         }*/
     }
 }

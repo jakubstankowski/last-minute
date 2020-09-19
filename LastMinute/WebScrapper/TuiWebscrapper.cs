@@ -1,4 +1,5 @@
-﻿using Core.Interface;
+﻿using Core.Entities;
+using Core.Interface;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
@@ -16,7 +17,7 @@ namespace WebScrapper
 
         public void CollectWebscrapperData()
         {
-            /* _repo.DeleteHolidayOffersByWebstie("tui.pl");*/
+            _repo.DeleteHolidayOffersByWebstie("tui.pl");
             driver.Navigate()
                 .GoToUrl("https://www.tui.pl/last-minute?pm_source=MENU&pm_name=Last_Minute");
 
@@ -32,9 +33,20 @@ namespace WebScrapper
                 var country = element.FindElement(By.CssSelector(".breadcrumbs__list .breadcrumbs__item span")).Text;
                 var price = element.FindElement(By.CssSelector(".price-value__amount")).Text;
                 var url = element.FindElement(By.CssSelector(".offer-tile.offer-tile--listingOffer.row a")).GetAttribute("href");
-               // var imageUrl = element.FindElement(By.CssSelector(".offer-tile.offer-tile--listingOffer.row a")).GetAttribute("style");
+                // var imageUrl = element.FindElement(By.CssSelector(".offer-tile.offer-tile--listingOffer.row a")).GetAttribute("style");
 
-             
+                HolidayOffers holidayOffer = new HolidayOffers
+                {
+                    Website = "tui.pl",
+                    Title = title,
+                    Country = country,
+                    Price = price,
+                    Url = url,
+                    ImageUrl = "null"
+                };
+
+
+                _repo.CreateHolidayOffers(holidayOffer);
 
 
 

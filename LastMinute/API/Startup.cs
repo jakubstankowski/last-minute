@@ -36,12 +36,15 @@ namespace API
             services.AddScoped<IHolidayOffersRepo, HolidayOffersRepo>();
             services.AddScoped<IItakaWebscrapper, ItakaWebScrapper>();
             services.AddScoped<ITuiWebscrapper, TuiWebscrapper>();
-         
+
 
             services.AddControllers();
 
-            services.AddDbContext<DataContext>(opt => opt.UseSqlServer
-                (Configuration.GetConnectionString("LastMinuteConnection")));
+            services.AddDbContext<DataContext>(opt =>
+            opt.UseSqlServer(
+                Configuration.GetConnectionString("LastMinuteConnection")));
+
+
 
             services.AddDbContext<AppIdentityDbContext>(opt => opt.UseSqlServer
                (Configuration.GetConnectionString("LastMinuteConnection")));
