@@ -1,8 +1,7 @@
 ﻿namespace Core.Interface
 {
-    public interface IItakaWebscrapper
+    public interface ITuiWebscrapper
     {
         public void CollectWebscrapperData();
-
     }
 }

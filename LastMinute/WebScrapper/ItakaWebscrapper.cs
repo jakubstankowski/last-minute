@@ -1,14 +1,11 @@
-﻿using System;
-using System.Linq;
-using Core.Entities;
+﻿using Core.Entities;
 using Core.Interface;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 
 namespace WebScrapper
 {
-    public class ItakaWebScrapper : IItakaWebScrapper
+    public class ItakaWebScrapper : IItakaWebscrapper
     {
         private readonly IHolidayOffersRepo _repo;
         IWebDriver driver = new ChromeDriver();
