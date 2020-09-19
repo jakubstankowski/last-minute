@@ -23,11 +23,11 @@ namespace WebScrapper
 
             driver.Manage().Window.Maximize();
 
-            var oneDivElements = driver.FindElements(By.CssSelector(".offer-tile-wrapper.offer-tile-wrapper--listingOffer"));
+            var elementsContainer = driver.FindElements(By.CssSelector(".offer-tile-wrapper.offer-tile-wrapper--listingOffer"));
 
-            //.offer-tile-body__hotel-name
+           
 
-            foreach (var element in oneDivElements)
+            foreach (var element in elementsContainer)
             {
                 var title = element.FindElement(By.CssSelector(".offer-tile-body__hotel-name")).Text;
                 var country = element.FindElement(By.CssSelector(".breadcrumbs__list .breadcrumbs__item span")).Text;
