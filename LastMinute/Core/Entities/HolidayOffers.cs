@@ -8,7 +8,7 @@ namespace Core.Entities
     public class HolidayOffers : BaseEntity
     {
         [Required]
-         public string Title { get; set; }
+        public string Title { get; set; }
 
         [Required]
         public string Website { get; set; }
@@ -24,5 +24,8 @@ namespace Core.Entities
 
         [Required]
         public string ImageUrl { get; set; }
+
+        [Required]
+        public string Date { get; set; }
     }
 }
