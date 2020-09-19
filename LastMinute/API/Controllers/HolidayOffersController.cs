@@ -32,7 +32,7 @@ namespace API.Controllers
         public ActionResult Webscrapper()
         {
             _tuiWebscrapper.CollectWebscrapperData();
-          // _itakaWebScrapper.CollectWebscrapperData();
+           //_itakaWebScrapper.CollectWebscrapperData();
             return Ok(200);
         }
 

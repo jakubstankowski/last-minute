@@ -34,7 +34,8 @@ namespace WebScrapper
                 var price = element.FindElement(By.CssSelector(".price-value__amount")).Text;
                 var url = element.FindElement(By.CssSelector(".offer-tile.offer-tile--listingOffer.row a")).GetAttribute("href");
                 // var imageUrl = element.FindElement(By.CssSelector(".offer-tile.offer-tile--listingOffer.row a")).GetAttribute("style");
-
+                var date = element.FindElement(By.CssSelector(".offer-tile-body__info-item-text")).Text;
+              
                 HolidayOffers holidayOffer = new HolidayOffers
                 {
                     Website = "tui.pl",
@@ -42,6 +43,7 @@ namespace WebScrapper
                     Country = country,
                     Price = price,
                     Url = url,
+                    Date = date,
                     ImageUrl = "null"
                 };
 

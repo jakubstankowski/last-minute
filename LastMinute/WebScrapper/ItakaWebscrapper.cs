@@ -19,7 +19,7 @@ namespace WebScrapper
 
         public void CollectWebscrapperData()
         {
-            _repo.DeleteHolidayOffersByWebstie("itaka.pl");
+           // _repo.DeleteHolidayOffersByWebstie("itaka.pl");
             driver.Navigate()
                 .GoToUrl("https://www.itaka.pl/last-minute/");
 
@@ -38,9 +38,11 @@ namespace WebScrapper
                 var url = element.FindElement(By.CssSelector(".offer_link.pull-right")).GetAttribute("href");
                 var country = element.FindElements(By.CssSelector(".header_geo-labels a"))[0].Text;
                 // var imageUrl = element.FindElement(By.CssSelector(".slider-frame .slider-list .slider-slide a img")).GetAttribute("src");
+                var date = element.FindElement(By.CssSelector(".offer_date.pull-right span")).Text;
 
 
-                HolidayOffers holidayOffer = new HolidayOffers
+                    System.Console.WriteLine("date : " + date);
+              /*  HolidayOffers holidayOffer = new HolidayOffers
                 {
                     Website = "itaka.pl",
                     Title = title,
@@ -51,7 +53,7 @@ namespace WebScrapper
                 };
 
                
-                _repo.CreateHolidayOffers(holidayOffer);
+                _repo.CreateHolidayOffers(holidayOffer);*/
 
             }
 
