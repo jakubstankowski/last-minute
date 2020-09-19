@@ -20,7 +20,7 @@ namespace WebScrapper
         }
 
 
-        public string GetHtmlElements()
+        public void CollectWebscrapperData()
         {
             _repo.DeleteHolidayOffersByWebstie("itaka.pl");
             driver.Navigate()
@@ -57,8 +57,6 @@ namespace WebScrapper
                 _repo.CreateHolidayOffers(holidayOffer);
 
             }
-
-            return "itaka webscrapper!";
 
         }
 

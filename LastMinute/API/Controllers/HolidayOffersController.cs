@@ -29,7 +29,7 @@ namespace API.Controllers
         [HttpGet("webscrapper")]
         public ActionResult TestCollector()
         {
-             _itakaWebScrapper.GetHtmlElements();
+            _itakaWebScrapper.CollectWebscrapperData();
             return Ok(200);
         }
 
@@ -37,8 +37,8 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<HolidayOffers>>> GetOffers()
         {
-           
-           var offers =  await _repo.GetHolidayOffersAsync();
+
+            var offers = await _repo.GetHolidayOffersAsync();
 
             return Ok(_mapper
                 .Map<IEnumerable<HolidayOffers>, IEnumerable<HolidayOffersToReturnDTO>>(offers));

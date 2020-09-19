@@ -6,7 +6,6 @@ namespace Core.Interface
 {
    public interface IItakaWebScrapper
     {
-        public string GetHtmlElements();
-
+        public void CollectWebscrapperData();
     }
 }
