@@ -36,7 +36,7 @@ namespace API
             services.AddScoped<IHolidayOffersRepo, HolidayOffersRepo>();
             services.AddScoped<IItakaWebscrapper, ItakaWebScrapper>();
             services.AddScoped<ITuiWebscrapper, TuiWebscrapper>();
-
+            services.AddScoped<IWakacjeWebscrapper, WakacjeWebscrapper>();
 
             services.AddControllers();
 
