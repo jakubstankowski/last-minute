@@ -35,8 +35,8 @@ namespace API.Controllers
         public ActionResult Webscrapper()
         {
 
-           /* _tuiWebscrapper.CollectWebscrapperData();
-            _itakaWebScrapper.CollectWebscrapperData();*/
+            _tuiWebscrapper.CollectWebscrapperData();
+            _itakaWebScrapper.CollectWebscrapperData();
             _wakacjeWebscrapper.CollectWebscrapperData();
             return Ok(200);
         }

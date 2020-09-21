@@ -19,7 +19,7 @@ namespace WebScrapper
 
         public void CollectWebscrapperData()
         {
-            // _repo.DeleteHolidayOffersByWebstie("itaka.pl");
+             _repo.DeleteHolidayOffersByWebstie("itaka.pl");
             driver.Navigate()
                 .GoToUrl("https://www.wakacje.pl/lastminute/?samolotem,all-inclusive,tanio");
 
