@@ -25,7 +25,8 @@ namespace WebScrapper
 
             var elementsContainer = driver.FindElements(By.CssSelector(".offer-tile-wrapper.offer-tile-wrapper--listingOffer"));
 
-           
+
+            //TODO handle image url with lazy loading
 
             foreach (var element in elementsContainer)
             {

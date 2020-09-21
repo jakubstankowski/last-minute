@@ -28,6 +28,7 @@ namespace WebScrapper
                         js.ExecuteScript("window.scroll({bottom: 0, top: 500, behavior: 'smooth'})");
             */
 
+            //TODO handle image url with lazy loading
             var elementsContainer = driver.FindElements(By.CssSelector(".offer.clearfix"));
 
             foreach (var element in elementsContainer)
