@@ -19,31 +19,21 @@ namespace WebScrapper
 
         public void CollectWebscrapperData()
         {
-             _repo.DeleteHolidayOffersByWebstie("itaka.pl");
+            _repo.DeleteHolidayOffersByWebstie("itaka.pl");
             driver.Navigate()
-                .GoToUrl("https://www.wakacje.pl/lastminute/?samolotem,all-inclusive,tanio");
+                .GoToUrl("https://www.itaka.pl/last-minute/?view=offerList&package-type=wczasy&adults=2&date-from=2020-09-21&food=allInclusive&promo=lastMinute&order=priceAsc&total-price=0&page=1&transport=flight&currency=PLN");
 
             driver.Manage().Window.Maximize();
-            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-            js.ExecuteScript("window.scroll({bottom: 0, top: 200, behavior: 'smooth'})");
-            js.ExecuteScript("window.scroll({bottom: 200, top: 400, behavior: 'smooth'})");
+            /* IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+                        js.ExecuteScript("window.scroll({bottom: 0, top: 500, behavior: 'smooth'})");
+            */
 
-            js.ExecuteScript("window.scroll({bottom: 400, top: 600, behavior: 'smooth'})");
-            js.ExecuteScript("window.scroll({bottom: 600, top: 800, behavior: 'smooth'})");
-            js.ExecuteScript("window.scroll({bottom: 800, top: 1000, behavior: 'smooth'})");
-            js.ExecuteScript("window.scroll({bottom: 1000, top: 1200, behavior: 'smooth'})");
-
-
-
-            var elementsContainer = driver.FindElements(By.CssSelector(".sc-1d4p1bq-0.hLqJDc.sc-1dp1fmu-0.josQgD"));
+            var elementsContainer = driver.FindElements(By.CssSelector(".offer.clearfix"));
 
             foreach (var element in elementsContainer)
             {
-                var title = element.FindElement(By.CssSelector(".sc-1x38ct5-4.h04pl1-7.gUAzqv")).Text;
-
-                var price = element.FindElement(By.CssSelector(".sc-1icels6-4.uHGsR")).Text;
-                System.Console.WriteLine("title: " + title + "   " + " price: " + price);
-                /* var price = element.FindElement(By.CssSelector(".offer_offer-info-details .current-price_value")).Text;
+                var title = element.FindElement(By.CssSelector(".header_title a")).Text;
+                var price = element.FindElement(By.CssSelector(".offer_offer-info-details .current-price_value")).Text;
                 var url = element.FindElement(By.CssSelector(".offer_link.pull-right")).GetAttribute("href");
                 var country = element.FindElements(By.CssSelector(".header_geo-labels a"))[0].Text;
                 // var imageUrl = element.FindElement(By.CssSelector(".slider-frame .slider-list .slider-slide a img")).GetAttribute("src");
@@ -60,8 +50,8 @@ namespace WebScrapper
                     ImageUrl = "null"
                 };
 
-               
-                _repo.CreateHolidayOffers(holidayOffer);*/
+
+                _repo.CreateHolidayOffers(holidayOffer);
 
             }
 

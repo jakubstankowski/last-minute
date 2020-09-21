@@ -33,7 +33,7 @@ namespace WebScrapper
                 var url = element.GetAttribute("href");
                 var price = element.FindElement(By.CssSelector(".sc-1icels6-4.uHGsR")).Text;
                 var country = element.FindElement(By.CssSelector(".sc-1x38ct5-13.h04pl1-3.dfxezd")).Text;
-                var pictureUrl = element.FindElement(By.CssSelector(".wulc49-1.ldNESj img")).GetAttribute("src");
+                var imageUrl = element.FindElement(By.CssSelector(".wulc49-1.ldNESj img")).GetAttribute("src");
                 var date = element.FindElement(By.CssSelector(".sc-1x38ct5-13.bVpuRE")).Text;
 
                 HolidayOffers holidayOffer = new HolidayOffers
@@ -44,7 +44,7 @@ namespace WebScrapper
                     Price = price,
                     Url = url,
                     Date = date,
-                    ImageUrl = "null"
+                    ImageUrl = imageUrl
                 };
 
                
