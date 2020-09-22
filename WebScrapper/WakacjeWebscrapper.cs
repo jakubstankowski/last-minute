@@ -17,15 +17,26 @@ namespace WebScrapper
         }
         public void CollectWebscrapperData()
         {
-            _repo.DeleteHolidayOffersByWebstie("wakacje.pl");
+           // _repo.DeleteHolidayOffersByWebstie("wakacje.pl");
             driver.Navigate()
                .GoToUrl("https://www.wakacje.pl/lastminute/?samolotem,all-inclusive,tanio");
 
             driver.Manage().Window.Maximize();
+           
 
             //TODO : for get more than 3 offerts, find solution with lazdy loading
 
+
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+                       js.ExecuteScript("window.scroll({bottom: 0, top: document.body.scrollHeight, behavior: 'smooth'})");
+
+
+
+            
+
             var elementsContainer = driver.FindElements(By.CssSelector(".sc-1d4p1bq-0.hLqJDc.sc-1dp1fmu-0.josQgD"));
+
+           driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMinutes(5);
 
             foreach (var element in elementsContainer)
             {
@@ -36,7 +47,9 @@ namespace WebScrapper
                 var imageUrl = element.FindElement(By.CssSelector(".wulc49-1.ldNESj img")).GetAttribute("src");
                 var date = element.FindElement(By.CssSelector(".sc-1x38ct5-13.bVpuRE")).Text;
 
-                HolidayOffers holidayOffer = new HolidayOffers
+
+                Console.WriteLine("title: " + title);
+               /* HolidayOffers holidayOffer = new HolidayOffers
                 {
                     Website = "wakacje.pl",
                     Title = title,
@@ -48,7 +61,7 @@ namespace WebScrapper
                 };
 
                
-                _repo.CreateHolidayOffers(holidayOffer);
+                _repo.CreateHolidayOffers(holidayOffer);*/
 
             }
         }
