@@ -4,5 +4,5 @@
  
  
  ### technology stack:
-  - backend - .NET Core
+  - backend - .NET Core & Selenium Webscrapper
   - frontend - React.js
