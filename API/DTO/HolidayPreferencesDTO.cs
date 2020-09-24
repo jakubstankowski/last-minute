@@ -15,7 +15,7 @@ namespace API.DTO
         public string Title { get; set; }
 
         [Required]
-        public ICollection<HolidayWebsites> HolidayWebsites { get; set; }
+        public ICollection<HolidayWebsites> Websites { get; set; }
 
         [Required]
         public string Country { get; set; }

@@ -23,13 +23,16 @@ namespace Infrastructure.Data
         public async Task<HolidayPreferences> GetUserHolidayPreferenceByIdAsync(int id, string userId)
         {
             return await _context.HolidayPreferences
+                .Include(h => h.Websites)
                 .FirstOrDefaultAsync(u => u.AppUserId == userId && u.Id == id);
+
         }
 
         public async Task<IEnumerable<HolidayPreferences>> GetUserHolidayPreferencesListAsync(string userId)
         {
             return await _context.HolidayPreferences
                 .Where(h => h.AppUserId == userId)
+                .Include(h => h.Websites)
                 .ToListAsync();
         }
 

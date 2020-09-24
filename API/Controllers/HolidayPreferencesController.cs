@@ -83,17 +83,13 @@ namespace API.Controllers
         [HttpPost]
         public async Task<IActionResult> PostUserPreferencesAsync(HolidayPreferences holidayPreferences)
         {
-            foreach(var website in holidayPreferences.HolidayWebsites)
-            {
-                System.Console.WriteLine(website.Website);
-            }
-
-           /* var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+         
+            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             
             var user = await _repo.GetUserHolidayPreferences(userId);
             user.HolidayPreferences.Add(holidayPreferences);
 
-            _userContext.SaveChanges();*/
+            _userContext.SaveChanges();
             return Ok(200);
         }
 
