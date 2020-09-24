@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Core.Entities;
 using Core.Interface;
 using OpenQA.Selenium;
@@ -17,51 +18,48 @@ namespace WebScrapper
         }
         public void CollectWebscrapperData()
         {
-           // _repo.DeleteHolidayOffersByWebstie("wakacje.pl");
+             _repo.DeleteHolidayOffersByWebstie("wakacje.pl");
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMinutes(5);
             driver.Navigate()
                .GoToUrl("https://www.wakacje.pl/lastminute/?samolotem,all-inclusive,tanio");
 
             driver.Manage().Window.Maximize();
-           
+
 
             //TODO : for get more than 3 offerts, find solution with lazdy loading
 
 
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-                       js.ExecuteScript("window.scroll({bottom: 0, top: document.body.scrollHeight, behavior: 'smooth'})");
+            js.ExecuteScript("window.scroll({bottom: 0, top: document.body.scrollHeight, behavior: 'smooth'})");
 
 
-
-            
-
+            Thread.Sleep(1000);
             var elementsContainer = driver.FindElements(By.CssSelector(".sc-1d4p1bq-0.hLqJDc.sc-1dp1fmu-0.josQgD"));
-
-           driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMinutes(5);
 
             foreach (var element in elementsContainer)
             {
+                Thread.Sleep(1000);
                 var title = element.FindElement(By.CssSelector(".sc-1x38ct5-4.h04pl1-7.gUAzqv")).Text;
                 var url = element.GetAttribute("href");
                 var price = element.FindElement(By.CssSelector(".sc-1icels6-4.uHGsR")).Text;
                 var country = element.FindElement(By.CssSelector(".sc-1x38ct5-13.h04pl1-3.dfxezd")).Text;
-                var imageUrl = element.FindElement(By.CssSelector(".wulc49-1.ldNESj img")).GetAttribute("src");
+               // var imageUrl = element.FindElement(By.CssSelector(".wulc49-1.ldNESj img")).GetAttribute("src");
                 var date = element.FindElement(By.CssSelector(".sc-1x38ct5-13.bVpuRE")).Text;
 
 
-                Console.WriteLine("title: " + title);
-               /* HolidayOffers holidayOffer = new HolidayOffers
-                {
-                    Website = "wakacje.pl",
-                    Title = title,
-                    Country = country,
-                    Price = price,
-                    Url = url,
-                    Date = date,
-                    ImageUrl = imageUrl
-                };
+              
+                 HolidayOffers holidayOffer = new HolidayOffers
+                 {
+                     Website = "wakacje.pl",
+                     Title = title,
+                     Country = country,
+                     Price = price,
+                     Url = url,
+                     Date = date,
+                     ImageUrl = "null"
+                 };
 
-               
-                _repo.CreateHolidayOffers(holidayOffer);*/
+                 _repo.CreateHolidayOffers(holidayOffer);
 
             }
         }
