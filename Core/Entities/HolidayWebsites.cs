@@ -6,7 +6,7 @@ namespace Core.Entities
 {
    public class HolidayWebsites : BaseEntity
     {
-        public string Url { get; set; }
+        public string Website { get; set; }
 
         public HolidayPreferences HolidayPreferences { get; set; }
 

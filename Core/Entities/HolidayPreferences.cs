@@ -9,9 +9,6 @@ namespace Core.Entities
         public string Title { get; set; }
 
         [Required]
-        public string Website { get; set; }
-
-        [Required]
         public string Country { get; set; }
 
         [Required]

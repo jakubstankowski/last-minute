@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Entities;
 
 namespace API.DTO
 {
@@ -14,7 +15,7 @@ namespace API.DTO
         public string Title { get; set; }
 
         [Required]
-        public string Website { get; set; }
+        public ICollection<HolidayWebsites> HolidayWebsites { get; set; }
 
         [Required]
         public string Country { get; set; }
