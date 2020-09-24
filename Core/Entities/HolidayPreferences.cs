@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Core.Entities
 {
@@ -22,5 +23,8 @@ namespace Core.Entities
         public AppUser AppUser { get; set; }
 
         public string AppUserId { get; set; }
+
+        public ICollection<HolidayWebsites> HolidayWebsites { get; set; }
+
     }
 }
