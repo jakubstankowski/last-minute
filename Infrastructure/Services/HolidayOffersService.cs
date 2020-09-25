@@ -8,9 +8,13 @@ namespace Infrastructure.Services
 {
     public class HolidayOffersService : IHolidayOffersService
     {
-        public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreferences(IEnumerable<HolidayPreferences> holidayPreferences)
+        public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreferences(IEnumerable<HolidayOffers> holidayOffers, IEnumerable<HolidayPreferences> holidayPreferences)
         {
-            var preferences = holidayPreferences;
+           
+            foreach(var preference in holidayPreferences)
+            {
+
+            }
             
             throw new NotImplementedException();
         }
