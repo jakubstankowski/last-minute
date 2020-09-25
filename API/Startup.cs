@@ -16,6 +16,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using API.Configuration;
 using WebScrapper;
+using Infrastructure.Services;
 
 namespace API
 {
@@ -37,6 +38,8 @@ namespace API
             services.AddScoped<IItakaWebscrapper, ItakaWebScrapper>();
             services.AddScoped<ITuiWebscrapper, TuiWebscrapper>();
             services.AddScoped<IWakacjeWebscrapper, WakacjeWebscrapper>();
+            services.AddScoped<IHolidayOffersService, HolidayOffersService>();
+
 
             services.AddControllers();
 
