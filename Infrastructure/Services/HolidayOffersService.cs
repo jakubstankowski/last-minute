@@ -11,7 +11,10 @@ namespace Infrastructure.Services
     {
         public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreferences(IEnumerable<HolidayOffers> holidayOffers, HolidayPreferences holidayPreference)
         {
-            return holidayOffers; 
+
+            return holidayOffers
+                    .Where(o => o.Price >= holidayPreference.MinPrice && o.Price <= holidayPreference.MaxPrice)
+                    .ToList();
         }
     }
 }
