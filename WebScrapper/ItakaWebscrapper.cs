@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using Core.Entities;
 using Core.Interface;
@@ -48,27 +49,32 @@ namespace WebScrapper
                 var country = element.FindElements(By.CssSelector(".header_geo-labels a"))[0].Text;
                 // var imageUrl = element.FindElement(By.CssSelector(".slider-frame .slider-list .slider-slide a img")).GetAttribute("src");
                 var date = element.FindElement(By.CssSelector(".offer_offer-info-additional.hidden-xs .offer_date.pull-right")).Text;
+               
+
+                 HolidayOffers holidayOffer = new HolidayOffers
+                 {
+                     Website = "itaka.pl",
+                     Title = title,
+                     Country = country,
+                     Price = this.ParsePrice(price),
+                     Url = url,
+                     Date = date,
+                     ImageUrl = "null"
+                 };
 
 
-                HolidayOffers holidayOffer = new HolidayOffers
-                {
-                    Website = "itaka.pl",
-                    Title = title,
-                    Country = country,
-                    Price = 0,
-                    Url = url,
-                    Date = date,
-                    ImageUrl = "null"
-                };
-
-
-                _repo.CreateHolidayOffers(holidayOffer);
+                 _repo.CreateHolidayOffers(holidayOffer);
 
             }
 
         }
 
-
+        public int ParsePrice(string price)
+        {
+            string removeWhiteSpace = String.Concat(price.ToString().Where(c => !Char.IsWhiteSpace(c)));
+            string replaceUnusedContent = removeWhiteSpace.Replace("PLN/os", "");
+            return Int32.Parse(replaceUnusedContent);
+        }
 
     }
 }
