@@ -39,7 +39,7 @@ namespace API
             services.AddScoped<ITuiWebscrapper, TuiWebscrapper>();
             services.AddScoped<IWakacjeWebscrapper, WakacjeWebscrapper>();
             services.AddScoped<IHolidayOffersService, HolidayOffersService>();
-
+            services.AddScoped<IWebscrapperService, WebscrapperService>();
 
             services.AddControllers();
 

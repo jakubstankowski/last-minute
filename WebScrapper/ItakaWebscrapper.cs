@@ -11,12 +11,14 @@ namespace WebScrapper
     public class ItakaWebScrapper : IItakaWebscrapper
     {
         private readonly IHolidayOffersRepo _repo;
+        private readonly IWebscrapperService _webscrapperService;
         IWebDriver driver = new ChromeDriver();
 
 
-        public ItakaWebScrapper(IHolidayOffersRepo repo)
+        public ItakaWebScrapper(IHolidayOffersRepo repo, IWebscrapperService webscrapperService)
         {
             _repo = repo;
+            _webscrapperService = webscrapperService;
         }
 
 
@@ -56,7 +58,7 @@ namespace WebScrapper
                      Website = "itaka.pl",
                      Title = title,
                      Country = country,
-                     Price = this.ParsePrice(price),
+                     Price = _webscrapperService.ParsePrice(price, "PLN/os"),
                      Url = url,
                      Date = date,
                      ImageUrl = "null"
@@ -67,13 +69,6 @@ namespace WebScrapper
 
             }
 
-        }
-
-        public int ParsePrice(string price)
-        {
-            string removeWhiteSpace = String.Concat(price.ToString().Where(c => !Char.IsWhiteSpace(c)));
-            string replaceUnusedContent = removeWhiteSpace.Replace("PLN/os", "");
-            return Int32.Parse(replaceUnusedContent);
         }
 
     }
