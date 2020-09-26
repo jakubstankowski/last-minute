@@ -53,7 +53,7 @@ namespace WebScrapper
                      Website = "wakacje.pl",
                      Title = title,
                      Country = country,
-                     Price = price,
+                     Price = 0,
                      Url = url,
                      Date = date,
                      ImageUrl = "null"

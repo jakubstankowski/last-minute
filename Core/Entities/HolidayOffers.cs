@@ -17,7 +17,7 @@ namespace Core.Entities
         public string Country { get; set; }
 
         [Required]
-        public string Price { get; set; }
+        public int Price { get; set; }
 
         [Required]
         public string Url { get; set; }
