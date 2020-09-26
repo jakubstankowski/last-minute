@@ -24,7 +24,7 @@ namespace WebScrapper
 
         public void CollectWebscrapperData()
         {
-            // _repo.DeleteHolidayOffersByWebstie("itaka.pl");
+             _repo.DeleteHolidayOffersByWebstie("itaka.pl");
 
             driver.Navigate()
                 .GoToUrl("https://www.itaka.pl/last-minute/?view=offerList&package-type=wczasy&adults=2&date-from=2020-09-21&food=allInclusive&promo=lastMinute&order=priceAsc&total-price=0&page=1&transport=flight&currency=PLN");

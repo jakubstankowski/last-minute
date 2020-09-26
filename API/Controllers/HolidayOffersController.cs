@@ -26,14 +26,13 @@ namespace API.Controllers
 
         private readonly IHolidayOffersService _holidayOffersService;
 
-        public HolidayOffersController(IHolidayOffersRepo repo, IMapper mapper, IHolidayPreferencesRepo preferencesRepo, IHolidayOffersService holidayOffersService, IItakaWebscrapper itakaWebscrapper)
+        public HolidayOffersController(IHolidayOffersRepo repo, IMapper mapper, IHolidayPreferencesRepo preferencesRepo, IHolidayOffersService holidayOffersService, IWakacjeWebscrapper wakacjeWebscrapper, IItakaWebscrapper itakaWebscrapper, ITuiWebscrapper tuiWebscrapper)
         {
             _repo = repo;
             _mapper = mapper;
+            _wakacjeWebscrapper = wakacjeWebscrapper;
             _itakaWebScrapper = itakaWebscrapper;
-            /*_itakaWebScrapper = itakaWebScrapper;
             _tuiWebscrapper = tuiWebscrapper;
-            _wakacjeWebscrapper = wakacjeWebscrapper;*/
             _preferencesRepo = preferencesRepo;
             _holidayOffersService = holidayOffersService;
         }
@@ -41,11 +40,10 @@ namespace API.Controllers
         [HttpGet("webscrapper")]
         public ActionResult Webscrapper()
         {
+            _wakacjeWebscrapper.CollectWebscrapperData();
+            _tuiWebscrapper.CollectWebscrapperData();
             _itakaWebScrapper.CollectWebscrapperData();
 
-            /*  _tuiWebscrapper.CollectWebscrapperData();
-              _itakaWebScrapper.CollectWebscrapperData();
-              _wakacjeWebscrapper.CollectWebscrapperData();*/
             return Ok(200);
         }
 

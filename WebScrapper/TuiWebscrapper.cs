@@ -10,11 +10,13 @@ namespace WebScrapper
     public class TuiWebscrapper : ITuiWebscrapper
     {
         private readonly IHolidayOffersRepo _repo;
+        private readonly IWebscrapperService _webscrapperService;
         IWebDriver driver = new ChromeDriver();
 
-        public TuiWebscrapper(IHolidayOffersRepo repo)
+        public TuiWebscrapper(IHolidayOffersRepo repo, IWebscrapperService webscrapperService)
         {
             _repo = repo;
+            _webscrapperService = webscrapperService;
         }
 
         public void CollectWebscrapperData()
@@ -44,7 +46,7 @@ namespace WebScrapper
                 var country = element.FindElement(By.CssSelector(".breadcrumbs__list .breadcrumbs__item span")).Text;
                 var price = element.FindElement(By.CssSelector(".price-value__amount")).Text;
                 var url = element.FindElement(By.CssSelector(".offer-tile.offer-tile--listingOffer.row a")).GetAttribute("href");
-               // var imageUrl = element.FindElement(By.CssSelector(".offer-tile.offer-tile--listingOffer.row a")).GetAttribute("style");
+                // var imageUrl = element.FindElement(By.CssSelector(".offer-tile.offer-tile--listingOffer.row a")).GetAttribute("style");
                 var date = element.FindElement(By.CssSelector(".offer-tile-body__info-item-text")).Text;
 
 
@@ -53,7 +55,7 @@ namespace WebScrapper
                     Website = "tui.pl",
                     Title = title,
                     Country = country,
-                    Price = 0,
+                    Price = _webscrapperService.ParsePrice(price, " "),
                     Url = url,
                     Date = date,
                     ImageUrl = "null"

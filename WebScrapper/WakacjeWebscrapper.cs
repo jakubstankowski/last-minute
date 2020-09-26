@@ -10,15 +10,17 @@ namespace WebScrapper
     public class WakacjeWebscrapper : IWakacjeWebscrapper
     {
         private readonly IHolidayOffersRepo _repo;
+        private readonly IWebscrapperService _webscrapperService;
         IWebDriver driver = new ChromeDriver();
 
-        public WakacjeWebscrapper(IHolidayOffersRepo repo)
+        public WakacjeWebscrapper(IHolidayOffersRepo repo, IWebscrapperService webscrapperService)
         {
             _repo = repo;
+            _webscrapperService = webscrapperService;
         }
         public void CollectWebscrapperData()
         {
-             _repo.DeleteHolidayOffersByWebstie("wakacje.pl");
+            _repo.DeleteHolidayOffersByWebstie("wakacje.pl");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMinutes(5);
             driver.Navigate()
                .GoToUrl("https://www.wakacje.pl/lastminute/?samolotem,all-inclusive,tanio");
@@ -43,23 +45,21 @@ namespace WebScrapper
                 var url = element.GetAttribute("href");
                 var price = element.FindElement(By.CssSelector(".sc-1icels6-4.uHGsR")).Text;
                 var country = element.FindElement(By.CssSelector(".sc-1x38ct5-13.h04pl1-3.dfxezd")).Text;
-               // var imageUrl = element.FindElement(By.CssSelector(".wulc49-1.ldNESj img")).GetAttribute("src");
+                // var imageUrl = element.FindElement(By.CssSelector(".wulc49-1.ldNESj img")).GetAttribute("src");
                 var date = element.FindElement(By.CssSelector(".sc-1x38ct5-13.bVpuRE")).Text;
 
+                HolidayOffers holidayOffer = new HolidayOffers
+                {
+                    Website = "wakacje.pl",
+                    Title = title,
+                    Country = country,
+                    Price = _webscrapperService.ParsePrice(price, "zł"),
+                    Url = url,
+                    Date = date,
+                    ImageUrl = "null"
+                };
 
-              
-                 HolidayOffers holidayOffer = new HolidayOffers
-                 {
-                     Website = "wakacje.pl",
-                     Title = title,
-                     Country = country,
-                     Price = 0,
-                     Url = url,
-                     Date = date,
-                     ImageUrl = "null"
-                 };
-
-                 _repo.CreateHolidayOffers(holidayOffer);
+                _repo.CreateHolidayOffers(holidayOffer);
 
             }
         }
