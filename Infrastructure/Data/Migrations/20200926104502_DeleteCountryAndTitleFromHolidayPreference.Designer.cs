@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200924181145_DeleteHolidayWebsiteFromHolidayPreference")]
-    partial class DeleteHolidayWebsiteFromHolidayPreference
+    [Migration("20200926104502_DeleteCountryAndTitleFromHolidayPreference")]
+    partial class DeleteCountryAndTitleFromHolidayPreference
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -123,19 +123,11 @@ namespace Infrastructure.Data.Migrations
                     b.Property<string>("AppUserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("MaxPrice")
                         .HasColumnType("int");
 
                     b.Property<int>("MinPrice")
                         .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

@@ -11,7 +11,7 @@ namespace Infrastructure.Services
     {
         public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreferences(IEnumerable<HolidayOffers> holidayOffers, HolidayPreferences holidayPreference)
         {
-           return holidayOffers.Where(o => o.Country == holidayPreference.Country).ToList(); 
+            return holidayOffers; 
         }
     }
 }
