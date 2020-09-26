@@ -9,18 +9,9 @@ namespace Infrastructure.Services
 {
     public class HolidayOffersService : IHolidayOffersService
     {
-        public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreferences(IEnumerable<HolidayOffers> holidayOffers, IEnumerable<HolidayPreferences> holidayPreferences)
+        public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreferences(IEnumerable<HolidayOffers> holidayOffers, HolidayPreferences holidayPreference)
         {
-            List<HolidayOffers> foundOffers = new List<HolidayOffers>();
-
-
-            foreach(var preference in holidayPreferences)
-            {
-               var foundOffer =  holidayOffers.Where(o => o.Country == preference.Country).ToList();
-               
-            }
-            
-            throw new NotImplementedException();
+           return holidayOffers.Where(o => o.Country == holidayPreference.Country).ToList(); 
         }
     }
 }

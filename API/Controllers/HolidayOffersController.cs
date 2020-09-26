@@ -73,20 +73,27 @@ namespace API.Controllers
         }
 
         [Authorize]
-        [HttpGet("byuserpreferences")]
-        public async Task<ActionResult<IEnumerable<HolidayOffers>>> GetOffersByUserPreferences()
+        [HttpGet("by-user-preferences/{id}")]
+        public async Task<ActionResult<IEnumerable<HolidayOffers>>> GetOffersByUserPreferencesId(int id)
         {
 
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var user = await _preferencesRepo.GetUserHolidayPreferences(userId);
+            var preferences = await _preferencesRepo.GetUserHolidayPreferenceByIdAsync(id, userId);
+
+            if (preferences == null)
+            {
+                return NotFound(new ApiResponse(404));
+            }
+
             var offers = await _repo.GetHolidayOffersAsync();
 
-            var offersByUserHolidayPreferences = _holidayOffersService.GetHolidayOffersByUserHolidayPreferences(offers, user.HolidayPreferences);
+            var offersByUserHolidayPreferences = _holidayOffersService.GetHolidayOffersByUserHolidayPreferences(offers, preferences);
 
 
             return Ok(offersByUserHolidayPreferences);
 
         }
+
 
         // POST: api/HolidayOffers
         [HttpPost]
