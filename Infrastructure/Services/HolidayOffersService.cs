@@ -12,9 +12,16 @@ namespace Infrastructure.Services
         public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreferences(IEnumerable<HolidayOffers> holidayOffers, HolidayPreferences holidayPreference)
         {
 
+            foreach(var website in holidayPreference.Websites)
+            {
+                Console.WriteLine("website: "+ website.Website);
+            }
+
             return holidayOffers
                     .Where(o => o.Price >= holidayPreference.MinPrice && o.Price <= holidayPreference.MaxPrice)
                     .ToList();
+
+
         }
     }
 }

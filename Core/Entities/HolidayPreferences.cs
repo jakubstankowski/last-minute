@@ -7,16 +7,17 @@ namespace Core.Entities
     {
 
 
-        [Required]
+       
         public int MinPrice { get; set; }
 
-        [Required]
+       
         public int MaxPrice { get; set; }
 
         public AppUser AppUser { get; set; }
 
         public string AppUserId { get; set; }
 
+        [Required]
         public ICollection<HolidayWebsites> Websites { get; set; }
 
     }
