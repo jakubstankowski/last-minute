@@ -20,5 +20,11 @@ namespace Core.Entities
         [Required]
         public ICollection<HolidayWebsites> Websites { get; set; }
 
+
+        public HolidayPreferences()
+        {
+            MinPrice = 0;
+            MaxPrice = 2500;
+        }
     }
 }

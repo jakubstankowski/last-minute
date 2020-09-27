@@ -19,6 +19,7 @@ namespace Infrastructure.Services
 
             return holidayOffers
                     .Where(o => o.Price >= holidayPreference.MinPrice && o.Price <= holidayPreference.MaxPrice)
+                    .OrderBy(o => o.Price)
                     .ToList();
 
 
