@@ -26,13 +26,13 @@ namespace API.Controllers
 
         private readonly IHolidayOffersService _holidayOffersService;
 
-        public HolidayOffersController(IHolidayOffersRepo repo, IMapper mapper, IHolidayPreferencesRepo preferencesRepo, IHolidayOffersService holidayOffersService)
+        public HolidayOffersController(IHolidayOffersRepo repo, IMapper mapper, IHolidayPreferencesRepo preferencesRepo, IHolidayOffersService holidayOffersService, IItakaWebscrapper itakaWebscrapper, ITuiWebscrapper tuiWebscrapper, IWakacjeWebscrapper wakacjeWebscrapper)
         {
             _repo = repo;
             _mapper = mapper;
-          /*  _wakacjeWebscrapper = wakacjeWebscrapper;
+            _wakacjeWebscrapper = wakacjeWebscrapper;
             _itakaWebScrapper = itakaWebscrapper;
-            _tuiWebscrapper = tuiWebscrapper;*/
+            _tuiWebscrapper = tuiWebscrapper;
             _preferencesRepo = preferencesRepo;
             _holidayOffersService = holidayOffersService;
         }
@@ -99,7 +99,6 @@ namespace API.Controllers
             var offers = await _repo.GetHolidayOffersAsync();
 
             var offersByUserHolidayPreferences = _holidayOffersService.GetHolidayOffersByUserHolidayPreferences(offers, preferences);
-
 
             return Ok(offersByUserHolidayPreferences);
 
