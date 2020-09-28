@@ -11,30 +11,23 @@ namespace Infrastructure.Services
     {
         public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreferences(IEnumerable<HolidayOffers> holidayOffers, HolidayPreferences holidayPreference)
         {
+            List<HolidayOffers> offers = new List<HolidayOffers>();
 
-          return holidayOffers
-                .Where(o => o.Price >= holidayPreference.MinPrice && o.Price <= holidayPreference.MaxPrice)
-                .OrderBy(o => o.Price)
-                .ToList();
-            /* List<HolidayOffers> offers = new List<HolidayOffers>();
 
-             foreach(var website in holidayPreference.Websites)
-             {
-                 Console.WriteLine("website: "+ website.Website);
-                 offers = holidayOffers
-                     .Where(o => o.Website == website.Website)
-                     .Where(o => o.Price >= holidayPreference.MinPrice && o.Price <= holidayPreference.MaxPrice)
-                     .OrderBy(o => o.Price)
-                     .ToList();
-             }
+            foreach (var website in holidayPreference.Websites)
+            {
+                foreach (var offer in holidayOffers)
+                {
+                    if(offer.Website == website.Website && offer.Price >= holidayPreference.MinPrice && offer.Price <= holidayPreference.MaxPrice)
+                    {
+                         offers.Add(offer);
+                    }
+                }
+            }
 
-             return offers;*/
 
-            /* return holidayOffers
-                     .Where(o => o.Price >= holidayPreference.MinPrice && o.Price <= holidayPreference.MaxPrice)
-                     .OrderBy(o => o.Price)
-                     .ToList();*/
 
+            return offers;
 
         }
     }

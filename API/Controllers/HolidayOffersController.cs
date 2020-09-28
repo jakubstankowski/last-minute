@@ -8,7 +8,7 @@ using Core.Entities;
 using Core.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
+using WebScrapper;
 
 namespace API.Controllers
 {
@@ -21,8 +21,6 @@ namespace API.Controllers
         private readonly IHolidayPreferencesRepo _preferencesRepo;
         private readonly IHolidayOffersService _holidayOffersService;
         private readonly IGenericWebscrapper _genericWebscrapper;
-
-
         public HolidayOffersController(IHolidayOffersRepo repo, IMapper mapper, IHolidayPreferencesRepo preferencesRepo, IHolidayOffersService holidayOffersService, IGenericWebscrapper genericWebscrapper)
         {
             _repo = repo;
