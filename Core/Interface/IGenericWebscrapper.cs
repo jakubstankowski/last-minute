@@ -4,11 +4,13 @@ using System.Text;
 
 namespace Core.Interface
 {
-   public interface IGenericWebscrapper
+    public interface IGenericWebscrapper
     {
         public void CollectItakaWebscrapperData();
         public void CollectTuiWebscrapperData();
         public void CollectWakacjeWebscrapperData();
+
+        public void StartWebscrapper(string url);
 
     }
 }

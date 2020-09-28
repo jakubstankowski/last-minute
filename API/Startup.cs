@@ -35,9 +35,9 @@ namespace API
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddScoped<IHolidayPreferencesRepo, HolidayPreferencesRepo>();
             services.AddScoped<IHolidayOffersRepo, HolidayOffersRepo>();
-            services.AddScoped<IItakaWebscrapper, ItakaWebScrapper>();
-            services.AddScoped<ITuiWebscrapper, TuiWebscrapper>();
-            services.AddScoped<IWakacjeWebscrapper, WakacjeWebscrapper>();
+
+            services.AddScoped<IGenericWebscrapper, GenericWebscrapper>();
+
             services.AddScoped<IHolidayOffersService, HolidayOffersService>();
             services.AddScoped<IWebscrapperService, WebscrapperService>();
 

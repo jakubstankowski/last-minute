@@ -18,43 +18,25 @@ namespace API.Controllers
     {
         private readonly IHolidayOffersRepo _repo;
         private readonly IMapper _mapper;
-        private readonly IItakaWebscrapper _itakaWebScrapper;
-        private readonly ITuiWebscrapper _tuiWebscrapper;
-        private readonly IWakacjeWebscrapper _wakacjeWebscrapper;
-
         private readonly IHolidayPreferencesRepo _preferencesRepo;
-
         private readonly IHolidayOffersService _holidayOffersService;
+        private readonly IGenericWebscrapper _genericWebscrapper;
 
-        public HolidayOffersController(IHolidayOffersRepo repo, IMapper mapper, IHolidayPreferencesRepo preferencesRepo, IHolidayOffersService holidayOffersService, IItakaWebscrapper itakaWebscrapper, ITuiWebscrapper tuiWebscrapper, IWakacjeWebscrapper wakacjeWebscrapper)
+
+        public HolidayOffersController(IHolidayOffersRepo repo, IMapper mapper, IHolidayPreferencesRepo preferencesRepo, IHolidayOffersService holidayOffersService, IGenericWebscrapper genericWebscrapper)
         {
             _repo = repo;
             _mapper = mapper;
-            _wakacjeWebscrapper = wakacjeWebscrapper;
-            _itakaWebScrapper = itakaWebscrapper;
-            _tuiWebscrapper = tuiWebscrapper;
             _preferencesRepo = preferencesRepo;
             _holidayOffersService = holidayOffersService;
+            _genericWebscrapper = genericWebscrapper;
         }
-
-      /*  public HolidayOffersController(IHolidayOffersRepo repo, IMapper mapper, IHolidayPreferencesRepo preferencesRepo, IHolidayOffersService holidayOffersService, IWakacjeWebscrapper wakacjeWebscrapper, IItakaWebscrapper itakaWebscrapper, ITuiWebscrapper tuiWebscrapper)
-        {
-            _repo = repo;
-            _mapper = mapper;
-            _wakacjeWebscrapper = wakacjeWebscrapper;
-            _itakaWebScrapper = itakaWebscrapper;
-            _tuiWebscrapper = tuiWebscrapper;
-            _preferencesRepo = preferencesRepo;
-            _holidayOffersService = holidayOffersService;
-        }*/
 
         [HttpGet("webscrapper")]
         public ActionResult Webscrapper()
         {
-            _wakacjeWebscrapper.CollectWebscrapperData();
-            _tuiWebscrapper.CollectWebscrapperData();
-            _itakaWebScrapper.CollectWebscrapperData();
-
+            _genericWebscrapper.CollectItakaWebscrapperData();
+            _genericWebscrapper.CollectTuiWebscrapperData();
             return Ok(200);
         }
 
