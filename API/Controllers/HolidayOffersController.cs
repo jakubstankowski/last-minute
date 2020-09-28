@@ -40,14 +40,13 @@ namespace API.Controllers
 
         // GET: api/HolidayOffers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<HolidayOffers>>> GetOffers()
+        public async Task<ActionResult<IEnumerable<HolidayOffersToReturnDTO>>> GetOffers()
         {
 
             var offers = await _repo.GetHolidayOffersAsync();
 
-            return Ok(offers);
-            /* return Ok(_mapper
-                 .Map<IEnumerable<HolidayOffers>, IEnumerable<HolidayOffersToReturnDTO>>(offers));*/
+           
+            return Ok(_mapper.Map<IEnumerable<HolidayOffers>, IEnumerable<HolidayOffersToReturnDTO>>(offers));
         }
 
         // GET: api/HolidayOffers/5
@@ -65,7 +64,7 @@ namespace API.Controllers
 
         [Authorize]
         [HttpGet("by-user-preferences/{id}")]
-        public async Task<ActionResult<IEnumerable<HolidayOffers>>> GetOffersByUserPreferencesId(int id)
+        public async Task<ActionResult<IEnumerable<HolidayOffersToReturnDTO>>> GetOffersByUserPreferencesId(int id)
         {
 
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -80,7 +79,11 @@ namespace API.Controllers
 
             var offersByUserHolidayPreferences = _holidayOffersService.GetHolidayOffersByUserHolidayPreferences(offers, preferences);
 
-            return Ok(offersByUserHolidayPreferences);
+          
+
+            return Ok(_mapper
+             .Map<IEnumerable<HolidayOffers>, IEnumerable<HolidayOffersToReturnDTO>>(offersByUserHolidayPreferences));
+
 
         }
 

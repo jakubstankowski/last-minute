@@ -25,8 +25,6 @@ namespace Infrastructure.Services
                 }
             }
 
-
-
             return offers;
 
         }
