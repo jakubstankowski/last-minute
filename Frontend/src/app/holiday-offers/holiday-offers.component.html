@@ -1,8 +1,22 @@
 <p>holiday-offers works!</p>
 <ul>
   <li *ngFor="let offer of offers">
-    <pre>
-      {{offer}}
-    </pre>
+    <ul>
+      <li>
+        Country: {{offer.country}}
+      </li>
+      <li>
+        Title: {{offer.title}}
+      </li>
+      <li>
+        Date: {{offer.date}}
+      </li>
+      <li>
+        Price: {{offer.price}}
+      </li>
+      <li>
+        Url: {{offer.url}}
+      </li>
+    </ul>
   </li>
 </ul>
