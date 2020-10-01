@@ -92,8 +92,9 @@ namespace API
 
             app.UseRouting();
 
-            app.UseCors("CorsPolicy");
-
+            app.UseCors(
+                    options => options.WithOrigins("http://localhost:4200").AllowAnyMethod()
+             );
             app.UseAuthentication();
             app.UseAuthorization();
 
