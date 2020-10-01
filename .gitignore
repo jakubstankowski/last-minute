@@ -4,3 +4,5 @@ appsettings.json
 *.db
 .vs
 debug.log
+Frontend/node_modules
+node_modules
