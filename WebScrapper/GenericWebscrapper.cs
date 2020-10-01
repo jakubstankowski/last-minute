@@ -7,24 +7,25 @@ using OpenQA.Selenium.Chrome;
 
 namespace WebScrapper
 {
-    public class GenericWebscrapper 
+    public class GenericWebscrapper : IGenericWebscrapper
     {
         private readonly IHolidayOffersRepo _offersRepo;
         private readonly IWebscrapperService _webscrapperService;
-       /* readonly IWebDriver driver = new ChromeDriver();*/
+
 
         public GenericWebscrapper(IHolidayOffersRepo offersRepo, IWebscrapperService webscrapperService)
         {
             _offersRepo = offersRepo;
             _webscrapperService = webscrapperService;
-        
+
         }
-/*
+
         public void CollectItakaWebscrapperData()
         {
+            IWebDriver driver = new ChromeDriver();
             _offersRepo.DeleteHolidayOffersByWebstie("itaka.pl");
             this.StartWebscrapper("https://www.itaka.pl/last-minute/?view=offerList&package-type=wczasy&adults=2&date-from=2020-09-21&food=allInclusive&promo=lastMinute&order=priceAsc&total-price=0&page=1&transport=flight&currency=PLN");
-         
+
             Thread.Sleep(1000);
             //TODO handle image url with lazy loading
             var elementsContainer = driver.FindElements(By.CssSelector(".offer.clearfix"));
@@ -59,6 +60,7 @@ namespace WebScrapper
 
         public void CollectTuiWebscrapperData()
         {
+            IWebDriver driver = new ChromeDriver();
             _offersRepo.DeleteHolidayOffersByWebstie("tui.pl");
             this.StartWebscrapper("https://www.tui.pl/last-minute?pm_source=MENU&pm_name=Last_Minute");
 
@@ -100,8 +102,9 @@ namespace WebScrapper
 
         public void CollectWakacjeWebscrapperData()
         {
+            IWebDriver driver = new ChromeDriver();
             _offersRepo.DeleteHolidayOffersByWebstie("wakacje.pl");
-           this.StartWebscrapper("https://www.wakacje.pl/lastminute/?samolotem,all-inclusive,tanio");
+            this.StartWebscrapper("https://www.wakacje.pl/lastminute/?samolotem,all-inclusive,tanio");
 
             Thread.Sleep(1000);
             var elementsContainer = driver.FindElements(By.CssSelector(".sc-1d4p1bq-0.hLqJDc.sc-1dp1fmu-0.josQgD"));
@@ -134,6 +137,7 @@ namespace WebScrapper
 
         public void StartWebscrapper(string url)
         {
+            IWebDriver driver = new ChromeDriver();
             driver.Navigate()
              .GoToUrl(url);
 
@@ -144,6 +148,6 @@ namespace WebScrapper
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMinutes(5);
 
-        }*/
+        }
     }
 }
