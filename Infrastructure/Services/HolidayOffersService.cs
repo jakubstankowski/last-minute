@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Core.Entities;
 using Core.Interface;
 
@@ -12,6 +9,7 @@ namespace Infrastructure.Services
         public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreferences(IEnumerable<HolidayOffers> holidayOffers, HolidayPreferences holidayPreference)
         {
             List<HolidayOffers> offers = new List<HolidayOffers>();
+
 
 
             foreach (var website in holidayPreference.Websites)

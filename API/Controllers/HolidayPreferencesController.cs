@@ -19,14 +19,12 @@ namespace API.Controllers
     public class HolidayPreferencesController : ControllerBase
     {
         private readonly AppIdentityDbContext _userContext;
-        private readonly UserManager<AppUser> _userManager;
         private IHolidayPreferencesRepo _repo;
         private readonly IMapper _mapper;
 
-        public HolidayPreferencesController(IHolidayPreferencesRepo repo, IMapper mapper, UserManager<AppUser> userManager, AppIdentityDbContext userContext)
+        public HolidayPreferencesController(IHolidayPreferencesRepo repo, IMapper mapper, AppIdentityDbContext userContext)
         {
             _userContext = userContext;
-            _userManager = userManager;
             _repo = repo;
             _mapper = mapper;
         }

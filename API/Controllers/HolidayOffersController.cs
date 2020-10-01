@@ -38,7 +38,7 @@ namespace API.Controllers
             return Ok(200);
         }
 
-        // GET: api/HolidayOffers
+        // GET: api/offers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<HolidayOffersToReturnDTO>>> GetOffers()
         {
@@ -49,7 +49,7 @@ namespace API.Controllers
             return Ok(_mapper.Map<IEnumerable<HolidayOffers>, IEnumerable<HolidayOffersToReturnDTO>>(offers));
         }
 
-        // GET: api/HolidayOffers/5
+        // GET: api/offers/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<HolidayOffersToReturnDTO>> GetOffersById(int id)
         {
@@ -62,6 +62,7 @@ namespace API.Controllers
             return _mapper.Map<HolidayOffers, HolidayOffersToReturnDTO>(offers);
         }
 
+        // GET: api/offers/by-preferences/{id}
         [Authorize]
         [HttpGet("by-user-preferences/{id}")]
         public async Task<ActionResult<IEnumerable<HolidayOffersToReturnDTO>>> GetOffersByUserPreferencesId(int id)
@@ -88,20 +89,20 @@ namespace API.Controllers
         }
 
 
-        // POST: api/HolidayOffers
+        // POST: api/offers
         [HttpPost]
         public void Post(HolidayOffers offers)
         {
             _repo.CreateHolidayOffers(offers);
         }
 
-        // PUT: api/HolidayOffers/5
+        // PUT: api/offers/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE: api/ApiWithActions/5
+        // DELETE: api/offers/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

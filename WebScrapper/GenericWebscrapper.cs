@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using Core.Entities;
 using Core.Interface;
@@ -9,11 +7,11 @@ using OpenQA.Selenium.Chrome;
 
 namespace WebScrapper
 {
-    public class GenericWebscrapper : IGenericWebscrapper
+    public class GenericWebscrapper 
     {
         private readonly IHolidayOffersRepo _offersRepo;
         private readonly IWebscrapperService _webscrapperService;
-        IWebDriver driver = new ChromeDriver();
+       /* readonly IWebDriver driver = new ChromeDriver();*/
 
         public GenericWebscrapper(IHolidayOffersRepo offersRepo, IWebscrapperService webscrapperService)
         {
@@ -21,7 +19,7 @@ namespace WebScrapper
             _webscrapperService = webscrapperService;
         
         }
-
+/*
         public void CollectItakaWebscrapperData()
         {
             _offersRepo.DeleteHolidayOffersByWebstie("itaka.pl");
@@ -146,6 +144,6 @@ namespace WebScrapper
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMinutes(5);
 
-        }
+        }*/
     }
 }
