@@ -19,7 +19,9 @@ export class HolidayOffersComponent implements OnInit {
 
   getOffers(): void {
     this.holidayOffersService.getOffers()
-      .subscribe(offers => this.offers = offers);
+      .subscribe(offers => {
+        this.offers = offers;
+      });
   }
 
 }

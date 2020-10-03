@@ -45,8 +45,11 @@ namespace API.Controllers
 
             var offers = await _repo.GetHolidayOffersAsync();
 
+            
            
-            return Ok(_mapper.Map<IEnumerable<HolidayOffers>, IEnumerable<HolidayOffersToReturnDTO>>(offers));
+          return Ok(_mapper.Map<IEnumerable<HolidayOffers>, IEnumerable<HolidayOffersToReturnDTO>>(offers));
+      
+      
         }
 
         // GET: api/offers/{id}
