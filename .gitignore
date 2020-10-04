@@ -5,4 +5,5 @@ appsettings.json
 .vs
 debug.log
 Frontend/node_modules
+Frontend/.idea
 node_modules
