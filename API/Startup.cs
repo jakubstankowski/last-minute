@@ -80,6 +80,8 @@ namespace API
                 };
             });
 
+         /*   services.AddCors();*/
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -92,9 +94,21 @@ namespace API
 
             app.UseRouting();
 
-            app.UseCors(
-                    options => options.WithOrigins("http://localhost:4200").AllowAnyMethod()
-             );
+            app.UseCors(builder =>
+            {
+                builder.WithOrigins("http://localhost:4200");
+                builder.AllowAnyMethod();
+                builder.AllowAnyHeader();
+            });
+
+            /* app.UseCors(
+                      options => options.WithOrigins("http://localhost:4200")
+                      .AllowAnyOrigin()
+                      .AllowAnyHeader()
+                      .AllowAnyMethod()
+               ); */
+            /*
+                        app.UseCors("CorsPolicy");*/
             app.UseAuthentication();
             app.UseAuthorization();
 

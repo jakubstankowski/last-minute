@@ -22,7 +22,7 @@ import { AdminGuard } from './guards/admin.guard';
     AuthGuard,
     AdminGuard,
     MediaMatcher,
-    {
+    /*{
       provide: HTTP_INTERCEPTORS,
       useClass: SpinnerInterceptor,
       multi: true
@@ -31,11 +31,11 @@ import { AdminGuard } from './guards/admin.guard';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    },
-    {
+    },*/
+   /* {
       provide: ErrorHandler,
       useClass: GlobalErrorHandler
-    },
+    },*/
     { provide: NGXLogger, useClass: NGXLogger },
     { provide: 'LOCALSTORAGE', useValue: window.localStorage }
   ],
