@@ -17,11 +17,14 @@ using System.Text;
 using API.Configuration;
 using WebScrapper;
 using Infrastructure.Services;
+using Microsoft.Net.Http.Headers;
 
 namespace API
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -41,6 +44,18 @@ namespace API
             services.AddScoped<IHolidayOffersService, HolidayOffersService>();
             services.AddScoped<IWebscrapperService, WebscrapperService>();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("http://localhost:4200")
+                                                          .AllowAnyHeader()
+                                                          .AllowAnyMethod();
+                                  });
+            });
+
+
             services.AddControllers();
 
             services.AddDbContext<DataContext>(opt =>
@@ -56,9 +71,8 @@ namespace API
                      .AddEntityFrameworkStores<AppIdentityDbContext>()
                       .AddSignInManager<SignInManager<AppUser>>();
 
-            // configure strongly typed settings objects
+          
             var jwtSection = Configuration.GetSection("JwtBearerTokenSettings");
-            System.Console.WriteLine(jwtSection);
             services.Configure<JwtBearerTokenSettings>(jwtSection);
             var jwtBearerTokenSettings = jwtSection.Get<JwtBearerTokenSettings>();
             var key = Encoding.ASCII.GetBytes(jwtBearerTokenSettings.SecretKey);
@@ -79,8 +93,9 @@ namespace API
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                 };
             });
+          
 
-         /*   services.AddCors();*/
+          
 
         }
 
@@ -93,22 +108,9 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            
+            app.UseCors(MyAllowSpecificOrigins);
 
-            app.UseCors(builder =>
-            {
-                builder.WithOrigins("http://localhost:4200");
-                builder.AllowAnyMethod();
-                builder.AllowAnyHeader();
-            });
-
-            /* app.UseCors(
-                      options => options.WithOrigins("http://localhost:4200")
-                      .AllowAnyOrigin()
-                      .AllowAnyHeader()
-                      .AllowAnyMethod()
-               ); */
-            /*
-                        app.UseCors("CorsPolicy");*/
             app.UseAuthentication();
             app.UseAuthorization();
 
