@@ -6,7 +6,7 @@ namespace Infrastructure.Services
 {
     public class HolidayOffersService : IHolidayOffersService
     {
-        public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreferences(IEnumerable<HolidayOffers> holidayOffers, HolidayPreferences holidayPreference)
+        public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreference(IEnumerable<HolidayOffers> holidayOffers, HolidayPreferences holidayPreference)
         {
             List<HolidayOffers> offers = new List<HolidayOffers>();
 

@@ -7,7 +7,7 @@ namespace Core.Interface
 {
     public interface IHolidayOffersService
     {
-        public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreferences(IEnumerable<HolidayOffers> holidayOffers, HolidayPreferences holidayPreferences);
+        public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreference(IEnumerable<HolidayOffers> holidayOffers, HolidayPreferences holidayPreferences);
 
 
     }
