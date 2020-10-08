@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
@@ -69,8 +70,6 @@ namespace API.Controllers
                 return NotFound(new ApiResponse(404));
             }
 
-
-
             return _mapper.Map<HolidayPreferences, HolidayPreferencesDTO>(preferences);
         }
 
@@ -78,8 +77,8 @@ namespace API.Controllers
 
         //PUT: api/HolidayPreferences
         [Authorize]
-        [HttpPut]
-        public async Task<IActionResult> PutUserPreferencesAsync(HolidayPreferences holidayPreferences)
+        [HttpPost]
+        public async Task<IActionResult> PostUserPreferencesAsync(HolidayPreferences holidayPreferences)
         {
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
@@ -91,7 +90,7 @@ namespace API.Controllers
 
             if (result.Succeeded)
             {
-                return Ok( _mapper.Map<HolidayPreferences, HolidayPreferencesDTO>(holidayPreferences));
+                return Ok(_mapper.Map<HolidayPreferences, HolidayPreferencesDTO>(holidayPreferences));
             }
 
 
@@ -101,9 +100,27 @@ namespace API.Controllers
         // PUT: api/HolidayPreferences/5
         [Authorize]
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, HolidayPreferencesDTO holidayPreferences)
+        public async Task<IActionResult> PutHolidayPreference(int id, HolidayPreferencesDTO preferenceDTO)
         {
-            return Ok(200);
+            var userId = HttpContext.User
+                .FindFirst(ClaimTypes.NameIdentifier)
+                .Value.ToString();
+
+            var preference = await _repo.GetUserHolidayPreferenceByIdAsync(id, userId);
+
+            if (preference == null)
+            {
+                return NotFound(new ApiResponse(404));
+            }
+
+            preference.MinPrice = preferenceDTO.MinPrice;
+            preference.MaxPrice = preferenceDTO.MaxPrice;
+            preference.Websites = preferenceDTO.Websites;
+
+
+            _repo.SaveChanges();
+
+            return Ok(_mapper.Map<HolidayPreferences, HolidayPreferencesDTO>(preference));
         }
 
         // DELETE: api/HolidayPreferences/5
@@ -115,14 +132,14 @@ namespace API.Controllers
                 .FindFirst(ClaimTypes.NameIdentifier)
                 .Value.ToString();
 
-            var preferences = await _repo.GetUserHolidayPreferenceByIdAsync(id, userId);
+            var preference = await _repo.GetUserHolidayPreferenceByIdAsync(id, userId);
 
-            if (preferences == null)
+            if (preference == null)
             {
                 return NotFound(new ApiResponse(404));
             }
 
-            _repo.DeleteHolidayPreference(preferences);
+            _repo.DeleteHolidayPreference(preference);
             _repo.SaveChanges();
 
             return Ok(200);
