@@ -11,7 +11,7 @@ namespace WebScrapper
     {
         private readonly IHolidayOffersRepo _offersRepo;
         private readonly IWebscrapperService _webscrapperService;
-
+       
 
         public GenericWebscrapper(IHolidayOffersRepo offersRepo, IWebscrapperService webscrapperService)
         {
@@ -24,7 +24,7 @@ namespace WebScrapper
         {
             IWebDriver driver = new ChromeDriver();
             _offersRepo.DeleteHolidayOffersByWebstie("itaka.pl");
-            this.StartWebscrapper("https://www.itaka.pl/last-minute/?view=offerList&package-type=wczasy&adults=2&date-from=2020-09-21&food=allInclusive&promo=lastMinute&order=priceAsc&total-price=0&page=1&transport=flight&currency=PLN");
+            this.StartWebscrapper("https://www.itaka.pl/last-minute/?view=offerList&package-type=wczasy&adults=2&date-from=2020-09-21&food=allInclusive&promo=lastMinute&order=priceAsc&total-price=0&page=1&transport=flight&currency=PLN", driver);
 
             Thread.Sleep(1000);
             //TODO handle image url with lazy loading
@@ -57,12 +57,22 @@ namespace WebScrapper
 
             }
         }
-
+        
         public void CollectTuiWebscrapperData()
         {
             IWebDriver driver = new ChromeDriver();
             _offersRepo.DeleteHolidayOffersByWebstie("tui.pl");
-            this.StartWebscrapper("https://www.tui.pl/last-minute?pm_source=MENU&pm_name=Last_Minute");
+            this.StartWebscrapper("https://www.tui.pl/last-minute?pm_source=MENU&pm_name=Last_Minute", driver);
+
+          
+            driver.Navigate()
+             .GoToUrl("https://www.tui.pl/last-minute?pm_source=MENU&pm_name=Last_Minute");
+
+            driver.Manage().Window.Maximize();
+
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("window.scroll({bottom: 0, top: document.body.scrollHeight, behavior: 'smooth'})");
+
 
             Thread.Sleep(1000);
             var elementsContainer = driver.FindElements(By.CssSelector(".offer-tile-wrapper.offer-tile-wrapper--listingOffer"));
@@ -100,44 +110,10 @@ namespace WebScrapper
             }
         }
 
-        public void CollectWakacjeWebscrapperData()
+
+        public void StartWebscrapper(string url, IWebDriver driver)
         {
-            IWebDriver driver = new ChromeDriver();
-            _offersRepo.DeleteHolidayOffersByWebstie("wakacje.pl");
-            this.StartWebscrapper("https://www.wakacje.pl/lastminute/?samolotem,all-inclusive,tanio");
-
-            Thread.Sleep(1000);
-            var elementsContainer = driver.FindElements(By.CssSelector(".sc-1d4p1bq-0.hLqJDc.sc-1dp1fmu-0.josQgD"));
-
-            foreach (var element in elementsContainer)
-            {
-                Thread.Sleep(1000);
-                var title = element.FindElement(By.CssSelector(".sc-1x38ct5-4.h04pl1-7.gUAzqv")).Text;
-                var url = element.GetAttribute("href");
-                var price = element.FindElement(By.CssSelector(".sc-1x38ct5-4.sc-1v2crin-4.ZebdE")).Text;
-                var country = element.FindElement(By.CssSelector(".sc-1x38ct5-13.h04pl1-3.dfxezd")).Text;
-                // var imageUrl = element.FindElement(By.CssSelector(".wulc49-1.ldNESj img")).GetAttribute("src");
-                var date = element.FindElement(By.CssSelector(".sc-1x38ct5-13.bVpuRE")).Text;
-
-                HolidayOffers holidayOffer = new HolidayOffers
-                {
-                    Website = "wakacje.pl",
-                    Title = title,
-                    Country = country,
-                    Price = _webscrapperService.ParsePrice(price, "zł"),
-                    Url = url,
-                    Date = date,
-                    ImageUrl = "null"
-                };
-
-                _offersRepo.CreateHolidayOffers(holidayOffer);
-
-            }
-        }
-
-        public void StartWebscrapper(string url)
-        {
-            IWebDriver driver = new ChromeDriver();
+           
             driver.Navigate()
              .GoToUrl(url);
 

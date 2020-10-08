@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using OpenQA.Selenium;
 
 namespace Core.Interface
 {
@@ -8,9 +6,8 @@ namespace Core.Interface
     {
         public void CollectItakaWebscrapperData();
         public void CollectTuiWebscrapperData();
-        public void CollectWakacjeWebscrapperData();
 
-        public void StartWebscrapper(string url);
+        public void StartWebscrapper(string url, IWebDriver driver);
 
     }
 }
