@@ -94,19 +94,30 @@ namespace Infrastructure.Identity.Migrations
                     b.Property<string>("AppUserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("MaxPrice")
                         .HasColumnType("int");
 
                     b.Property<int>("MinPrice")
                         .HasColumnType("int");
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId")
+                        .IsUnique()
+                        .HasFilter("[AppUserId] IS NOT NULL");
+
+                    b.ToTable("HolidayPreferences");
+                });
+
+            modelBuilder.Entity("Core.Entities.HolidayWebsites", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("HolidayPreferencesId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Website")
                         .IsRequired()
@@ -114,9 +125,9 @@ namespace Infrastructure.Identity.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AppUserId");
+                    b.HasIndex("HolidayPreferencesId");
 
-                    b.ToTable("HolidayPreferences");
+                    b.ToTable("HolidayWebsites");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -253,8 +264,17 @@ namespace Infrastructure.Identity.Migrations
             modelBuilder.Entity("Core.Entities.HolidayPreferences", b =>
                 {
                     b.HasOne("Core.Entities.AppUser", "AppUser")
-                        .WithMany("HolidayPreferences")
-                        .HasForeignKey("AppUserId");
+                        .WithOne("HolidayPreferences")
+                        .HasForeignKey("Core.Entities.HolidayPreferences", "AppUserId");
+                });
+
+            modelBuilder.Entity("Core.Entities.HolidayWebsites", b =>
+                {
+                    b.HasOne("Core.Entities.HolidayPreferences", null)
+                        .WithMany("Websites")
+                        .HasForeignKey("HolidayPreferencesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

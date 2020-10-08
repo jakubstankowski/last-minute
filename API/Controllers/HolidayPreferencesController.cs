@@ -85,7 +85,7 @@ namespace API.Controllers
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             
             var user = await _repo.GetUserHolidayPreferences(userId);
-            user.HolidayPreferences.Add(holidayPreferences);
+            user.HolidayPreferences = holidayPreferences;
 
             _userContext.SaveChanges();
             return Ok(200);

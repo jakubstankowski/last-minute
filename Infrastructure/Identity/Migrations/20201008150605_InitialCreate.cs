@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Identity.Migrations
 {
-    public partial class InitialIdentity : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -152,6 +152,47 @@ namespace Infrastructure.Identity.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "HolidayPreferences",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MinPrice = table.Column<int>(type: "int", nullable: false),
+                    MaxPrice = table.Column<int>(type: "int", nullable: false),
+                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HolidayPreferences", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_HolidayPreferences_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HolidayWebsites",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Website = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HolidayPreferencesId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HolidayWebsites", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_HolidayWebsites_HolidayPreferences_HolidayPreferencesId",
+                        column: x => x.HolidayPreferencesId,
+                        principalTable: "HolidayPreferences",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -190,6 +231,18 @@ namespace Infrastructure.Identity.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HolidayPreferences_AppUserId",
+                table: "HolidayPreferences",
+                column: "AppUserId",
+                unique: true,
+                filter: "[AppUserId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HolidayWebsites_HolidayPreferencesId",
+                table: "HolidayWebsites",
+                column: "HolidayPreferencesId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -210,7 +263,13 @@ namespace Infrastructure.Identity.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "HolidayWebsites");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "HolidayPreferences");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

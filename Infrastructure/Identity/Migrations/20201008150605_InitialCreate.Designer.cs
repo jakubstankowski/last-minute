@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Identity.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20200821154950_ChangeDbContext")]
-    partial class ChangeDbContext
+    [Migration("20201008150605_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -94,12 +94,7 @@ namespace Infrastructure.Identity.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("AppUserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("MaxPrice")
                         .HasColumnType("int");
@@ -107,9 +102,24 @@ namespace Infrastructure.Identity.Migrations
                     b.Property<int>("MinPrice")
                         .HasColumnType("int");
 
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId")
+                        .IsUnique()
+                        .HasFilter("[AppUserId] IS NOT NULL");
+
+                    b.ToTable("HolidayPreferences");
+                });
+
+            modelBuilder.Entity("Core.Entities.HolidayWebsites", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("HolidayPreferencesId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Website")
                         .IsRequired()
@@ -117,10 +127,9 @@ namespace Infrastructure.Identity.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AppUserId")
-                        .IsUnique();
+                    b.HasIndex("HolidayPreferencesId");
 
-                    b.ToTable("HolidayPreferences");
+                    b.ToTable("HolidayWebsites");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -258,7 +267,14 @@ namespace Infrastructure.Identity.Migrations
                 {
                     b.HasOne("Core.Entities.AppUser", "AppUser")
                         .WithOne("HolidayPreferences")
-                        .HasForeignKey("Core.Entities.HolidayPreferences", "AppUserId")
+                        .HasForeignKey("Core.Entities.HolidayPreferences", "AppUserId");
+                });
+
+            modelBuilder.Entity("Core.Entities.HolidayWebsites", b =>
+                {
+                    b.HasOne("Core.Entities.HolidayPreferences", null)
+                        .WithMany("Websites")
+                        .HasForeignKey("HolidayPreferencesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

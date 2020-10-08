@@ -7,7 +7,7 @@ namespace Core.Entities
 {
     public class AppUser : IdentityUser
     {
-        public ICollection<HolidayPreferences> HolidayPreferences { get; set; }
+        public HolidayPreferences HolidayPreferences { get; set; }
 
     }
 }

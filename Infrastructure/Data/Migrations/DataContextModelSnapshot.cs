@@ -128,7 +128,9 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AppUserId");
+                    b.HasIndex("AppUserId")
+                        .IsUnique()
+                        .HasFilter("[AppUserId] IS NOT NULL");
 
                     b.ToTable("HolidayPreferences");
                 });
@@ -157,8 +159,8 @@ namespace Infrastructure.Data.Migrations
             modelBuilder.Entity("Core.Entities.HolidayPreferences", b =>
                 {
                     b.HasOne("Core.Entities.AppUser", "AppUser")
-                        .WithMany("HolidayPreferences")
-                        .HasForeignKey("AppUserId");
+                        .WithOne("HolidayPreferences")
+                        .HasForeignKey("Core.Entities.HolidayPreferences", "AppUserId");
                 });
 
             modelBuilder.Entity("Core.Entities.HolidayWebsites", b =>
