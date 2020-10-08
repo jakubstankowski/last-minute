@@ -93,17 +93,5 @@ namespace API.Controllers
         {
             _repo.CreateHolidayOffers(offers);
         }
-
-        // PUT: api/offers/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/offers/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
