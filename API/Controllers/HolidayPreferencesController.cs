@@ -18,15 +18,15 @@ namespace API.Controllers
     [ApiController]
     public class HolidayPreferencesController : ControllerBase
     {
-        private readonly AppIdentityDbContext _userContext;
         private IHolidayPreferencesRepo _repo;
         private readonly IMapper _mapper;
+        private readonly UserManager<AppUser> _userManager;
 
-        public HolidayPreferencesController(IHolidayPreferencesRepo repo, IMapper mapper, AppIdentityDbContext userContext)
+        public HolidayPreferencesController(IHolidayPreferencesRepo repo, IMapper mapper, AppIdentityDbContext userContext, UserManager<AppUser> userManager)
         {
-            _userContext = userContext;
             _repo = repo;
             _mapper = mapper;
+            _userManager = userManager;
         }
 
 
@@ -47,17 +47,17 @@ namespace API.Controllers
             var preferences = await _repo.GetUserHolidayPreferencesListAsync(userId);
 
             return Ok(_mapper
-               .Map<IEnumerable<HolidayPreferences>, IEnumerable<HolidayPreferencesToReturnDTO>>(preferences));
+               .Map<IEnumerable<HolidayPreferences>, IEnumerable<HolidayPreferencesDTO>>(preferences));
 
         }
 
 
 
         // GET: api/preferences/5
-          [Authorize]
-          [HttpGet("{id}")]
-          public async Task<ActionResult<HolidayPreferencesToReturnDTO>> GetPreferencesById(int id)
-          {
+        [Authorize]
+        [HttpGet("{id}")]
+        public async Task<ActionResult<HolidayPreferencesDTO>> GetPreferencesById(int id)
+        {
             var userId = HttpContext.User
              .FindFirst(ClaimTypes.NameIdentifier)
              .Value.ToString();
@@ -71,24 +71,31 @@ namespace API.Controllers
 
 
 
-            return _mapper.Map<HolidayPreferences, HolidayPreferencesToReturnDTO>(preferences);
-          }
+            return _mapper.Map<HolidayPreferences, HolidayPreferencesDTO>(preferences);
+        }
 
 
 
-        // POST: api/HolidayPreferences
+        //PUT: api/HolidayPreferences
         [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> PostUserPreferencesAsync(HolidayPreferences holidayPreferences)
+        [HttpPut]
+        public async Task<IActionResult> PutUserPreferencesAsync(HolidayPreferences holidayPreferences)
         {
-         
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            
+
             var user = await _repo.GetUserHolidayPreferences(userId);
+
             user.HolidayPreferences = holidayPreferences;
 
-            _userContext.SaveChanges();
-            return Ok(200);
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                return Ok( _mapper.Map<HolidayPreferences, HolidayPreferencesDTO>(holidayPreferences));
+            }
+
+
+            return BadRequest("Problem with add new preferences");
         }
 
         // PUT: api/HolidayPreferences/5
@@ -96,9 +103,6 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, HolidayPreferencesDTO holidayPreferences)
         {
-
-
-
             return Ok(200);
         }
 

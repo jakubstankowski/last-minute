@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace API.DTO
 {
-    public class HolidayOffersToReturnDTO
+    public class HolidayOffersDTO
     {
-
 
         public string Title { get; set; }
 
@@ -27,6 +26,5 @@ namespace API.DTO
 
 
         public string Date { get; set; }
-
     }
 }

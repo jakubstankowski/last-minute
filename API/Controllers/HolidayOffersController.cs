@@ -40,21 +40,16 @@ namespace API.Controllers
 
         // GET: api/offers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<HolidayOffersToReturnDTO>>> GetOffers()
+        public async Task<ActionResult<IEnumerable<HolidayOffersDTO>>> GetOffers()
         {
-
             var offers = await _repo.GetHolidayOffersAsync();
 
-            
-           
-          return Ok(_mapper.Map<IEnumerable<HolidayOffers>, IEnumerable<HolidayOffersToReturnDTO>>(offers));
-      
-      
+            return Ok(_mapper.Map<IEnumerable<HolidayOffers>, IEnumerable<HolidayOffersDTO>>(offers));
         }
 
         // GET: api/offers/{id}
         [HttpGet("{id}")]
-        public async Task<ActionResult<HolidayOffersToReturnDTO>> GetOffersById(int id)
+        public async Task<ActionResult<HolidayOffersDTO>> GetOffersById(int id)
         {
             var offers = await _repo.GetHolidayOffersByIdAsync(id);
             if (offers == null)
@@ -62,13 +57,13 @@ namespace API.Controllers
                 return NotFound(new ApiResponse(404));
             }
 
-            return _mapper.Map<HolidayOffers, HolidayOffersToReturnDTO>(offers);
+            return _mapper.Map<HolidayOffers, HolidayOffersDTO>(offers);
         }
 
         // GET: api/offers/by-preferences/{id}
         [Authorize]
         [HttpGet("by-user-preferences/{id}")]
-        public async Task<ActionResult<IEnumerable<HolidayOffersToReturnDTO>>> GetOffersByUserPreferenceId(int id)
+        public async Task<ActionResult<IEnumerable<HolidayOffersDTO>>> GetOffersByUserPreferenceId(int id)
         {
 
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -83,10 +78,10 @@ namespace API.Controllers
 
             var offersByUserHolidayPreferences = _holidayOffersService.GetHolidayOffersByUserHolidayPreference(offers, preference);
 
-          
+
 
             return Ok(_mapper
-             .Map<IEnumerable<HolidayOffers>, IEnumerable<HolidayOffersToReturnDTO>>(offersByUserHolidayPreferences));
+             .Map<IEnumerable<HolidayOffers>, IEnumerable<HolidayOffersDTO>>(offersByUserHolidayPreferences));
 
 
         }

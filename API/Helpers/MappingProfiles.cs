@@ -9,8 +9,8 @@ namespace API.Helpers
 
         public MappingProfiles()
         {
-            CreateMap<HolidayOffers, HolidayOffersToReturnDTO>();
-            CreateMap<HolidayPreferences, HolidayPreferencesToReturnDTO>();
+            CreateMap<HolidayOffers, HolidayOffersDTO>();
+            CreateMap<HolidayPreferences, HolidayPreferencesDTO>();
         }
     }
 }
