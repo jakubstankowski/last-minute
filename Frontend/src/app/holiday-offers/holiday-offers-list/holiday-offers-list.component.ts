@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Offers} from '../offers';
+import {IOffers} from '../../shared/models/offers';
 import {HolidayOffersService} from '../../core/services/holiday-offers.service';
 
 @Component({
@@ -8,7 +8,7 @@ import {HolidayOffersService} from '../../core/services/holiday-offers.service';
     styleUrls: ['./holiday-offers-list.component.css']
 })
 export class HolidayOffersListComponent implements OnInit {
-    offers: Offers[];
+    offers: IOffers[];
 
     constructor(private holidayOffers: HolidayOffersService) {
     }

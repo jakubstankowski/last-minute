@@ -1,18 +1,18 @@
 <article class="login-container" fxLayout="row" fxLayoutAlign="center center">
-    <form [formGroup]="loginForm" fxFlex="30%" fxFlex.sm="50%" fxFlex.xs="90%">
+    <form [formGroup]="registerForm" fxFlex="30%" fxFlex.sm="50%" fxFlex.xs="90%">
         <mat-card>
             <mat-card-title>Last Minute</mat-card-title>
-            <mat-card-subtitle>Log in to your account</mat-card-subtitle>
+            <mat-card-subtitle>Register new account</mat-card-subtitle>
             <mat-card-content>
 
                 <mat-form-field class="full-width">
                     <input id="emailInput" matInput placeholder="Email" formControlName="email" autocomplete="email"
                            type="email">
 
-                    <mat-error id="invalidEmailError" *ngIf="loginForm.controls['email'].hasError('email')">
+                    <mat-error id="invalidEmailError" *ngIf="registerForm.controls['email'].hasError('email')">
                         Please enter a valid email address
                     </mat-error>
-                    <mat-error id="requiredEmailError" *ngIf="loginForm.controls['email'].hasError('required')">
+                    <mat-error id="requiredEmailError" *ngIf="registerForm.controls['email'].hasError('required')">
                         Email is
                         <strong>required</strong>
                     </mat-error>
@@ -22,7 +22,7 @@
                 <mat-form-field class="full-width">
                     <input id="passwordInput" matInput placeholder="Password" formControlName="password" type="password"
                            autocomplete="current-password">
-                    <mat-error id="requiredPasswordError" *ngIf="loginForm.controls['email'].hasError('required')">
+                    <mat-error id="requiredPasswordError" *ngIf="registerForm.controls['email'].hasError('required')">
                         Password is
                         <strong>required</strong>
                     </mat-error>
@@ -31,12 +31,13 @@
             </mat-card-content>
 
             <mat-card-actions class="login-actions">
-                <button mat-raised-button id="login" color="primary" [disabled]="loginForm.invalid || loading"
-                        (click)="login()">Login
-                </button>
-                <button mat-raised-button id="register" color="primary"
-                        (click)="this.router.navigateByUrl('auth/register')">
+                <button mat-raised-button id="register" color="primary" [disabled]="registerForm.invalid || loading"
+                        (click)="register()">
                     Register
+                </button>
+                <button mat-raised-button id="login" color="primary"
+                        (click)="this.router.navigateByUrl('auth/login')">
+                    Login
                 </button>
             </mat-card-actions>
 

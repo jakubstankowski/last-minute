@@ -1,45 +1,40 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {FormControl, Validators, FormGroup} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
-import {EMPTY, of} from 'rxjs';
-import 'rxjs/add/operator/delay';
-
-import {AuthenticationService} from '../../core/services/auth.service';
 import {NotificationService} from '../../core/services/notification.service';
+import {AuthenticationService} from '../../core/services/auth.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
-
-    loginForm: FormGroup;
+export class RegisterComponent implements OnInit {
+    registerForm: FormGroup;
     loading: boolean;
 
-    constructor(public router: Router,
-                private titleService: Title,
+    constructor(public router: Router, private titleService: Title,
                 private notificationService: NotificationService,
                 private authenticationService: AuthenticationService) {
     }
 
     ngOnInit() {
-        this.titleService.setTitle('Last Minute - Login');
+        this.titleService.setTitle('Last Minute - Register');
         this.createForm();
     }
 
     private createForm() {
-        this.loginForm = new FormGroup({
+        this.registerForm = new FormGroup({
             email: new FormControl('', [Validators.required, Validators.email]),
             password: new FormControl('', Validators.required)
         });
     }
 
-    login(): void {
+    register(): void {
         this.loading = true;
         this.authenticationService
-            .login(this.loginForm.value)
+            .register(this.registerForm.value)
             .subscribe(
                 data => {
                     this.loading = true;
@@ -52,4 +47,5 @@ export class LoginComponent implements OnInit {
                 }
             );
     }
+
 }

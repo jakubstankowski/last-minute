@@ -1,4 +1,4 @@
-export interface Offers {
+export interface IOffers {
     title: string;
     website: string;
     country: string;

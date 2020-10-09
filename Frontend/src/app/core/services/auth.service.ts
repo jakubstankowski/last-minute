@@ -1,12 +1,12 @@
 import {Injectable, Inject} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import * as jwt_decode from 'jwt-decode';
 import * as moment from 'moment';
 import 'rxjs/add/operator/delay';
 
 import {environment} from '../../../environments/environment';
 import {of, EMPTY} from 'rxjs';
+import {IUser} from '../../shared/models/user';
 
 @Injectable({
     providedIn: 'root'
@@ -18,12 +18,26 @@ export class AuthenticationService {
                 @Inject('LOCALSTORAGE') private localStorage: Storage) {
     }
 
-    login(email: string, password: string) {
-        return this.http.post(this.baseUrl + 'auth/login', {
-            email: email,
-            password: password
-        });
+    login(values: any) {
+        return this.http.post(this.baseUrl + 'auth/login', values).pipe(
+            map((user: IUser) => {
+                if (user) {
+                    localStorage.setItem('token', user.token);
+                }
+            })
+        );
     }
+
+    register(values: any) {
+        return this.http.post(this.baseUrl + 'auth/register', values).pipe(
+            map((user: IUser) => {
+                if (user) {
+                    localStorage.setItem('token', user.token);
+                }
+            })
+        );
+    }
+
 
     logout(): void {
         // clear token remove user from local storage to log user out
