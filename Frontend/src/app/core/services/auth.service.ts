@@ -25,7 +25,6 @@ export class AuthenticationService {
         return this.http.post(this.baseUrl + 'auth/login', values).pipe(
             map((user: IUser) => {
                 if (user) {
-                    console.log('user', user);
                     this.localStorage.setItem('token', user.token);
                     this.currentUserSource.next(user);
                 }
@@ -34,7 +33,6 @@ export class AuthenticationService {
     }
 
     loadCurrentUser(token: string) {
-        console.log('token: ', token);
         if (token === null) {
             this.currentUserSource.next(null);
             return of(null);
