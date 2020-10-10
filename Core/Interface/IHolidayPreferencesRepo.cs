@@ -10,8 +10,8 @@ namespace Core.Interface
     {
 
         Task<HolidayPreferences> GetUserHolidayPreferenceByIdAsync(int id, string userId);
-        Task<IEnumerable<HolidayPreferences>> GetUserHolidayPreferencesListAsync(string id);
-        Task<AppUser> GetUserHolidayPreferences(string id);
+        Task<HolidayPreferences> GetUserHolidayPreferences(string id);
+        Task<AppUser> GetUserWithHolidayPreferences(string id);
         public void DeleteHolidayPreference(HolidayPreferences preferences);
         bool SaveChanges();
     }

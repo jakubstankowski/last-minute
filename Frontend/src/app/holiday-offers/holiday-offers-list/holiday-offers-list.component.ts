@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {IOffers} from '../../shared/models/offers';
-import {HolidayOffersService} from '../../core/services/holiday-offers.service';
+import {HolidayOffersService} from '../holiday-offers.service';
 
 @Component({
     selector: 'app-holiday-offers-list',

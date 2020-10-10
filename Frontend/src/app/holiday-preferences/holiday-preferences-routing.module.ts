@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LayoutComponent} from '../shared/layout/layout.component';
-import {HolidayOffersListComponent} from './holiday-offers-list/holiday-offers-list.component';
+import {HolidayPreferencesListComponent} from './holiday-preferences-list/holiday-preferences-list.component';
 
 
 const routes: Routes = [
@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      { path: '', component: HolidayOffersListComponent },
+      { path: '', component: HolidayPreferencesListComponent },
     ]
   }
 ];
@@ -21,4 +21,4 @@ const routes: Routes = [
 })
 
 
-export class HolidayOffersRoutingModule { }
+export class HolidayPreferencesRoutingModule { }

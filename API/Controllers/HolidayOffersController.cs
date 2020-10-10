@@ -62,21 +62,24 @@ namespace API.Controllers
 
         // GET: api/offers/by-preferences/{id}
         [Authorize]
-        [HttpGet("by-user-preferences/{id}")]
-        public async Task<ActionResult<IEnumerable<HolidayOffersDTO>>> GetOffersByUserPreferenceId(int id)
+        [HttpGet("by-user-preferences")]
+        public async Task<ActionResult<IEnumerable<HolidayOffersDTO>>> GetOffersByUserPreferenceId()
         {
 
-            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var preference = await _preferencesRepo.GetUserHolidayPreferenceByIdAsync(id, userId);
+            var userId = HttpContext.User
+                    .FindFirst(ClaimTypes.NameIdentifier)
+                     .Value.ToString();
 
-            if (preference == null)
+            var preferences = await _preferencesRepo.GetUserHolidayPreferences(userId);
+
+            if (preferences == null)
             {
                 return NotFound(new ApiResponse(404));
             }
 
             var offers = await _repo.GetHolidayOffersAsync();
 
-            var offersByUserHolidayPreferences = _holidayOffersService.GetHolidayOffersByUserHolidayPreference(offers, preference);
+            var offersByUserHolidayPreferences = _holidayOffersService.GetHolidayOffersByUserHolidayPreference(offers, preferences);
 
 
 

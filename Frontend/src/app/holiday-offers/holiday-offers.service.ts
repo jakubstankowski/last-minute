@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../../../environments/environment';
+import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {Offers} from '../../shared/models/offers';
 import {Observable} from 'rxjs';
+import {IOffers} from '../shared/models/offers';
 
 @Injectable({
     providedIn: 'root'
@@ -14,8 +14,8 @@ export class HolidayOffersService {
     constructor(private http: HttpClient) {
     }
 
-    getOffers(): Observable<Offers[]> {
-        return this.http.get<Offers[]>(this.baseUrl + 'offers');
+    getOffers(): Observable<IOffers[]> {
+        return this.http.get<IOffers[]>(this.baseUrl + 'offers/by-user-preferences');
     }
 
 }

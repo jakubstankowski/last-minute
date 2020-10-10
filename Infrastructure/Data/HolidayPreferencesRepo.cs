@@ -28,12 +28,12 @@ namespace Infrastructure.Data
 
         }
 
-        public async Task<IEnumerable<HolidayPreferences>> GetUserHolidayPreferencesListAsync(string userId)
+        public async Task<HolidayPreferences> GetUserHolidayPreferences(string userId)
         {
             return await _context.HolidayPreferences
                 .Where(h => h.AppUserId == userId)
                 .Include(h => h.Websites)
-                .ToListAsync();
+                .FirstOrDefaultAsync();
         }
 
 
@@ -43,7 +43,7 @@ namespace Infrastructure.Data
             _context.HolidayPreferences.Remove(preferences);
         }
 
-        public async Task<AppUser> GetUserHolidayPreferences(string id)
+        public async Task<AppUser> GetUserWithHolidayPreferences(string id)
         {
           return  await _userManager.Users
                 .Include(u => u.HolidayPreferences)

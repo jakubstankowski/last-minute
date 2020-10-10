@@ -35,35 +35,13 @@ namespace API.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> GetUserPreferences()
-        {
-            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-
-            if (userId == null)
-            {
-                return NotFound(new ApiResponse(404));
-            }
-
-            var preferences = await _repo.GetUserHolidayPreferencesListAsync(userId);
-
-            return Ok(_mapper
-               .Map<IEnumerable<HolidayPreferences>, IEnumerable<HolidayPreferencesDTO>>(preferences));
-
-        }
-
-
-
-        // GET: api/preferences/5
-        [Authorize]
-        [HttpGet("{id}")]
-        public async Task<ActionResult<HolidayPreferencesDTO>> GetPreferencesById(int id)
+        public async Task<ActionResult<HolidayPreferencesDTO>> GetUserPreferences()
         {
             var userId = HttpContext.User
              .FindFirst(ClaimTypes.NameIdentifier)
              .Value.ToString();
 
-            var preferences = await _repo.GetUserHolidayPreferenceByIdAsync(id, userId);
+            var preferences = await _repo.GetUserHolidayPreferences( userId);
 
             if (preferences == null)
             {
@@ -71,18 +49,18 @@ namespace API.Controllers
             }
 
             return _mapper.Map<HolidayPreferences, HolidayPreferencesDTO>(preferences);
-        }
 
+        }
 
 
         //PUT: api/HolidayPreferences
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> PostUserPreferencesAsync(HolidayPreferences holidayPreferences)
+        public async Task<IActionResult> PostUserPreferences(HolidayPreferences holidayPreferences)
         {
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            var user = await _repo.GetUserHolidayPreferences(userId);
+            var user = await _repo.GetUserWithHolidayPreferences(userId);
 
             user.HolidayPreferences = holidayPreferences;
 
