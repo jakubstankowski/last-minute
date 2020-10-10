@@ -15,5 +15,5 @@ import {SharedModule} from '../shared/shared.module';
         SharedModule
     ]
 })
-export class HolidayPreferencesModule {
-}
+export class HolidayPreferencesModule {}
+
