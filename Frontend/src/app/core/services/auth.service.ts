@@ -1,11 +1,11 @@
 import {Injectable, Inject} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import * as moment from 'moment';
 import 'rxjs/add/operator/delay';
 
 import {environment} from '../../../environments/environment';
-import {of, EMPTY, ReplaySubject} from 'rxjs';
+import {of, EMPTY, ReplaySubject, BehaviorSubject} from 'rxjs';
 import {IUser} from '../../shared/models/user';
 import {Router} from '@angular/router';
 
@@ -14,7 +14,7 @@ import {Router} from '@angular/router';
 })
 export class AuthenticationService {
     baseUrl = environment.apiUrl;
-    private currentUserSource = new ReplaySubject<IUser>(1);
+    private currentUserSource = new BehaviorSubject<IUser>(null);
     currentUser$ = this.currentUserSource.asObservable();
 
     constructor(private http: HttpClient,
@@ -33,6 +33,24 @@ export class AuthenticationService {
         );
     }
 
+    loadCurrentUser(token: string) {
+        if (token === null) {
+            this.currentUserSource.next(null);
+            return of(null);
+        }
+
+        let headers = new HttpHeaders();
+        headers = headers.set('Authorization', `Bearer ${token}`);
+
+        return this.http.get(this.baseUrl + 'account', {headers}).pipe(
+            map((user: IUser) => {
+                if (user) {
+                    localStorage.setItem('token', user.token);
+                    this.currentUserSource.next(user);
+                }
+            })
+        );
+    }
     register(values: any) {
         return this.http.post(this.baseUrl + 'auth/register', values).pipe(
             map((user: IUser) => {
@@ -50,17 +68,5 @@ export class AuthenticationService {
         this.router.navigateByUrl('/auth/login');
     }
 
-    getCurrentUser(): any {
-        // TODO: Enable after implementation
-        // return JSON.parse(this.localStorage.getItem('currentUser'));
-        return {
-            token: 'aisdnaksjdn,axmnczm',
-            isAdmin: true,
-            email: 'john.doe@gmail.com',
-            id: '12312323232',
-            alias: 'john.doe@gmail.com'.split('@')[0],
-            expiration: moment().add(1, 'days').toDate(),
-            fullName: 'John Doe'
-        };
-    }
+
 }
