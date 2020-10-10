@@ -21,6 +21,7 @@ const appRoutes: Routes = [
     {
         path: 'holiday-offers',
         loadChildren: './holiday-offers/holiday-offers.module#HolidayOffersModule',
+        canActivate: [AuthGuard]
     },
     {
         path: 'users',
