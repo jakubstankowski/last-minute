@@ -7,14 +7,14 @@ import {environment} from './../../../environments/environment';
 import {AuthenticationService} from './../../core/services/auth.service';
 import {SpinnerService} from '../../core/services/spinner.service';
 import {AuthGuard} from 'src/app/core/guards/auth.guard';
-import {IUser} from "../models/user";
+import {IUser} from '../models/user';
 
 @Component({
     selector: 'app-layout',
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.css']
 })
-export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
+export class LayoutComponent implements OnInit,  AfterViewInit {
 
     private _mobileQueryListener: () => void;
     mobileQuery: MediaQueryList;
@@ -38,27 +38,26 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     ngOnInit(): void {
+        //this.loadCurrentUser();
         this.currentUser$ = this.authService.currentUser$;
-
-        // Auto log-out subscription
-        const timer = TimerObservable.create(2000, 5000);
-        this.autoLogoutSubscription = timer.subscribe(t => {
-            this.authGuard.canActivate();
-        });
     }
 
-    ngOnDestroy(): void {
-        // tslint:disable-next-line: deprecation
-        this.mobileQuery.removeListener(this._mobileQueryListener);
-        this.autoLogoutSubscription.unsubscribe();
-    }
 
     ngAfterViewInit(): void {
         this.changeDetectorRef.detectChanges();
     }
 
+    loadCurrentUser() {
+        alert('load from layout');
+        const token = localStorage.getItem('token');
+        this.authService.loadCurrentUser(token).subscribe(() => {
+            console.log('loaded user');
+        }, error => {
+            console.log(error);
+        });
+    }
+
     logout() {
-        alert('logout');
         this.authService.logout();
     }
 }

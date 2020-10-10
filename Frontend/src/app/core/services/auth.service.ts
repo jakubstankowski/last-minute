@@ -14,7 +14,7 @@ import {Router} from '@angular/router';
 })
 export class AuthenticationService {
     baseUrl = environment.apiUrl;
-    private currentUserSource = new BehaviorSubject<IUser>(null);
+    private currentUserSource = new ReplaySubject<IUser>(1);
     currentUser$ = this.currentUserSource.asObservable();
 
     constructor(private http: HttpClient,
@@ -34,6 +34,7 @@ export class AuthenticationService {
     }
 
     loadCurrentUser(token: string) {
+        console.log('token: ', token);
         if (token === null) {
             this.currentUserSource.next(null);
             return of(null);
@@ -42,8 +43,9 @@ export class AuthenticationService {
         let headers = new HttpHeaders();
         headers = headers.set('Authorization', `Bearer ${token}`);
 
-        return this.http.get(this.baseUrl + 'account', {headers}).pipe(
+        return this.http.get(this.baseUrl + 'auth', {headers}).pipe(
             map((user: IUser) => {
+                console.log('user: ', user);
                 if (user) {
                     localStorage.setItem('token', user.token);
                     this.currentUserSource.next(user);
@@ -51,6 +53,7 @@ export class AuthenticationService {
             })
         );
     }
+
     register(values: any) {
         return this.http.post(this.baseUrl + 'auth/register', values).pipe(
             map((user: IUser) => {
