@@ -5,24 +5,29 @@ import * as moment from 'moment';
 import 'rxjs/add/operator/delay';
 
 import {environment} from '../../../environments/environment';
-import {of, EMPTY} from 'rxjs';
+import {of, EMPTY, ReplaySubject} from 'rxjs';
 import {IUser} from '../../shared/models/user';
+import {Router} from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthenticationService {
     baseUrl = environment.apiUrl;
+    private currentUserSource = new ReplaySubject<IUser>(1);
+    currentUser$ = this.currentUserSource.asObservable();
 
     constructor(private http: HttpClient,
-                @Inject('LOCALSTORAGE') private localStorage: Storage) {
+                @Inject('LOCALSTORAGE') private localStorage: Storage, private router: Router) {
     }
 
     login(values: any) {
         return this.http.post(this.baseUrl + 'auth/login', values).pipe(
             map((user: IUser) => {
                 if (user) {
-                    localStorage.setItem('token', user.token);
+                    console.log('user', user);
+                    this.localStorage.setItem('token', user.token);
+                    this.currentUserSource.next(user);
                 }
             })
         );
@@ -32,16 +37,17 @@ export class AuthenticationService {
         return this.http.post(this.baseUrl + 'auth/register', values).pipe(
             map((user: IUser) => {
                 if (user) {
-                    localStorage.setItem('token', user.token);
+                    this.localStorage.setItem('token', user.token);
+                    this.currentUserSource.next(user);
                 }
             })
         );
     }
 
-
-    logout(): void {
-        // clear token remove user from local storage to log user out
-        this.localStorage.removeItem('currentUser');
+    logout() {
+        this.localStorage.removeItem('token');
+        this.currentUserSource.next(null);
+        this.router.navigateByUrl('/auth/login');
     }
 
     getCurrentUser(): any {
@@ -56,17 +62,5 @@ export class AuthenticationService {
             expiration: moment().add(1, 'days').toDate(),
             fullName: 'John Doe'
         };
-    }
-
-    passwordResetRequest(email: string) {
-        return of(true).delay(1000);
-    }
-
-    changePassword(email: string, currentPwd: string, newPwd: string) {
-        return of(true).delay(1000);
-    }
-
-    passwordReset(email: string, token: string, password: string, confirmPassword: string): any {
-        return of(true).delay(1000);
     }
 }

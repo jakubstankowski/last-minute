@@ -36,7 +36,7 @@ export class PasswordResetRequestComponent implements OnInit {
 
   resetPassword() {
     this.loading = true;
-    this.authService.passwordResetRequest(this.email)
+    /*this.authService.passwordResetRequest(this.email)
       .subscribe(
         results => {
           this.router.navigate(['/auth/login']);
@@ -46,7 +46,7 @@ export class PasswordResetRequestComponent implements OnInit {
           this.loading = false;
           this.notificationService.openSnackBar(error.error);
         }
-      );
+      );*/
   }
 
   cancel() {

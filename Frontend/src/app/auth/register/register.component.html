@@ -26,6 +26,10 @@
                         Password is
                         <strong>required</strong>
                     </mat-error>
+                    <mat-error id="minPasswordLength" *ngIf="registerForm.controls['password'].hasError('minLength')">
+                        Minimum length of password
+                        <strong>is 6 characters</strong>
+                    </mat-error>
                 </mat-form-field>
 
             </mat-card-content>
