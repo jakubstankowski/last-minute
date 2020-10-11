@@ -1,5 +1,7 @@
-export class IPreferences {
+import {IWebsites} from './websites';
+
+export interface IPreferences {
     minPrice: number;
     maxPrice: number;
-    websites: object;
+    websites: IWebsites[];
 }
