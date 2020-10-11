@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {IPreferences} from '../../shared/models/preferences';
+import {HolidayPreferencesService} from '../holiday-preferences.service';
 
 @Component({
     selector: 'app-holiday-preferences-list',
@@ -6,12 +8,17 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./holiday-preferences-list.component.css']
 })
 export class HolidayPreferencesListComponent implements OnInit {
+    preferences: IPreferences;
 
-    constructor() {
+    constructor(private holidayPreferencesService: HolidayPreferencesService) {
     }
 
     ngOnInit() {
-        alert('preferences!');
+        this.getPreferences();
     }
 
+    getPreferences() {
+        this.holidayPreferencesService.getHolidayPreferences()
+            .subscribe(preferences => this.preferences = preferences);
+    }
 }
