@@ -41,7 +41,7 @@ namespace API.Controllers
              .FindFirst(ClaimTypes.NameIdentifier)
              .Value.ToString();
 
-            var preferences = await _repo.GetUserHolidayPreferences( userId);
+            var preferences = await _repo.GetUserHolidayPreferences(userId);
 
             if (preferences == null)
             {
@@ -77,28 +77,27 @@ namespace API.Controllers
 
         // PUT: api/HolidayPreferences/5
         [Authorize]
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutHolidayPreference(int id, HolidayPreferencesDTO preferenceDTO)
+        [HttpPut]
+        public async Task<IActionResult> PutHolidayPreference(HolidayPreferences updatePreference)
         {
             var userId = HttpContext.User
-                .FindFirst(ClaimTypes.NameIdentifier)
-                .Value.ToString();
+               .FindFirst(ClaimTypes.NameIdentifier)
+               .Value.ToString();
 
-            var preference = await _repo.GetUserHolidayPreferenceByIdAsync(id, userId);
+            var preferences = await _repo.GetUserHolidayPreferences(userId);
 
-            if (preference == null)
+            if (preferences == null)
             {
                 return NotFound(new ApiResponse(404));
             }
 
-            preference.MinPrice = preferenceDTO.MinPrice;
-            preference.MaxPrice = preferenceDTO.MaxPrice;
-            preference.Websites = preferenceDTO.Websites;
-
+            preferences.MinPrice = updatePreference.MinPrice;
+            preferences.MaxPrice = updatePreference.MaxPrice;
+            preferences.Websites = updatePreference.Websites;
 
             _repo.SaveChanges();
 
-            return Ok(_mapper.Map<HolidayPreferences, HolidayPreferencesDTO>(preference));
+            return Ok(_mapper.Map<HolidayPreferences, HolidayPreferencesDTO>(preferences));
         }
 
         // DELETE: api/HolidayPreferences/5

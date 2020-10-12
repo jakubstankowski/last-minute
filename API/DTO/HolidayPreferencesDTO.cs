@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using Core.Entities;
+﻿using System.Collections.Generic;
 
 namespace API.DTO
 {
@@ -11,6 +6,6 @@ namespace API.DTO
     {
         public int MinPrice { get; set; }
         public int MaxPrice { get; set; }
-        public ICollection<HolidayWebsites> Websites { get; set; }
+        public ICollection<HolidayWebsitesDTO> Websites { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace Infrastructure.Data
 
         public HolidayPreferencesRepo(DataContext context, UserManager<AppUser> userManager)
         {
-           _context = context;
+            _context = context;
             _userManager = userManager;
         }
 
@@ -37,17 +37,18 @@ namespace Infrastructure.Data
         }
 
 
+
         public void DeleteHolidayPreference(HolidayPreferences preferences)
         {
-           
+
             _context.HolidayPreferences.Remove(preferences);
         }
 
         public async Task<AppUser> GetUserWithHolidayPreferences(string id)
         {
-          return  await _userManager.Users
-                .Include(u => u.HolidayPreferences)
-                .FirstOrDefaultAsync(u => u.Id == id);
+            return await _userManager.Users
+                  .Include(u => u.HolidayPreferences)
+                  .FirstOrDefaultAsync(u => u.Id == id);
         }
 
 
@@ -56,8 +57,8 @@ namespace Infrastructure.Data
             return (_context.SaveChanges() >= 0);
         }
 
-    
 
-      
+
+
     }
 }
