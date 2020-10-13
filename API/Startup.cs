@@ -18,6 +18,7 @@ using API.Configuration;
 using WebScrapper;
 using Infrastructure.Services;
 using Microsoft.Net.Http.Headers;
+using Microsoft.AspNetCore.Authentication.Certificate;
 
 namespace API
 {
@@ -49,7 +50,7 @@ namespace API
                 options.AddPolicy(MyAllowSpecificOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("http://localhost:4200")
+                                      builder.WithOrigins("https://localhost:4200")
                                                           .AllowAnyHeader()
                                                           .AllowAnyMethod();
                                   });
@@ -71,7 +72,7 @@ namespace API
                      .AddEntityFrameworkStores<AppIdentityDbContext>()
                       .AddSignInManager<SignInManager<AppUser>>();
 
-          
+
             var jwtSection = Configuration.GetSection("JwtBearerTokenSettings");
             services.Configure<JwtBearerTokenSettings>(jwtSection);
             var jwtBearerTokenSettings = jwtSection.Get<JwtBearerTokenSettings>();
@@ -93,22 +94,25 @@ namespace API
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                 };
             });
-          
+            services.AddAuthentication(
+     CertificateAuthenticationDefaults.AuthenticationScheme)
+        .AddCertificate();
 
-          
+
+
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
-            app.UseHttpsRedirection();
+           /* app.UseHttpsRedirection();*/
 
             app.UseRouting();
-            
+
             app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthentication();

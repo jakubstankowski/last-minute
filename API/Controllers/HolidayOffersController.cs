@@ -33,9 +33,9 @@ namespace API.Controllers
         [HttpGet("webscrapper")]
         public ActionResult Webscrapper()
         {
-            _genericWebscrapper.CollectItakaWebscrapperData();
-            _genericWebscrapper.CollectTuiWebscrapperData();
-            return Ok(200);
+           /* _genericWebscrapper.CollectItakaWebscrapperData();
+            _genericWebscrapper.CollectTuiWebscrapperData();*/
+            return Ok("test");
         }
 
         // GET: api/offers

@@ -6,5 +6,7 @@ appsettings.json
 debug.log
 Frontend/node_modules
 Frontend/.idea
+Frontend/ssl
 node_modules
 .idea
+ssl
