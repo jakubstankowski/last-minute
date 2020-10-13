@@ -1,25 +1,19 @@
 <article class="holiday-preferences">
-    <mat-card>
-        <mat-card-content>
-            <ul>
-              <li>
-                    Min Price: {{preferences?.minPrice}}
-                </li>
-                <li>
-                    Max Price: {{preferences?.maxPrice}}
-                </li>
-            </ul>
-            <p>
-                Websites:
-            </p>
-            <ul *ngFor="let website of preferences?.websites">
-                {{website.website}}
-            </ul>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-button>
-                Edit
-            </button>
-        </mat-card-actions>
-    </mat-card>
+    <h4>
+        Preferences:
+    </h4>
+    <ul>
+        <li>
+            Min Price: {{preferences?.minPrice}}
+        </li>
+        <li>
+            Max Price: {{preferences?.maxPrice}}
+        </li>
+    </ul>
+    <p>
+        Websites:
+    </p>
+    <ul *ngFor="let website of preferences?.websites">
+        {{website.website}}
+    </ul>
 </article>
