@@ -9,11 +9,16 @@
         <li>
             Max Price: {{preferences?.maxPrice}}
         </li>
+        <li>
+            Websites:
+            <ul *ngFor="let website of preferences?.websites">
+                <li>
+                    {{website.website}}
+                </li>
+            </ul>
+        </li>
     </ul>
-    <p>
-        Websites:
-    </p>
-    <ul *ngFor="let website of preferences?.websites">
-        {{website.website}}
-    </ul>
+    <button mat-raised-button color="primary">
+        Edit
+    </button>
 </article>
