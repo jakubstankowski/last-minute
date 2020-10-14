@@ -13,7 +13,7 @@ export class HolidayPreferencesService {
     constructor(private http: HttpClient) {
     }
 
-    getHolidayPreferences(): Observable<IPreferences> {
+    getHolidayPreference(): Observable<IPreferences> {
       return  this.http.get<IPreferences>(this.baseUrl + 'preferences');
     }
 

@@ -1,1 +1,32 @@
-<p>holiday-preferences-edit works!</p>
+<article class="login-container"  fxLayoutAlign="center">
+    <form [formGroup]="preferenceForm">
+        <mat-card>
+            <mat-card-title>Edit Holiday Preference</mat-card-title>
+            <mat-card-subtitle>Edit your favourite preferences</mat-card-subtitle>
+            <mat-card-content>
+                <mat-form-field class="full-width">
+                    <input id="minPriceInput" matInput placeholder="Minimum Price" formControlName="minPrice"
+                           type="number">
+                    <mat-error id="invalidMinPriceError" *ngIf="preferenceForm.controls['minPrice'].hasError('required')">
+                        Minim Price is
+                        <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input id="maxPriceInput" matInput placeholder="Maximum Price" formControlName="maxPrice"
+                           type="number">
+                    <mat-error id="invalidMaxPriceError" *ngIf="preferenceForm.controls['maxPrice'].hasError('required')">
+                        Maximum Price is
+                        <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </mat-card-content>
+
+            <mat-card-actions class="login-actions">
+                <button mat-raised-button id="login" color="primary" (click)="updatePreference()">
+                    Edit
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</article>

@@ -14,11 +14,11 @@ export class HolidayPreferencesListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getPreferences();
+        this.getPreference();
     }
 
-    getPreferences() {
-        this.holidayPreferencesService.getHolidayPreferences()
+    getPreference() {
+        this.holidayPreferencesService.getHolidayPreference()
             .subscribe(preferences => {
                 this.preferences = preferences;
             });
