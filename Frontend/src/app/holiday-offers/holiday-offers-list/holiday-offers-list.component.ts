@@ -9,8 +9,9 @@ import {HolidayOffersService} from '../holiday-offers.service';
 })
 export class HolidayOffersListComponent implements OnInit {
     offers: IOffers[];
+    loading: boolean;
 
-    constructor(private holidayOffers: HolidayOffersService) {
+    constructor(private holidayOffersService: HolidayOffersService) {
     }
 
     ngOnInit() {
@@ -18,8 +19,25 @@ export class HolidayOffersListComponent implements OnInit {
     }
 
     getOffers(): void {
-        this.holidayOffers.getOffers()
-            .subscribe(offer => this.offers = offer);
+        this.loading = true;
+        this.holidayOffersService.getOffers()
+            .subscribe(offer => {
+                this.loading = false;
+                this.offers = offer;
+            });
+    }
+
+    reloadOffers(): void {
+        this.loading = true;
+        this.holidayOffersService.reloadOffers()
+            .subscribe(
+                (response) => {
+                    this.loading = false;
+                    this.getOffers();
+                },
+                (err) => console.error(err),
+                () => console.log('observable complete')
+            );
     }
 
 }

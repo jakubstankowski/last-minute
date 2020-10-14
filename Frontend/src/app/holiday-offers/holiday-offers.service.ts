@@ -18,4 +18,8 @@ export class HolidayOffersService {
         return this.http.get<IOffers[]>(this.baseUrl + 'offers/by-user-preferences');
     }
 
+    reloadOffers(): Observable<any> {
+        return this.http.get(this.baseUrl + 'offers/webscrapper');
+    }
+
 }

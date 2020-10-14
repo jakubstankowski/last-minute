@@ -68,7 +68,7 @@ namespace WebScrapper
             driver.Navigate()
              .GoToUrl("https://www.tui.pl/last-minute?pm_source=MENU&pm_name=Last_Minute");
 
-            driver.Manage().Window.Maximize();
+          
 
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript("window.scroll({bottom: 0, top: document.body.scrollHeight, behavior: 'smooth'})");
