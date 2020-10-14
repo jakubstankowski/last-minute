@@ -1,7 +1,6 @@
 <button mat-raised-button color="primary" (click)="reloadOffers()">
     Reload Offers
 </button>
-<app-holiday-preferences-list></app-holiday-preferences-list>
 <article *ngIf="!loading" class="holiday-offers-list grid">
     <mat-card *ngFor="let offer of offers">
         <mat-card-header>

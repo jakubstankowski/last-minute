@@ -72,7 +72,12 @@
                     </mat-icon>
                     <p mat-line> Holiday Offers </p>
                 </a>
-
+                <a mat-list-item [routerLink]="['/holiday-preferences']" routerLinkActive="active">
+                    <mat-icon mat-list-icon>
+                        wb_sunny
+                    </mat-icon>
+                    <p mat-line> Holiday Preferences </p>
+                </a>
                 <a mat-list-item [routerLink]="['/account/profile']">
                     <mat-icon mat-list-icon>person</mat-icon>
                     <p mat-line> Account </p>

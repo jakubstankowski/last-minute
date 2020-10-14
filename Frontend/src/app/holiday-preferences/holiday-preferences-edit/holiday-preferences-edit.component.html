@@ -1,4 +1,4 @@
-<article class="login-container"  fxLayoutAlign="center">
+<article class="login-container" fxLayoutAlign="center">
     <form [formGroup]="preferenceForm">
         <mat-card>
             <mat-card-title>Edit Holiday Preference</mat-card-title>
@@ -7,7 +7,8 @@
                 <mat-form-field class="full-width">
                     <input id="minPriceInput" matInput placeholder="Minimum Price" formControlName="minPrice"
                            type="number">
-                    <mat-error id="invalidMinPriceError" *ngIf="preferenceForm.controls['minPrice'].hasError('required')">
+                    <mat-error id="invalidMinPriceError"
+                               *ngIf="preferenceForm.controls['minPrice'].hasError('required')">
                         Minim Price is
                         <strong>required</strong>
                     </mat-error>
@@ -15,7 +16,8 @@
                 <mat-form-field class="full-width">
                     <input id="maxPriceInput" matInput placeholder="Maximum Price" formControlName="maxPrice"
                            type="number">
-                    <mat-error id="invalidMaxPriceError" *ngIf="preferenceForm.controls['maxPrice'].hasError('required')">
+                    <mat-error id="invalidMaxPriceError"
+                               *ngIf="preferenceForm.controls['maxPrice'].hasError('required')">
                         Maximum Price is
                         <strong>required</strong>
                     </mat-error>
@@ -23,8 +25,12 @@
             </mat-card-content>
 
             <mat-card-actions class="login-actions">
-                <button mat-raised-button id="login" color="primary" (click)="updatePreference()">
+                <button mat-raised-button id="login" color="primary" [disabled]="preferenceForm.invalid"
+                        (click)="updatePreference()">
                     Edit
+                </button>
+                <button mat-raised-button id="back" color="primary" [routerLink]="['/holiday-preferences']">
+                    Back
                 </button>
             </mat-card-actions>
         </mat-card>
