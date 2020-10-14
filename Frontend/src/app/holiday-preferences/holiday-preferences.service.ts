@@ -14,7 +14,11 @@ export class HolidayPreferencesService {
     }
 
     getHolidayPreference(): Observable<IPreferences> {
-      return  this.http.get<IPreferences>(this.baseUrl + 'preferences');
+        return this.http.get<IPreferences>(this.baseUrl + 'preferences');
+    }
+
+    updateHolidayPreference(form: any): Observable<IPreferences> {
+        return this.http.put<IPreferences>(this.baseUrl + 'preferences', form);
     }
 
 
