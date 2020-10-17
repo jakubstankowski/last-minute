@@ -2,7 +2,6 @@ using API.Helpers;
 using Core.Interface;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,7 +16,6 @@ using System.Text;
 using API.Configuration;
 using WebScrapper;
 using Infrastructure.Services;
-using Microsoft.Net.Http.Headers;
 using Microsoft.AspNetCore.Authentication.Certificate;
 using WebAPIClient;
 
@@ -41,8 +39,8 @@ namespace API
             services.AddScoped<IHolidayPreferencesRepo, HolidayPreferencesRepo>();
             services.AddScoped<IHolidayOffersRepo, HolidayOffersRepo>();
 
-            services.AddScoped<IGenericWebscrapper, GenericWebscrapper>();
             services.AddScoped<IGenericWebAPIClient, GenericWebAPIClient>();
+
             services.AddScoped<IHolidayOffersService, HolidayOffersService>();
             services.AddScoped<IWebscrapperService, WebscrapperService>();
 

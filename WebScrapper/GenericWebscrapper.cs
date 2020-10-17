@@ -9,13 +9,11 @@ namespace WebScrapper
 {
     public class GenericWebscrapper : IGenericWebscrapper
     {
-        private readonly IHolidayOffersRepo _offersRepo;
         private readonly IWebscrapperService _webscrapperService;
-       
 
-        public GenericWebscrapper(IHolidayOffersRepo offersRepo, IWebscrapperService webscrapperService)
+
+        public GenericWebscrapper(IWebscrapperService webscrapperService)
         {
-            _offersRepo = offersRepo;
             _webscrapperService = webscrapperService;
 
         }
@@ -23,7 +21,7 @@ namespace WebScrapper
         public void CollectItakaWebscrapperData()
         {
             IWebDriver driver = new ChromeDriver();
-            _offersRepo.DeleteHolidayOffersByWebstie("itaka.pl");
+
             this.StartWebscrapper("https://www.itaka.pl/last-minute/?view=offerList&package-type=wczasy&adults=2&date-from=2020-09-21&food=allInclusive&promo=lastMinute&order=priceAsc&total-price=0&page=1&transport=flight&currency=PLN", driver);
 
             Thread.Sleep(1000);
@@ -53,22 +51,22 @@ namespace WebScrapper
                 };
 
 
-                _offersRepo.CreateHolidayOffers(holidayOffer);
-
+                /*                _offersRepo.CreateHolidayOffers(holidayOffer);
+                */
             }
         }
-        
+
         public void CollectTuiWebscrapperData()
         {
             IWebDriver driver = new ChromeDriver();
-            _offersRepo.DeleteHolidayOffersByWebstie("tui.pl");
+
             this.StartWebscrapper("https://www.tui.pl/last-minute?pm_source=MENU&pm_name=Last_Minute", driver);
 
-          
+
             driver.Navigate()
              .GoToUrl("https://www.tui.pl/last-minute?pm_source=MENU&pm_name=Last_Minute");
 
-          
+
 
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript("window.scroll({bottom: 0, top: document.body.scrollHeight, behavior: 'smooth'})");
@@ -103,8 +101,8 @@ namespace WebScrapper
                 };
 
 
-                _offersRepo.CreateHolidayOffers(holidayOffer);
-
+                /*                _offersRepo.CreateHolidayOffers(holidayOffer);
+                */
 
 
             }
@@ -113,7 +111,7 @@ namespace WebScrapper
 
         public void StartWebscrapper(string url, IWebDriver driver)
         {
-           
+
             driver.Navigate()
              .GoToUrl(url);
 
