@@ -21,13 +21,16 @@ namespace API.Controllers
         private readonly IHolidayPreferencesRepo _preferencesRepo;
         private readonly IHolidayOffersService _holidayOffersService;
         private readonly IGenericWebscrapper _genericWebscrapper;
-        public HolidayOffersController(IHolidayOffersRepo repo, IMapper mapper, IHolidayPreferencesRepo preferencesRepo, IHolidayOffersService holidayOffersService, IGenericWebscrapper genericWebscrapper)
+        private readonly IGenericWebAPIClient _genericWebAPIClient;
+
+        public HolidayOffersController(IHolidayOffersRepo repo, IMapper mapper, IHolidayPreferencesRepo preferencesRepo, IHolidayOffersService holidayOffersService, IGenericWebscrapper genericWebscrapper, IGenericWebAPIClient genericWebAPIClient)
         {
             _repo = repo;
             _mapper = mapper;
             _preferencesRepo = preferencesRepo;
             _holidayOffersService = holidayOffersService;
             _genericWebscrapper = genericWebscrapper;
+            _genericWebAPIClient = genericWebAPIClient;
         }
 
         [HttpGet("webscrapper")]
@@ -35,6 +38,14 @@ namespace API.Controllers
         {
             _genericWebscrapper.CollectItakaWebscrapperData();
             _genericWebscrapper.CollectTuiWebscrapperData();
+            return Ok(200);
+        }
+
+        [HttpGet("refresh")]
+        public ActionResult RefreshOffers()
+        {
+            _genericWebAPIClient.CollectTuiDataAsync();
+
             return Ok(200);
         }
 

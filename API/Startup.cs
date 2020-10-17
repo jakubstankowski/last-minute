@@ -19,6 +19,7 @@ using WebScrapper;
 using Infrastructure.Services;
 using Microsoft.Net.Http.Headers;
 using Microsoft.AspNetCore.Authentication.Certificate;
+using WebAPIClient;
 
 namespace API
 {
@@ -41,9 +42,10 @@ namespace API
             services.AddScoped<IHolidayOffersRepo, HolidayOffersRepo>();
 
             services.AddScoped<IGenericWebscrapper, GenericWebscrapper>();
-
+            services.AddScoped<IGenericWebAPIClient, GenericWebAPIClient>();
             services.AddScoped<IHolidayOffersService, HolidayOffersService>();
             services.AddScoped<IWebscrapperService, WebscrapperService>();
+
 
             services.AddCors(options =>
             {
@@ -109,7 +111,7 @@ namespace API
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
-           /*app.UseHttpsRedirection();*/
+            /*app.UseHttpsRedirection();*/
 
             app.UseRouting();
 

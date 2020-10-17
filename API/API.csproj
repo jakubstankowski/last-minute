@@ -25,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\WebAPIClient\WebAPIClient.csproj" />
     <ProjectReference Include="..\WebScrapper\WebScrapper.csproj" />
   </ItemGroup>
 
