@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -37,17 +38,18 @@ namespace WebAPIClient
 
             foreach (var offer in deserializedClass.Offers)
             {
+                List<string> countryDetails = new List<string>();
 
-                foreach (var breadcrumb in offer.breadcrumbs)
+                foreach (var country in offer.breadcrumbs)
                 {
-                    Console.WriteLine("COUNTRY: " + breadcrumb.label);
+                    countryDetails.Add(country.label);
                 }
 
 
                 HolidayOffers holidayOffer = new HolidayOffers
                 {
                     Website = "tui.pl",
-                    Country = "null",
+                    Country = countryDetails[0],
                     Title = offer.hotelName,
                     Price = Int32.Parse(offer.originalPerPersonPrice),
                     Url = $"https://www.tui.pl{offer.offerUrl}",
