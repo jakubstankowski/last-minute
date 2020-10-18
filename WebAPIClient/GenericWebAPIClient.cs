@@ -8,6 +8,7 @@ using Core.Entities;
 using Core.Interface;
 using Newtonsoft.Json;
 using static Core.Entities.Itaka;
+using static Core.Entities.Rainbow;
 using static Core.Entities.Tui;
 
 
@@ -51,6 +52,37 @@ namespace WebAPIClient
 
 
                 _offersRepo.CreateHolidayOffers(holidayOffer);
+            }
+        }
+
+        public async Task CollectRainbowDataAsync()
+        {
+            client.DefaultRequestHeaders.Add("authority", "rpl-api.r.pl");
+            client.DefaultRequestHeaders.Add("accept", "*/*");
+            client.DefaultRequestHeaders.Add("sec-fetch-site", "same-site");
+            client.DefaultRequestHeaders.Add("sec-fetch-mode", "cors");
+            client.DefaultRequestHeaders.Add("sec-fetch-dest", "empty");
+            client.DefaultRequestHeaders.Add("accept-language", "pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7");
+            client.DefaultRequestHeaders.Add("origin", "https://r.pl");
+            client.DefaultRequestHeaders.Add("referer", "https://r.pl/szukaj?promocja=last-minute^&typyTransportu=air^&typyTransportu=bus^&wiek=1990-09-23^&wiek=1990-09-23^&liczbaPokoi=1^&sortuj=DataAsc^&grupujTerminy=1^&czyCenaZaWszystkich=0^&czyPotwierdzoneTerminy=0^&pokazywaneLotniska=SAME");
+            client.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.271");
+            client.DefaultRequestHeaders.Add("accept-encoding", "gzip, deflate, br");
+
+
+
+            string postBody = "{\"Konfiguracja\":{\"LiczbaPokoi\":\"1\",\"Wiek\":[\"1990 - 09 - 23\",\"1990 - 09 - 23\"]},\"Sortowanie\":{\"CzyPoDacie\":true,\"CzyPoCenie\":false,\"CzyPoOcenach\":false,\"CzyPoPolecanych\":false,\"CzyDesc\":false},\"CzyCenaZaWszystkich\":false,\"CzyGrupowac\":true,\"Promocje\":[\"last - minute\"],\"TypyTransportu\":[\"air\",\"bus\"],\"CzyPotwierdzoneTerminy\":false,\"PokazywaneLotniska\":\"SAME\",\"Paginacja\":{\"Przeczytane\":\"0\",\"IloscDoPobrania\":\"18\"},\"CzyImprezaWeekendowa\":false}";
+
+            var postResult = await client.PostAsync("https://rpl-api.r.pl/v3/wyszukiwarka/api/wyszukaj", new StringContent(postBody, Encoding.UTF8, "application/json"));
+            string stringResult = await postResult.Content.ReadAsStringAsync();
+
+            var deserializedClass = JsonConvert.DeserializeObject<RetrieveMultipleRainbowResponse>(stringResult);
+
+
+            foreach (var offer in deserializedClass.Bloczki)
+            {
+                Console.WriteLine("COUNTRY: " + offer.CzyCenaZaWszystkich);
+
+
             }
         }
 

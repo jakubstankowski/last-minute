@@ -7,5 +7,7 @@ namespace Core.Interface
         public Task CollectTuiDataAsync();
 
         public Task CollectItakaDataAsync();
+
+        public Task CollectRainbowDataAsync();
     }
 }
