@@ -9,7 +9,7 @@ namespace Core.Entities
 
         public class RetrieveMultipleItakaResponse
         {
-            public List<Datum> Data { get; set; }
+            public List<Data> Data { get; set; }
         }
 
         public class Photos
@@ -19,7 +19,7 @@ namespace Core.Entities
         }
 
 
-        public class Datum
+        public class Data
         {
             public int price { get; set; }
             public string currency { get; set; }

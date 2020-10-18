@@ -27,6 +27,8 @@ namespace WebAPIClient
 
         public async Task CollectItakaDataAsync()
         {
+            _offersRepo.DeleteHolidayOffersByWebstie("itaka.pl");
+
             var getResult = client.GetStringAsync("https://www.itaka.pl/sipl/data/last-minute/search?view=offerList&language=pl&package-type=wczasy&promo=lastMinute&order=priceAsc&total-price=0&page=1&transport=flight&currency=PLN");
             string stringResult = await getResult;
 
@@ -35,12 +37,20 @@ namespace WebAPIClient
 
             foreach (var offer in deserializedClass.Data)
             {
-                Console.WriteLine("################### PRICE: " + offer.price);
-                Console.WriteLine("DATE FROM : " + offer.dateFrom);
-                Console.WriteLine("photo: " + offer.photos.tiny);
-                Console.WriteLine("title: " + offer.title);
-                Console.WriteLine("URL : " + offer.url);
-                Console.WriteLine(" ################# COUNTRY : " + offer.canonicalDestinationTitle);
+
+                HolidayOffers holidayOffer = new HolidayOffers
+                {
+                    Website = "itaka.pl",
+                    Country = offer.canonicalDestinationTitle.ToString(),
+                    Title = offer.title,
+                    Price = offer.price,
+                    Url = $"https://www.itaka.pl{offer.url}",
+                    Date = $"{offer.dateFrom} - {offer.dateTo}",
+                    ImageUrl = offer.url
+                };
+
+
+                _offersRepo.CreateHolidayOffers(holidayOffer);
             }
         }
 
