@@ -42,7 +42,8 @@ namespace API.Controllers
         [HttpGet("refresh")]
         public async Task RefreshOffersAsync()
         {
-           await _genericWebAPIClient.CollectTuiDataAsync();
+            //await _genericWebAPIClient.CollectTuiDataAsync();
+            await _genericWebAPIClient.CollectItakaDataAsync();
         }
 
         // GET: api/offers

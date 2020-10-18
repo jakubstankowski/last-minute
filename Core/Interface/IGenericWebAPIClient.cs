@@ -5,5 +5,7 @@ namespace Core.Interface
     public interface IGenericWebAPIClient
     {
         public Task CollectTuiDataAsync();
+
+        public Task CollectItakaDataAsync();
     }
 }

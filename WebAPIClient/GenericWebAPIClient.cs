@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -8,6 +7,7 @@ using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interface;
 using Newtonsoft.Json;
+using static Core.Entities.Itaka;
 using static Core.Entities.Tui;
 
 
@@ -25,16 +25,34 @@ namespace WebAPIClient
             _offersRepo = offersRepo;
         }
 
+        public async Task CollectItakaDataAsync()
+        {
+            var getResult = client.GetStringAsync("https://www.itaka.pl/sipl/data/last-minute/search?view=offerList&language=pl&package-type=wczasy&promo=lastMinute&order=priceAsc&total-price=0&page=1&transport=flight&currency=PLN");
+            string stringResult = await getResult;
+
+            var deserializedClass = JsonConvert.DeserializeObject<RetrieveMultipleItakaResponse>(stringResult);
+
+
+            foreach (var offer in deserializedClass.Data)
+            {
+                Console.WriteLine("################### PRICE: " + offer.price);
+                Console.WriteLine("DATE FROM : " + offer.dateFrom);
+                Console.WriteLine("photo: " + offer.photos.tiny);
+                Console.WriteLine("title: " + offer.title);
+                Console.WriteLine("URL : " + offer.url);
+                Console.WriteLine(" ################# COUNTRY : " + offer.canonicalDestinationTitle);
+            }
+        }
 
         public async Task CollectTuiDataAsync()
         {
             _offersRepo.DeleteHolidayOffersByWebstie("tui.pl");
 
             string postBody = "{\"childrenBirthdays\":[],\"durationFrom\":6,\"durationTo\":14,\"filters\":[{\"filterId\":\"additionalType\",\"selectedValues\":[\"GT03#TUZ-LAST25\"]}],\"metaData\":{\"page\":0,\"pageSize\":30,\"sorting\":\"flightDate\"},\"numberOfAdults\":2,\"offerType\":\"BY_PLANE\",\"site\":\"last-minute?pm_source=MENU&pm_name=Last_Minute\"}";
-            var result = await client.PostAsync("https://www.tui.pl/search/offers", new StringContent(postBody, Encoding.UTF8, "application/json"));
-            string resultStringContent = await result.Content.ReadAsStringAsync();
+            var postResult = await client.PostAsync("https://www.tui.pl/search/offers", new StringContent(postBody, Encoding.UTF8, "application/json"));
+            string stringResult = await postResult.Content.ReadAsStringAsync();
 
-            var deserializedClass = JsonConvert.DeserializeObject<RetrieveMultipleTuiResponse>(resultStringContent);
+            var deserializedClass = JsonConvert.DeserializeObject<RetrieveMultipleTuiResponse>(stringResult);
 
             foreach (var offer in deserializedClass.Offers)
             {
