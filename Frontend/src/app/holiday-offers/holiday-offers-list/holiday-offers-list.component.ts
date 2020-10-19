@@ -15,7 +15,7 @@ export class HolidayOffersListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getOffers();
+        this.reloadOffers();
     }
 
     getOffers(): void {

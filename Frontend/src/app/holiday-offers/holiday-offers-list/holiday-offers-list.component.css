@@ -1,4 +1,18 @@
-.holiday-offers-list_travel_logo{
+.holiday-offers-list_travel_logo {
     width: 50px;
     height: 50px;
+}
+
+.holiday-offers-list_price {
+    color: var(--primary-color);
+}
+
+.holiday-offers-list_price_for_person {
+    color: var(--dark-color);
+    font-size: 15px;
+    font-weight: lighter;
+}
+
+.holiday-offer-list_date {
+    float: right;
 }
