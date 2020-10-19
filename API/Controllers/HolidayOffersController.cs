@@ -8,7 +8,6 @@ using Core.Entities;
 using Core.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebScrapper;
 
 namespace API.Controllers
 {
@@ -28,15 +27,7 @@ namespace API.Controllers
             _mapper = mapper;
             _preferencesRepo = preferencesRepo;
             _holidayOffersService = holidayOffersService;
-
             _genericWebAPIClient = genericWebAPIClient;
-        }
-
-        [HttpGet("webscrapper")]
-        public ActionResult Webscrapper()
-        {
-
-            return Ok(200);
         }
 
         [HttpGet("refresh")]
@@ -97,12 +88,5 @@ namespace API.Controllers
 
         }
 
-
-        // POST: api/offers
-        [HttpPost]
-        public void Post(HolidayOffers offers)
-        {
-            _repo.CreateHolidayOffers(offers);
-        }
     }
 }

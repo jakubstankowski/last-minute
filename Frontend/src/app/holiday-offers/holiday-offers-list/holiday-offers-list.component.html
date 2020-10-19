@@ -1,6 +1,6 @@
 <article *ngIf="!loading" class="holiday-offers-list grid">
     <a *ngFor="let offer of offers" [href]="offer.url" target="_blank">
-        <mat-card>
+        <mat-card class="holiday-offers_list_card">
             <img mat-card-image [src]="offer.imageUrl" alt="Offer Image">
             <mat-card-header>
                 <img *ngIf="offer.website === 'tui.pl'" alt="Travel office logo" class="holiday-offers-list_travel_logo"

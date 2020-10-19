@@ -14,7 +14,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using API.Configuration;
-using WebScrapper;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.Certificate;
 using WebAPIClient;
@@ -42,8 +41,7 @@ namespace API
             services.AddScoped<IGenericWebAPIClient, GenericWebAPIClient>();
 
             services.AddScoped<IHolidayOffersService, HolidayOffersService>();
-            services.AddScoped<IWebscrapperService, WebscrapperService>();
-
+           
 
             services.AddCors(options =>
             {
