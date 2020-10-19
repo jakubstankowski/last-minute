@@ -57,16 +57,16 @@ namespace WebAPIClient
 
         public async Task CollectRainbowDataAsync()
         {
-            client.DefaultRequestHeaders.Add("authority", "rpl-api.r.pl");
-            client.DefaultRequestHeaders.Add("accept", "*/*");
-            client.DefaultRequestHeaders.Add("sec-fetch-site", "same-site");
-            client.DefaultRequestHeaders.Add("sec-fetch-mode", "cors");
-            client.DefaultRequestHeaders.Add("sec-fetch-dest", "empty");
-            client.DefaultRequestHeaders.Add("accept-language", "pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7");
-            client.DefaultRequestHeaders.Add("origin", "https://r.pl");
-            client.DefaultRequestHeaders.Add("referer", "https://r.pl/szukaj?promocja=last-minute^&typyTransportu=air^&typyTransportu=bus^&wiek=1990-09-23^&wiek=1990-09-23^&liczbaPokoi=1^&sortuj=DataAsc^&grupujTerminy=1^&czyCenaZaWszystkich=0^&czyPotwierdzoneTerminy=0^&pokazywaneLotniska=SAME");
-            client.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.271");
-            client.DefaultRequestHeaders.Add("accept-encoding", "gzip, deflate, br");
+            client.DefaultRequestHeaders.Add("Authority", "rpl-api.r.pl");
+            client.DefaultRequestHeaders.Add("Accept", "*/*");
+            client.DefaultRequestHeaders.Add("Sec-Fetch-Site", "same-site");
+            client.DefaultRequestHeaders.Add("Sec-Fetch-Mode", "cors");
+            client.DefaultRequestHeaders.Add("Sec-Fetch-Dest", "empty");
+            client.DefaultRequestHeaders.Add("Accept-Language", "pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7");
+            client.DefaultRequestHeaders.Add("Origin", "https://r.pl");
+            client.DefaultRequestHeaders.Add("Referer", "https://r.pl/szukaj?promocja=last-minute^&typyTransportu=air^&typyTransportu=bus^&wiek=1990-09-23^&wiek=1990-09-23^&liczbaPokoi=1^&sortuj=DataAsc^&grupujTerminy=1^&czyCenaZaWszystkich=0^&czyPotwierdzoneTerminy=0^&pokazywaneLotniska=SAME");
+            client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.271");
+            client.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate, br");
 
 
 
@@ -84,6 +84,31 @@ namespace WebAPIClient
 
 
             }
+        }
+
+        public async Task CollectWakacjeDataAsync()
+        {
+
+            client.DefaultRequestHeaders.Add("Accept", "*/*");
+            client.DefaultRequestHeaders.Add("Sec-Fetch-Site", "same-site");
+            client.DefaultRequestHeaders.Add("Sec-Fetch-Mode", "cors");
+            client.DefaultRequestHeaders.Add("Sec-Fetch-Dest", "empty");
+            client.DefaultRequestHeaders.Add("Accept-language", "pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7");
+            client.DefaultRequestHeaders.Add("Origin", "https://www.wakacje.pl");
+            client.DefaultRequestHeaders.Add("Referer", "https://www.wakacje.pl/lastminute/egipt,hiszpania,turcja,malta,portugalia,tunezja/?samolotem");
+            client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 OPR/71.0.3770.271");
+            client.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate, br");
+            client.DefaultRequestHeaders.Add("Cookie", "_session=b701f2b627ad3415da5bfddd2aa64966891cfff4; WPabs=d27be2; WPdp=z1yARMuKnxbQEpbF0NbQAFVWEUKWAtITwhAQgBNQwRLSABMVhMaERNDSh1bD1BbQAFVWFIKClgdWAtbIWxbBx1bPWYpWAsCWFwLWAtJVhMNCRNDSwRAQwlITghMSANITx1bGVpbQAFVWFIKClgdWAtbIWxbBx1bLmFbQEpbF0NbQAFVWEUKWAtITwhAQgBNQwRLSABMVhMaERNDSh1bGUIJE1VbQBMiJxMEBw^%^3D^%^3D; _cookiePrivacyPolicyClosed=true; WPtcs2=CO5kGOUO5kGOUBIACCPLA4CgAAAAAAAAAB5YAAAAAAAA.YAAAAAAAAAAA; STabid=6ce580bd3cc9d8679d07f5174fe53e62:1602695515.003:v1; new_user=27233305996; ABTEST=R; AB^[portion^]=53; PWA_adbd=1; SRVID=282310");
+
+
+
+
+            string postBody = "[{\"method\":\"search.tripsSearch\",\"params\":{\"brand\":\"WAK\",\"limit\":10,\"priceHistory\":1,\"imageSizes\":[\"570,428\"],\"flatArray\":true,\"multiSearch\":true,\"withHotelRate\":1,\"withPromoOffer\":1,\"recommendationVersion\":\"noTUI\",\"type\":\"tours\",\"firstMinuteTui\":false,\"countryId\":[\"37\",\"33\",\"99\",\"74\",\"65\",\"16\"],\"regionId\":[],\"cityId\":[],\"hotelId\":[],\"roundTripId\":[],\"cruiseId\":[],\"searchType\":\"lastminute\",\"offersAttributes\":[],\"alternative\":{\"countryId\":[],\"regionId\":[],\"cityId\":[]},\"query\":{\"campTypes\":[],\"qsVersion\":0,\"qsVersionLast\":0,\"tab\":false,\"candy\":false,\"pok\":null,\"flush\":false,\"tourOpAndCode\":null,\"obj_code\":null,\"obj_type\":null,\"catalog\":null,\"roomType\":null,\"test\":null,\"year\":null,\"month\":null,\"rangeDate\":null,\"withoutLast\":0,\"category\":false,\"not - attribute\":false,\"pageNumber\":1,\"departureDate\":\"2020 - 10 - 14\",\"arrivalDate\":\"2022 - 05 - 01\",\"departure\":null,\"type\":[1],\"duration\":{\"min\":7,\"max\":28},\"minPrice\":null,\"maxPrice\":null,\"service\":[],\"firstminute\":null,\"attribute\":[],\"promotion\":[],\"tourId\":null,\"search\":null,\"minCategory\":null,\"maxCategory\":50,\"sort\":13,\"order\":1,\"rank\":null,\"withoutTours\":[],\"withoutCountry\":[],\"withoutTrips\":[],\"rooms\":[{\"adult\":2,\"kid\":0,\"ages\":[],\"inf\":null}],\"offerCode\":null}}}]";
+
+            var postResult = await client.PostAsync("https://www.wakacje.pl/v2/api/offers", new StringContent(postBody, Encoding.UTF8, "application/json"));
+            string stringResult = await postResult.Content.ReadAsStringAsync();
+            Console.WriteLine(stringResult);
+
         }
 
         public async Task CollectTuiDataAsync()
@@ -125,16 +150,7 @@ namespace WebAPIClient
 
         }
 
-        public async Task CollectWakacjeDataAsync()
-        {
 
-            string postBody = "[{\"method\":\"search.tripsSearch\",\"params\":{\"brand\":\"WAK\",\"limit\":10,\"priceHistory\":1,\"imageSizes\":[\"570,428\"],\"flatArray\":true,\"multiSearch\":true,\"withHotelRate\":1,\"withPromoOffer\":1,\"recommendationVersion\":\"noTUI\",\"type\":\"tours\",\"firstMinuteTui\":false,\"countryId\":[\"37\",\"33\",\"99\",\"74\",\"65\",\"16\"],\"regionId\":[],\"cityId\":[],\"hotelId\":[],\"roundTripId\":[],\"cruiseId\":[],\"searchType\":\"lastminute\",\"offersAttributes\":[],\"alternative\":{\"countryId\":[],\"regionId\":[],\"cityId\":[]},\"query\":{\"campTypes\":[],\"qsVersion\":0,\"qsVersionLast\":0,\"tab\":false,\"candy\":false,\"pok\":null,\"flush\":false,\"tourOpAndCode\":null,\"obj_code\":null,\"obj_type\":null,\"catalog\":null,\"roomType\":null,\"test\":null,\"year\":null,\"month\":null,\"rangeDate\":null,\"withoutLast\":0,\"category\":false,\"not - attribute\":false,\"pageNumber\":1,\"departureDate\":\"2020 - 10 - 14\",\"arrivalDate\":\"2022 - 05 - 01\",\"departure\":null,\"type\":[1],\"duration\":{\"min\":7,\"max\":28},\"minPrice\":null,\"maxPrice\":null,\"service\":[],\"firstminute\":null,\"attribute\":[],\"promotion\":[],\"tourId\":null,\"search\":null,\"minCategory\":null,\"maxCategory\":50,\"sort\":13,\"order\":1,\"rank\":null,\"withoutTours\":[],\"withoutCountry\":[],\"withoutTrips\":[],\"rooms\":[{\"adult\":2,\"kid\":0,\"ages\":[],\"inf\":null}],\"offerCode\":null}}}]";
-
-            var postResult = await client.PostAsync("https://www.wakacje.pl/v2/api/offers", new StringContent(postBody, Encoding.UTF8, "application/json"));
-            string stringResult = await postResult.Content.ReadAsStringAsync();
-            Console.WriteLine(stringResult);
-
-        }
 
 
 

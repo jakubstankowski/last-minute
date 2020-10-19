@@ -44,7 +44,8 @@ namespace API.Controllers
         {
             /* await _genericWebAPIClient.CollectTuiDataAsync();
              await _genericWebAPIClient.CollectItakaDataAsync();*/
-           // await _genericWebAPIClient.CollectTuiDataAsync();
+            // await _genericWebAPIClient.CollectTuiDataAsync();
+            await _genericWebAPIClient.CollectWakacjeDataAsync();
             await _genericWebAPIClient.CollectRainbowDataAsync();
         }
 

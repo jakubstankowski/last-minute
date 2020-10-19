@@ -9,5 +9,8 @@ namespace Core.Interface
         public Task CollectItakaDataAsync();
 
         public Task CollectRainbowDataAsync();
+
+        public Task CollectWakacjeDataAsync();
+
     }
 }
