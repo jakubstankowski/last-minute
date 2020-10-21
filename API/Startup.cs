@@ -41,7 +41,7 @@ namespace API
             services.AddScoped<IGenericWebAPIClient, GenericWebAPIClient>();
 
             services.AddScoped<IHolidayOffersService, HolidayOffersService>();
-           
+
 
             services.AddCors(options =>
             {

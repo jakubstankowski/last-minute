@@ -30,12 +30,10 @@ namespace API.Controllers
             _genericWebAPIClient = genericWebAPIClient;
         }
 
-        [HttpGet("refresh")]
+        [HttpPost("refresh")]
         public async Task RefreshOffersAsync()
         {
-            /* await _genericWebAPIClient.CollectTuiDataAsync();
-             await _genericWebAPIClient.CollectItakaDataAsync();*/
-            await _genericWebAPIClient.CollectRainbowDataAsync();
+            await _genericWebAPIClient.CollectWakacjeDataAsync();
         }
 
         // GET: api/offers

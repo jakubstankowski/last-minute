@@ -12,5 +12,7 @@ namespace Core.Interface
 
         public Task CollectWakacjeDataAsync();
 
+
+
     }
 }
