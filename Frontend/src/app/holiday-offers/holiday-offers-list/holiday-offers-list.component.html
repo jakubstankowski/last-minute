@@ -3,11 +3,17 @@
         <mat-card class="holiday-offers_list_card">
             <img mat-card-image [src]="offer.imageUrl" alt="Offer Image">
             <mat-card-header>
-                <img *ngIf="offer.website === 'tui.pl'" alt="Travel office logo" class="holiday-offers-list_travel_logo"
+                <img *ngIf="offer.website === 'tui.pl'" alt="Travel logo" class="holiday-offers-list_travel_logo"
                      mat-card-avatar src="../../../assets/tui-logo.png"/>
-                <img *ngIf="offer.website === 'itaka.pl'" alt="Travel office logo"
+                <img *ngIf="offer.website === 'itaka.pl'" alt="Travel logo"
                      class="holiday-offers-list_travel_logo"
                      mat-card-avatar src="../../../assets/itaka-logo.png"/>
+                <img *ngIf="offer.website === 'r.pl'" alt="Rainbow logo"
+                     class="holiday-offers-list_travel_logo"
+                     mat-card-avatar src="../../../assets/r-logo.png"/>
+                <img *ngIf="offer.website === 'wakacje.pl'" alt="Wakacje logo"
+                     class="holiday-offers-list_travel_logo"
+                     mat-card-avatar src="../../../assets/wakacje-logo.jpg"/>
                 <mat-card-title>{{offer.title}}</mat-card-title>
                 <mat-card-subtitle>{{offer.country}}</mat-card-subtitle>
             </mat-card-header>

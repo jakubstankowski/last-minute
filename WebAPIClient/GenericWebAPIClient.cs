@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -8,8 +7,6 @@ using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interface;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using RestSharp;
 using static Core.Entities.Itaka;
 using static Core.Entities.Rainbow;
 using static Core.Entities.Tui;
@@ -33,6 +30,9 @@ namespace WebAPIClient
 
         public async Task CollectRainbowDataAsync()
         {
+            _offersRepo.DeleteHolidayOffersByWebstie("r.pl");
+
+
             var getResult = client.GetStringAsync("http://localhost:8080/api/r");
             string stringResult = await getResult;
 
@@ -91,6 +91,7 @@ namespace WebAPIClient
 
         public async Task CollectWakacjeDataAsync()
         {
+            _offersRepo.DeleteHolidayOffersByWebstie("wakacje.pl");
 
             var getResult = client.GetStringAsync("http://localhost:8080/api/wakacje");
             string stringResult = await getResult;

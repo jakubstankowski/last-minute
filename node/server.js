@@ -18,8 +18,8 @@ app.get('/api/r', (req, res) => {
     const body = {
         "Konfiguracja": {"LiczbaPokoi": "1", "Wiek": ["1990-09-23", "1990-09-23"]},
         "Sortowanie": {
-            "CzyPoDacie": true,
-            "CzyPoCenie": false,
+            "CzyPoDacie": false,
+            "CzyPoCenie": true,
             "CzyPoOcenach": false,
             "CzyPoPolecanych": false,
             "CzyDesc": false
