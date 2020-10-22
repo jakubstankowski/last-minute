@@ -16,7 +16,6 @@ using System.Text;
 using API.Configuration;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.Certificate;
-using WebAPIClient;
 
 namespace API
 {
@@ -37,8 +36,6 @@ namespace API
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddScoped<IHolidayPreferencesRepo, HolidayPreferencesRepo>();
             services.AddScoped<IHolidayOffersRepo, HolidayOffersRepo>();
-
-            services.AddScoped<IGenericWebAPIClient, GenericWebAPIClient>();
 
             services.AddScoped<IHolidayOffersService, HolidayOffersService>();
 

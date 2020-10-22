@@ -18,6 +18,11 @@ namespace Core.Interface
 
         public Task RefreshWakacjeOffersAsync();
 
-        
+        public Task RefreshAllOffers();
+
+        public void ResetHolidayOffers(string website);
+
+
+
     }
 }

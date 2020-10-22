@@ -169,6 +169,12 @@ namespace Infrastructure.Services
             _offersRepo.DeleteHolidayOffersByWebstie(website);
         }
 
-
+        public async Task RefreshAllOffers()
+        {
+            await RefreshItakaOffersAsync();
+            await RefreshRainbowOffersAsync();
+            await RefreshTuiOffersAsync();
+            await RefreshWakacjeOffersAsync();
+        }
     }
 }

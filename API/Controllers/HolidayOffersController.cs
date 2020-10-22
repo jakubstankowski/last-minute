@@ -19,24 +19,20 @@ namespace API.Controllers
         private readonly IMapper _mapper;
         private readonly IHolidayPreferencesRepo _preferencesRepo;
         private readonly IHolidayOffersService _holidayOffersService;
-        private readonly IGenericWebAPIClient _genericWebAPIClient;
 
-        public HolidayOffersController(IHolidayOffersRepo repo, IMapper mapper, IHolidayPreferencesRepo preferencesRepo, IHolidayOffersService holidayOffersService, IGenericWebAPIClient genericWebAPIClient)
+        public HolidayOffersController(IHolidayOffersRepo repo, IMapper mapper, IHolidayPreferencesRepo preferencesRepo, IHolidayOffersService holidayOffersService)
         {
             _repo = repo;
             _mapper = mapper;
             _preferencesRepo = preferencesRepo;
             _holidayOffersService = holidayOffersService;
-            _genericWebAPIClient = genericWebAPIClient;
         }
 
         [HttpPost("refresh")]
-        public async Task RefreshOffersAsync()
+        public async Task<ActionResult> RefreshOffersAsync()
         {
-            await _holidayOffersService.RefreshItakaOffersAsync();
-            await _holidayOffersService.RefreshRainbowOffersAsync();
-            await _holidayOffersService.RefreshTuiOffersAsync();
-            await _holidayOffersService.RefreshWakacjeOffersAsync();
+            await _holidayOffersService.RefreshAllOffers();
+            return Ok(200);
         }
 
         // GET: api/offers
