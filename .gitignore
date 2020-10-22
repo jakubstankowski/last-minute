@@ -10,3 +10,6 @@ Frontend/ssl
 node_modules
 .idea
 ssl
+WebAPIClient/node_modules
+WebAPIClient/.idea
+WebAPIClient/.vs
