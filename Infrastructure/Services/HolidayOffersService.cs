@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interface;
 
@@ -25,6 +26,26 @@ namespace Infrastructure.Services
 
             return offers;
 
+        }
+
+        public Task RefreshItakaOffersAsync()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task RefreshRainbowOffersAsync()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task RefreshTuiOffersAsync()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task RefreshWakacjeOffersAsync()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

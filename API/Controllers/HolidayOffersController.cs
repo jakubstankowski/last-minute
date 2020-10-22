@@ -33,10 +33,10 @@ namespace API.Controllers
         [HttpPost("refresh")]
         public async Task RefreshOffersAsync()
         {
-            await _genericWebAPIClient.CollectWakacjeDataAsync();
-            await _genericWebAPIClient.CollectItakaDataAsync();
+          /*  await _genericWebAPIClient.CollectWakacjeDataAsync();
+            await _genericWebAPIClient.CollectItakaDataAsync();*/
             await _genericWebAPIClient.CollectRainbowDataAsync();
-            await _genericWebAPIClient.CollectTuiDataAsync();
+           // await _genericWebAPIClient.CollectTuiDataAsync();
         }
 
         // GET: api/offers
