@@ -15,7 +15,7 @@ const app = express();
 app.use(compression());
 app.use(cors());
 
-app.get('/api/r', async (req, res) => {
+app.get('/api/offers/refresh/r', async (req, res) => {
     const body = {
         "Konfiguracja": {"LiczbaPokoi": "1", "Wiek": ["1990-09-23", "1990-09-23"]},
         "Sortowanie": {
@@ -37,7 +37,7 @@ app.get('/api/r', async (req, res) => {
     const offers = await axios.post('https://rpl-api.r.pl/v3/wyszukiwarka/api/wyszukaj', body);
     res.json(offers.data);
 });
-app.get('/api/wakacje', async (req, res) => {
+app.get('/api/offers/refresh/wakacje', async (req, res) => {
     const body = [{
         "method": "search.tripsSearch", "params": {
             "brand": "WAK",
@@ -110,32 +110,6 @@ app.get('/api/wakacje', async (req, res) => {
 
     const offers = await axios.post('https://www.wakacje.pl/v2/api/offers', body);
     res.json(offers.data);
-})
-app.get('/api/tui', async (req, res) => {
-    const body = {
-        "childrenBirthdays": [],
-        "durationFrom": 6,
-        "durationTo": 14,
-        "filters": [
-            {
-                "filterId": "additionalType",
-                "selectedValues": [
-                    "GT03#TUZ-LAST25"
-                ]
-            }
-        ],
-        "metaData": {
-            "page": 0,
-            "pageSize": 30,
-            "sorting": "flightDate"
-        },
-        "numberOfAdults": 2,
-        "offerType": "BY_PLANE",
-        "site": "last-minute?pm_source=MENU&pm_name=Last_Minute"
-    };
-
-    const offers = await axios.post('https://www.tui.pl/search/offers', body);
-    res.json(offers);
 })
 
 
