@@ -19,7 +19,7 @@ export class HolidayOffersService {
     }
 
     reloadOffers(): Observable<any> {
-        return this.http.get(this.baseUrl + 'offers/refresh');
+        return this.http.post(this.baseUrl + 'offers/refresh', {});
     }
 
 }

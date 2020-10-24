@@ -28,10 +28,27 @@ namespace API.Controllers
             _holidayOffersService = holidayOffersService;
         }
 
+        [Authorize]
         [HttpPost("refresh")]
         public async Task<ActionResult> RefreshOffersAsync()
         {
-            await _holidayOffersService.RefreshAllOffers();
+
+            var userId = HttpContext.User
+                  .FindFirst(ClaimTypes.NameIdentifier)
+                   .Value.ToString();
+
+            var preferences = await _preferencesRepo.GetUserHolidayPreferences(userId);
+
+            if (preferences == null)
+            {
+                return NotFound(new ApiResponse(404));
+            }
+
+            foreach(var website in preferences.Websites)
+            {
+                System.Console.WriteLine(website.Website);
+            }
+
             return Ok(200);
         }
 
