@@ -22,6 +22,8 @@ namespace Core.Interface
 
         public void ResetHolidayOffers(string website);
 
+        public  string StripHTML(string input);
+
 
 
     }

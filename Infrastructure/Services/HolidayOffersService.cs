@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interface;
@@ -37,7 +39,7 @@ namespace Infrastructure.Services
                 }
             }
 
-            return offers;
+            return offers.OrderBy(o => o.Price);
 
         }
 
@@ -57,7 +59,7 @@ namespace Infrastructure.Services
                 HolidayOffers holidayOffer = new HolidayOffers
                 {
                     Website = "itaka.pl",
-                    Country = offer.canonicalDestinationTitle.ToString(),
+                    Country = StripHTML(offer.canonicalDestinationTitle.ToString()),
                     Title = offer.title,
                     Price = offer.price / 100,
                     Url = $"https://www.itaka.pl{offer.url}",
@@ -175,6 +177,11 @@ namespace Infrastructure.Services
             await RefreshRainbowOffersAsync();
             await RefreshTuiOffersAsync();
             await RefreshWakacjeOffersAsync();
+        }
+
+        public string StripHTML(string input)
+        {
+            return Regex.Replace(input, "<.*?>", String.Empty);
         }
     }
 }
