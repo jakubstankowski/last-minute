@@ -1,6 +1,6 @@
-<article *ngIf="!loading" class="holiday-offers-list grid">
-    <a *ngFor="let offer of offers" [href]="offer.url" target="_blank">
-        <mat-card class="holiday-offers_list_card">
+<article  class="holiday-offers-list grid">
+    <a  *ngFor="let offer of offers" [href]="offer.url" target="_blank">
+        <mat-card class="holiday-offers_list_card" *ngIf="!loading">
             <img mat-card-image [src]="offer.imageUrl" alt="Offer Image">
             <mat-card-header>
                 <img *ngIf="offer.website === 'tui.pl'" alt="Travel logo" class="holiday-offers-list_travel_logo"
@@ -39,5 +39,5 @@
             </mat-card-actions>
         </mat-card>
     </a>
-
+    <mat-spinner *ngIf="loading"></mat-spinner>
 </article>

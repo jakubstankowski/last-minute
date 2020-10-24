@@ -22,8 +22,10 @@ export class HolidayOffersListComponent implements OnInit {
         this.loading = true;
         this.holidayOffersService.getOffers()
             .subscribe(
-                (response) => {
-                    console.log('response: ', response);
+                (offers: IOffers[]) => {
+                    this.offers = offers;
+                    this.loading = false;
+                    console.log('offers: ', this.offers);
                 },
                 (err) => console.error(err),
                 () => console.log('observable complete'));

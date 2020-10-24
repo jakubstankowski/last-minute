@@ -43,7 +43,7 @@ namespace Infrastructure.Services
 
         public async Task RefreshItakaOffersAsync()
         {
-            ResetHolidayOffers("itaka");
+            ResetHolidayOffers("itaka.pl");
 
             var getResult = client.GetStringAsync("https://www.itaka.pl/sipl/data/last-minute/search?view=offerList&language=pl&package-type=wczasy&promo=lastMinute&order=priceAsc&total-price=0&page=1&transport=flight&currency=PLN");
             string stringResult = await getResult;
