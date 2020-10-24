@@ -29,8 +29,8 @@ namespace API.Controllers
         }
 
         [Authorize]
-        [HttpPost("refresh")]
-        public async Task<ActionResult> RefreshOffersAsync()
+        [HttpGet("offers")]
+        public async Task<ActionResult<IEnumerable<HolidayOffersDTO>>> GetOffersAsync()
         {
 
             var userId = HttpContext.User
@@ -44,17 +44,39 @@ namespace API.Controllers
                 return NotFound(new ApiResponse(404));
             }
 
-            foreach(var website in preferences.Websites)
+            foreach (var website in preferences.Websites)
             {
-                System.Console.WriteLine(website.Website);
+                switch (website.Website)
+                {
+                    case "tui.pl":
+                        await _holidayOffersService.RefreshTuiOffersAsync();
+                        break;
+                    case "itaka.pl":
+                        await _holidayOffersService.RefreshItakaOffersAsync();
+                        break;
+                    case "r.pl":
+                        await _holidayOffersService.RefreshRainbowOffersAsync();
+                        break;
+                    case "wakacje.pl":
+                        await _holidayOffersService.RefreshWakacjeOffersAsync();
+                        break;
+                    default:
+                        return NotFound(new ApiResponse(404));
+                }
             }
 
-            return Ok(200);
+
+            var offers = await _repo.GetHolidayOffersAsync();
+
+            var offersByUserHolidayPreferences = _holidayOffersService.GetHolidayOffersByUserHolidayPreference(offers, preferences);
+
+            return Ok(_mapper
+             .Map<IEnumerable<HolidayOffers>, IEnumerable<HolidayOffersDTO>>(offersByUserHolidayPreferences));
         }
 
         // GET: api/offers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<HolidayOffersDTO>>> GetOffers()
+        public async Task<ActionResult<IEnumerable<HolidayOffersDTO>>> GetAllOffers()
         {
             var offers = await _repo.GetHolidayOffersAsync();
 
@@ -74,34 +96,7 @@ namespace API.Controllers
             return _mapper.Map<HolidayOffers, HolidayOffersDTO>(offers);
         }
 
-        // GET: api/offers/by-preferences/{id}
-        [Authorize]
-        [HttpGet("by-user-preferences")]
-        public async Task<ActionResult<IEnumerable<HolidayOffersDTO>>> GetOffersByUserPreferenceId()
-        {
-
-            var userId = HttpContext.User
-                    .FindFirst(ClaimTypes.NameIdentifier)
-                     .Value.ToString();
-
-            var preferences = await _preferencesRepo.GetUserHolidayPreferences(userId);
-
-            if (preferences == null)
-            {
-                return NotFound(new ApiResponse(404));
-            }
-
-            var offers = await _repo.GetHolidayOffersAsync();
-
-            var offersByUserHolidayPreferences = _holidayOffersService.GetHolidayOffersByUserHolidayPreference(offers, preferences);
-
-
-
-            return Ok(_mapper
-             .Map<IEnumerable<HolidayOffers>, IEnumerable<HolidayOffersDTO>>(offersByUserHolidayPreferences));
-
-
-        }
+    
 
     }
 }
