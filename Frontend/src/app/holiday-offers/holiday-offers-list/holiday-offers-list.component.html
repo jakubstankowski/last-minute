@@ -1,43 +1,49 @@
-<article  class="holiday-offers-list grid">
-    <a  *ngFor="let offer of offers" [href]="offer.url"  target="_blank">
-        <mat-card class="holiday-offers_list_card" *ngIf="!loading">
-            <img mat-card-image [src]="offer.imageUrl" alt="Offer Image">
-            <mat-card-header>
-                <img *ngIf="offer.website === 'tui.pl'" alt="Travel logo" class="holiday-offers-list_travel_logo"
-                     mat-card-avatar src="../../../assets/tui-logo.png"/>
-                <img *ngIf="offer.website === 'itaka.pl'" alt="Travel logo"
-                     class="holiday-offers-list_travel_logo"
-                     mat-card-avatar src="../../../assets/itaka-logo.png"/>
-                <img *ngIf="offer.website === 'r.pl'" alt="Rainbow logo"
-                     class="holiday-offers-list_travel_logo"
-                     mat-card-avatar src="../../../assets/r-logo.png"/>
-                <img *ngIf="offer.website === 'wakacje.pl'" alt="Wakacje logo"
-                     class="holiday-offers-list_travel_logo"
-                     mat-card-avatar src="../../../assets/wakacje-logo.jpg"/>
-                <mat-card-title>{{offer.title}}</mat-card-title>
-                <mat-card-subtitle>{{offer.country}}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-                <ul>
-                    <li>
-                        <mat-icon mat-list-icon>
-                            today
-                        </mat-icon>
-                        <p mat-line class="holiday-offer-list_date">
-                            {{offer.date}}
-                        </p>
-                    </li>
-                </ul>
-            </mat-card-content>
-            <mat-card-actions>
-                <h2 class="holiday-offers-list_price">
-                    {{offer.price}} zł
-                    <span class="holiday-offers-list_price_for_person">
+<article  class="holiday-offers-list">
+    <mat-spinner *ngIf="loading"></mat-spinner>
+    <ul>
+        <li class="grid">
+            <a  *ngFor="let offer of offers" [href]="offer.url" class="grid"  target="_blank">
+                <mat-card class="holiday-offers_list_card" *ngIf="!loading">
+                    <img mat-card-image [src]="offer.imageUrl" alt="Offer Image">
+                    <mat-card-header>
+                        <img *ngIf="offer.website === 'tui.pl'" alt="Travel logo" class="holiday-offers-list_travel_logo"
+                             mat-card-avatar src="../../../assets/tui-logo.png"/>
+                        <img *ngIf="offer.website === 'itaka.pl'" alt="Travel logo"
+                             class="holiday-offers-list_travel_logo"
+                             mat-card-avatar src="../../../assets/itaka-logo.png"/>
+                        <img *ngIf="offer.website === 'r.pl'" alt="Rainbow logo"
+                             class="holiday-offers-list_travel_logo"
+                             mat-card-avatar src="../../../assets/r-logo.png"/>
+                        <img *ngIf="offer.website === 'wakacje.pl'" alt="Wakacje logo"
+                             class="holiday-offers-list_travel_logo"
+                             mat-card-avatar src="../../../assets/wakacje-logo.jpg"/>
+                        <mat-card-title>{{offer.title}}</mat-card-title>
+                        <mat-card-subtitle>{{offer.country}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <ul>
+                            <li>
+                                <mat-icon mat-list-icon>
+                                    today
+                                </mat-icon>
+                                <p mat-line class="holiday-offer-list_date">
+                                    {{offer.date}}
+                                </p>
+                            </li>
+                        </ul>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <h2 class="holiday-offers-list_price">
+                            {{offer.price}} zł
+                            <span class="holiday-offers-list_price_for_person">
                  / śr cena za osobe
                </span>
-                </h2>
-            </mat-card-actions>
-        </mat-card>
-    </a>
-    <mat-spinner *ngIf="loading"></mat-spinner>
+                        </h2>
+                    </mat-card-actions>
+                </mat-card>
+            </a>
+        </li>
+    </ul>
 </article>
+
+

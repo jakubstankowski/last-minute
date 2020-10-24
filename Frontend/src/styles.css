@@ -1,5 +1,6 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+
 :root {
     --primary-color: #3f51b5;
     --secondary-color: #ffaa00;
@@ -27,7 +28,7 @@ ul {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
     grid-gap: 1.5rem;
 }
 
