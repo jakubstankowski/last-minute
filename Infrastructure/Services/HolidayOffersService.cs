@@ -74,7 +74,7 @@ namespace Infrastructure.Services
         {
             ResetHolidayOffers("r.pl");
 
-            var getResult = client.GetStringAsync("http://localhost:8080/api/offers/refresh/r");
+            var getResult = client.GetStringAsync("http://localhost:3000/api/offers/refresh/r");
             string stringResult = await getResult;
 
             var deserializedClass = JsonConvert.DeserializeObject<RetrieveMultipleRainbowResponse>(stringResult);
@@ -141,7 +141,7 @@ namespace Infrastructure.Services
         public async Task RefreshWakacjeOffersAsync()
         {
             ResetHolidayOffers("wakacje.pl");
-            var getResult = client.GetStringAsync("http://localhost:8080/api/offers/refresh/wakacje");
+            var getResult = client.GetStringAsync("http://localhost:3000/api/offers/refresh/wakacje");
             string stringResult = await getResult;
 
             var deserializedClass = JsonConvert.DeserializeObject<RetrieveMultipleWakacjeResponse>(stringResult);

@@ -15,11 +15,6 @@ export class HolidayOffersService {
     }
 
     getOffers(): Observable<IOffers[]> {
-        return this.http.get<IOffers[]>(this.baseUrl + 'offers/by-user-preferences');
+        return this.http.get<IOffers[]>(this.baseUrl + 'offers');
     }
-
-    reloadOffers(): Observable<any> {
-        return this.http.post(this.baseUrl + 'offers/refresh', {});
-    }
-
 }

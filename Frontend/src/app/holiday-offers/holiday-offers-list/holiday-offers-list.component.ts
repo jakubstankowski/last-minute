@@ -15,29 +15,18 @@ export class HolidayOffersListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.reloadOffers();
+        this.getOffers();
     }
 
     getOffers(): void {
         this.loading = true;
         this.holidayOffersService.getOffers()
-            .subscribe(offer => {
-                this.loading = false;
-                this.offers = offer;
-            });
-    }
-
-    reloadOffers(): void {
-        this.loading = true;
-        this.holidayOffersService.reloadOffers()
             .subscribe(
                 (response) => {
-                    this.loading = false;
-                    this.getOffers();
+                    console.log('response: ', response);
                 },
                 (err) => console.error(err),
-                () => console.log('observable complete')
-            );
+                () => console.log('observable complete'));
     }
 
 }

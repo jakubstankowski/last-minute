@@ -29,7 +29,7 @@ namespace API.Controllers
         }
 
         [Authorize]
-        [HttpGet("offers")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<HolidayOffersDTO>>> GetOffersAsync()
         {
 
@@ -75,7 +75,7 @@ namespace API.Controllers
         }
 
         // GET: api/offers
-        [HttpGet]
+        [HttpGet("all-offers")]
         public async Task<ActionResult<IEnumerable<HolidayOffersDTO>>> GetAllOffers()
         {
             var offers = await _repo.GetHolidayOffersAsync();
@@ -96,7 +96,7 @@ namespace API.Controllers
             return _mapper.Map<HolidayOffers, HolidayOffersDTO>(offers);
         }
 
-    
+
 
     }
 }
