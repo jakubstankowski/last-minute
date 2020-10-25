@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Core.Entities
 {
-   public class HolidayWebsites : BaseEntity
+   public class HolidayPreferencesWebsites : BaseEntity
     {
 
         [Required]

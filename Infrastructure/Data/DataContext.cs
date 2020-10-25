@@ -11,12 +11,7 @@ namespace Infrastructure.Data
 
         public DbSet<HolidayOffers> HolidayOffers { get; set; }
 
+        public DbSet<HolidayPreferencesWebsites> HolidayPreferencesWebsites { get; set; }
 
-
-       /* protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-
-            options.UseSqlServer(connection, b => b.MigrationsAssembly("Project.Api"))
-        }*/
     }
 }

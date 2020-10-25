@@ -11,7 +11,7 @@ namespace API.Helpers
         {
             CreateMap<HolidayOffers, HolidayOffersDTO>();
             CreateMap<HolidayPreferences, HolidayPreferencesDTO>();
-            CreateMap<HolidayWebsites, HolidayWebsitesDTO>();
+            CreateMap<HolidayPreferencesWebsites, HolidayWebsitesDTO>();
         }
     }
 }

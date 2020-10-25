@@ -18,7 +18,7 @@ namespace Core.Entities
         public string AppUserId { get; set; }
 
         [Required]
-        public ICollection<HolidayWebsites> Websites { get; set; }
+        public ICollection<HolidayPreferencesWebsites> Websites { get; set; }
 
 
         public HolidayPreferences()
