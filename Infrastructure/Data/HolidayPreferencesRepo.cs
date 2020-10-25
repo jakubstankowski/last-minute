@@ -22,14 +22,6 @@ namespace Infrastructure.Data
 
 
 
-        public async Task<HolidayPreferences> GetUserHolidayPreferenceByIdAsync(int id, string userId)
-        {
-            return await _context.HolidayPreferences
-                .Include(h => h.Websites)
-                .FirstOrDefaultAsync(u => u.AppUserId == userId && u.Id == id);
-
-        }
-
         public async Task<HolidayPreferences> GetUserHolidayPreferences(string userId)
         {
             return await _context.HolidayPreferences
@@ -38,13 +30,6 @@ namespace Infrastructure.Data
                 .FirstOrDefaultAsync();
         }
 
-
-
-        public void DeleteHolidayPreference(HolidayPreferences preferences)
-        {
-
-            _context.HolidayPreferences.Remove(preferences);
-        }
 
         public async Task<AppUser> GetUserWithHolidayPreferences(string id)
         {
@@ -59,9 +44,6 @@ namespace Infrastructure.Data
             return (_context.SaveChanges() >= 0);
         }
 
-        public Task<HolidayPreferences> GetHolidayPreferencesByIdAsync(int id)
-        {
-            throw new System.NotImplementedException();
-        }
+     
     }
 }

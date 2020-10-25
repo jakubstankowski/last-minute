@@ -98,24 +98,5 @@ namespace API.Controllers
             return Ok(_mapper.Map<HolidayPreferences, HolidayPreferencesDTO>(preferences));
         }
 
-        // DELETE: api/HolidayPreferences/5
-        [Authorize]
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteHolidayPreferences(int id)
-        {
-            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-            var preference = await _repo.GetUserHolidayPreferenceByIdAsync(id, userId);
-
-            if (preference == null)
-            {
-                return NotFound(new ApiResponse(404));
-            }
-
-            _repo.DeleteHolidayPreference(preference);
-            _repo.SaveChanges();
-
-            return Ok(200);
-        }
     }
 }
