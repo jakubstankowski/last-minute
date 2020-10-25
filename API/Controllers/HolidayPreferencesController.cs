@@ -23,7 +23,7 @@ namespace API.Controllers
         private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
 
-        public HolidayPreferencesController(IHolidayPreferencesRepo repo, IMapper mapper, AppIdentityDbContext userContext, UserManager<AppUser> userManager)
+        public HolidayPreferencesController(IHolidayPreferencesRepo repo, IMapper mapper, UserManager<AppUser> userManager)
         {
             _repo = repo;
             _mapper = mapper;
@@ -80,9 +80,7 @@ namespace API.Controllers
         [HttpPut]
         public async Task<IActionResult> PutHolidayPreference(HolidayPreferences updatePreference)
         {
-            var userId = HttpContext.User
-               .FindFirst(ClaimTypes.NameIdentifier)
-               .Value.ToString();
+            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             var preferences = await _repo.GetUserHolidayPreferences(userId);
 
@@ -105,9 +103,7 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteHolidayPreferences(int id)
         {
-            var userId = HttpContext.User
-                .FindFirst(ClaimTypes.NameIdentifier)
-                .Value.ToString();
+            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             var preference = await _repo.GetUserHolidayPreferenceByIdAsync(id, userId);
 

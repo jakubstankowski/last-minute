@@ -33,9 +33,7 @@ namespace API.Controllers
         public async Task<ActionResult<IEnumerable<HolidayOffersDTO>>> GetOffersAsync()
         {
 
-            var userId = HttpContext.User
-                  .FindFirst(ClaimTypes.NameIdentifier)
-                   .Value.ToString();
+            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             var preferences = await _preferencesRepo.GetUserHolidayPreferences(userId);
 

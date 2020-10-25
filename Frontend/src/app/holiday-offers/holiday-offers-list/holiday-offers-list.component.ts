@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {IOffers} from '../../shared/models/offers';
 import {HolidayOffersService} from '../holiday-offers.service';
 
@@ -7,7 +7,7 @@ import {HolidayOffersService} from '../holiday-offers.service';
     templateUrl: './holiday-offers-list.component.html',
     styleUrls: ['./holiday-offers-list.component.css']
 })
-export class HolidayOffersListComponent implements OnInit {
+export class HolidayOffersListComponent implements OnInit, OnDestroy {
     offers: IOffers[];
     loading: boolean;
 
@@ -16,6 +16,10 @@ export class HolidayOffersListComponent implements OnInit {
 
     ngOnInit() {
         this.getOffers();
+    }
+
+    ngOnDestroy() {
+
     }
 
     getOffers(): void {
