@@ -1,5 +1,7 @@
 <article  class="holiday-offers-list">
-    <mat-spinner *ngIf="loading"></mat-spinner>
+    <div class="center-wrapper" *ngIf="loading">
+        <mat-spinner class="holiday-offers-list_spinner"></mat-spinner>
+    </div>
     <ul>
         <li class="grid">
             <a  *ngFor="let offer of offers" [href]="offer.url" class="grid"  target="_blank">

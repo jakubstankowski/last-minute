@@ -1,6 +1,10 @@
 :host {
     width: 100%;
 }
+.holiday-offers-list_spinner{
+    text-align: center;
+
+}
 
 .holiday-offers-list_travel_logo {
     width: 50px;
