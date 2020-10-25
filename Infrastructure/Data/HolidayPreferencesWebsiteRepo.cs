@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interface;
 
 namespace Infrastructure.Data
 {
-    class HolidayPreferencesWebsiteRepo : IHolidayPreferencesWebsites
+    public class HolidayPreferencesWebsiteRepo : IHolidayPreferencesWebsites
     {
         private readonly DataContext _context;
 
@@ -19,6 +20,11 @@ namespace Infrastructure.Data
         public void DeleteHolidayPreferenceWebsite(HolidayPreferencesWebsites holidayPreferencesWebsites)
         {
             _context.HolidayPreferencesWebsites.Remove(holidayPreferencesWebsites);
+        }
+
+        public async Task<HolidayPreferencesWebsites> GetHolidayPreferencesWebsitesByIdAsync(int id)
+        {
+            return await _context.HolidayPreferencesWebsites.FindAsync(id);
         }
 
         public bool SaveChanges()

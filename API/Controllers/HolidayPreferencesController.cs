@@ -23,7 +23,7 @@ namespace API.Controllers
         private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
 
-        public HolidayPreferencesController(IHolidayPreferencesRepo repo, IMapper mapper, UserManager<AppUser> userManager)
+        public HolidayPreferencesController(IHolidayPreferencesRepo repo, IMapper mapper,  UserManager<AppUser> userManager)
         {
             _repo = repo;
             _mapper = mapper;

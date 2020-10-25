@@ -20,6 +20,8 @@ namespace Infrastructure.Data
             _userManager = userManager;
         }
 
+
+
         public async Task<HolidayPreferences> GetUserHolidayPreferenceByIdAsync(int id, string userId)
         {
             return await _context.HolidayPreferences
@@ -57,8 +59,9 @@ namespace Infrastructure.Data
             return (_context.SaveChanges() >= 0);
         }
 
-
-
-
+        public Task<HolidayPreferences> GetHolidayPreferencesByIdAsync(int id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

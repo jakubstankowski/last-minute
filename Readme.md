@@ -4,5 +4,5 @@
  
  
  ### technology stack:
-  - backend - .NET Core & Selenium Webscrapper
+  - backend - .NET Core 
   - frontend - Angular 8
