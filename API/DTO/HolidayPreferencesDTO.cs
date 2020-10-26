@@ -6,6 +6,6 @@ namespace API.DTO
     {
         public int MinPrice { get; set; }
         public int MaxPrice { get; set; }
-        public ICollection<HolidayWebsitesDTO> Websites { get; set; }
+        public ICollection<HolidayPreferencesWebsitesDTO> Websites { get; set; }
     }
 }

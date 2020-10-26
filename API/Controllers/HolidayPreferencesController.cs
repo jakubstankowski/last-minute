@@ -48,7 +48,7 @@ namespace API.Controllers
                 return NotFound(new ApiResponse(404));
             }
 
-            return _mapper.Map<HolidayPreferences, HolidayPreferencesDTO>(preferences);
+            return Ok(_mapper.Map<HolidayPreferences, HolidayPreferencesDTO>(preferences));
 
         }
 
