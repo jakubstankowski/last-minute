@@ -5,9 +5,8 @@ using System.Text;
 
 namespace Core.Entities
 {
-   public class HolidayPreferencesWebsites : BaseEntity
+    public class HolidayPreferencesWebsites : BaseEntity
     {
-
         [Required]
         public string Website { get; set; }
 

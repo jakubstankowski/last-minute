@@ -1,16 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Net;
 
 namespace Core.Entities
 {
     public class HolidayPreferences : BaseEntity
     {
-
-
-        public HolidayPreferences()
-        {
-           
-        }
 
         public int MinPrice { get; set; }
 
