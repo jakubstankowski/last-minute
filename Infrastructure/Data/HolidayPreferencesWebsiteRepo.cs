@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interface;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
@@ -22,10 +23,17 @@ namespace Infrastructure.Data
             _context.HolidayPreferencesWebsites.Remove(holidayPreferencesWebsites);
         }
 
+        public async Task<IEnumerable<HolidayPreferencesWebsites>> GetHolidayPreferencesWebsitesAsync()
+        {
+            return await _context.HolidayPreferencesWebsites.ToListAsync();
+        }
+
         public async Task<HolidayPreferencesWebsites> GetHolidayPreferencesWebsitesByIdAsync(int id)
         {
             return await _context.HolidayPreferencesWebsites.FindAsync(id);
         }
+
+
 
         public bool SaveChanges()
         {

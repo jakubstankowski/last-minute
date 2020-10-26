@@ -7,10 +7,13 @@ namespace Core.Entities
     {
 
 
-       
+        public HolidayPreferences()
+        {
+           
+        }
+
         public int MinPrice { get; set; }
 
-       
         public int MaxPrice { get; set; }
 
         public AppUser AppUser { get; set; }
@@ -20,11 +23,5 @@ namespace Core.Entities
         [Required]
         public ICollection<HolidayPreferencesWebsites> Websites { get; set; }
 
-
-        public HolidayPreferences()
-        {
-            MinPrice = 0;
-            MaxPrice = 2500;
-        }
     }
 }

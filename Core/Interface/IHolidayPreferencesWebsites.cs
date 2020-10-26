@@ -11,7 +11,9 @@ namespace Core.Interface
         public void DeleteHolidayPreferenceWebsite(HolidayPreferencesWebsites holidayPreferencesWebsites);
 
         public Task<HolidayPreferencesWebsites> GetHolidayPreferencesWebsitesByIdAsync(int id);
-        
+
+        Task<IEnumerable<HolidayPreferencesWebsites>> GetHolidayPreferencesWebsitesAsync();
+
         public bool SaveChanges();
 
     }
