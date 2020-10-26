@@ -4,6 +4,7 @@ import {HolidayPreferencesService} from '../holiday-preferences.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {NotificationService} from '../../core/services/notification.service';
 import {Router} from '@angular/router';
+import {IWebsites} from '../../shared/models/websites';
 
 @Component({
     selector: 'app-holiday-preferences-edit',
@@ -14,10 +15,13 @@ export class HolidayPreferencesEditComponent implements OnInit {
     preferences: IPreferences;
     preferenceForm: FormGroup;
 
+    websites: IWebsites[] = [{website: 'tui.pl'}, {website: 'r.pl'}];
+
     constructor(private router: Router,
                 private holidayPreferencesService: HolidayPreferencesService,
                 private notificationService: NotificationService) {
     }
+
 
     ngOnInit() {
         this.getPreference();
@@ -52,6 +56,10 @@ export class HolidayPreferencesEditComponent implements OnInit {
                     this.notificationService.openSnackBar(error.error.message);
                 }
             );
+    }
+
+    changeWebsite(value: any) {
+        console.log('value:', value);
     }
 
 

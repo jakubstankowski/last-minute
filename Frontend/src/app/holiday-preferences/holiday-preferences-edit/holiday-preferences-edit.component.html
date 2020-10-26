@@ -33,6 +33,18 @@
                     Back
                 </button>
             </mat-card-actions>
+
+            <select multiple>
+                <option value="">Choose your websites</option>
+                <option *ngFor="let website of websites"
+                        [ngValue]="website.website"
+                        (change)="changeWebsite($event)">
+                    {{website.website}}
+                </option>
+            </select>
+
         </mat-card>
+
+
     </form>
 </article>
