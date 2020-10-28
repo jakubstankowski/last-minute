@@ -22,30 +22,21 @@
                         <strong>required</strong>
                     </mat-error>
                 </mat-form-field>
-                <pre>
-                   SELECT:  {{selectedWebsites | json}}
-                </pre>
-                <pre>
-                      LIST:   {{websitesList | json}}
-                    </pre>
-
                 <ul>
                     <li class="grid">
                         <mat-card *ngFor="let website of websitesList"
-                                  [ngClass]="selectedWebsites.includes(website) ? 'holiday-preferences_websites active' : 'holiday-preferences_websites disabled'">
+                                  [ngClass]="selectedWebsites.includes(website) ? 'holiday-preferences_websites active' : 'holiday-preferences_websites disabled'"
+                                  (click)="updateWebsites(website)"
+                        >
                             {{website}}
-                            <span (click)="addWebsite(website)">
-                        ADD
-                    </span>
                         </mat-card>
                     </li>
                 </ul>
             </mat-card-content>
-
             <mat-card-actions class="login-actions">
                 <button mat-raised-button id="login" color="primary" [disabled]="preferenceForm.invalid"
                         (click)="updatePreference()">
-                    Edit
+                    Save
                 </button>
                 <button mat-raised-button id="back" color="primary" [routerLink]="['/holiday-preferences']">
                     Back

@@ -14,22 +14,8 @@ export class HolidayPreferencesEditComponent implements OnInit {
     preferenceForm: FormGroup;
     loading: boolean = true;
 
-    websitesList = ['itaka.pl', 'tui.pl', 'r.pl', 'wakacje.pl'];
-    selectedWebsites = [];
-
-    toppings = new FormControl();
-
-    toppingList = [{topping: 'test'}, {topping: 'test2'}, {topping: 'tes3'}];
-    selectedToppings = [{topping: 'test'}];
-
-    levelNum: number;
-    levels: Array<Object> = [
-        {num: 0, name: 'AA'},
-        {num: 1, name: 'BB'}
-    ];
-
-    selectedLevel = this.levels[0];
-
+    websitesList: string[] = ['itaka.pl', 'tui.pl', 'r.pl', 'wakacje.pl'];
+    selectedWebsites: string[] = [];
 
     constructor(private router: Router,
                 private holidayPreferencesService: HolidayPreferencesService,
@@ -40,7 +26,7 @@ export class HolidayPreferencesEditComponent implements OnInit {
     ngOnInit() {
         this.getPreference();
         this.createForm();
-        this.toppings.setValue([{topping: 'test'}]);
+        // this.toppings.setValue([{topping: 'test'}]);
     }
 
     private createForm() {
@@ -77,12 +63,10 @@ export class HolidayPreferencesEditComponent implements OnInit {
              );*/
     }
 
-    addWebsite(website: any) {
-        console.log('website: ', website);
+    updateWebsites(website: string) {
+        if (this.selectedWebsites.includes(website)) {
+            return this.selectedWebsites.splice(this.selectedWebsites.indexOf(website), 1);
+        }
         this.selectedWebsites.push(website);
-
-        const include = this.selectedWebsites.includes(website);
-        console.log('include: ', include);
-
     }
 }
