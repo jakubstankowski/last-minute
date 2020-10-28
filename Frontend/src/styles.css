@@ -26,6 +26,14 @@ ul {
     margin: 0;
 }
 
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
@@ -73,6 +81,6 @@ body {
     margin-left: unset !important;
 }
 
-.container{
+.container {
     padding: 20px;
 }

@@ -12,7 +12,6 @@ import {IWebsites} from '../../shared/models/websites';
 })
 export class HolidayPreferencesEditComponent implements OnInit {
     preferenceForm: FormGroup;
-    loading: boolean = true;
 
     websitesList: string[] = ['itaka.pl', 'tui.pl', 'r.pl', 'wakacje.pl'];
     selectedWebsites: string[] = [];
@@ -86,7 +85,7 @@ export class HolidayPreferencesEditComponent implements OnInit {
 
     updateWebsites(website: string) {
         if (this.selectedWebsites.includes(website)) {
-            return this.selectedWebsites.splice(this.selectedWebsites.indexOf(website), 1);
+                return this.selectedWebsites.splice(this.selectedWebsites.indexOf(website), 1);
         }
 
         this.selectedWebsites.push(website);
