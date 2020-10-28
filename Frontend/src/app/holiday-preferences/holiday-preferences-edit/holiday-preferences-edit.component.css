@@ -1,0 +1,12 @@
+:host {
+    width: 80%;
+}
+
+.holiday-preferences_websites {
+    height: 100px;
+    margin: 10px;
+}
+
+.active {
+    border: 2px solid var(--secondary-color);
+}

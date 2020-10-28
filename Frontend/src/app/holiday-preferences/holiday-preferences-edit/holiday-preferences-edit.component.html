@@ -1,4 +1,4 @@
-<article class="login-container" fxLayoutAlign="center">
+<article class="holiday-preferences">
     <form [formGroup]="preferenceForm">
         <mat-card>
             <mat-card-title>Edit Holiday Preference</mat-card-title>
@@ -22,23 +22,24 @@
                         <strong>required</strong>
                     </mat-error>
                 </mat-form-field>
-                <mat-form-field>
-                    <mat-select class="w-100" placeholder="Websites" formControlName="websites"
-                                [(value)]="selectedWebsites" multiple>
-                        <mat-option *ngFor="let website of websitesList" [value]="website.website">
-                            {{website.website}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-card *ngFor="let website of websitesList" style="background-color: grey; margin:20px;">
-                        {{website.website}}
-                    <span (click)="addWebsite(website)">
+                <pre>
+                   SELECT:  {{selectedWebsites | json}}
+                </pre>
+                <pre>
+                      LIST:   {{websitesList | json}}
+                    </pre>
+
+                <ul>
+                    <li class="grid">
+                        <mat-card *ngFor="let website of websitesList"
+                                  [ngClass]="selectedWebsites.includes(website) ? 'holiday-preferences_websites active' : 'holiday-preferences_websites disabled'">
+                            {{website}}
+                            <span (click)="addWebsite(website)">
                         ADD
                     </span>
-                </mat-card>
-                <pre>
-                    {{selectedWebsites | json}}
-                </pre>
+                        </mat-card>
+                    </li>
+                </ul>
             </mat-card-content>
 
             <mat-card-actions class="login-actions">
@@ -50,20 +51,6 @@
                     Back
                 </button>
             </mat-card-actions>
-            <mat-form-field>
-                <mat-select placeholder="Toppings" [formControl]="toppings" [(ngModel)]="selectedToppings" multiple>
-                    <mat-option *ngFor="let topp of toppingList" [value]="topp">
-                        {{topp.topping}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
         </mat-card>
     </form>
-
-
 </article>
-<select multiple type="number" [(ngModel)]="selectedLevel">
-    <option *ngFor="let level of levels" [ngValue]="level">
-        {{level.name}}
-    </option>
-</select>

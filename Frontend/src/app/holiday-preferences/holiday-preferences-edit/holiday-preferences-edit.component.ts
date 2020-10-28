@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {IPreferences} from '../../shared/models/preferences';
 import {HolidayPreferencesService} from '../holiday-preferences.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {NotificationService} from '../../core/services/notification.service';
@@ -13,9 +12,10 @@ import {IWebsites} from '../../shared/models/websites';
 })
 export class HolidayPreferencesEditComponent implements OnInit {
     preferenceForm: FormGroup;
+    loading: boolean = true;
 
-    websitesList: IWebsites[] = [{website: 'itaka.pl'}, {website: 'r.pl'}, {website: 'tui.pl'}, {website: 'wakacje.pl'}];
-    selectedWebsites: IWebsites[] = [];
+    websitesList = ['itaka.pl', 'tui.pl', 'r.pl', 'wakacje.pl'];
+    selectedWebsites = [];
 
     toppings = new FormControl();
 
@@ -55,7 +55,9 @@ export class HolidayPreferencesEditComponent implements OnInit {
         this.holidayPreferencesService.getHolidayPreference()
             .subscribe(preferences => {
                 this.preferenceForm.setValue(preferences);
-                console.log('preferenceForm', this.preferenceForm);
+                for (let i = 0; i < preferences.websites.length; i++) {
+                    this.selectedWebsites.push(preferences.websites[i]['website']);
+                }
             });
     }
 
@@ -75,8 +77,12 @@ export class HolidayPreferencesEditComponent implements OnInit {
              );*/
     }
 
-    addWebsite(website: IWebsites) {
+    addWebsite(website: any) {
         console.log('website: ', website);
         this.selectedWebsites.push(website);
+
+        const include = this.selectedWebsites.includes(website);
+        console.log('include: ', include);
+
     }
 }
