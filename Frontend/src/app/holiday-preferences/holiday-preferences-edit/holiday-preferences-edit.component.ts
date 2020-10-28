@@ -12,10 +12,24 @@ import {IWebsites} from '../../shared/models/websites';
     styleUrls: ['./holiday-preferences-edit.component.css']
 })
 export class HolidayPreferencesEditComponent implements OnInit {
-    preferences: IPreferences;
     preferenceForm: FormGroup;
 
-    websites: IWebsites[] = [{website: 'tui.pl'}, {website: 'r.pl'}];
+    websitesList: IWebsites[] = [{website: 'itaka.pl'}, {website: 'r.pl'}, {website: 'tui.pl'}, {website: 'wakacje.pl'}];
+    selectedWebsites: IWebsites[] = [];
+
+    toppings = new FormControl();
+
+    toppingList = [{topping: 'test'}, {topping: 'test2'}, {topping: 'tes3'}];
+    selectedToppings = [{topping: 'test'}];
+
+    levelNum: number;
+    levels: Array<Object> = [
+        {num: 0, name: 'AA'},
+        {num: 1, name: 'BB'}
+    ];
+
+    selectedLevel = this.levels[0];
+
 
     constructor(private router: Router,
                 private holidayPreferencesService: HolidayPreferencesService,
@@ -26,14 +40,7 @@ export class HolidayPreferencesEditComponent implements OnInit {
     ngOnInit() {
         this.getPreference();
         this.createForm();
-    }
-
-    getPreference() {
-        this.holidayPreferencesService.getHolidayPreference()
-            .subscribe(preferences => {
-                this.preferences = preferences;
-                this.preferenceForm.setValue(preferences);
-            });
+        this.toppings.setValue([{topping: 'test'}]);
     }
 
     private createForm() {
@@ -44,23 +51,32 @@ export class HolidayPreferencesEditComponent implements OnInit {
         });
     }
 
+    getPreference() {
+        this.holidayPreferencesService.getHolidayPreference()
+            .subscribe(preferences => {
+                this.preferenceForm.setValue(preferences);
+                console.log('preferenceForm', this.preferenceForm);
+            });
+    }
+
+
     updatePreference() {
-        this.holidayPreferencesService
-            .updateHolidayPreference(this.preferenceForm.value)
-            .subscribe(
-                data => {
-                    this.router.navigate(['/holiday-preferences']);
-                },
-                error => {
-                    console.log('Error: ', error);
-                    this.notificationService.openSnackBar(error.error.message);
-                }
-            );
+        console.log('form value : ', this.preferenceForm.value);
+        /* this.holidayPreferencesService
+             .updateHolidayPreference(this.preferenceForm.value)
+             .subscribe(
+                 data => {
+                     this.router.navigate(['/holiday-preferences']);
+                 },
+                 error => {
+                     console.log('Error: ', error);
+                     this.notificationService.openSnackBar(error.error.message);
+                 }
+             );*/
     }
 
-    changeWebsite(value: any) {
-        console.log('value:', value);
+    addWebsite(website: IWebsites) {
+        console.log('website: ', website);
+        this.selectedWebsites.push(website);
     }
-
-
 }
