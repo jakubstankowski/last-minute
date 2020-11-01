@@ -1,20 +1,27 @@
-import {Component, OnInit, ChangeDetectorRef, OnDestroy, AfterViewInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectorRef, OnDestroy, AfterViewInit, Inject} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
-import {TimerObservable} from 'rxjs/observable/TimerObservable';
 import {Observable, Subscription} from 'rxjs';
-
-import {environment} from './../../../environments/environment';
-import {AuthenticationService} from './../../core/services/auth.service';
+import {AuthenticationService} from '../../core/services/auth.service';
 import {SpinnerService} from '../../core/services/spinner.service';
 import {AuthGuard} from 'src/app/core/guards/auth.guard';
 import {IUser} from '../models/user';
+import {HolidayPreferencesService} from "../../holiday-preferences/holiday-preferences.service";
+import {NotificationService} from "../../core/services/notification.service";
+import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
+
+export interface DialogData {
+    animal: 'panda' | 'unicorn' | 'lion';
+}
+
 
 @Component({
     selector: 'app-layout',
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.css']
 })
-export class LayoutComponent implements OnInit,  AfterViewInit {
+
+
+export class LayoutComponent implements OnInit, AfterViewInit {
 
     private _mobileQueryListener: () => void;
     mobileQuery: MediaQueryList;
@@ -29,16 +36,19 @@ export class LayoutComponent implements OnInit,  AfterViewInit {
                 private media: MediaMatcher,
                 public spinnerService: SpinnerService,
                 private authService: AuthenticationService,
-                private authGuard: AuthGuard) {
+                private authGuard: AuthGuard,
+                private holidayPreferencesService: HolidayPreferencesService,
+                private notificationService: NotificationService,
+                public dialog: MatDialog
+    ) {
 
         this.mobileQuery = this.media.matchMedia('(max-width: 1000px)');
         this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-        // tslint:disable-next-line: deprecation
         this.mobileQuery.addListener(this._mobileQueryListener);
     }
 
     ngOnInit(): void {
-        //this.loadCurrentUser();
+        this.getPreference();
         this.currentUser$ = this.authService.currentUser$;
     }
 
@@ -47,17 +57,32 @@ export class LayoutComponent implements OnInit,  AfterViewInit {
         this.changeDetectorRef.detectChanges();
     }
 
-    loadCurrentUser() {
-        alert('load from layout');
-        const token = localStorage.getItem('token');
-        this.authService.loadCurrentUser(token).subscribe(() => {
-            console.log('loaded user');
-        }, error => {
-            console.log(error);
-        });
-    }
-
     logout() {
         this.authService.logout();
     }
+
+    getPreference() {
+        this.holidayPreferencesService.getHolidayPreference()
+            .subscribe(
+                preference => {
+                    if (!preference) {
+                        alert('null');
+                    }
+                },
+                error => {
+                    this.notificationService.openSnackBar(error.error.message);
+                    throw new Error(error);
+                });
+    }
+
 }
+
+@Component({
+    selector: 'dialog-data-example-dialog',
+    template: '<p>test </p>',
+})
+export class DialogDataExampleDialog {
+    constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    }
+}
+
