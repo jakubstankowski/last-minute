@@ -8,6 +8,7 @@ import {IUser} from '../models/user';
 import {HolidayPreferencesService} from "../../holiday-preferences/holiday-preferences.service";
 import {NotificationService} from "../../core/services/notification.service";
 import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
+import {Router} from "@angular/router";
 
 export interface DialogData {
     animal: 'panda' | 'unicorn' | 'lion';
@@ -39,7 +40,8 @@ export class LayoutComponent implements OnInit, AfterViewInit {
                 private authGuard: AuthGuard,
                 private holidayPreferencesService: HolidayPreferencesService,
                 private notificationService: NotificationService,
-                public dialog: MatDialog
+                public dialog: MatDialog,
+                private router: Router
     ) {
 
         this.mobileQuery = this.media.matchMedia('(max-width: 1000px)');
@@ -66,7 +68,7 @@ export class LayoutComponent implements OnInit, AfterViewInit {
             .subscribe(
                 preference => {
                     if (!preference) {
-                        alert('null');
+                        this.router.navigate(['/holiday-preferences/create']);
                     }
                 },
                 error => {
