@@ -43,9 +43,9 @@ namespace API.Controllers
 
             var preferences = await _repo.GetUserHolidayPreferences(userId);
 
-            if (preferences == null)
+           if (preferences == null)
             {
-                return NotFound(new ApiResponse(404));
+                return new EmptyResult();
             }
 
             return Ok(_mapper.Map<HolidayPreferences, HolidayPreferencesDTO>(preferences));

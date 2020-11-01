@@ -39,7 +39,7 @@ namespace API.Controllers
 
             if (preferences == null)
             {
-                return NotFound(new ApiResponse(404));
+                return new EmptyResult();
             }
 
             foreach (var website in preferences.Websites)

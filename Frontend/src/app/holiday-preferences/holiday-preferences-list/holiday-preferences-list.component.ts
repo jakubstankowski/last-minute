@@ -21,6 +21,7 @@ export class HolidayPreferencesListComponent implements OnInit {
         this.holidayPreferencesService.getHolidayPreference()
             .subscribe(preferences => {
                 this.preferences = preferences;
+                console.log('preferences: ', preferences);
             });
     }
 }
