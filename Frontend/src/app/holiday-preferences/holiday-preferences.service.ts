@@ -21,5 +21,9 @@ export class HolidayPreferencesService {
         return this.http.put<IPreferences>(this.baseUrl + 'preferences', form);
     }
 
+    createHolidayPreference(form: any): Observable<IPreferences> {
+        return this.http.post<IPreferences>(this.baseUrl + 'preferences', form);
+    }
+
 
 }
