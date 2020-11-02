@@ -5,13 +5,15 @@ import {HolidayPreferencesRoutingModule} from './holiday-preferences-routing.mod
 import {SharedModule} from '../shared/shared.module';
 import { HolidayPreferencesEditComponent } from './holiday-preferences-edit/holiday-preferences-edit.component';
 import { HolidayPreferencesCreateComponent } from './holiday-preferences-create/holiday-preferences-create.component';
+import { HolidayPreferencesComponent } from './holiday-preferences/holiday-preferences.component';
 
 
 @NgModule({
     declarations: [
         HolidayPreferencesListComponent,
         HolidayPreferencesEditComponent,
-        HolidayPreferencesCreateComponent
+        HolidayPreferencesCreateComponent,
+        HolidayPreferencesComponent
     ],
     imports: [
         CommonModule,
