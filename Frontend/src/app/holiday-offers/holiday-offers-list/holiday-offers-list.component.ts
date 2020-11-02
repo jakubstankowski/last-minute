@@ -1,6 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {IOffers} from '../../shared/models/offers';
 import {HolidayOffersService} from '../holiday-offers.service';
+import {IPreferences} from "../../shared/models/preferences";
+import {HolidayPreferencesService} from "../../holiday-preferences/holiday-preferences.service";
+import {NotificationService} from "../../core/services/notification.service";
 
 @Component({
     selector: 'app-holiday-offers-list',
@@ -9,30 +12,44 @@ import {HolidayOffersService} from '../holiday-offers.service';
 })
 export class HolidayOffersListComponent implements OnInit, OnDestroy {
     offers: IOffers[];
+    preferences: IPreferences
     loading: boolean;
 
-    constructor(private holidayOffersService: HolidayOffersService) {
+    constructor(private holidayOffersService: HolidayOffersService, private holidayPreferencesService: HolidayPreferencesService,
+                private notificationService: NotificationService) {
     }
 
     ngOnInit() {
+        this.loading = true;
         this.getOffers();
+        this.getHolidayPreferences();
     }
 
     ngOnDestroy() {
 
     }
 
-    getOffers(): void {
-        this.loading = true;
+    private getOffers(): void {
         this.holidayOffersService.getOffers()
             .subscribe(
                 (offers: IOffers[]) => {
                     this.offers = offers;
                     this.loading = false;
-                    console.log('offers: ', this.offers);
                 },
-                (err) => console.error(err),
-                () => console.log('observable complete'));
+                error => {
+                    this.notificationService.openSnackBar(error.error.message);
+                    throw new Error(error);
+                })
     }
 
+    private getHolidayPreferences(): void {
+        this.holidayPreferencesService.getHolidayPreference()
+            .subscribe(preferences => {
+                    this.preferences = preferences;
+                },
+                error => {
+                    this.notificationService.openSnackBar(error.error.message);
+                    throw new Error(error);
+                })
+    }
 }

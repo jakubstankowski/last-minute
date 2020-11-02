@@ -74,7 +74,7 @@ export class HolidayPreferencesEditComponent implements OnInit {
             .updateHolidayPreference(this.preferenceForm.value)
             .subscribe(
                 data => {
-                    this.router.navigate(['/holiday-preferences']);
+                    this.router.navigate(['/holiday-offers']);
                 },
                 error => {
                     this.notificationService.openSnackBar(error.error.message);

@@ -1,14 +1,21 @@
-<article  class="holiday-offers-list">
+<article class="holiday-offers-list">
+    <div class="holiday-offers-list_preferences" *ngIf="!loading">
+        {{preferences | json}}<br>
+        <button mat-raised-button color="primary"  class="holiday-offers-list_preferences_button" [routerLink]="['/holiday-preferences/edit']">
+            Edit Preferences
+        </button>
+    </div>
     <div class="center-wrapper" *ngIf="loading">
         <mat-spinner class="holiday-offers-list_spinner"></mat-spinner>
     </div>
     <ul>
         <li class="grid">
-            <a  *ngFor="let offer of offers" [href]="offer.url" class="grid"  target="_blank">
+            <a *ngFor="let offer of offers" [href]="offer.url" class="grid" target="_blank">
                 <mat-card class="holiday-offers_list_card" *ngIf="!loading">
                     <img mat-card-image [src]="offer.imageUrl" alt="Offer Image">
                     <mat-card-header>
-                        <img *ngIf="offer.website === 'tui.pl'" alt="Travel logo" class="holiday-offers-list_travel_logo"
+                        <img *ngIf="offer.website === 'tui.pl'" alt="Travel logo"
+                             class="holiday-offers-list_travel_logo"
                              mat-card-avatar src="../../../assets/tui-logo.png"/>
                         <img *ngIf="offer.website === 'itaka.pl'" alt="Travel logo"
                              class="holiday-offers-list_travel_logo"

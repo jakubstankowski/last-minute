@@ -1,9 +1,21 @@
 :host {
     width: 100%;
 }
-.holiday-offers-list_spinner{
-    text-align: center;
 
+.holiday-offers-list_preferences {
+    padding: 30px;
+    background-color: white;
+    border: 3px solid var(--secondary-color);;
+    margin-bottom: 1em;
+}
+
+.holiday-offers-list_preferences_button {
+    margin-top: 1em;
+}
+
+
+.holiday-offers-list_spinner {
+    text-align: center;
 }
 
 .holiday-offers-list_travel_logo {
@@ -17,7 +29,7 @@
 
 .holiday-offers-list_price_for_person {
     color: var(--dark-color);
-    font-size: 15px;
+    font-size: 1em;
     font-weight: lighter;
 }
 
