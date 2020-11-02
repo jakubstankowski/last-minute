@@ -72,18 +72,31 @@ export class HolidayPreferencesComponent implements OnInit {
             websites: websitesList,
         });
 
-
-        this.holidayPreferencesService
-            .updateHolidayPreference(this.preferenceForm.value)
-            .subscribe(
-                data => {
-                    this.router.navigate(['/holiday-offers']);
-                },
-                error => {
-                    this.notificationService.openSnackBar(error.error.message);
-                    throw new Error(error);
-                }
-            );
+        if (this.isCreateMode) {
+            this.holidayPreferencesService
+                .createHolidayPreference(this.preferenceForm.value)
+                .subscribe(
+                    data => {
+                        this.router.navigate(['/holiday-offers']);
+                    },
+                    error => {
+                        this.notificationService.openSnackBar(error.error.message);
+                        throw new Error(error);
+                    }
+                );
+        } else {
+            this.holidayPreferencesService
+                .updateHolidayPreference(this.preferenceForm.value)
+                .subscribe(
+                    data => {
+                        this.router.navigate(['/holiday-offers']);
+                    },
+                    error => {
+                        this.notificationService.openSnackBar(error.error.message);
+                        throw new Error(error);
+                    }
+                );
+        }
     }
 
     updateWebsites(website: string): any {
