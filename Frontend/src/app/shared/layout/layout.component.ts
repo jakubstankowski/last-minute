@@ -1,14 +1,14 @@
-import {Component, OnInit, ChangeDetectorRef, OnDestroy, AfterViewInit, Inject} from '@angular/core';
+import {Component, OnInit, ChangeDetectorRef, AfterViewInit} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
-import {Observable, Subscription} from 'rxjs';
+import {Observable} from 'rxjs';
 import {AuthenticationService} from '../../core/services/auth.service';
 import {SpinnerService} from '../../core/services/spinner.service';
 import {AuthGuard} from 'src/app/core/guards/auth.guard';
 import {IUser} from '../models/user';
 import {HolidayPreferencesService} from "../../holiday-preferences/holiday-preferences.service";
 import {NotificationService} from "../../core/services/notification.service";
-import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
-import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {HolidayPreferencesDialogComponent} from "../../holiday-preferences/holiday-preferences-dialog/holiday-preferences-dialog.component";
 
 
 @Component({
@@ -19,15 +19,10 @@ import {Router} from "@angular/router";
 
 
 export class LayoutComponent implements OnInit, AfterViewInit {
-
-    private _mobileQueryListener: () => void;
+    _mobileQueryListener: () => void;
     mobileQuery: MediaQueryList;
-    showSpinner: boolean;
-    userName: string;
-    isAdmin: boolean;
     currentUser$: Observable<IUser>;
 
-    private autoLogoutSubscription: Subscription;
 
     constructor(private changeDetectorRef: ChangeDetectorRef,
                 private media: MediaMatcher,
@@ -37,7 +32,6 @@ export class LayoutComponent implements OnInit, AfterViewInit {
                 private holidayPreferencesService: HolidayPreferencesService,
                 private notificationService: NotificationService,
                 public dialog: MatDialog,
-                private router: Router
     ) {
 
         this.mobileQuery = this.media.matchMedia('(max-width: 1000px)');
@@ -64,7 +58,9 @@ export class LayoutComponent implements OnInit, AfterViewInit {
             .subscribe(
                 preference => {
                     if (!preference) {
-                        this.router.navigate(['/holiday-preferences/create']);
+                        this.dialog.open(HolidayPreferencesDialogComponent, {
+                            data: {mode: 'create'}
+                        });
                     }
                 },
                 error => {

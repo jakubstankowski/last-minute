@@ -24,11 +24,6 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'holiday-preferences',
-        loadChildren: './holiday-preferences/holiday-preferences.module#HolidayPreferencesModule',
-        canActivate: [AuthGuard]
-    },
-    {
         path: 'users',
         loadChildren: './users/users.module#UsersModule',
         canActivate: [AuthGuard]
