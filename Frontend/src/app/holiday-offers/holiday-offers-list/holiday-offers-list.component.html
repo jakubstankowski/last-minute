@@ -1,7 +1,7 @@
 <article class="holiday-offers-list">
     <div class="holiday-offers-list_preferences" *ngIf="!loading">
         {{preferences | json}}<br>
-        <button mat-raised-button color="primary"  class="holiday-offers-list_preferences_button" [routerLink]="['/holiday-preferences/edit']">
+        <button mat-raised-button   class="holiday-offers-list_preferences_button" (click)="openPreferencesDialog()">
             Edit Preferences
         </button>
     </div>

@@ -10,10 +10,6 @@ import {NotificationService} from "../../core/services/notification.service";
 import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 
-export interface DialogData {
-    animal: 'panda' | 'unicorn' | 'lion';
-}
-
 
 @Component({
     selector: 'app-layout',
@@ -77,14 +73,5 @@ export class LayoutComponent implements OnInit, AfterViewInit {
                 });
     }
 
-}
-
-@Component({
-    selector: 'dialog-data-example-dialog',
-    template: '<p>test </p>',
-})
-export class DialogDataExampleDialog {
-    constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {
-    }
 }
 

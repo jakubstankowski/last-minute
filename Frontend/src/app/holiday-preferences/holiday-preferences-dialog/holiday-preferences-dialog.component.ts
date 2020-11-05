@@ -1,10 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {DialogData} from "../../shared/layout/layout.component";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HolidayPreferencesService} from "../holiday-preferences.service";
 import {NotificationService} from "../../core/services/notification.service";
+import {IDialogData} from "../../shared/models/dialogData";
 
 @Component({
     selector: 'app-holiday-preferences-dialog',
@@ -15,20 +15,20 @@ export class HolidayPreferencesDialogComponent implements OnInit {
     preferenceForm: FormGroup;
     websitesList: string[] = ['itaka.pl', 'tui.pl', 'r.pl', 'wakacje.pl'];
     selectedWebsites: string[] = [];
+
     isCreateMode = false;
     mode: string;
 
     constructor(
         public dialogRef: MatDialogRef<HolidayPreferencesDialogComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: DialogData, private route: ActivatedRoute, private router: Router,
+        @Inject(MAT_DIALOG_DATA) public data: IDialogData, private route: ActivatedRoute, private router: Router,
         private holidayPreferencesService: HolidayPreferencesService,
         private notificationService: NotificationService,) {
-            dialogRef.disableClose = true;
+        dialogRef.disableClose = true;
     }
 
     ngOnInit() {
-        this.mode = this.route.snapshot.paramMap.get('mode');
-        this.isCreateMode = this.mode === 'create';
+        this.isCreateMode = this.data.mode === 'create';
         this.createForm();
 
         if (this.isCreateMode) {

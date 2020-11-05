@@ -28,7 +28,7 @@ export class HolidayPreferencesComponent implements OnInit {
     }
 
     ngOnInit() {
-        const dialogRef = this.dialog.open(HolidayPreferencesDialogComponent, {
+       /* const dialogRef = this.dialog.open(HolidayPreferencesDialogComponent, {
             data: {name: this.name, animal: this.animal}
         });
 
@@ -38,7 +38,7 @@ export class HolidayPreferencesComponent implements OnInit {
                 this.animal = result.animal;
             }
         });
-
+*/
 
         this.mode = this.route.snapshot.paramMap.get('mode');
         this.isCreateMode = this.mode === 'create';

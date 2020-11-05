@@ -4,6 +4,8 @@ import {HolidayOffersService} from '../holiday-offers.service';
 import {IPreferences} from "../../shared/models/preferences";
 import {HolidayPreferencesService} from "../../holiday-preferences/holiday-preferences.service";
 import {NotificationService} from "../../core/services/notification.service";
+import {MatDialog} from "@angular/material/dialog";
+import {HolidayPreferencesDialogComponent} from "../../holiday-preferences/holiday-preferences-dialog/holiday-preferences-dialog.component";
 
 @Component({
     selector: 'app-holiday-offers-list',
@@ -15,8 +17,10 @@ export class HolidayOffersListComponent implements OnInit, OnDestroy {
     preferences: IPreferences
     loading: boolean;
 
+    name: string = 'jakób';
+
     constructor(private holidayOffersService: HolidayOffersService, private holidayPreferencesService: HolidayPreferencesService,
-                private notificationService: NotificationService) {
+                private notificationService: NotificationService, public dialog: MatDialog) {
     }
 
     ngOnInit() {
@@ -51,5 +55,11 @@ export class HolidayOffersListComponent implements OnInit, OnDestroy {
                     this.notificationService.openSnackBar(error.error.message);
                     throw new Error(error);
                 })
+    }
+
+    openPreferencesDialog() {
+        this.dialog.open(HolidayPreferencesDialogComponent, {
+            data: {mode: 'edit'}
+        });
     }
 }
