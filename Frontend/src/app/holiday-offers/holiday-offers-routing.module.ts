@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LayoutComponent} from '../shared/layout/layout.component';
 import {HolidayOffersListComponent} from './holiday-offers-list/holiday-offers-list.component';
-import {HolidayPreferencesEditComponent} from '../holiday-preferences/holiday-preferences-edit/holiday-preferences-edit.component';
 
 
 const routes: Routes = [

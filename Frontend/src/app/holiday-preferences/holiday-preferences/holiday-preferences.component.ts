@@ -26,9 +26,15 @@ export class HolidayPreferencesComponent implements OnInit {
         this.isCreateMode = this.mode === 'create';
         this.createForm();
 
-        if (!this.isCreateMode) {
-            this.getPreference();
+        if (this.isCreateMode) {
+            this.preferenceForm.patchValue({
+                minPrice: 0,
+                maxPrice: 2500
+            });
+            return this.selectedWebsites.push('itaka.pl');
         }
+
+        this.getPreference();
     }
 
     private createForm() {
@@ -39,7 +45,7 @@ export class HolidayPreferencesComponent implements OnInit {
         });
     }
 
-    getPreference(): any {
+    private getPreference(): any {
         this.holidayPreferencesService.getHolidayPreference()
             .subscribe(
                 preferences => {
