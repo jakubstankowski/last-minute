@@ -29,7 +29,6 @@ export class HolidayPreferencesComponent implements OnInit {
 
     ngOnInit() {
         const dialogRef = this.dialog.open(HolidayPreferencesDialogComponent, {
-            width: '100%',
             data: {name: this.name, animal: this.animal}
         });
 

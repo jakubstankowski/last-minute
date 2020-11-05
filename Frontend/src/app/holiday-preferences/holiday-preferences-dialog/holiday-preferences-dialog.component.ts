@@ -23,6 +23,7 @@ export class HolidayPreferencesDialogComponent implements OnInit {
         @Inject(MAT_DIALOG_DATA) public data: DialogData, private route: ActivatedRoute, private router: Router,
         private holidayPreferencesService: HolidayPreferencesService,
         private notificationService: NotificationService,) {
+            dialogRef.disableClose = true;
     }
 
     ngOnInit() {
