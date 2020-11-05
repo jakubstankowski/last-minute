@@ -1,46 +1,31 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Route, Router} from '@angular/router';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {HolidayPreferencesService} from '../holiday-preferences.service';
-import {NotificationService} from '../../core/services/notification.service';
-import {MatDialog} from "@angular/material/dialog";
-import {HolidayPreferencesDialogComponent} from "../holiday-preferences-dialog/holiday-preferences-dialog.component";
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {DialogData} from "../../shared/layout/layout.component";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
+import {HolidayPreferencesService} from "../holiday-preferences.service";
+import {NotificationService} from "../../core/services/notification.service";
 
 @Component({
-    selector: 'app-holiday-preferences',
-    templateUrl: './holiday-preferences.component.html',
-    styleUrls: ['./holiday-preferences.component.css']
+    selector: 'app-holiday-preferences-dialog',
+    templateUrl: './holiday-preferences-dialog.component.html',
+    styleUrls: ['./holiday-preferences-dialog.component.css']
 })
-export class HolidayPreferencesComponent implements OnInit {
+export class HolidayPreferencesDialogComponent implements OnInit {
     preferenceForm: FormGroup;
     websitesList: string[] = ['itaka.pl', 'tui.pl', 'r.pl', 'wakacje.pl'];
     selectedWebsites: string[] = [];
     isCreateMode = false;
     mode: string;
-    title = 'app';
-    animal: string;
-    name: string;
 
-
-    constructor(private route: ActivatedRoute, private router: Router,
-                private holidayPreferencesService: HolidayPreferencesService,
-                private notificationService: NotificationService, public dialog: MatDialog) {
+    constructor(
+        public dialogRef: MatDialogRef<HolidayPreferencesDialogComponent>,
+        @Inject(MAT_DIALOG_DATA) public data: DialogData, private route: ActivatedRoute, private router: Router,
+        private holidayPreferencesService: HolidayPreferencesService,
+        private notificationService: NotificationService,) {
     }
 
     ngOnInit() {
-        const dialogRef = this.dialog.open(HolidayPreferencesDialogComponent, {
-            width: '100%',
-            data: {name: this.name, animal: this.animal}
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
-            if ((result != null) && (result.animal != null)) {
-                this.animal = result.animal;
-            }
-        });
-
-
         this.mode = this.route.snapshot.paramMap.get('mode');
         this.isCreateMode = this.mode === 'create';
         this.createForm();
@@ -131,6 +116,13 @@ export class HolidayPreferencesComponent implements OnInit {
         this.selectedWebsites.push(website);
     }
 
+    onCloseNo(): void {
+        this.dialogRef.close();
+    }
+
+    onCloseOk(): void {
+        this.dialogRef.close(this.data);
+    }
+
+
 }
-
-

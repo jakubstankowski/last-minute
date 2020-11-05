@@ -40,7 +40,7 @@
             </ul>
         </mat-card-content>
         <mat-card-actions class="login-actions">
-            <button mat-raised-button id="login" color="primary" [disabled]="preferenceForm.invalid"
+            <button mat-raised-button id="login" [disabled]="preferenceForm.invalid"
                     class="w-100"
                     (click)="updatePreference()">
                 {{isCreateMode ? 'Create' : 'Edit'}}
