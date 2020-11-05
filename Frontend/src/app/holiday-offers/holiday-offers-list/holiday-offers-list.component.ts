@@ -58,8 +58,17 @@ export class HolidayOffersListComponent implements OnInit, OnDestroy {
     }
 
     openPreferencesDialog() {
-        this.dialog.open(HolidayPreferencesDialogComponent, {
+        const dialogRef = this.dialog.open(HolidayPreferencesDialogComponent, {
             data: {mode: 'edit'}
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.loading = true;
+                this.getHolidayPreferences();
+                this.getOffers();
+            }
+
         });
     }
 }

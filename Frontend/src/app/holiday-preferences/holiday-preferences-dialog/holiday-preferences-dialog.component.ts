@@ -28,8 +28,8 @@ export class HolidayPreferencesDialogComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.isCreateMode = this.data.mode === 'create';
         this.createForm();
+        this.isCreateMode = this.data.mode === 'create';
 
         if (this.isCreateMode) {
             this.preferenceForm.patchValue({
@@ -117,12 +117,13 @@ export class HolidayPreferencesDialogComponent implements OnInit {
         this.selectedWebsites.push(website);
     }
 
-    onCloseNo(): void {
+    onCloseCancel(): void {
         this.dialogRef.close();
     }
 
-    onCloseOk(): void {
-        this.dialogRef.close(this.data);
+    onCloseUpdate(): void {
+        this.updatePreference();
+        this.dialogRef.close(true);
     }
 
 
