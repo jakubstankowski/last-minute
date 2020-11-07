@@ -2,6 +2,7 @@
     width: 100%;
 }
 
+
 .holiday-offers_grid-container {
     display: grid;
     grid-template-columns:  repeat(auto-fit, minmax(100px, 1fr));
@@ -10,7 +11,7 @@
 
 .holiday-offers_grid-item {
     padding: 10px;
-    text-align: center;
+    text-align: left;
 }
 
 .holiday-offers_websites_logos img {

@@ -1,12 +1,6 @@
 <article class="holiday-offers-list">
-    <div class="holiday-offers-list_preferences" *ngIf="!loading">
+    <div class="holiday-offers-list_preferences" *ngIf="!loading" (click)="openPreferencesDialog()">
         <div class="holiday-offers_grid-container">
-            <div class="holiday-offers_grid-item mt-2">
-                Price Range:
-                <span class="holiday-offers_preferences_prices">
-                  {{preferences.minPrice}} zł -  {{preferences.maxPrice}} zł
-                </span>
-            </div>
             <div class="holiday-offers_grid-item" *ngFor="let website of preferences.websites">
                 <div class="holiday-offers_websites_logos">
                     <img *ngIf="website.website === 'wakacje.pl'" src="assets/wakacje-logo.jpg"
@@ -18,6 +12,15 @@
                 </div>
             </div>
 
+            <div class="holiday-offers_grid-item text-left">
+                Preferences Details:
+                <ul>
+                    <li>
+                      -   Price Range: <span class="holiday-offers_preferences_prices">{{preferences.minPrice}}
+                        zł -  {{preferences.maxPrice}} zł</span>
+                    </li>
+                </ul>
+            </div>
         </div>
         <button mat-raised-button color="primary" (click)="openPreferencesDialog()">
             Edit Preferences
@@ -48,31 +51,31 @@
                         <mat-card-subtitle>{{offer.country}}</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content>
-                        <ul>
-                            <li>
+                        <div class="holiday-offers_grid-container">
+                            <div class="holiday-offers_grid-item"
+                                 style="text-align: left; color: var(--secondary-color); width: 30px;">
                                 <mat-icon mat-list-icon>
                                     today
                                 </mat-icon>
-                                <p mat-line>
-                                    {{offer.date}}
-                                </p>
-                            </li>
-                            <li>
+                            </div>
+                            <div class="holiday-offers_grid-item">
+                                {{offer.date}}
+                            </div>
+                            <div class="holiday-offers_grid-item"
+                                 style="text-align: left; color: var(--secondary-color);">
                                 <mat-icon mat-list-icon>
                                     local_dining
                                 </mat-icon>
-                                <p mat-line>
-                                    {{offer.meal}}
-                                </p>
-                            </li>
-                        </ul>
+                            </div>
+                            <div class="holiday-offers_grid-item">
+                                {{offer.meal}}
+                            </div>
+                        </div>
                     </mat-card-content>
                     <mat-card-actions>
                         <h2 class="holiday-offers-list_price">
                             {{offer.price}} zł
-                            <span class="holiday-offers-list_price_for_person">
-                 / śr cena za osobe
-               </span>
+                            <span class="holiday-offers-list_price_for_person"> / śr cena za osobe</span>
                         </h2>
                     </mat-card-actions>
                 </mat-card>
