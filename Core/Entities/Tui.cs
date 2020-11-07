@@ -21,7 +21,6 @@ namespace Core.Entities
             public string returnDate { get; set; }
             public string departureTime { get; set; }
             public string departureAirport { get; set; }
-
             public string imageUrl { get; set; }
             public string boardType { get; set; }
         }

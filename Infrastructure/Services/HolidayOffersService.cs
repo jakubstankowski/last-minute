@@ -128,7 +128,7 @@ namespace Infrastructure.Services
                 {
                     Website = "tui.pl",
                     Country = countryDetails[0],
-                    Meal = "null",
+                    Meal = offer.boardType,
                     Title = offer.hotelName,
                     Price = Int32.Parse(offer.originalPerPersonPrice),
                     Url = $"https://www.tui.pl{offer.offerUrl}",
