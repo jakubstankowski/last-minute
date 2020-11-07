@@ -157,7 +157,7 @@ namespace Infrastructure.Services
                 {
                     Website = "wakacje.pl",
                     Country = offer.placeName,
-                    Meal = "null",
+                    Meal = offer.serviceDesc,
                     Title = offer.name,
                     Price = offer.price,
                     Url = $"https://wakacje.pl{offer.link}",
