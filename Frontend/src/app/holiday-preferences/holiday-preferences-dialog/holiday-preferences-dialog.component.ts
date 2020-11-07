@@ -124,6 +124,7 @@ export class HolidayPreferencesDialogComponent implements OnInit {
     onCloseUpdate(): void {
         this.updatePreference();
         this.dialogRef.close(true);
+        this.router.navigate(['/holiday-offers']);
     }
 
 

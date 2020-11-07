@@ -27,7 +27,7 @@
                          (click)="updateWebsites(website)"
                     >
                         <div class="holiday-preferences_websites_logos">
-                            <img class="mt-1" *ngIf="website === 'wakacje.pl'" src="assets/wakacje_logo.jpg"
+                            <img class="mt-1" *ngIf="website === 'wakacje.pl'" src="assets/wakacje-logo.jpg"
                                  alt="wakacje logo"/>
                             <img *ngIf="website === 'r.pl'" src="assets/r-logo.png" alt="r logo"/>
                             <img *ngIf="website === 'tui.pl'" src="assets/tui-logo.png" alt="tui logo"/>
@@ -41,6 +41,6 @@
     </mat-dialog-content>
     <mat-dialog-actions class="mt-1">
         <button mat-raised-button *ngIf="!isCreateMode" color="primary" (click)="onCloseCancel()">Cancel</button>
-        <button mat-raised-button color="primary"  (click)="onCloseUpdate()">Update</button>
+        <button mat-raised-button color="primary" (click)="onCloseUpdate()">Update</button>
     </mat-dialog-actions>
 </div>

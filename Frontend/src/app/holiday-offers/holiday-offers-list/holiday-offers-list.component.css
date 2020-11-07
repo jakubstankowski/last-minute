@@ -9,6 +9,12 @@
     margin-bottom: 1em;
 }
 
+.my-full-screen-dialog .mat-dialog-container {
+    max-width: none;
+    width: 100vw;
+    height: 100vh;
+}
+
 .holiday-offers-list_preferences_button {
     margin-top: 1em;
 }

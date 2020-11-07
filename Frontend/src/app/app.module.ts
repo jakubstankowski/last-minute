@@ -15,7 +15,8 @@ import {HolidayPreferencesDialogComponent} from "./holiday-preferences/holiday-p
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        HolidayPreferencesDialogComponent
     ],
     imports: [
         HttpClientModule,
@@ -30,6 +31,9 @@ import {HolidayPreferencesDialogComponent} from "./holiday-preferences/holiday-p
             level: environment.logLevel,
             serverLogLevel: environment.serverLogLevel
         })
+    ],
+    entryComponents: [
+        HolidayPreferencesDialogComponent
     ],
     bootstrap: [AppComponent]
 })

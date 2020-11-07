@@ -8,8 +8,7 @@ import {HolidayPreferencesDialogComponent} from "../holiday-preferences/holiday-
 
 @NgModule({
     declarations: [
-        HolidayOffersListComponent,
-        HolidayPreferencesDialogComponent
+        HolidayOffersListComponent
     ],
     imports: [
         CommonModule,
@@ -17,7 +16,6 @@ import {HolidayPreferencesDialogComponent} from "../holiday-preferences/holiday-
         SharedModule
     ],
     entryComponents: [
-        HolidayPreferencesDialogComponent
     ]
 })
 export class HolidayOffersModule {
