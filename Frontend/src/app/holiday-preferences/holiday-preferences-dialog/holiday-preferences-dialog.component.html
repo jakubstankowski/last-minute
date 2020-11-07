@@ -2,8 +2,8 @@
     <h2 mat-dialog-title>Edit your holiday preference</h2>
     <mat-dialog-content>
         <form [formGroup]="preferenceForm">
-            <mat-form-field class="full-width">
-                <input id="minPriceInput" matInput placeholder="Minimum Price" formControlName="minPrice"
+            <mat-form-field >
+                <input  matInput placeholder="Minimum Price" formControlName="minPrice"
                        type="number">
                 <mat-error id="invalidMinPriceError"
                            *ngIf="preferenceForm.controls['minPrice'].hasError('required')">
@@ -11,8 +11,8 @@
                     <strong>required</strong>
                 </mat-error>
             </mat-form-field>
-            <mat-form-field class="full-width">
-                <input id="maxPriceInput" matInput placeholder="Maximum Price" formControlName="maxPrice"
+            <mat-form-field class="ml-1">
+                <input  matInput placeholder="Maximum Price" formControlName="maxPrice"
                        type="number">
                 <mat-error id="invalidMaxPriceError"
                            *ngIf="preferenceForm.controls['maxPrice'].hasError('required')">
@@ -20,7 +20,7 @@
                     <strong>required</strong>
                 </mat-error>
             </mat-form-field>
-            <ul>
+            <ul class="mt-1">
                 <li class="grid">
                     <div *ngFor="let website of websitesList"
                          [ngClass]="selectedWebsites.includes(website) ? 'holiday-preferences_websites active' : 'holiday-preferences_websites disabled'"
