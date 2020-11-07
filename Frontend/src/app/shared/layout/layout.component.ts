@@ -9,6 +9,7 @@ import {HolidayPreferencesService} from "../../holiday-preferences/holiday-prefe
 import {NotificationService} from "../../core/services/notification.service";
 import {MatDialog} from "@angular/material/dialog";
 import {HolidayPreferencesDialogComponent} from "../../holiday-preferences/holiday-preferences-dialog/holiday-preferences-dialog.component";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -32,6 +33,7 @@ export class LayoutComponent implements OnInit, AfterViewInit {
                 private holidayPreferencesService: HolidayPreferencesService,
                 private notificationService: NotificationService,
                 public dialog: MatDialog,
+                private router: Router
     ) {
 
         this.mobileQuery = this.media.matchMedia('(max-width: 1000px)');
@@ -53,13 +55,21 @@ export class LayoutComponent implements OnInit, AfterViewInit {
         this.authService.logout();
     }
 
+
     getPreference() {
         this.holidayPreferencesService.getHolidayPreference()
             .subscribe(
                 preference => {
                     if (!preference) {
-                        this.dialog.open(HolidayPreferencesDialogComponent, {
+                        const dialogRef = this.dialog.open(HolidayPreferencesDialogComponent, {
+                            panelClass: 'custom-modalbox',
                             data: {mode: 'create'}
+                        });
+
+                        dialogRef.afterClosed().subscribe(result => {
+                            if (result) {
+                                this.router.navigate(['/holiday-offers']);
+                            }
                         });
                     }
                 },
