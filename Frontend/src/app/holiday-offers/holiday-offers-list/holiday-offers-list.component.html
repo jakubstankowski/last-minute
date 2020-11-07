@@ -1,5 +1,5 @@
 <article class="holiday-offers-list">
-    <div class="holiday-offers-list_preferences" *ngIf="!loading" (click)="openPreferencesDialog()">
+    <div class="holiday-offers-list_preferences" *ngIf="!loading">
         <div class="holiday-offers_grid-container">
             <div class="holiday-offers_grid-item" *ngFor="let website of preferences.websites">
                 <div class="holiday-offers_websites_logos">
@@ -11,12 +11,11 @@
                          alt="itaka logo"/>
                 </div>
             </div>
-
             <div class="holiday-offers_grid-item text-left">
                 Preferences Details:
                 <ul>
                     <li>
-                      -   Price Range: <span class="holiday-offers_preferences_prices">{{preferences.minPrice}}
+                        - Price Range: <span class="holiday-offers_preferences_prices">{{preferences.minPrice}}
                         zł -  {{preferences.maxPrice}} zł</span>
                     </li>
                 </ul>
@@ -32,7 +31,7 @@
     <ul>
         <li class="grid">
             <a *ngFor="let offer of offers" [href]="offer.url" class="grid" target="_blank">
-                <mat-card class="holiday-offers_list_card" *ngIf="!loading">
+                <mat-card *ngIf="!loading">
                     <img mat-card-image [src]="offer.imageUrl" alt="Offer Image">
                     <mat-card-header>
                         <img *ngIf="offer.website === 'tui.pl'" alt="Travel logo"
@@ -50,29 +49,29 @@
                         <mat-card-title>{{offer.title}}</mat-card-title>
                         <mat-card-subtitle>{{offer.country}}</mat-card-subtitle>
                     </mat-card-header>
-                    <mat-card-content>
-                        <div class="holiday-offers_grid-container">
-                            <div class="holiday-offers_grid-item"
-                                 style="text-align: left; color: var(--secondary-color); width: 30px;">
-                                <mat-icon mat-list-icon>
+                    <mat-card-content class="mt-2">
+                        <article class="holiday-offers-list_details-wrapper">
+                            <div class="holiday-offers-list_details-wrapper_left-content">
+                                <mat-icon mat-list-icon style="color: var(--secondary-color);">
                                     today
                                 </mat-icon>
                             </div>
-                            <div class="holiday-offers_grid-item">
+                            <div class="holiday-offers-list_details-wrapper_right-content">
                                 {{offer.date}}
                             </div>
-                            <div class="holiday-offers_grid-item"
-                                 style="text-align: left; color: var(--secondary-color);">
-                                <mat-icon mat-list-icon>
+                        </article>
+                        <article class="holiday-offers-list_details-wrapper">
+                            <div class="holiday-offers-list_details-wrapper_left-content">
+                                <mat-icon mat-list-icon style="color: var(--secondary-color);">
                                     local_dining
                                 </mat-icon>
                             </div>
-                            <div class="holiday-offers_grid-item">
+                            <div class="holiday-offers-list_details-wrapper_right-content">
                                 {{offer.meal}}
                             </div>
-                        </div>
+                        </article>
                     </mat-card-content>
-                    <mat-card-actions>
+                    <mat-card-actions class="mt-2">
                         <h2 class="holiday-offers-list_price">
                             {{offer.price}} zł
                             <span class="holiday-offers-list_price_for_person"> / śr cena za osobe</span>

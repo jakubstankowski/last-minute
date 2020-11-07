@@ -34,6 +34,7 @@
 
 .holiday-offers_preferences_prices {
     color: var(--primary-color);
+    font-weight: lighter;
 }
 
 .holiday-offers-list_preferences_button {
@@ -64,4 +65,23 @@
 .holiday-offer-list_date {
     float: right;
 }
+
+.holiday-offers-list_details-wrapper {
+    width: 100%;
+    display: inline-block;
+    font-size: 1.5em;
+    font-weight: lighter;
+}
+
+.holiday-offers-list_details-wrapper_left-content {
+    float: left;
+    width: 20%;
+}
+
+.holiday-offers-list_details-wrapper_right-content {
+    float: right;
+    width: 80%;
+    text-align: right;
+}
+
 
