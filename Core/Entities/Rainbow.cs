@@ -31,10 +31,19 @@ namespace Core.Entities
 
         }
 
+        public class Wyzywienia
+        {
+            public string Nazwa { get; set; }
+            public string URL { get; set; }
+        }
+
+
         public class Bloczki
         {
             public BazoweInformacje BazoweInformacje { get; set; }
             public List<Ceny> Ceny { get; set; }
+
+            public List<Wyzywienia> Wyzywienia { get; set; }
 
             public DateTime TerminWyjazdu { get; set; }
 

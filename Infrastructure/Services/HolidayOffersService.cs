@@ -89,7 +89,7 @@ namespace Infrastructure.Services
                 {
                     Website = "r.pl",
                     Country = offer.BazoweInformacje.Lokalizacje,
-                    Meal = "null",
+                    Meal = offer.Wyzywienia[0].Nazwa,
                     Title = offer.BazoweInformacje.OfertaNazwa,
                     Price = offer.Ceny[0].CenaZaOsobeAktualna,
                     Url = $"https://www.r.pl{offer.BazoweInformacje.OfertaURL}",
