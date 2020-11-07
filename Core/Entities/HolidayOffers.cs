@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using System.Transactions;
 
 namespace Core.Entities
 {
@@ -12,6 +13,9 @@ namespace Core.Entities
 
         [Required]
         public string Website { get; set; }
+
+        [Required]
+        public string Meal { get; set; }
 
         [Required]
         public string Country { get; set; }
