@@ -1,3 +1,8 @@
+.custom-modalbox .mat-dialog-container {
+    background-color: red;
+}
+
+
 .holiday-preferences_websites_logos img {
     width: 200px;
     background-color: green;

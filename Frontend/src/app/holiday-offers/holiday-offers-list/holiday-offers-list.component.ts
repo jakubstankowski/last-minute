@@ -12,12 +12,10 @@ import {HolidayPreferencesDialogComponent} from "../../holiday-preferences/holid
     templateUrl: './holiday-offers-list.component.html',
     styleUrls: ['./holiday-offers-list.component.css']
 })
-export class HolidayOffersListComponent implements OnInit, OnDestroy {
+export class HolidayOffersListComponent implements OnInit {
     offers: IOffers[];
     preferences: IPreferences
     loading: boolean;
-
-    name: string = 'jakób';
 
     constructor(private holidayOffersService: HolidayOffersService, private holidayPreferencesService: HolidayPreferencesService,
                 private notificationService: NotificationService, public dialog: MatDialog) {
@@ -27,10 +25,6 @@ export class HolidayOffersListComponent implements OnInit, OnDestroy {
         this.loading = true;
         this.getOffers();
         this.getHolidayPreferences();
-    }
-
-    ngOnDestroy() {
-
     }
 
     private getOffers(): void {
@@ -59,6 +53,7 @@ export class HolidayOffersListComponent implements OnInit, OnDestroy {
 
     openPreferencesDialog() {
         const dialogRef = this.dialog.open(HolidayPreferencesDialogComponent, {
+            panelClass: 'custom-modalbox',
             data: {mode: 'edit'}
         });
 
