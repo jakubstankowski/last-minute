@@ -13,6 +13,7 @@ namespace API.DTO
 
         public string Website { get; set; }
 
+        public string Meal { get; set; }
 
         public string Country { get; set; }
 

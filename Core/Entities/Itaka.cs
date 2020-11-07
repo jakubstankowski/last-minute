@@ -22,10 +22,11 @@ namespace Core.Entities
         public class Data
         {
             public int price { get; set; }
-       
+
+            public string meal { get; set; }
             public string dateFrom { get; set; }
             public string dateTo { get; set; }
-         
+
 
             public object canonicalDestinationTitle { get; set; }
             public Photos photos { get; set; }
@@ -33,7 +34,7 @@ namespace Core.Entities
             public string title { get; set; }
 
             public string url { get; set; }
-      
+
         }
 
     }

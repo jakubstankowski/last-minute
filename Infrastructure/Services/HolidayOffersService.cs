@@ -60,6 +60,7 @@ namespace Infrastructure.Services
                 {
                     Website = "itaka.pl",
                     Country = StripHTML(offer.canonicalDestinationTitle.ToString()),
+                    Meal = offer.meal,
                     Title = offer.title,
                     Price = offer.price / 100,
                     Url = $"https://www.itaka.pl{offer.url}",
@@ -88,6 +89,7 @@ namespace Infrastructure.Services
                 {
                     Website = "r.pl",
                     Country = offer.BazoweInformacje.Lokalizacje,
+                    Meal = "null",
                     Title = offer.BazoweInformacje.OfertaNazwa,
                     Price = offer.Ceny[0].CenaZaOsobeAktualna,
                     Url = $"https://www.r.pl{offer.BazoweInformacje.OfertaURL}",
@@ -126,6 +128,7 @@ namespace Infrastructure.Services
                 {
                     Website = "tui.pl",
                     Country = countryDetails[0],
+                    Meal = "null",
                     Title = offer.hotelName,
                     Price = Int32.Parse(offer.originalPerPersonPrice),
                     Url = $"https://www.tui.pl{offer.offerUrl}",
@@ -154,6 +157,7 @@ namespace Infrastructure.Services
                 {
                     Website = "wakacje.pl",
                     Country = offer.placeName,
+                    Meal = "null",
                     Title = offer.name,
                     Price = offer.price,
                     Url = $"https://wakacje.pl{offer.link}",
