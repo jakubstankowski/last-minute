@@ -1,7 +1,25 @@
 <article class="holiday-offers-list">
     <div class="holiday-offers-list_preferences" *ngIf="!loading">
-        {{preferences | json}}<br>
-        <button mat-raised-button   class="holiday-offers-list_preferences_button" (click)="openPreferencesDialog()">
+        <div class="holiday-offers_grid-container">
+            <div class="holiday-offers_grid-item mt-2">
+                Price Range:
+                <span class="holiday-offers_preferences_prices">
+                  {{preferences.minPrice}} zł -  {{preferences.maxPrice}} zł
+                </span>
+            </div>
+            <div class="holiday-offers_grid-item" *ngFor="let website of preferences.websites">
+                <div class="holiday-offers_websites_logos">
+                    <img *ngIf="website.website === 'wakacje.pl'" src="assets/wakacje-logo.jpg"
+                         alt="wakacje logo"/>
+                    <img *ngIf="website.website === 'r.pl'" src="assets/r-logo.png" alt="r logo"/>
+                    <img *ngIf="website.website === 'tui.pl'" src="assets/tui-logo.png" alt="tui logo"/>
+                    <img *ngIf="website.website === 'itaka.pl'" src="assets/itaka-logo.png"
+                         alt="itaka logo"/>
+                </div>
+            </div>
+
+        </div>
+        <button mat-raised-button color="primary" (click)="openPreferencesDialog()">
             Edit Preferences
         </button>
     </div>

@@ -1,3 +1,9 @@
+.preferences-websites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
+    grid-gap: 1rem;
+}
+
 .holiday-preferences_websites_logos img {
     width: 200px;
     background-color: green;

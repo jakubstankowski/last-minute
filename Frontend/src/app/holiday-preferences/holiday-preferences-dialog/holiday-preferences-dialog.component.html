@@ -21,17 +21,17 @@
                 </mat-error>
             </mat-form-field>
             <ul class="mt-1">
-                <li class="grid">
+                <li class="preferences-websites-grid">
                     <div *ngFor="let website of websitesList"
                          [ngClass]="selectedWebsites.includes(website) ? 'holiday-preferences_websites active' : 'holiday-preferences_websites disabled'"
                          (click)="updateWebsites(website)"
                     >
                         <div class="holiday-preferences_websites_logos">
-                            <img class="mt-1" *ngIf="website === 'wakacje.pl'" src="assets/wakacje-logo.jpg"
+                            <img  *ngIf="website === 'wakacje.pl'" src="assets/wakacje-logo.jpg"
                                  alt="wakacje logo"/>
                             <img *ngIf="website === 'r.pl'" src="assets/r-logo.png" alt="r logo"/>
                             <img *ngIf="website === 'tui.pl'" src="assets/tui-logo.png" alt="tui logo"/>
-                            <img class="mt-1" *ngIf="website === 'itaka.pl'" src="assets/itaka-logo.png"
+                            <img  *ngIf="website === 'itaka.pl'" src="assets/itaka-logo.png"
                                  alt="itaka logo"/>
                         </div>
                     </div>

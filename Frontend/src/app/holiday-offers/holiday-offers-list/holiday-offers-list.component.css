@@ -2,25 +2,41 @@
     width: 100%;
 }
 
-.custom-modalbox .mat-dialog-container {
-    background-color: red;
+.holiday-offers_grid-container {
+    display: grid;
+    grid-template-columns:  repeat(auto-fit, minmax(100px, 1fr));
+    padding: 5px;
+}
+
+.holiday-offers_grid-item {
+    padding: 10px;
+    text-align: center;
+}
+
+.holiday-offers_websites_logos img {
+    width: 100px;
+}
+
+.holiday-offers_websites_logos {
+    text-align: center;
 }
 
 .holiday-offers-list_preferences {
-    padding: 30px;
+    padding: 10px;
     background-color: white;
-    border: 3px solid var(--secondary-color);;
+    border: 1px solid var(--secondary-color);
     margin-bottom: 1em;
+    font-size: 1.5em;
+    font-weight: lighter;
 }
 
-.my-full-screen-dialog .mat-dialog-container {
-    max-width: none;
-    width: 100vw;
-    height: 100vh;
+.holiday-offers_preferences_prices {
+    color: var(--primary-color);
 }
 
 .holiday-offers-list_preferences_button {
     margin-top: 1em;
+    float: right;
 }
 
 
