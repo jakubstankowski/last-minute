@@ -42,27 +42,8 @@ namespace API.Controllers
                 return new EmptyResult();
             }
 
-            foreach (var website in preferences.Websites)
-            {
-                switch (website.Website)
-                {
-                    case "tui.pl":
-                        await _holidayOffersService.RefreshTuiOffersAsync();
-                        break;
-                    case "itaka.pl":
-                        await _holidayOffersService.RefreshItakaOffersAsync();
-                        break;
-                    case "r.pl":
-                        await _holidayOffersService.RefreshRainbowOffersAsync();
-                        break;
-                    case "wakacje.pl":
-                        await _holidayOffersService.RefreshWakacjeOffersAsync();
-                        break;
-                    default:
-                        return NotFound(new ApiResponse(404));
-                }
-            }
 
+            await _holidayOffersService.RefreshAllOffers();
 
             var offers = await _repo.GetHolidayOffersAsync();
 
@@ -76,6 +57,7 @@ namespace API.Controllers
         [HttpGet("all-offers")]
         public async Task<ActionResult<IEnumerable<HolidayOffersDTO>>> GetAllOffers()
         {
+            await _holidayOffersService.RefreshAllOffers();
             var offers = await _repo.GetHolidayOffersAsync();
 
             return Ok(_mapper.Map<IEnumerable<HolidayOffers>, IEnumerable<HolidayOffersDTO>>(offers));
