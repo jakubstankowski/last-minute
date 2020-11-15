@@ -14,6 +14,9 @@ import {OffersParams} from "../../shared/models/offersParams";
     styleUrls: ['./holiday-offers-list.component.css']
 })
 export class HolidayOffersListComponent implements OnInit {
+    selected = 'option2';
+
+
     offers: IOffers[];
     preferences: IPreferences
     loading: boolean;
@@ -22,6 +25,7 @@ export class HolidayOffersListComponent implements OnInit {
         {name: 'Price: Low to High', value: 'priceAsc'},
         {name: 'Price: High to Low', value: 'priceDesc'}
     ];
+    chuj: { name: 'Price: Low to High', value: 'priceAsc' }
 
     constructor(private holidayOffersService: HolidayOffersService, private holidayPreferencesService: HolidayPreferencesService,
                 private notificationService: NotificationService, public dialog: MatDialog) {
@@ -29,12 +33,13 @@ export class HolidayOffersListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loading = true;
         this.getOffers();
         this.getHolidayPreferences();
     }
 
     private getOffers(): void {
+        this.loading = true;
+
         this.holidayOffersService.getOffers()
             .subscribe(
                 (offers: IOffers[]) => {
@@ -74,8 +79,8 @@ export class HolidayOffersListComponent implements OnInit {
         });
     }
 
-    onSortSelected(e) {
-        const sort = e.target.value;
+    onSortSelected(event) {
+        const sort = event.value;
         const params = this.holidayOffersService.getOffersParams();
         params.sort = sort;
         this.holidayOffersService.setOffersParams(params);
