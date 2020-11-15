@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {AuthenticationService} from './core/services/auth.service';
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-root',
@@ -8,7 +9,7 @@ import {AuthenticationService} from './core/services/auth.service';
 })
 export class AppComponent {
 
-    constructor(private authService: AuthenticationService) {
+    constructor(private authService: AuthenticationService, public router: Router) {
     }
 
     // tslint:disable-next-line:use-life-cycle-interface
@@ -21,7 +22,8 @@ export class AppComponent {
         this.authService.loadCurrentUser(token).subscribe(() => {
             console.log('loaded user');
         }, error => {
-            console.log(error);
+            console.error('error: ', error);
+            this.router.navigate(['/auth/login']);
         });
     }
 }

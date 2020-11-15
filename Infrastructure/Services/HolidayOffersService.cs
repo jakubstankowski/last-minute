@@ -27,6 +27,7 @@ namespace Infrastructure.Services
 
         public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreference(IEnumerable<HolidayOffers> holidayOffers, HolidayPreferences holidayPreference, string order)
         {
+            // TODO LM-61 bug with return wrong holiday offers!
             List<HolidayOffers> offers = new List<HolidayOffers>();
 
             foreach (var website in holidayPreference.Websites)
@@ -43,15 +44,12 @@ namespace Infrastructure.Services
 
             switch (order)
             {
-                case "price_asc":
+                case "priceAsc":
                     return offers.OrderBy(s => s.Price);
-                    break;
-                case "price_desc":
+                case "priceDesc":
                     return offers.OrderByDescending(o => o.Price);
-                    break;
                 default:
                     return offers;
-                    break;
             }
 
         }
