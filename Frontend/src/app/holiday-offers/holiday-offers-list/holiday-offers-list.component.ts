@@ -75,6 +75,10 @@ export class HolidayOffersListComponent implements OnInit {
     }
 
     onSortSelected(e) {
-        console.log('e: ', e.target.value);
+        const sort = e.target.value;
+        const params = this.holidayOffersService.getOffersParams();
+        params.sort = sort;
+        this.holidayOffersService.setOffersParams(params);
+        this.getOffers();
     }
 }

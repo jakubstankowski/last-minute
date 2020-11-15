@@ -30,7 +30,7 @@ namespace API.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<HolidayOffersDTO>>> GetOffersAsync([FromQuery(Name = "orderBy")] string order)
+        public async Task<ActionResult<IEnumerable<HolidayOffersDTO>>> GetOffersAsync([FromQuery(Name = "sort")] string sort)
         {
 
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -47,7 +47,7 @@ namespace API.Controllers
 
             var offers = await _repo.GetHolidayOffersAsync();
 
-            var offersByUserHolidayPreferences = _holidayOffersService.GetHolidayOffersByUserHolidayPreference(offers, preferences, order);
+            var offersByUserHolidayPreferences = _holidayOffersService.GetHolidayOffersByUserHolidayPreference(offers, preferences, sort);
 
 
 

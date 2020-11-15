@@ -25,7 +25,7 @@ namespace Infrastructure.Services
             _offersRepo = offersRepo;
         }
 
-        public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreference(IEnumerable<HolidayOffers> holidayOffers, HolidayPreferences holidayPreference, string order)
+        public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreference(IEnumerable<HolidayOffers> holidayOffers, HolidayPreferences holidayPreference, string sort)
         {
             // TODO LM-61 bug with return wrong holiday offers!
             List<HolidayOffers> offers = new List<HolidayOffers>();
@@ -42,7 +42,7 @@ namespace Infrastructure.Services
             }
 
 
-            switch (order)
+            switch (sort)
             {
                 case "priceAsc":
                     return offers.OrderBy(s => s.Price);
