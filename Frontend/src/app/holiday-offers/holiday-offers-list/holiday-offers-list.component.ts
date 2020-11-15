@@ -6,6 +6,7 @@ import {HolidayPreferencesService} from "../../holiday-preferences/holiday-prefe
 import {NotificationService} from "../../core/services/notification.service";
 import {MatDialog} from "@angular/material/dialog";
 import {HolidayPreferencesDialogComponent} from "../../holiday-preferences/holiday-preferences-dialog/holiday-preferences-dialog.component";
+import {OffersParams} from "../../shared/models/offersParams";
 
 @Component({
     selector: 'app-holiday-offers-list',
@@ -16,9 +17,15 @@ export class HolidayOffersListComponent implements OnInit {
     offers: IOffers[];
     preferences: IPreferences
     loading: boolean;
+    offersParams: OffersParams;
+    sortOptions = [
+        {name: 'Price: Low to High', value: 'priceAsc'},
+        {name: 'Price: High to Low', value: 'priceDesc'}
+    ];
 
     constructor(private holidayOffersService: HolidayOffersService, private holidayPreferencesService: HolidayPreferencesService,
                 private notificationService: NotificationService, public dialog: MatDialog) {
+        this.offersParams = this.holidayOffersService.getOffersParams();
     }
 
     ngOnInit() {
@@ -65,5 +72,9 @@ export class HolidayOffersListComponent implements OnInit {
             }
 
         });
+    }
+
+    onSortSelected(e) {
+        console.log('e: ', e.target.value);
     }
 }
