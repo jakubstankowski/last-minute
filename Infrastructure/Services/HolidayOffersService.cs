@@ -28,6 +28,7 @@ namespace Infrastructure.Services
         public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreference(IEnumerable<HolidayOffers> holidayOffers, HolidayPreferences holidayPreference, string order)
         {
             List<HolidayOffers> offers = new List<HolidayOffers>();
+
             foreach (var website in holidayPreference.Websites)
             {
                 foreach (var offer in holidayOffers)
@@ -40,15 +41,17 @@ namespace Infrastructure.Services
             }
 
 
-
-
-            if (order == "price_asc")
+            switch (order)
             {
-                return offers.OrderBy(s => s.Price);
-            }
-            else
-            {
-                return offers;
+                case "price_asc":
+                    return offers.OrderBy(s => s.Price);
+                    break;
+                case "price_desc":
+                    return offers.OrderByDescending(o => o.Price);
+                    break;
+                default:
+                    return offers;
+                    break;
             }
 
         }
