@@ -8,7 +8,7 @@ namespace Core.Interface
 {
     public interface IHolidayOffersService
     {
-        public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreference(IEnumerable<HolidayOffers> holidayOffers, HolidayPreferences holidayPreferences);
+        public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreference(IEnumerable<HolidayOffers> holidayOffers, HolidayPreferences holidayPreferences, string order);
 
         public Task RefreshTuiOffersAsync();
 
@@ -22,7 +22,7 @@ namespace Core.Interface
 
         public void ResetHolidayOffers(string website);
 
-        public  string StripHTML(string input);
+        public string StripHTML(string input);
 
 
 
