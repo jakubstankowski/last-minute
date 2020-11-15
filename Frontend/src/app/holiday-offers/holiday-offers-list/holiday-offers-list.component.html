@@ -28,14 +28,6 @@
     <div class="center-wrapper" *ngIf="loading">
         <mat-spinner class="holiday-offers-list_spinner"></mat-spinner>
     </div>
-
-   <!-- <select (change)="onSortSelected($event)" >
-        <option *ngFor="let sort of sortOptions"
-                [selected]="offersParams.sort === sort.value"
-                [value]="sort.value">
-            {{sort.name}}
-        </option>
-    </select>-->
     <mat-form-field appearance="fill" *ngIf="!loading">
         <mat-label>Sorting offers</mat-label>
         <select matNativeControl (change)="onSortSelected($event)">
@@ -45,10 +37,7 @@
                     {{sort.name}}
             </option>
         </select>
-
     </mat-form-field>
-
-
     <ul>
         <li class="grid">
             <a *ngFor="let offer of offers" [href]="offer.url" class="grid" target="_blank">

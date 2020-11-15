@@ -80,10 +80,12 @@ export class HolidayOffersListComponent implements OnInit {
     }
 
     onSortSelected(event) {
-        const sort = event.value;
+        const sort = event.target.value;
         const params = this.holidayOffersService.getOffersParams();
         params.sort = sort;
         this.holidayOffersService.setOffersParams(params);
+
+        console.log('params: ', params);
         this.getOffers();
     }
 }
