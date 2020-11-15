@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IOffers} from '../shared/models/offers';
+import {OffersParams} from "../shared/models/offersParams";
 
 @Injectable({
     providedIn: 'root'
@@ -10,11 +11,27 @@ import {IOffers} from '../shared/models/offers';
 
 export class HolidayOffersService {
     baseUrl = environment.apiUrl;
+    offersParams = new OffersParams();
 
     constructor(private http: HttpClient) {
     }
 
     getOffers(): Observable<IOffers[]> {
-        return this.http.get<IOffers[]>(this.baseUrl + 'offers');
+        let params = new HttpParams();
+
+        if (this.offersParams.sort) {
+            params = params.append('sort', this.offersParams.sort);
+        }
+
+        return this.http.get<IOffers[]>(this.baseUrl + 'offers', {params});
     }
+
+    setOffersParams(params: OffersParams) {
+        this.offersParams = params;
+    }
+
+    getOffersParams() {
+        return this.offersParams;
+    }
+
 }

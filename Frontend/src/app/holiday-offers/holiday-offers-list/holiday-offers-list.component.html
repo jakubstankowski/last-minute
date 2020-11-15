@@ -28,6 +28,16 @@
     <div class="center-wrapper" *ngIf="loading">
         <mat-spinner class="holiday-offers-list_spinner"></mat-spinner>
     </div>
+
+    <select class="custom-select mb-4" (change)="onSortSelected($event.target.value)">
+        <option *ngFor="let sort of sortOptions"
+                [selected]="shopParams.sort === sort.value"
+                [value]="sort.value">
+            {{sort.name}}
+        </option>
+    </select>
+
+
     <ul>
         <li class="grid">
             <a *ngFor="let offer of offers" [href]="offer.url" class="grid" target="_blank">
