@@ -5,13 +5,7 @@
 
 .holiday-offers_grid-container {
     display: grid;
-    grid-template-columns:  repeat(auto-fit, minmax(100px, 1fr));
-    padding: 5px;
-}
-
-.holiday-offers_grid-item {
-    padding: 10px;
-    text-align: left;
+    grid-template-columns:  repeat(auto-fit, minmax(200px, 2fr));
 }
 
 .holiday-offers_websites_logos img {
@@ -23,23 +17,15 @@
 }
 
 .holiday-offers-list_preferences {
-    padding: 10px;
-    background-color: white;
-    border: 1px solid var(--secondary-color);
     margin-bottom: 1em;
     font-size: 1.5em;
     font-weight: lighter;
 }
 
 
-.holiday-offers_preferences_prices {
+.holiday-offers_preferences_details {
     color: var(--primary-color);
     font-weight: lighter;
-}
-
-.holiday-offers-list_preferences_button {
-    margin-top: 1em;
-    float: right;
 }
 
 

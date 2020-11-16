@@ -1,27 +1,17 @@
-<article class="holiday-offers-list">
+<article>
     <div class="holiday-offers-list_preferences" *ngIf="!loading">
-        <div class="holiday-offers_grid-container">
-            <div class="holiday-offers_grid-item" *ngFor="let website of preferences.websites">
-                <div class="holiday-offers_websites_logos">
-                    <img *ngIf="website.website === 'wakacje.pl'" src="assets/wakacje-logo.jpg"
-                         alt="wakacje logo"/>
-                    <img *ngIf="website.website === 'r.pl'" src="assets/r-logo.png" alt="r logo"/>
-                    <img *ngIf="website.website === 'tui.pl'" src="assets/tui-logo.png" alt="tui logo"/>
-                    <img *ngIf="website.website === 'itaka.pl'" src="assets/itaka-logo.png"
-                         alt="itaka logo"/>
-                </div>
-            </div>
-            <div class="holiday-offers_grid-item text-left">
-                Preferences Details:
-                <ul>
-                    <li>
-                        - Price Range: <span class="holiday-offers_preferences_prices">{{preferences.minPrice}}
-                        zł -  {{preferences.maxPrice}} zł</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <button mat-raised-button color="primary" (click)="openPreferencesDialog()">
+        <mat-icon mat-list-icon color="primary" class="mt-1">
+            payments
+        </mat-icon>
+        Price range:
+        <span class="holiday-offers_preferences_details">
+                    {{preferences.minPrice}}zł -  {{preferences.maxPrice}} zł
+                 </span>
+        <mat-icon mat-list-icon color="primary" class="mt-1" style="margin-left: 2em">
+            language
+        </mat-icon>
+        Websites: <span class="holiday-offers_preferences_details" *ngFor="let website of preferences.websites">{{website.website}}, </span>
+        <button  mat-raised-button color="primary" (click)="openPreferencesDialog()" style="margin-left: 2em">
             Edit Preferences
         </button>
     </div>
@@ -32,9 +22,9 @@
         <mat-label>Sorting offers</mat-label>
         <select matNativeControl (change)="onSortSelected($event)">
             <option *ngFor="let sort of sortOptions"
-                        [selected]="offersParams.sort === sort.value"
-                        [value]="sort.value">
-                    {{sort.name}}
+                    [selected]="offersParams.sort === sort.value"
+                    [value]="sort.value">
+                {{sort.name}}
             </option>
         </select>
     </mat-form-field>
