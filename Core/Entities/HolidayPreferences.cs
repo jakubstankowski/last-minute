@@ -18,5 +18,6 @@ namespace Core.Entities
         [Required]
         public ICollection<HolidayPreferencesWebsites> Websites { get; set; }
 
+
     }
 }

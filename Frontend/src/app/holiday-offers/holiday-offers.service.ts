@@ -14,9 +14,7 @@ export class HolidayOffersService {
     offersParams = new OffersParams();
 
     constructor(private http: HttpClient) {
-        const params = this.getOffersParams();
-        params.sort = 'priceAsc';
-        this.setOffersParams(params);
+        this.setDefaultOffersParams();
     }
 
     getOffers(): Observable<IOffers[]> {
@@ -27,6 +25,10 @@ export class HolidayOffersService {
         }
 
         return this.http.get<IOffers[]>(this.baseUrl + 'offers', {params});
+    }
+
+    setDefaultOffersParams() {
+        this.offersParams.sort = 'priceAsc';
     }
 
     setOffersParams(params: OffersParams) {

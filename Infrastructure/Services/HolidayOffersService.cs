@@ -99,13 +99,13 @@ namespace Infrastructure.Services
                 HolidayOffers holidayOffer = new HolidayOffers
                 {
                     Website = "r.pl",
-                    Country = offer.BazoweInformacje.Lokalizacje,
-                    Meal = offer.Wyzywienia[0].Nazwa,
-                    Title = offer.BazoweInformacje.OfertaNazwa,
-                    Price = offer.Ceny[0].CenaZaOsobeAktualna,
-                    Url = $"https://www.r.pl{offer.BazoweInformacje.OfertaURL}",
-                    Date = $"{offer.TerminWyjazdu}",
-                    ImageUrl = offer.Zdjecia == null ? "https://lh3.googleusercontent.com/proxy/BPq1gEyIcFJ72uMKbDvFqlpJRiW2_mttgxsU0G2RlQ0al4b1GUHiTqNZ_sjkoeTsf9A-OtFPAmVrcCBi3Jz1Cr1kLJEp9AkO1dIhu9ZOvjWfJJS1LBCcOrmRIPYGRXyvCnRRr0KalXBiiPGf8aGrvlBsIpHw2vmMZ-Is9wM2EvQAenYZ5Saa5JoWU50bQuiuyinmaw" : offer.Zdjecia[0]
+                    Country = offer.BazoweInformacje.Lokalizacje == null ? "null" : offer.BazoweInformacje.Lokalizacje,
+                    Meal = offer.Wyzywienia == null ? "brak" : offer.Wyzywienia[0].Nazwa,
+                    Title = offer.BazoweInformacje.OfertaNazwa == null ? "null" : offer.BazoweInformacje.OfertaNazwa,
+                    Price = offer.Ceny == null ? 0 : offer.Ceny[0].CenaZaOsobeAktualna,
+                    Url = offer.BazoweInformacje.OfertaURL == null ? "null" : $"https://www.r.pl{offer.BazoweInformacje.OfertaURL}",
+                    Date = offer.TerminWyjazdu == null ? "null" : offer.TerminWyjazdu.ToString(),
+                    ImageUrl = offer.Zdjecia.Count == 0 ? "https://lh3.googleusercontent.com/proxy/BPq1gEyIcFJ72uMKbDvFqlpJRiW2_mttgxsU0G2RlQ0al4b1GUHiTqNZ_sjkoeTsf9A-OtFPAmVrcCBi3Jz1Cr1kLJEp9AkO1dIhu9ZOvjWfJJS1LBCcOrmRIPYGRXyvCnRRr0KalXBiiPGf8aGrvlBsIpHw2vmMZ-Is9wM2EvQAenYZ5Saa5JoWU50bQuiuyinmaw" : offer.Zdjecia[0]
                 };
 
                 _offersRepo.CreateHolidayOffers(holidayOffer);
