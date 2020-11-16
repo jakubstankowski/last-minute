@@ -70,4 +70,16 @@
     text-align: right;
 }
 
+.edit-preferences_button {
+    margin-left: 2em;
+}
+
+@media (max-width: 600px) {
+    .edit-preferences_button {
+        margin-left: 0;
+        margin-top: 1em;
+        width: 100%;
+    }
+}
+
 

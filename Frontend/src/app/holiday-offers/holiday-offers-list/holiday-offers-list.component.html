@@ -11,7 +11,7 @@
             language
         </mat-icon>
         Websites: <span class="holiday-offers_preferences_details" *ngFor="let website of preferences.websites">{{website.website}}, </span>
-        <button  mat-raised-button color="primary" (click)="openPreferencesDialog()" style="margin-left: 2em">
+        <button  mat-raised-button color="primary"  class="edit-preferences_button" (click)="openPreferencesDialog()">
             Edit Preferences
         </button>
     </div>
