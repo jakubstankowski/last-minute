@@ -14,22 +14,6 @@
         </a>
 
         <span class="navbar-spacer"></span>
-
-        <button mat-icon-button [matMenuTriggerFor]="notificationMenu">
-            <mat-icon matBadge="2" matBadgeColor="accent">notifications</mat-icon>
-        </button>
-        <mat-menu #notificationMenu="matMenu" xPosition="before" yPosition="above" [overlapTrigger]="false">
-
-            <a mat-menu-item>
-                <span>You have new tasks</span>
-            </a>
-            <a mat-menu-item>
-                <span>You have a new message</span>
-            </a>
-
-        </mat-menu>
-
-
         <button mat-button [matMenuTriggerFor]="userMenu">
             <mat-icon>person</mat-icon>
             <span fxShow fxHide.xs>
@@ -83,21 +67,8 @@
                 </a>
 
                 <mat-divider></mat-divider>
-
-                <h3 mat-subheader>Resources</h3>
-
-                <a mat-list-item href="https://material.angular.io/components/categories" target="_blank">
-                    <mat-icon mat-list-icon>
-                        link
-                    </mat-icon>
-                    <p mat-line> Material Components </p>
-                </a>
-
-                <a id="push-bottom" mat-list-item [routerLink]="['/about']" routerLinkActive="active">
-                    <mat-icon mat-list-icon>
-                        info_outline
-                    </mat-icon>
-                    <p mat-line> About </p>
+                <a id="push-bottom" mat-list-item >
+                    <p mat-line> 2020 - Standev </p>
                 </a>
             </mat-nav-list>
 
