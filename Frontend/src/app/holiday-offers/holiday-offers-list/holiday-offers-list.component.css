@@ -26,7 +26,8 @@
     z-index: 9999;
     background-color: white;
     padding: 15px;
-    border-bottom: 3px solid #fafafa;
+    border-bottom: 0.5px solid var(--primary-color);;
+
 
 }
 
