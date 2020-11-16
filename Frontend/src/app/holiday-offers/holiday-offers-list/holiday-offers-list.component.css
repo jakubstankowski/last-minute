@@ -20,6 +20,14 @@
     margin-bottom: 1em;
     font-size: 1.5em;
     font-weight: lighter;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    background-color: white;
+    padding: 15px;
+    border-bottom: 3px solid #fafafa;
+
 }
 
 
@@ -72,6 +80,8 @@
 
 .edit-preferences_button {
     margin-left: 2em;
+    float: right;
+    margin-top: 5px;
 }
 
 @media (max-width: 600px) {
@@ -79,6 +89,10 @@
         margin-left: 0;
         margin-top: 1em;
         width: 100%;
+    }
+
+    .holiday-offers-list_preferences {
+        position: static;
     }
 }
 
