@@ -9,16 +9,6 @@ const appRoutes: Routes = [
         loadChildren: './auth/auth.module#AuthModule'
     },
     {
-        path: 'dashboard',
-        loadChildren: './dashboard/dashboard.module#DashboardModule',
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'customers',
-        loadChildren: './customers/customers.module#CustomersModule',
-        canActivate: [AuthGuard]
-    },
-    {
         path: 'holiday-offers',
         loadChildren: './holiday-offers/holiday-offers.module#HolidayOffersModule',
         canActivate: [AuthGuard]
@@ -34,23 +24,8 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'icons',
-        loadChildren: './icons/icons.module#IconsModule',
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'typography',
-        loadChildren: './typography/typography.module#TypographyModule',
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'about',
-        loadChildren: './about/about.module#AboutModule',
-        canActivate: [AuthGuard]
-    },
-    {
         path: '**',
-        redirectTo: 'dashboard',
+        redirectTo: 'holiday-offers',
         pathMatch: 'full',
         canActivate: [AuthGuard]
     }
