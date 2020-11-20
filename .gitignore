@@ -13,3 +13,5 @@ ssl
 WebAPIClient/node_modules
 WebAPIClient/.idea
 WebAPIClient/.vs
+API/wwwroot
+wwwroot

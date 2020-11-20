@@ -16,6 +16,8 @@ using System.Text;
 using API.Configuration;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.Certificate;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace API
 {
@@ -109,13 +111,45 @@ namespace API
             app.UseRouting();
 
             app.UseCors(MyAllowSpecificOrigins);
+            /* app.UseStaticFiles();
+             app.UseStaticFiles(new StaticFileOptions
+             {
+                 FileProvider = new PhysicalFileProvider(
+                     Path.Combine(Directory.GetCurrentDirectory(), "Content")
+                 ),
+                 RequestPath = "/content"
+             });
 
+ */
+
+            app.Use(async (context, next) =>
+
+            {
+
+                await next();
+
+                if (context.Response.StatusCode == 404 && !System.IO.Path.HasExtension(context.Request.Path.Value))
+
+                {
+
+                    context.Request.Path = "/index.html";
+
+                    await next();
+
+                }
+
+            });
+
+            app.UseDefaultFiles();
+
+            app.UseStaticFiles();
             app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            /*    endpoints.MapFallbackToController("Index", "Fallback");*/
             });
         }
     }
