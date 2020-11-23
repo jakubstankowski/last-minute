@@ -111,16 +111,7 @@ namespace API
             app.UseRouting();
 
             app.UseCors(MyAllowSpecificOrigins);
-            /* app.UseStaticFiles();
-             app.UseStaticFiles(new StaticFileOptions
-             {
-                 FileProvider = new PhysicalFileProvider(
-                     Path.Combine(Directory.GetCurrentDirectory(), "Content")
-                 ),
-                 RequestPath = "/content"
-             });
-
- */
+          
 
             app.Use(async (context, next) =>
 
@@ -149,7 +140,6 @@ namespace API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            /*    endpoints.MapFallbackToController("Index", "Fallback");*/
             });
         }
     }
