@@ -6,3 +6,8 @@
  ### technology stack:
   - backend - .NET Core 
   - frontend - Angular 8
+
+### TODO:
+- deploy app to heroku
+- add landing page
+- add dynamic or email notification
