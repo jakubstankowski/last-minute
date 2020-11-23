@@ -11,3 +11,5 @@
 - deploy app to heroku
 - add landing page
 - add dynamic or email notification
+
+Fill free to conttribute this project :)
