@@ -27,29 +27,28 @@ namespace Infrastructure.Services
 
         public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreference(IEnumerable<HolidayOffers> holidayOffers, HolidayPreferences holidayPreference, string sort)
         {
-            // TODO LM-61 bug with return wrong holiday offers!
-            List<HolidayOffers> offers = new List<HolidayOffers>();
+            List<string> preferenceWebsitesList = new List<string>();
 
-            foreach (var website in holidayPreference.Websites)
+            foreach (var holidayPreferencesWebsite in holidayPreference.Websites)
             {
-                foreach (var offer in holidayOffers)
-                {
-                    if (offer.Website == website.Website && offer.Price >= holidayPreference.MinPrice && offer.Price <= holidayPreference.MaxPrice)
-                    {
-                        offers.Add(offer);
-                    }
-                }
+                preferenceWebsitesList.Add(holidayPreferencesWebsite.Website);
             }
 
+
+            var filteredOffers = holidayOffers
+                                              .Where((o) => preferenceWebsitesList.Contains(o.Website))
+                                              .Where((o) => o.Price >= holidayPreference.MinPrice)
+                                              .Where((o) => o.Price <= holidayPreference.MaxPrice)
+                                              .ToList();
 
             switch (sort)
             {
                 case "priceAsc":
-                    return offers.OrderBy(s => s.Price);
+                    return filteredOffers.OrderBy(s => s.Price);
                 case "priceDesc":
-                    return offers.OrderByDescending(o => o.Price);
+                    return filteredOffers.OrderByDescending(o => o.Price);
                 default:
-                    return offers;
+                    return filteredOffers;
             }
 
         }
@@ -189,9 +188,9 @@ namespace Infrastructure.Services
         public async Task RefreshAllOffers()
         {
             await RefreshItakaOffersAsync();
-            //await RefreshRainbowOffersAsync();
+            await RefreshRainbowOffersAsync();
             await RefreshTuiOffersAsync();
-           // await RefreshWakacjeOffersAsync();
+            await RefreshWakacjeOffersAsync();
         }
 
         public string StripHTML(string input)
