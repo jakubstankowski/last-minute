@@ -1,6 +1,6 @@
 ﻿# Last Minute Project
  
- ## Get the best offer from the most popular polish travel pages
+ ## Get the best offer from the most popular polish travel pages (itaka.pl, r.pl, wakacje.pl, tui.pl)
  
  
  ### technology stack:
