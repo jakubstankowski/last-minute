@@ -113,7 +113,7 @@ namespace API
             app.UseCors(MyAllowSpecificOrigins);
           
 
-            app.Use(async (context, next) =>
+          /*  app.Use(async (context, next) =>
 
             {
 
@@ -132,8 +132,8 @@ namespace API
             });
 
             app.UseDefaultFiles();
+            app.UseStaticFiles();*/
 
-            app.UseStaticFiles();
             app.UseAuthentication();
             app.UseAuthorization();
 

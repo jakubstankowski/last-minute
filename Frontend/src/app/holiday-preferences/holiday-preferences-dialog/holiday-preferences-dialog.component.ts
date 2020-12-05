@@ -33,7 +33,6 @@ export class HolidayPreferencesDialogComponent implements OnInit {
 
         if (this.isCreateMode) {
             this.preferenceForm.patchValue({
-                minPrice: 0,
                 maxPrice: 2500
             });
             return this.selectedWebsites.push('itaka.pl');
@@ -55,7 +54,6 @@ export class HolidayPreferencesDialogComponent implements OnInit {
             .subscribe(
                 preferences => {
                     this.preferenceForm.patchValue({
-                        minPrice: preferences.minPrice,
                         maxPrice: preferences.maxPrice
                     });
 

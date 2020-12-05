@@ -2,15 +2,6 @@
     <h2 mat-dialog-title>Edit your holiday preference</h2>
     <mat-dialog-content>
         <form [formGroup]="preferenceForm">
-            <mat-form-field >
-                <input  matInput placeholder="Minimum Price" formControlName="minPrice"
-                       type="number">
-                <mat-error id="invalidMinPriceError"
-                           *ngIf="preferenceForm.controls['minPrice'].hasError('required')">
-                    Minimum Price is
-                    <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
             <mat-form-field class="ml-1">
                 <input  matInput placeholder="Maximum Price" formControlName="maxPrice"
                        type="number">
