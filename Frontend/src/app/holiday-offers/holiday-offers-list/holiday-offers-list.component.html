@@ -7,11 +7,12 @@
         <span class="holiday-offers_preferences_details">
                     {{preferences.maxPrice}} zł
                  </span>
-        <mat-icon mat-list-icon color="primary" class="mt-1" style="margin-left: 2em; color: var(--secondary-color);" >
+        <mat-icon mat-list-icon color="primary" class="mt-1" style="margin-left: 2em; color: var(--secondary-color);">
             language
         </mat-icon>
-        Websites: <span class="holiday-offers_preferences_details" *ngFor="let website of preferences.websites">{{website.website}}, </span>
-        <button  mat-raised-button color="primary"  class="edit-preferences_button" (click)="openPreferencesDialog()">
+        Websites: <span class="holiday-offers_preferences_details"
+                        *ngFor="let website of preferences.websites">{{website.website}}, </span>
+        <button mat-raised-button color="primary" class="edit-preferences_button" (click)="openPreferencesDialog()">
             Edit Preferences
         </button>
     </div>
@@ -28,7 +29,7 @@
             </option>
         </select>
     </mat-form-field>
-    <ul>
+    <ul *ngIf="!loading">
         <li class="grid">
             <a *ngFor="let offer of offers" [href]="offer.url" class="grid" target="_blank">
                 <mat-card *ngIf="!loading">

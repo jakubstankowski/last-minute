@@ -14,18 +14,14 @@ import {OffersParams} from "../../shared/models/offersParams";
     styleUrls: ['./holiday-offers-list.component.css']
 })
 export class HolidayOffersListComponent implements OnInit {
-    selected = 'option2';
-
-
     offers: IOffers[];
-    preferences: IPreferences
+    preferences?: IPreferences
     loading: boolean;
     offersParams: OffersParams;
     sortOptions = [
         {name: 'Price: Low to High', value: 'priceAsc'},
         {name: 'Price: High to Low', value: 'priceDesc'}
     ];
-    chuj: { name: 'Price: Low to High', value: 'priceAsc' }
 
     constructor(private holidayOffersService: HolidayOffersService, private holidayPreferencesService: HolidayPreferencesService,
                 private notificationService: NotificationService, public dialog: MatDialog) {
@@ -33,13 +29,23 @@ export class HolidayOffersListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getOffers();
+        this.loading = true;
         this.getHolidayPreferences();
     }
 
-    private getOffers(): void {
-        this.loading = true;
+    private getHolidayPreferences(): void {
+        this.holidayPreferencesService.getHolidayPreference()
+            .subscribe(preferences => {
+                    this.preferences = preferences;
+                    this.getOffers();
+                },
+                error => {
+                    this.notificationService.openSnackBar(error.error.message);
+                    throw new Error(error);
+                });
+    }
 
+    private getOffers(): void {
         this.holidayOffersService.getOffers()
             .subscribe(
                 (offers: IOffers[]) => {
@@ -52,16 +58,6 @@ export class HolidayOffersListComponent implements OnInit {
                 })
     }
 
-    private getHolidayPreferences(): void {
-        this.holidayPreferencesService.getHolidayPreference()
-            .subscribe(preferences => {
-                    this.preferences = preferences;
-                },
-                error => {
-                    this.notificationService.openSnackBar(error.error.message);
-                    throw new Error(error);
-                })
-    }
 
     openPreferencesDialog() {
         const dialogRef = this.dialog.open(HolidayPreferencesDialogComponent, {
@@ -73,7 +69,6 @@ export class HolidayOffersListComponent implements OnInit {
             if (result) {
                 this.loading = true;
                 this.getHolidayPreferences();
-                this.getOffers();
             }
 
         });
@@ -84,8 +79,6 @@ export class HolidayOffersListComponent implements OnInit {
         const params = this.holidayOffersService.getOffersParams();
         params.sort = sort;
         this.holidayOffersService.setOffersParams(params);
-
-        console.log('params: ', params);
         this.getOffers();
     }
 }

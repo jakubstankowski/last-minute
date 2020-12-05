@@ -17,6 +17,11 @@
                          [ngClass]="selectedWebsites.includes(website) ? 'holiday-preferences_websites active' : 'holiday-preferences_websites disabled'"
                          (click)="updateWebsites(website)"
                     >
+                        <ul>
+                            <li>
+                               {{website}}
+                            </li>
+                        </ul>
                         <div class="holiday-preferences_websites_logos">
                             <img  *ngIf="website === 'wakacje.pl'" src="assets/wakacje-logo.jpg"
                                  alt="wakacje logo"/>
