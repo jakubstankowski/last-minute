@@ -1,11 +1,20 @@
+.dialog-content {
+    font-size: 1.5em;
+    font-weight: lighter;
+}
+
+.dialog-content_max-price {
+    color: var(--primary-color);
+}
+
 .preferences-websites-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
     grid-gap: 1rem;
 }
 
 .holiday-preferences_websites_logos img {
-    width: 200px;
+    width: 100px;
     background-color: green;
 }
 

@@ -1,12 +1,19 @@
 <div>
     <h2 mat-dialog-title>Edit your holiday preference</h2>
-    <mat-dialog-content>
+    <mat-dialog-content class="dialog-content">
         <form [formGroup]="preferenceForm">
             <label>
-                Max price - <strong>{{preferenceForm.get('maxPrice').value}} zł</strong>
+
+                <p>
+                    <mat-icon mat-list-icon color="primary" class="mt-1" style="color: var(--secondary-color);">
+                        payments
+                    </mat-icon>
+                    Max price: <strong
+                        class="dialog-content_max-price">{{preferenceForm.get('maxPrice').value}}</strong> zł
+                </p>
             </label>
             <mat-slider
-                    style="width: 100%; margin-top: 1em"
+                    class="w-100"
                     thumbLabel
                     color="primary"
                     min="0"
@@ -16,7 +23,15 @@
             >
             </mat-slider>
 
-
+            <label>
+                <p>
+                    <mat-icon mat-list-icon color="primary" class="mt-1"
+                              style="color: var(--secondary-color);">
+                        language
+                    </mat-icon>
+                    Websites:
+                </p>
+            </label>
             <ul class="mt-1">
                 <li class="preferences-websites-grid">
                     <div *ngFor="let website of websitesList"
@@ -37,7 +52,11 @@
         </form>
     </mat-dialog-content>
     <mat-dialog-actions class="mt-1">
-        <button mat-raised-button *ngIf="!isCreateMode" color="primary" (click)="onCloseCancel()">Cancel</button>
-        <button mat-raised-button color="primary" (click)="onCloseUpdate()">Update</button>
+        <button class="w-100" style="margin-bottom: 15px;" mat-raised-button *ngIf="!isCreateMode" color="primary"
+                (click)="onCloseCancel()">Cancel
+        </button>
+        <button class="w-100" mat-raised-button color="primary" (click)="onCloseUpdate()">
+            Update
+        </button>
     </mat-dialog-actions>
 </div>

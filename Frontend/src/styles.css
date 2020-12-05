@@ -1,8 +1,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 .custom-modalbox .mat-dialog-container {
-    width: 95vw !important;
-    height: 95vh !important;
+    max-width: 350px !important;
 }
 
 
