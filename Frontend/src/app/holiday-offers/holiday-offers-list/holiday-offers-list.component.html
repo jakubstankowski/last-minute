@@ -19,9 +19,9 @@
     <div class="center-wrapper" *ngIf="loading">
         <mat-spinner class="holiday-offers-list_spinner"></mat-spinner>
     </div>
-    <mat-form-field color="primary" *ngIf="!loading" fxLayout="row" fxLayoutAlign="end">
+    <mat-form-field color="primary" *ngIf="!loading">
         <mat-label>Sorting offers</mat-label>
-        <select matNativeControl (change)="onSortSelected($event)">
+        <select  class="holiday-offers_price_select" matNativeControl (change)="onSortSelected($event)">
             <option *ngFor="let sort of sortOptions"
                     [selected]="offersParams.sort === sort.value"
                     [value]="sort.value">
