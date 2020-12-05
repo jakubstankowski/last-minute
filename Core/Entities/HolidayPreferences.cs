@@ -7,8 +7,6 @@ namespace Core.Entities
     public class HolidayPreferences : BaseEntity
     {
 
-        public int MinPrice { get; set; }
-
         public int MaxPrice { get; set; }
 
         public AppUser AppUser { get; set; }

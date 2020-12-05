@@ -37,7 +37,6 @@ namespace Infrastructure.Services
 
             var filteredOffers = holidayOffers
                                               .Where((o) => preferenceWebsitesList.Contains(o.Website))
-                                              .Where((o) => o.Price >= holidayPreference.MinPrice)
                                               .Where((o) => o.Price <= holidayPreference.MaxPrice)
                                               .ToList();
 

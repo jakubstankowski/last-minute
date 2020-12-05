@@ -89,7 +89,6 @@ namespace API.Controllers
                 return NotFound(new ApiResponse(404));
             }
 
-            preferences.MinPrice = updatePreference.MinPrice;
             preferences.MaxPrice = updatePreference.MaxPrice;
             preferences.Websites = updatePreference.Websites;
 
