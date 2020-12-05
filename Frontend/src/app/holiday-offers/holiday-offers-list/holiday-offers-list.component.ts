@@ -79,6 +79,7 @@ export class HolidayOffersListComponent implements OnInit {
         const params = this.holidayOffersService.getOffersParams();
         params.sort = sort;
         this.holidayOffersService.setOffersParams(params);
+        this.loading = true;
         this.getOffers();
     }
 }
