@@ -2,32 +2,33 @@
     <h2 mat-dialog-title>Edit your holiday preference</h2>
     <mat-dialog-content>
         <form [formGroup]="preferenceForm">
-            <mat-form-field class="ml-1">
-                <input  matInput placeholder="Maximum Price" formControlName="maxPrice"
-                       type="number">
-                <mat-error id="invalidMaxPriceError"
-                           *ngIf="preferenceForm.controls['maxPrice'].hasError('required')">
-                    Maximum Price is
-                    <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
+            <label>
+                Max price - <strong>{{preferenceForm.get('maxPrice').value}} zł</strong>
+            </label>
+            <mat-slider
+                    style="width: 100%; margin-top: 1em"
+                    thumbLabel
+                    color="primary"
+                    min="0"
+                    max="5000"
+                    step="100"
+                    formControlName="maxPrice"
+            >
+            </mat-slider>
+
+
             <ul class="mt-1">
                 <li class="preferences-websites-grid">
                     <div *ngFor="let website of websitesList"
                          [ngClass]="selectedWebsites.includes(website) ? 'holiday-preferences_websites active' : 'holiday-preferences_websites disabled'"
                          (click)="updateWebsites(website)"
                     >
-                        <ul>
-                            <li>
-                               {{website}}
-                            </li>
-                        </ul>
                         <div class="holiday-preferences_websites_logos">
-                            <img  *ngIf="website === 'wakacje.pl'" src="assets/wakacje-logo.jpg"
+                            <img *ngIf="website === 'wakacje.pl'" src="assets/wakacje-logo.jpg"
                                  alt="wakacje logo"/>
                             <img *ngIf="website === 'r.pl'" src="assets/r-logo.png" alt="r logo"/>
                             <img *ngIf="website === 'tui.pl'" src="assets/tui-logo.png" alt="tui logo"/>
-                            <img  *ngIf="website === 'itaka.pl'" src="assets/itaka-logo.png"
+                            <img *ngIf="website === 'itaka.pl'" src="assets/itaka-logo.png"
                                  alt="itaka logo"/>
                         </div>
                     </div>

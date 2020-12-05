@@ -11,6 +11,7 @@ import {LoggerModule} from 'ngx-logger';
 import {environment} from '../environments/environment';
 import {HttpClientModule} from '@angular/common/http';
 import {HolidayPreferencesDialogComponent} from "./holiday-preferences/holiday-preferences-dialog/holiday-preferences-dialog.component";
+import {MatSliderModule} from "@angular/material/slider";
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {HolidayPreferencesDialogComponent} from "./holiday-preferences/holiday-p
             serverLoggingUrl: `http://my-api/logs`,
             level: environment.logLevel,
             serverLogLevel: environment.serverLogLevel
-        })
+        }),
+        MatSliderModule
     ],
     entryComponents: [
         HolidayPreferencesDialogComponent

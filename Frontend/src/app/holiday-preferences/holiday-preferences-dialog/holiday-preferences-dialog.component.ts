@@ -120,7 +120,8 @@ export class HolidayPreferencesDialogComponent implements OnInit {
     }
 
     onCloseUpdate(): void {
-        this.updatePreference();
+        console.log('prefernece', this.preferenceForm.value);
+       /* this.updatePreference();*/
         this.dialogRef.close(true);
     }
 

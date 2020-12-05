@@ -68,7 +68,7 @@ export class HolidayOffersListComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 this.loading = true;
-                this.getHolidayPreferences();
+                //this.getHolidayPreferences();
             }
 
         });
