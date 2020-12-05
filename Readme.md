@@ -15,7 +15,7 @@
 Fill free to conttribute this project :)
 
 #### Image from demo:
-![alt text](https://imgur.com/YC0hw9G)
+![alt text](https://i.imgur.com/YC0hw9G.png)
 ![alt text](https://imgur.com/PWeEVKH)
 ![alt text](https://imgur.com/urLWFjm)
 
