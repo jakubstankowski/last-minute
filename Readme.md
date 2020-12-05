@@ -9,8 +9,8 @@
 
 ### Image from demo:
 ![alt text](https://i.imgur.com/YC0hw9G.png)
-![alt text](https://i.imgur.com/PWeEVKH)
-![alt text](https://i.imgur.com/urLWFjm)
+![alt text](https://i.imgur.com/PWeEVKH.png)
+![alt text](https://i.imgur.com/urLWFjm.png)
 
 ### TODO:
 - deploy app to heroku
