@@ -8,6 +8,8 @@
   - frontend - Angular 8
 
 ### Image from demo:
+![alt text](https://i.imgur.com/DH1n1WC.png)
+![alt text](https://i.imgur.com/tdvbuhF.png)
 ![alt text](https://i.imgur.com/YC0hw9G.png)
 ![alt text](https://i.imgur.com/PWeEVKH.png)
 ![alt text](https://i.imgur.com/urLWFjm.png)
