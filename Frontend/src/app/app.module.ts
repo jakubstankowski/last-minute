@@ -12,12 +12,14 @@ import {environment} from '../environments/environment';
 import {HttpClientModule} from '@angular/common/http';
 import {HolidayPreferencesDialogComponent} from "./holiday-preferences/holiday-preferences-dialog/holiday-preferences-dialog.component";
 import {MatSliderModule} from "@angular/material/slider";
+import { HolidayPreferencesCreateComponent } from './holiday-preferences/holiday-preferences-create/holiday-preferences-create.component';
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        HolidayPreferencesDialogComponent
+        HolidayPreferencesDialogComponent,
+        HolidayPreferencesCreateComponent
     ],
     imports: [
         HttpClientModule,

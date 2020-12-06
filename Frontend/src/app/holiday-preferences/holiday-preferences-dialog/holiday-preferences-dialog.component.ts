@@ -32,6 +32,7 @@ export class HolidayPreferencesDialogComponent implements OnInit {
         this.isCreateMode = this.data.mode === 'create';
 
         if (this.isCreateMode) {
+            console.log('is create mode: ', this.isCreateMode);
             this.preferenceForm.patchValue({
                 maxPrice: 2500
             });

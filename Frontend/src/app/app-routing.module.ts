@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 
-import { AuthGuard } from './core/guards/auth.guard';
+import {AuthGuard} from './core/guards/auth.guard';
+import {HolidayPreferencesCreateComponent} from "./holiday-preferences/holiday-preferences-create/holiday-preferences-create.component";
 
 const appRoutes: Routes = [
     {
@@ -11,6 +12,11 @@ const appRoutes: Routes = [
     {
         path: 'holiday-offers',
         loadChildren: './holiday-offers/holiday-offers.module#HolidayOffersModule',
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'holiday-preferences/create',
+        component: HolidayPreferencesCreateComponent,
         canActivate: [AuthGuard]
     },
     {
@@ -38,4 +44,5 @@ const appRoutes: Routes = [
     exports: [RouterModule],
     providers: []
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

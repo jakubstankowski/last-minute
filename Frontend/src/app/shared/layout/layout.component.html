@@ -1,4 +1,4 @@
-<div class="navbar-container" [class.example-is-mobile]="mobileQuery.matches">
+<div class="navbar-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="!loading">
 
     <!-- Top navbar -->
     <mat-toolbar class="navbar" color="primary">

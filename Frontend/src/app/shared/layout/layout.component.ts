@@ -23,7 +23,7 @@ export class LayoutComponent implements OnInit, AfterViewInit {
     _mobileQueryListener: () => void;
     mobileQuery: MediaQueryList;
     currentUser$: Observable<IUser>;
-
+    loading: boolean;
 
     constructor(private changeDetectorRef: ChangeDetectorRef,
                 private media: MediaMatcher,
@@ -42,6 +42,7 @@ export class LayoutComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit(): void {
+        this.loading = true;
         this.getPreference();
         this.currentUser$ = this.authService.currentUser$;
     }
@@ -61,17 +62,10 @@ export class LayoutComponent implements OnInit, AfterViewInit {
             .subscribe(
                 preference => {
                     if (!preference) {
-                        const dialogRef = this.dialog.open(HolidayPreferencesDialogComponent, {
-                            panelClass: 'custom-modalbox',
-                            data: {mode: 'create'}
-                        });
-
-                        dialogRef.afterClosed().subscribe(result => {
-                            if (result) {
-                                this.router.navigate(['/holiday-offers']);
-                            }
-                        });
+                        this.router.navigate(['/holiday-preferences/create']);
                     }
+
+                    this.loading = false;
                 },
                 error => {
                     this.notificationService.openSnackBar(error.error.message);
