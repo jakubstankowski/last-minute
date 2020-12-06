@@ -1,54 +1,60 @@
 <article class="holiday-preferences-create">
     <img class="mt-2" alt="logo" src="../../../assets/logo.png"/>
     <br>
-    <p>Create Holiday Preference</p>
-    <form [formGroup]="preferenceForm">
-        <label>
+    <p>Create First Holiday Preference</p>
+    <article  fxLayout="row" fxLayoutAlign="center">
+        <form [formGroup]="preferenceForm">
+            <label>
 
-            <p>
-                <mat-icon mat-list-icon color="primary" class="mt-1" style="color: var(--secondary-color);">
-                    payments
-                </mat-icon>
-                Max price: <strong
-                    class="dialog-content_max-price">{{preferenceForm.get('maxPrice').value}}</strong> zł
-            </p>
-        </label>
-        <mat-slider
-                class="w-100"
-                thumbLabel
-                color="primary"
-                min="0"
-                max="5000"
-                step="100"
-                formControlName="maxPrice"
-        >
-        </mat-slider>
+                <p>
+                    <mat-icon mat-list-icon color="primary" class="mt-1" style="color: var(--secondary-color);">
+                        payments
+                    </mat-icon>
+                    Max price: <strong
+                        class="dialog-content_max-price">{{preferenceForm.get('maxPrice').value}}</strong> zł
+                </p>
+            </label>
+            <mat-slider
+                    class="w-100"
+                    thumbLabel
+                    color="primary"
+                    min="0"
+                    max="5000"
+                    step="100"
+                    formControlName="maxPrice"
+            >
+            </mat-slider>
 
-        <label>
-            <p>
-                <mat-icon mat-list-icon color="primary" class="mt-1"
-                          style="color: var(--secondary-color);">
-                    language
-                </mat-icon>
-                Websites:
-            </p>
-        </label>
-        <ul class="mt-1">
-            <li class="preferences-websites-grid">
-                <div *ngFor="let website of websitesList"
-                     [ngClass]="selectedWebsites.includes(website) ? 'holiday-preferences_websites active' : 'holiday-preferences_websites disabled'"
-                     (click)="updateWebsites(website)"
-                >
-                    <div class="holiday-preferences_websites_logos">
-                        <img *ngIf="website === 'wakacje.pl'" src="assets/wakacje-logo.jpg"
-                             alt="wakacje logo"/>
-                        <img *ngIf="website === 'r.pl'" src="assets/r-logo.png" alt="r logo"/>
-                        <img *ngIf="website === 'tui.pl'" src="assets/tui-logo.png" alt="tui logo"/>
-                        <img *ngIf="website === 'itaka.pl'" src="assets/itaka-logo.png"
-                             alt="itaka logo"/>
+            <label>
+                <p>
+                    <mat-icon mat-list-icon color="primary" class="mt-1"
+                              style="color: var(--secondary-color);">
+                        language
+                    </mat-icon>
+                    Websites:
+                </p>
+            </label>
+            <ul class="mt-1">
+                <li class="preferences-websites-grid">
+                    <div *ngFor="let website of websitesList"
+                         [ngClass]="selectedWebsites.includes(website) ? 'holiday-preferences_websites active' : 'holiday-preferences_websites disabled'"
+                         (click)="updateWebsites(website)"
+                    >
+                        <div class="holiday-preferences_websites_logos">
+                            <img *ngIf="website === 'wakacje.pl'" src="assets/wakacje-logo.jpg"
+                                 alt="wakacje logo"/>
+                            <img *ngIf="website === 'r.pl'" src="assets/r-logo.png" alt="r logo"/>
+                            <img *ngIf="website === 'tui.pl'" src="assets/tui-logo.png" alt="tui logo"/>
+                            <img *ngIf="website === 'itaka.pl'" src="assets/itaka-logo.png"
+                                 alt="itaka logo"/>
+                        </div>
                     </div>
-                </div>
-            </li>
-        </ul>
-    </form>
+                </li>
+            </ul>
+            <button class="w-100 holiday-preferences-create_create-button"  mat-raised-button color="primary">
+                Create
+            </button>
+        </form>
+    </article>
+
 </article>
