@@ -16,9 +16,6 @@ export class HolidayPreferencesDialogComponent implements OnInit {
     websitesList: string[] = ['itaka.pl', 'tui.pl', 'r.pl', 'wakacje.pl'];
     selectedWebsites: string[] = [];
 
-    isCreateMode = false;
-    mode: string;
-
     constructor(
         public dialogRef: MatDialogRef<HolidayPreferencesDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: IDialogData, private route: ActivatedRoute, private router: Router,
@@ -29,22 +26,11 @@ export class HolidayPreferencesDialogComponent implements OnInit {
 
     ngOnInit() {
         this.createForm();
-        this.isCreateMode = this.data.mode === 'create';
-
-        if (this.isCreateMode) {
-            console.log('is create mode: ', this.isCreateMode);
-            this.preferenceForm.patchValue({
-                maxPrice: 2500
-            });
-            return this.selectedWebsites.push('itaka.pl');
-        }
-
         this.getPreference();
     }
 
     private createForm() {
         this.preferenceForm = new FormGroup({
-            minPrice: new FormControl('', Validators.required),
             maxPrice: new FormControl('', Validators.required),
             websites: new FormControl([])
         });
@@ -82,31 +68,18 @@ export class HolidayPreferencesDialogComponent implements OnInit {
             websites: websitesList,
         });
 
-        if (this.isCreateMode) {
-            this.holidayPreferencesService
-                .createHolidayPreference(this.preferenceForm.value)
-                .subscribe(
-                    data => {
-                        this.router.navigate(['/holiday-offers']);
-                    },
-                    error => {
-                        this.notificationService.openSnackBar(error.error.message);
-                        throw new Error(error);
-                    }
-                );
-        } else {
-            this.holidayPreferencesService
-                .updateHolidayPreference(this.preferenceForm.value)
-                .subscribe(
-                    data => {
-                        this.router.navigate(['/holiday-offers']);
-                    },
-                    error => {
-                        this.notificationService.openSnackBar(error.error.message);
-                        throw new Error(error);
-                    }
-                );
-        }
+        this.holidayPreferencesService
+            .updateHolidayPreference(this.preferenceForm.value)
+            .subscribe(
+                data => {
+                    this.router.navigate(['/holiday-offers']);
+                },
+                error => {
+                    this.notificationService.openSnackBar(error.error.message);
+                    throw new Error(error);
+                }
+            );
+
     }
 
     updateWebsites(website: string): any {

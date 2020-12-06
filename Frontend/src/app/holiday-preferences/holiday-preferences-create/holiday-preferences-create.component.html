@@ -1,7 +1,7 @@
 <article class="holiday-preferences-create">
     <img class="mt-2" alt="logo" src="../../../assets/logo.png"/>
     <br>
-    <p>Create First Holiday Preference</p>
+    <p>This is you first visit our app, its good time to create your <span style="color: var(--primary-color); font-weight: normal">Holiday Preference</span></p>
     <article  fxLayout="row" fxLayoutAlign="center">
         <form [formGroup]="preferenceForm">
             <label>
@@ -51,7 +51,7 @@
                     </div>
                 </li>
             </ul>
-            <button class="w-100 holiday-preferences-create_create-button"  mat-raised-button color="primary">
+            <button (click)="createPreference()" class="w-100 holiday-preferences-create_create-button"  mat-raised-button color="primary">
                 Create
             </button>
         </form>

@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {HolidayPreferencesService} from "../holiday-preferences.service";
+import {NotificationService} from "../../core/services/notification.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-holiday-preferences-create',
@@ -11,7 +14,8 @@ export class HolidayPreferencesCreateComponent implements OnInit {
     websitesList: string[] = ['itaka.pl', 'tui.pl', 'r.pl', 'wakacje.pl'];
     selectedWebsites: string[] = [];
 
-    constructor() {
+    constructor(private holidayPreferencesService: HolidayPreferencesService,
+                private notificationService: NotificationService, private router: Router) {
     }
 
     ngOnInit() {
@@ -21,7 +25,6 @@ export class HolidayPreferencesCreateComponent implements OnInit {
 
     private createForm() {
         this.preferenceForm = new FormGroup({
-            minPrice: new FormControl('', Validators.required),
             maxPrice: new FormControl('', Validators.required),
             websites: new FormControl([])
         });
@@ -34,11 +37,39 @@ export class HolidayPreferencesCreateComponent implements OnInit {
         this.selectedWebsites.push('itaka.pl');
     }
 
-    updateWebsites(website: string): any {
+    updateWebsites(website: string) {
         if (this.selectedWebsites.includes(website)) {
             return this.selectedWebsites.splice(this.selectedWebsites.indexOf(website), 1);
         }
         this.selectedWebsites.push(website);
     }
 
+    createPreference() {
+        const websitesList: Object[] = [];
+
+        for (let i = 0; i < this.selectedWebsites.length; i++) {
+            websitesList.push({
+                website: this.selectedWebsites[i]
+            });
+        }
+
+        this.preferenceForm.patchValue({
+            websites: websitesList,
+        });
+
+        console.log('this.preferenceForm.value', this.preferenceForm.value);
+          this.holidayPreferencesService
+              .createHolidayPreference(this.preferenceForm.value)
+              .subscribe(
+                  data => {
+                      this.notificationService.openSnackBar('Great choice, lets see holiday offers');
+                      this.router.navigate(['/holiday-offers']);
+                  },
+                  error => {
+                      this.notificationService.openSnackBar(error.error.message);
+                      throw new Error(error);
+                  }
+              );
+
+    }
 }
