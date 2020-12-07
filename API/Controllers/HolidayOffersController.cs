@@ -42,9 +42,6 @@ namespace API.Controllers
                 return new EmptyResult();
             }
 
-
-           // await _holidayOffersService.RefreshAllOffers();
-
             var allOffers = await _repo.GetHolidayOffersAsync();
 
             var offersByUserHolidayPreferences = _holidayOffersService.GetHolidayOffersByUserHolidayPreference(allOffers, preferences, sort);

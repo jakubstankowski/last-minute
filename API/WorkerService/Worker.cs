@@ -3,26 +3,38 @@ using System.Threading.Tasks;
 using Core.Interface;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
+using System;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WorkerService
 {
     public class Worker : IHostedService
     {
         private readonly ILogger<Worker> _logger;
-        private readonly IHolidayOffersService _holidayOffersService;
+        private readonly IServiceProvider _services;
 
-        public Worker(ILogger<Worker> logger, IHolidayOffersService holidayOffersService)
+        public Worker(ILogger<Worker> logger, IServiceProvider services)
         {
             _logger = logger;
-            _holidayOffersService = holidayOffersService;
+            _services = services;
         }
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                await Task.Delay(10000);
-                await _holidayOffersService.RefreshAllOffers();
+                using (var scope = _services.CreateScope())
+                {
+                    var scopedProcessingService =
+                        scope.ServiceProvider
+                            .GetRequiredService<IHolidayOffersService>();
+
+                    await scopedProcessingService.RefreshAllOffers();
+                }
+
+
+                await Task.Delay(3000 * 1000);
+               
                 _logger.LogInformation("Hosted service call refresh holiday offers method");
             }
         }
