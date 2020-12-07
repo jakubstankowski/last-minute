@@ -16,8 +16,7 @@ using System.Text;
 using API.Configuration;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.Certificate;
-using Microsoft.Extensions.FileProviders;
-using System.IO;
+using WorkerService;
 
 namespace API
 {
@@ -35,11 +34,14 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddScoped<IHolidayPreferencesRepo, HolidayPreferencesRepo>();
             services.AddScoped<IHolidayOffersRepo, HolidayOffersRepo>();
             services.AddScoped<IHolidayPreferencesWebsites, HolidayPreferencesWebsiteRepo>();
             services.AddScoped<IHolidayOffersService, HolidayOffersService>();
+           
+        
 
 
             services.AddCors(options =>
@@ -111,28 +113,28 @@ namespace API
             app.UseRouting();
 
             app.UseCors(MyAllowSpecificOrigins);
-          
 
-          /*  app.Use(async (context, next) =>
 
-            {
+            /*  app.Use(async (context, next) =>
 
-                await next();
+              {
 
-                if (context.Response.StatusCode == 404 && !System.IO.Path.HasExtension(context.Request.Path.Value))
+                  await next();
 
-                {
+                  if (context.Response.StatusCode == 404 && !System.IO.Path.HasExtension(context.Request.Path.Value))
 
-                    context.Request.Path = "/index.html";
+                  {
 
-                    await next();
+                      context.Request.Path = "/index.html";
 
-                }
+                      await next();
 
-            });
+                  }
 
-            app.UseDefaultFiles();
-            app.UseStaticFiles();*/
+              });
+
+              app.UseDefaultFiles();
+              app.UseStaticFiles();*/
 
             app.UseAuthentication();
             app.UseAuthorization();

@@ -57,7 +57,6 @@ export class HolidayPreferencesCreateComponent implements OnInit {
             websites: websitesList,
         });
 
-        console.log('this.preferenceForm.value', this.preferenceForm.value);
           this.holidayPreferencesService
               .createHolidayPreference(this.preferenceForm.value)
               .subscribe(

@@ -115,6 +115,14 @@ body {
     grid-gap: 1rem;
 }
 
+.preferences-websites-grid .active {
+    border: 2px solid var(--secondary-color);
+}
+
+.preferences-websites-grid .disabled {
+    border: 2px solid #ebeaec;
+}
+
 .holiday-preferences_websites_logos img {
     width: 100px;
     background-color: green;
@@ -124,13 +132,6 @@ body {
     text-align: center;
 }
 
-.active {
-    border: 2px solid var(--secondary-color);
-}
-
-.disabled {
-    border: 2px solid #ebeaec;
-}
 
 .disabled img {
     -webkit-filter: grayscale(1);

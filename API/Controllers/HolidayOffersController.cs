@@ -43,7 +43,7 @@ namespace API.Controllers
             }
 
 
-            await _holidayOffersService.RefreshAllOffers();
+           // await _holidayOffersService.RefreshAllOffers();
 
             var allOffers = await _repo.GetHolidayOffersAsync();
 
