@@ -16,7 +16,7 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "cors": "^2.8.5",
     "request": "^2.88.2"
   }
