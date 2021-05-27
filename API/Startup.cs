@@ -40,8 +40,8 @@ namespace API
             services.AddScoped<IHolidayOffersRepo, HolidayOffersRepo>();
             services.AddScoped<IHolidayPreferencesWebsites, HolidayPreferencesWebsiteRepo>();
             services.AddScoped<IHolidayOffersService, HolidayOffersService>();
-           
-        
+
+
 
 
             services.AddCors(options =>
@@ -115,26 +115,26 @@ namespace API
             app.UseCors(MyAllowSpecificOrigins);
 
 
-            /*  app.Use(async (context, next) =>
+            app.Use(async (context, next) =>
 
-              {
+             {
 
-                  await next();
+                 await next();
 
-                  if (context.Response.StatusCode == 404 && !System.IO.Path.HasExtension(context.Request.Path.Value))
+                 if (context.Response.StatusCode == 404 && !System.IO.Path.HasExtension(context.Request.Path.Value))
 
-                  {
+                 {
 
-                      context.Request.Path = "/index.html";
+                     context.Request.Path = "/index.html";
 
-                      await next();
+                     await next();
 
-                  }
+                 }
 
-              });
+             });
 
-              app.UseDefaultFiles();
-              app.UseStaticFiles();*/
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseAuthentication();
             app.UseAuthorization();

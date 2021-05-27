@@ -9,5 +9,5 @@ export const environment = {
     production: false,
     logLevel: NgxLoggerLevel.TRACE,
     serverLogLevel: NgxLoggerLevel.OFF,
-    apiUrl: 'http://localhost:5000/api/'
+    apiUrl: 'api/'
 };
