@@ -59,7 +59,7 @@ namespace API
             services.AddControllers();
 
             services.AddDbContext<DataContext>(opt =>
-            opt.UseSqlServer(
+            opt.UseNpgsql(
                 Configuration.GetConnectionString("LastMinuteConnection")));
 
 
