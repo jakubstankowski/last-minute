@@ -6,7 +6,6 @@ using API.Errors;
 using AutoMapper;
 using Core.Entities;
 using Core.Interface;
-using Infrastructure.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
