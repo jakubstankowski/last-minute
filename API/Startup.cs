@@ -7,7 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
 using API.Middleware;
-using Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Core.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -63,12 +62,8 @@ namespace API
                 Configuration.GetConnectionString("LastMinuteConnection")));
 
 
-
-            services.AddDbContext<AppIdentityDbContext>(opt => opt.UseSqlServer
-               (Configuration.GetConnectionString("LastMinuteConnection")));
-
             services.AddIdentity<AppUser, IdentityRole>()
-                     .AddEntityFrameworkStores<AppIdentityDbContext>()
+                     .AddEntityFrameworkStores<DataContext>()
                       .AddSignInManager<SignInManager<AppUser>>();
 
 
