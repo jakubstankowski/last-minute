@@ -83,8 +83,6 @@ namespace API
                 options.SaveToken = true;
                 options.TokenValidationParameters = new TokenValidationParameters()
                 {
-                    ValidIssuer = jwtBearerTokenSettings.Issuer,
-                    ValidAudience = jwtBearerTokenSettings.Audience,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                 };
             });

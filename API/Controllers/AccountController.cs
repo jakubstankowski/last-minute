@@ -80,6 +80,11 @@ namespace API.Controllers
         {
             var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
 
+            if (user == null)
+            {
+                return NotFound(new ApiResponse(404));
+            }
+
             return new UserDTO
             {
                 Email = user.Email,
@@ -101,9 +106,7 @@ namespace API.Controllers
                 }),
 
                 Expires = DateTime.Now.AddDays(7),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
-                Audience = jwtBearerTokenSettings.Audience,
-                Issuer = jwtBearerTokenSettings.Issuer
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
