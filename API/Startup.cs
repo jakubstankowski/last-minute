@@ -84,6 +84,8 @@ namespace API
                 options.TokenValidationParameters = new TokenValidationParameters()
                 {
                     IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
                 };
             });
             services.AddAuthentication(
