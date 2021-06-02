@@ -85,6 +85,7 @@ namespace API
 
                     connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};SSL Mode=Require; Trust Server Certificate=true";
 
+                    Console.WriteLine("connStr: " + connStr);
                 }
 
             });
