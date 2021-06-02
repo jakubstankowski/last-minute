@@ -16,6 +16,7 @@ using API.Configuration;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.Certificate;
 using WorkerService;
+using System;
 
 namespace API
 {
@@ -58,9 +59,40 @@ namespace API
             services.AddControllers();
 
             services.AddDbContext<DataContext>(opt =>
-            opt.UseNpgsql(
-                Configuration.GetConnectionString("LastMinuteConnection")));
+            {
+                var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
+                string connStr;
+
+
+                if (env == "Development")
+                {
+                    connStr = Configuration.GetConnectionString("LastMinuteConnection");
+                }
+                else
+                {
+                    var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+
+                    connUrl = connUrl.Replace("postgress://", string.Empty);
+                    var pgUserPass = connUrl.Split("@")[0];
+                    var pgHostPortDb = connUrl.Split("@")[1];
+                    var pgHostPort = pgHostPortDb.Split("/")[0];
+                    var pgDb = pgHostPortDb.Split("/")[1];
+                    var pgUser = pgUserPass.Split(":")[0];
+                    var pgPass = pgUserPass.Split(":")[1];
+                    var pgHost = pgHostPort.Split(":")[0];
+                    var pgPort = pgHostPort.Split(":")[1];
+
+                    connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};SSL Mode=Require; Trust Server Certificate=true";
+
+                }
+
+            });
+
+            /*   services.AddDbContext<DataContext>(opt =>
+              opt.UseNpgsql(
+                  Configuration.GetConnectionString("LastMinuteConnection")));
+   */
 
             services.AddIdentity<AppUser, IdentityRole>()
                      .AddEntityFrameworkStores<DataContext>()
@@ -91,8 +123,6 @@ namespace API
             services.AddAuthentication(
      CertificateAuthenticationDefaults.AuthenticationScheme)
         .AddCertificate();
-
-
 
 
         }
