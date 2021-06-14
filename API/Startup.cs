@@ -90,10 +90,10 @@ namespace API
 
             });
 
-            /*   services.AddDbContext<DataContext>(opt =>
+               services.AddDbContext<DataContext>(opt =>
               opt.UseNpgsql(
                   Configuration.GetConnectionString("LastMinuteConnection")));
-   */
+   
 
             services.AddIdentity<AppUser, IdentityRole>()
                      .AddEntityFrameworkStores<DataContext>()
