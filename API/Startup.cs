@@ -58,19 +58,19 @@ namespace API
 
             services.AddControllers();
 
-          /*  services.AddDbContext<DataContext>(opt =>
+            services.AddDbContext<DataContext>(opt =>
             {
-               // var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+                var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
                 string connStr;
 
 
-             *//*   if (env == "Development")
+                if (env == "Development")
                 {
                     connStr = Configuration.GetConnectionString("LastMinuteConnection");
                 }
                 else
-                {*//*
+                {
                     var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 
                     connUrl = connUrl.Replace("postgress://", string.Empty);
@@ -83,17 +83,21 @@ namespace API
                     var pgHost = pgHostPort.Split(":")[0];
                     var pgPort = pgHostPort.Split(":")[1];
 
-                    connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
+                    connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb}; SSL Mode=Require; Trust Server Certificate=true";
 
                     Console.WriteLine("connStr: " + connStr);
-               *//* }*//*
 
-            });*/
+                }
+                opt.UseNpgsql(connStr);
+            }
 
-               services.AddDbContext<DataContext>(opt =>
-              opt.UseNpgsql(
-                  Configuration.GetConnectionString("LastMinuteConnection")));
-   
+
+            );
+
+            /*services.AddDbContext<DataContext>(opt =>
+           opt.UseNpgsql(
+               Configuration.GetConnectionString("LastMinuteConnection")));*/
+
 
             services.AddIdentity<AppUser, IdentityRole>()
                      .AddEntityFrameworkStores<DataContext>()
@@ -141,23 +145,23 @@ namespace API
             app.UseCors(MyAllowSpecificOrigins);
 
 
-            app.Use(async (context, next) =>
+            /*  app.Use(async (context, next) =>
 
-             {
+               {
 
-                 await next();
+                   await next();
 
-                 if (context.Response.StatusCode == 404 && !System.IO.Path.HasExtension(context.Request.Path.Value))
+                   if (context.Response.StatusCode == 404 && !System.IO.Path.HasExtension(context.Request.Path.Value))
 
-                 {
+                   {
 
-                     context.Request.Path = "/index.html";
+                       context.Request.Path = "/index.html";
 
-                     await next();
+                       await next();
 
-                 }
+                   }
 
-             });
+               });*/
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
