@@ -58,19 +58,19 @@ namespace API
 
             services.AddControllers();
 
-            services.AddDbContext<DataContext>(opt =>
+          /*  services.AddDbContext<DataContext>(opt =>
             {
                // var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
                 string connStr;
 
 
-             /*   if (env == "Development")
+             *//*   if (env == "Development")
                 {
                     connStr = Configuration.GetConnectionString("LastMinuteConnection");
                 }
                 else
-                {*/
+                {*//*
                     var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 
                     connUrl = connUrl.Replace("postgress://", string.Empty);
@@ -83,16 +83,16 @@ namespace API
                     var pgHost = pgHostPort.Split(":")[0];
                     var pgPort = pgHostPort.Split(":")[1];
 
-                    connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};SSL Mode=Require; Trust Server Certificate=true";
+                    connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
 
                     Console.WriteLine("connStr: " + connStr);
-               /* }*/
+               *//* }*//*
 
-            });
+            });*/
 
-               /*services.AddDbContext<DataContext>(opt =>
+               services.AddDbContext<DataContext>(opt =>
               opt.UseNpgsql(
-                  Configuration.GetConnectionString("LastMinuteConnection")));*/
+                  Configuration.GetConnectionString("LastMinuteConnection")));
    
 
             services.AddIdentity<AppUser, IdentityRole>()
