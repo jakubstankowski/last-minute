@@ -187,9 +187,9 @@ namespace Infrastructure.Services
         public async Task RefreshAllOffers()
         {
             await RefreshItakaOffersAsync();
-            //await RefreshRainbowOffersAsync();
+            await RefreshRainbowOffersAsync();
             await RefreshTuiOffersAsync();
-           // await RefreshWakacjeOffersAsync();
+            await RefreshWakacjeOffersAsync();
         }
 
         public string StripHTML(string input)
