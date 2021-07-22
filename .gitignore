@@ -15,3 +15,6 @@ WebAPIClient/.idea
 WebAPIClient/.vs
 API/wwwroot
 wwwroot
+Javascript-API/dist
+Javascript-API/node_modules
+Javascript-API/.idea
