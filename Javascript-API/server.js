@@ -6,10 +6,7 @@ const cors = require('cors');
 const axios = require('axios');
 const request = require('request');
 
-
-const PORT = 3000;
-const HOST = '0.0.0.0';
-
+const PORT = process.env.PORT || 8080
 const app = express();
 
 app.use(compression());
@@ -112,6 +109,10 @@ app.get('/api/offers/refresh/wakacje', async (req, res) => {
     res.json(offers.data);
 })
 
+app.use("/", express.static(path.join(__dirname, "dist")));
+app.use((req, res) => {
+    res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
 
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+app.use(cors());
+app.listen(PORT);
