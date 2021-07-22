@@ -55,7 +55,7 @@ namespace API.Controllers
         }
 
         // GET: api/offers
-        [HttpGet("all-offers")]
+        [HttpGet("all")]
         public async Task<ActionResult<IEnumerable<HolidayOffersDTO>>> GetAllOffers()
         {
             await _holidayOffersService.RefreshAllOffers();

@@ -71,9 +71,10 @@ namespace API
                     ValidateIssuer = false,
                 };
             });
-            services.AddAuthentication(
-     CertificateAuthenticationDefaults.AuthenticationScheme)
+            services.AddAuthentication(CertificateAuthenticationDefaults.AuthenticationScheme)
         .AddCertificate();
+
+            services.AddSwaggerGen();
 
 
         }
@@ -83,6 +84,12 @@ namespace API
         {
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseStatusCodePagesWithReExecute("/errors/{0}");
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
 
             app.UseRouting();
             app.UseAuthentication();
