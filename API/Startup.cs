@@ -58,9 +58,9 @@ namespace API
 
             services.AddControllers();
 
-            services.AddDbContext<DataContext>(opt =>
-          .UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DataContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("LastMinuteConnection")));
 
 
             services.AddIdentity<AppUser, IdentityRole>()
