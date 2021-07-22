@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Ten plik jest wykorzystywany przez proces publikowania/pakowania projektu internetowego. Możesz dostosować zachowanie tego procesu
+ poprzez edycję tego pliku MSBuild. Aby dowiedzieć się więcej o tym działaniu, odwiedź stronę https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABlnQkGK3JUGK6ysCXgsR0QAAAAACAAAAAAAQZgAAAAEAACAAAAD1sRtple5ORt5gziqApCVEBZmBT3KM8nc1QoTZfHN6UwAAAAAOgAAAAAIAACAAAABb6W+aMsSiCThlHPTmSsSO3FxxMr/SrFz3jYwA1TRo6IAAAADUJe0i9t8GCbsrE0gESzWMwiUwZB3FfKHeaM9ujSNQUdCKJSaGi0r7/YXKnI3Lo/g/4rknOn16BdIUdNvlJ7OU86y2V9ZYPSn/a7POW/uRW+Ieg9k9u7mKmLDMnbFe/ezq3xU8eckb44+XyJiY55gTAGWUvBld7x42e0E9/+XyaUAAAAB4jbvDzl8gzHnx3YtrpcLXywJOPRVzJJ4QiYY6qFg0WP0aKEEiPSEpkq6hC1p5zmRS1DaxttM4FHm8rynfHLKk</EncryptedPassword>
+    <History>True|2021-07-22T20:08:46.4931973Z;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="Infrastructure.Data.DataContext">
+      <Value>Data Source=tcp:lastminuteapidbserver.database.windows.net,1433%3bInitial Catalog=API_db%3bUser Id=standev%40lastminuteapidbserver%3bPassword=Breakingbad_2014</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>
