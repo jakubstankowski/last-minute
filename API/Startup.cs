@@ -22,7 +22,6 @@ namespace API
 {
     public class Startup
     {
-        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         public Startup(IConfiguration configuration)
         {
@@ -34,28 +33,11 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddScoped<IHolidayPreferencesRepo, HolidayPreferencesRepo>();
             services.AddScoped<IHolidayOffersRepo, HolidayOffersRepo>();
             services.AddScoped<IHolidayPreferencesWebsites, HolidayPreferencesWebsiteRepo>();
             services.AddScoped<IHolidayOffersService, HolidayOffersService>();
-
-
-
-
-            services.AddCors(options =>
-            {
-                options.AddPolicy(MyAllowSpecificOrigins,
-                                  builder =>
-                                  {
-                                      builder.WithOrigins("https://localhost:4200")
-                                                          .AllowAnyHeader()
-                                                          .AllowAnyMethod();
-                                  });
-            });
-
-
             services.AddControllers();
 
             services.AddDbContext<DataContext>(options =>
@@ -102,34 +84,7 @@ namespace API
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
-            /*app.UseHttpsRedirection();*/
-
             app.UseRouting();
-
-            app.UseCors(MyAllowSpecificOrigins);
-
-
-            /*  app.Use(async (context, next) =>
-
-               {
-
-                   await next();
-
-                   if (context.Response.StatusCode == 404 && !System.IO.Path.HasExtension(context.Request.Path.Value))
-
-                   {
-
-                       context.Request.Path = "/index.html";
-
-                       await next();
-
-                   }
-
-               });*/
-
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
-
             app.UseAuthentication();
             app.UseAuthorization();
 
