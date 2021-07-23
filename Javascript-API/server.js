@@ -1,16 +1,15 @@
-const express = require('express');
-const path = require('path');
-const compression = require('compression');
-const bodyParser = require("body-parser");
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 3000
 const cors = require('cors');
 const axios = require('axios');
-const request = require('request');
 
-const PORT = process.env.PORT || 8080
-const app = express();
-
-app.use(compression());
 app.use(cors());
+
+app.get('/', (req, res) => {
+    res.send('Welcome to last minute javascript API!')
+})
+
 
 app.get('/api/offers/refresh/r', async (req, res) => {
     const body = {
@@ -34,6 +33,7 @@ app.get('/api/offers/refresh/r', async (req, res) => {
     const offers = await axios.post('https://rpl-api.r.pl/v3/wyszukiwarka/api/wyszukaj', body);
     res.json(offers.data);
 });
+
 app.get('/api/offers/refresh/wakacje', async (req, res) => {
     const body = [{
         "method": "search.tripsSearch", "params": {
@@ -109,10 +109,7 @@ app.get('/api/offers/refresh/wakacje', async (req, res) => {
     res.json(offers.data);
 })
 
-app.use("/", express.static(path.join(__dirname, "dist")));
-app.use((req, res) => {
-    res.sendFile(path.join(__dirname, "dist", "index.html"));
-});
 
-app.use(cors());
-app.listen(PORT);
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`)
+})
