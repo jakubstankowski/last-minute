@@ -11,3 +11,5 @@ export const environment = {
     serverLogLevel: NgxLoggerLevel.OFF,
     apiUrl: 'https://api20210722215721.azurewebsites.net/api/'
 };
+
+//    apiUrl: 'https://api20210722215721.azurewebsites.net/api/'
