@@ -16,6 +16,15 @@
     --dark-color: #2f353a;
 }
 
+.register-or-login-link {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.register-or-login-link:hover {
+    cursor: pointer;
+}
+
 a {
     text-decoration: none;
 }
