@@ -30,7 +30,7 @@
                 <mat-form-field class="full-width">
                     <input id="passwordInput" matInput placeholder="Password" formControlName="password" type="password"
                            autocomplete="current-password">
-                    <mat-error id="requiredPasswordError" *ngIf="registerForm.controls['email'].hasError('required')">
+                    <mat-error id="requiredPasswordError" *ngIf="registerForm.controls['password'].hasError('required')">
                         Password is
                         <strong>required</strong>
                     </mat-error>

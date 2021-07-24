@@ -43,7 +43,6 @@ export class AuthenticationService {
 
         return this.http.get(this.baseUrl + 'auth', {headers}).pipe(
             map((user: IUser) => {
-                console.log('user: ', user);
                 if (user) {
                     localStorage.setItem('token', user.token);
                     this.currentUserSource.next(user);

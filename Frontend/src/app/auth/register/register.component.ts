@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
                 },
                 error => {
                     console.log('Error: ', error);
-                    this.notificationService.openSnackBar(error.error.message);
+                    this.notificationService.openSnackBar('Something went wrong, try again with different credentials');
                     this.loading = false;
                 }
             );

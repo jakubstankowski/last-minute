@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     private createForm() {
         this.loginForm = new FormGroup({
             email: new FormControl('', [Validators.required, Validators.email]),
-            password: new FormControl('', Validators.required)
+            password: new FormControl('', [Validators.required, Validators.minLength(4)])
         });
     }
 
@@ -46,8 +46,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigate(['/']);
                 },
                 error => {
-                    console.log('Error: ', error);
-                    this.notificationService.openSnackBar(error.error.message);
+                    this.notificationService.openSnackBar('Wrong login, or password, try again!');
                     this.loading = false;
                 }
             );
