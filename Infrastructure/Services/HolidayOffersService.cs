@@ -72,7 +72,7 @@ namespace Infrastructure.Services
                     Meal = offer.meal,
                     Title = offer.title,
                     Price = offer.price / 100,
-                   /* DaysNumber = $"{offer.duration.ToString()} days",*/
+                    Duration = offer.duration,
                     Url = $"https://www.itaka.pl{offer.url}",
                     Date = $"{offer.dateFrom} - {offer.dateTo}",
                     ImageUrl = offer.photos.tiny
@@ -104,7 +104,7 @@ namespace Infrastructure.Services
                     Price = offer.Ceny == null ? 0 : offer.Ceny[0].CenaZaOsobeAktualna,
                     Url = offer.BazoweInformacje.OfertaURL == null ? "null" : $"https://www.r.pl{offer.BazoweInformacje.OfertaURL}",
                     Date = offer.TerminWyjazdu == null ? "null" : offer.TerminWyjazdu.ToString(),
-                    /*DaysNumber = offer.Ceny == null ? "null" : $"{offer.Ceny[0].LiczbaDni.ToString()} days",*/
+                  /*  Duration = offer.Ceny == null ? null : offer.Ceny[0].LiczbaDni,*/
                     ImageUrl = offer.Zdjecia.Count == 0 ? "https://lh3.googleusercontent.com/proxy/BPq1gEyIcFJ72uMKbDvFqlpJRiW2_mttgxsU0G2RlQ0al4b1GUHiTqNZ_sjkoeTsf9A-OtFPAmVrcCBi3Jz1Cr1kLJEp9AkO1dIhu9ZOvjWfJJS1LBCcOrmRIPYGRXyvCnRRr0KalXBiiPGf8aGrvlBsIpHw2vmMZ-Is9wM2EvQAenYZ5Saa5JoWU50bQuiuyinmaw" : offer.Zdjecia[0]
                 };
 
