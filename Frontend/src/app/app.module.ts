@@ -13,6 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {HolidayPreferencesDialogComponent} from "./holiday-preferences/holiday-preferences-dialog/holiday-preferences-dialog.component";
 import {MatSliderModule} from "@angular/material/slider";
 import { HolidayPreferencesCreateComponent } from './holiday-preferences/holiday-preferences-create/holiday-preferences-create.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { HolidayPreferencesCreateComponent } from './holiday-preferences/holiday
             level: environment.logLevel,
             serverLogLevel: environment.serverLogLevel
         }),
-        MatSliderModule
+        MatSliderModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
     entryComponents: [
         HolidayPreferencesDialogComponent
