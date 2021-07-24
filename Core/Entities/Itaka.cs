@@ -27,6 +27,7 @@ namespace Core.Entities
             public string dateFrom { get; set; }
             public string dateTo { get; set; }
 
+            public int duration { get; set; }
 
             public object canonicalDestinationTitle { get; set; }
             public Photos photos { get; set; }
