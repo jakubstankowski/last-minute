@@ -3,12 +3,14 @@ const app = express()
 const port = process.env.PORT || 3000
 const cors = require('cors');
 const axios = require('axios');
+const compression = require('compression');
 
 app.use(cors());
+app.use(compression())
 
 app.get('/', (req, res) => {
-    res.send('Welcome to last minute javascript API!')
-})
+    res.send('Welcome to last minute javascript API v.2');
+});
 
 
 app.get('/api/offers/refresh/r', async (req, res) => {
@@ -107,9 +109,9 @@ app.get('/api/offers/refresh/wakacje', async (req, res) => {
 
     const offers = await axios.post('https://www.wakacje.pl/v2/api/offers', body);
     res.json(offers.data);
-})
+});
 
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`Example app listening at http://localhost:${port}`);
 })
