@@ -51,12 +51,17 @@
             </ul>
         </form>
     </mat-dialog-content>
-    <mat-dialog-actions class="mt-1">
-        <button class="w-100" style="margin-bottom: 15px;" mat-raised-button  color="primary"
-                (click)="onCloseCancel()">Cancel
+    <div mat-dialog-actions class="mt-1">
+        <button  (click)="onCloseCancel()"
+                 color="primary"
+                 mat-raised-button >
+            Cancel
         </button>
-        <button class="w-100" mat-raised-button color="primary" (click)="onCloseUpdate()">
+        <button mat-raised-button
+                (click)="onCloseUpdate()"
+                color="primary"
+                cdkFocusInitial>
             Update
         </button>
-    </mat-dialog-actions>
+    </div>
 </div>
