@@ -7,7 +7,7 @@ Ten plik jest wykorzystywany przez proces publikowania/pakowania projektu intern
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABlnQkGK3JUGK6ysCXgsR0QAAAAACAAAAAAAQZgAAAAEAACAAAAD1sRtple5ORt5gziqApCVEBZmBT3KM8nc1QoTZfHN6UwAAAAAOgAAAAAIAACAAAABb6W+aMsSiCThlHPTmSsSO3FxxMr/SrFz3jYwA1TRo6IAAAADUJe0i9t8GCbsrE0gESzWMwiUwZB3FfKHeaM9ujSNQUdCKJSaGi0r7/YXKnI3Lo/g/4rknOn16BdIUdNvlJ7OU86y2V9ZYPSn/a7POW/uRW+Ieg9k9u7mKmLDMnbFe/ezq3xU8eckb44+XyJiY55gTAGWUvBld7x42e0E9/+XyaUAAAAB4jbvDzl8gzHnx3YtrpcLXywJOPRVzJJ4QiYY6qFg0WP0aKEEiPSEpkq6hC1p5zmRS1DaxttM4FHm8rynfHLKk</EncryptedPassword>
-    <History>True|2021-07-24T10:08:29.3787893Z;True|2021-07-24T11:58:34.9105048+02:00;True|2021-07-22T22:08:46.4931973+02:00;</History>
+    <History>True|2021-07-24T10:15:19.1311483Z;True|2021-07-24T12:08:29.3787893+02:00;True|2021-07-24T11:58:34.9105048+02:00;True|2021-07-22T22:08:46.4931973+02:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <EFMigrations Include="Infrastructure.Data.DataContext">

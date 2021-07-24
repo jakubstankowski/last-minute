@@ -24,6 +24,9 @@ namespace Core.Entities
         public int Price { get; set; }
 
         [Required]
+        public string DaysNumber { get; set; }
+
+        [Required]
         public string Url { get; set; }
 
         [Required]
