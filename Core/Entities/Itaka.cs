@@ -27,6 +27,8 @@ namespace Core.Entities
             public string dateFrom { get; set; }
             public string dateTo { get; set; }
 
+            public string transport { get; set; }
+
             public int duration { get; set; }
 
             public object canonicalDestinationTitle { get; set; }
