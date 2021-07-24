@@ -21,6 +21,9 @@ namespace Core.Entities
         public string Country { get; set; }
 
         [Required]
+        public string Transport { get; set; }
+
+        [Required]
         public int Price { get; set; }
 
         [Required]
