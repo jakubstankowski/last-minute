@@ -57,7 +57,7 @@ namespace API
                 options.AddPolicy(MyAllowSpecificOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("https://localhost:4200")
+                                      builder.WithOrigins("https://lastminute-app.herokuapp.com")
                                                           .AllowAnyHeader()
                                                           .AllowAnyMethod();
                                   });
