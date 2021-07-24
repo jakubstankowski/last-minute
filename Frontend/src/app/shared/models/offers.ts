@@ -4,6 +4,7 @@ export interface IOffers {
     meal: string;
     country: string;
     price: number;
+    duration: number;
     url: string;
     imageUrl: string;
     date: string;

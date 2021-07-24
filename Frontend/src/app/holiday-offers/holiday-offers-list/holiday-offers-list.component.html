@@ -21,7 +21,7 @@
     </div>
     <mat-form-field color="primary" *ngIf="!loading">
         <mat-label>Sorting offers</mat-label>
-        <select  class="holiday-offers_price_select" matNativeControl (change)="onSortSelected($event)">
+        <select class="holiday-offers_price_select" matNativeControl (change)="onSortSelected($event)">
             <option *ngFor="let sort of sortOptions"
                     [selected]="offersParams.sort === sort.value"
                     [value]="sort.value">
@@ -59,6 +59,16 @@
                             </div>
                             <div class="holiday-offers-list_details-wrapper_right-content">
                                 {{offer.date}}
+                            </div>
+                        </article>
+                        <article class="holiday-offers-list_details-wrapper">
+                            <div class="holiday-offers-list_details-wrapper_left-content">
+                                <mat-icon mat-list-icon style="color: var(--secondary-color);">
+                                    schedule
+                                </mat-icon>
+                            </div>
+                            <div class="holiday-offers-list_details-wrapper_right-content">
+                                {{offer.duration}} days
                             </div>
                         </article>
                         <article class="holiday-offers-list_details-wrapper">
