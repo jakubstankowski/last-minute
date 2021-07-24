@@ -52,6 +52,16 @@ namespace API
                      .AddEntityFrameworkStores<DataContext>()
                       .AddSignInManager<SignInManager<AppUser>>();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("https://lastminute-app.herokuapp.com")
+                                                          .AllowAnyHeader()
+                                                          .AllowAnyMethod();
+                                  });
+            });
 
             var jwtSection = Configuration.GetSection("JwtBearerTokenSettings");
             services.Configure<JwtBearerTokenSettings>(jwtSection);
@@ -94,10 +104,7 @@ namespace API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
-
-            app.UseCors(
-                options => options.WithOrigins("https://localhost:4200")
-                .AllowAnyMethod());
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseRouting();
             app.UseAuthentication();
