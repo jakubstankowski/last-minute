@@ -16,6 +16,7 @@ namespace Core.Entities
             public string offerUrl { get; set; }
             public List<Breadcrumb> breadcrumbs { get; set; }
 
+            public int duration { get; set; }
             public string originalPerPersonPrice { get; set; }
             public string departureDate { get; set; }
             public string returnDate { get; set; }

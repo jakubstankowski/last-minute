@@ -21,6 +21,7 @@ namespace Core.Entities
             public string link { get; set; }
             public string photo { get; set; }
             public int price { get; set; }
+            public int duration { get; set; }
             public string departureDate { get; set; }
             public string returnDate { get; set; }
             public string serviceDesc { get; set; }
