@@ -25,33 +25,6 @@ namespace Infrastructure.Services
             _offersRepo = offersRepo;
         }
 
-        public IEnumerable<HolidayOffers> GetHolidayOffersByUserHolidayPreference(IEnumerable<HolidayOffers> holidayOffers, HolidayPreferences holidayPreference, string sort)
-        {
-            List<string> preferenceWebsitesList = new List<string>();
-
-            foreach (var holidayPreferencesWebsite in holidayPreference.Websites)
-            {
-                preferenceWebsitesList.Add(holidayPreferencesWebsite.Website);
-            }
-
-
-            var filteredOffers = holidayOffers
-                                              .Where((o) => preferenceWebsitesList.Contains(o.Website))
-                                              .Where((o) => o.Price <= holidayPreference.MaxPrice)
-                                              .ToList();
-
-            switch (sort)
-            {
-                case "priceAsc":
-                    return filteredOffers.OrderBy(s => s.Price);
-                case "priceDesc":
-                    return filteredOffers.OrderByDescending(o => o.Price);
-                default:
-                    return filteredOffers;
-            }
-
-        }
-
         public async Task RefreshItakaOffersAsync()
         {
             ResetHolidayOffers("itaka.pl");
