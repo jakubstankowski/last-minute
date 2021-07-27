@@ -19,7 +19,7 @@ namespace API.Controllers
         private readonly IMapper _mapper;
         private readonly IHolidayOffersService _holidayOffersService;
 
-        public HolidayOffersController(IHolidayOffersRepo repo, IMapper mapper, IHolidayPreferencesRepo preferencesRepo, IHolidayOffersService holidayOffersService)
+        public HolidayOffersController(IHolidayOffersRepo repo, IMapper mapper, IHolidayOffersService holidayOffersService)
         {
             _repo = repo;
             _mapper = mapper;

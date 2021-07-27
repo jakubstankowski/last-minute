@@ -24,18 +24,7 @@ namespace API.Controllers
             return "secret stuff";
         }
 
-        [HttpGet("notfound")]
-        public ActionResult GetNotFoundRequest()
-        {
-            var thing = _context.HolidayPreferences.Find(-1);
-
-            if (thing == null)
-            {
-                return NotFound(new ApiResponse(404));
-            }
-
-            return Ok();
-        }
+       
 
         [HttpGet("servererror")]
         public ActionResult GetServerError()

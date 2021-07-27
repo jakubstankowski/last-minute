@@ -10,8 +10,6 @@ namespace API.Helpers
         public MappingProfiles()
         {
             CreateMap<HolidayOffers, HolidayOffersDTO>();
-            CreateMap<HolidayPreferences, HolidayPreferencesDTO>();
-            CreateMap<HolidayPreferencesWebsites, HolidayPreferencesWebsitesDTO>();
         }
     }
 }
