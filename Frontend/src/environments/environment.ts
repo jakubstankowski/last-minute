@@ -9,7 +9,7 @@ export const environment = {
     production: false,
     logLevel: NgxLoggerLevel.TRACE,
     serverLogLevel: NgxLoggerLevel.OFF,
-    apiUrl: 'https://api20210722215721.azurewebsites.net/api/'
+    apiUrl: 'http://localhost:5000/api/'
 };
 
 //    apiUrl: 'https://api20210722215721.azurewebsites.net/api/'
