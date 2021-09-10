@@ -36,9 +36,11 @@ namespace API
         {
 
             services.AddAutoMapper(typeof(MappingProfiles));
+            services.AddScoped<IHolidayPreferencesRepo, HolidayPreferencesRepo>();
             services.AddScoped<IHolidayOffersRepo, HolidayOffersRepo>();
+            services.AddScoped<IHolidayPreferencesWebsites, HolidayPreferencesWebsiteRepo>();
             services.AddScoped<IHolidayOffersService, HolidayOffersService>();
-            services.AddCors(); 
+            services.AddCors(); // Make sure you call this previous to AddMvc
             services.AddControllers();
 
             services.AddDbContext<DataContext>(options =>

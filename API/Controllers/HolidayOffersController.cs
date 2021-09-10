@@ -17,19 +17,46 @@ namespace API.Controllers
     {
         private readonly IHolidayOffersRepo _repo;
         private readonly IMapper _mapper;
+        private readonly IHolidayPreferencesRepo _preferencesRepo;
         private readonly IHolidayOffersService _holidayOffersService;
 
-        public HolidayOffersController(IHolidayOffersRepo repo, IMapper mapper, IHolidayOffersService holidayOffersService)
+        public HolidayOffersController(IHolidayOffersRepo repo, IMapper mapper, IHolidayPreferencesRepo preferencesRepo, IHolidayOffersService holidayOffersService)
         {
             _repo = repo;
             _mapper = mapper;
+            _preferencesRepo = preferencesRepo;
             _holidayOffersService = holidayOffersService;
         }
 
+        [Authorize]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<HolidayOffersDTO>>> GetOffersAsync([FromQuery(Name = "sort")] string sort)
+        {
+
+            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            var preferences = await _preferencesRepo.GetUserHolidayPreferences(userId);
+
+            if (preferences == null)
+            {
+                return new EmptyResult();
+            }
+
+            var allOffers = await _repo.GetHolidayOffersAsync();
+
+            var offersByUserHolidayPreferences = _holidayOffersService.GetHolidayOffersByUserHolidayPreference(allOffers, preferences, sort);
+
+
+
+            return Ok(_mapper
+     .Map<IEnumerable<HolidayOffers>, IEnumerable<HolidayOffersDTO>>(offersByUserHolidayPreferences));
+
+
+        }
 
         // GET: api/offers
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<HolidayOffersDTO>>> GetOffers()
+        [HttpGet("all")]
+        public async Task<ActionResult<IEnumerable<HolidayOffersDTO>>> GetAllOffers()
         {
             await _holidayOffersService.RefreshAllOffers();
             var offers = await _repo.GetHolidayOffersAsync();
